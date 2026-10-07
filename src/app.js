@@ -45,7 +45,7 @@ const EN = {
   g2a: 'Found on Google', g2b: 'Unforgettable', g2c: 'Found on Google',
   stmt: "Your website is often the first thing customers see of you. Let's make it <em>memorable</em>.",
   bw0: 'Structure', bw1: 'Design', bw2: 'Content', bw3: 'Motion', bw4: 'Live',
-  bk: 'How we build your website',
+  bk: 'How we build your website', bh: 'From idea <em>to live website</em>.',
   b1h: 'Structure', b1p: 'We lay the foundations: the sections that bring in customers, in the right order.',
   b2h: 'Design', b2p: 'Your colours, your fonts, your mood. A site that feels like you, not a template.',
   b3h: 'Content', b3p: 'Copy that makes people act, your photos, clear information: hours, prices, contact.',
@@ -128,7 +128,7 @@ function setLang(l, init) {
   document.title = l === 'en' ? 'Maison Dev — Websites people remember' : "Maison Dev — Des sites qu'on n'oublie pas";
   try { localStorage.setItem('lang', l); } catch (e) { /* ignore */ }
   splitAll();
-  if (!init) { $$('.split').forEach(e => e.classList.add('in')); measure(); setCaption(capIdx, true); }
+  if (!init) { $$('.split').forEach(e => e.classList.add('in')); measure(); setCaption(capIdx, true); setStep(bIdx, true); }
 }
 
 /* ---------------- layout metrics ---------------- */
@@ -152,10 +152,10 @@ const anchorPx = (o, y) => { const end = o.top + o.h - vh; return y < o.top ? o.
 /* ---------------- scroll state helpers ---------------- */
 function manifesteP(y) { return pinProg(byId.manifeste, y); }
 function constrQ(y) { return pinProg(byId.construction, y); }
-const BUILD = 0.6; // share of the construction pin used by the 5 build steps
+const BUILD = 0.6; // share of the construction pin used by the 5-step carousel
 function buildState(q) {
-  const b = clamp(q / BUILD), e = clamp((q - BUILD) / (1 - BUILD));
-  return { b, e, stepf: b * 5 };
+  const a = clamp(q / BUILD), e = clamp((q - BUILD) / (1 - BUILD));
+  return { a, e, sp: clamp((a - 0.04) / 0.9) * 4 };
 }
 
 function colorFor(o, y) {
@@ -165,10 +165,10 @@ function colorFor(o, y) {
     return mixc(c, STEP_COL[0], sstep(0.8, 1, p));
   }
   if (o.id === 'construction') {
-    const q = constrQ(y), { e, stepf } = buildState(q);
+    const q = constrQ(y), { e, sp } = buildState(q);
     if (q < BUILD) {
-      const i = Math.min(4, Math.floor(stepf)), f = stepf - i;
-      return i >= 4 ? STEP_COL[4] : mixc(STEP_COL[i], STEP_COL[i + 1], sstep(0.72, 1, f));
+      const i = Math.min(3, Math.floor(sp)), f = sp - i;
+      return mixc(STEP_COL[i], STEP_COL[i + 1], sstep(0.3, 0.7, f));
     }
     return mixc(COL.ink, COL.ivory, sstep(0.9, 0.985, e));
   }
@@ -191,7 +191,21 @@ const elProg = $('#prog'), elNav = $('#nav'), elFlash = $('#flash'), elGlow = $(
 const g1 = $('#g1'), g2 = $('#g2');
 let g1w = 0, g2w = 0;
 function measureGiants() { g1w = g1.scrollWidth; g2w = g2.scrollWidth; }
-const stps = $$('.stp'), bwords = $$('.bword'), dots = $$('.dots i');
+const bwords = $$('.bword'), bdots = $$('#bdots i'), pdots = $$('#pdots i');
+const bcT = $('#bcapt'), bcI = $('#bc-i'), bcH = $('#bc-h'), bcP = $('#bc-p');
+let bIdx = 0, bTimer = 0;
+function fillStep(i) {
+  const D = LANG === 'en' ? EN : FR;
+  bcI.textContent = String(i + 1).padStart(2, '0');
+  bcH.textContent = D['b' + (i + 1) + 'h']; bcP.textContent = D['b' + (i + 1) + 'p'];
+}
+function setStep(i, force) {
+  if (i === bIdx && !force) return;
+  bIdx = i;
+  if (force) { fillStep(i); return; }
+  bcT.classList.add('swap'); clearTimeout(bTimer);
+  bTimer = setTimeout(() => { fillStep(bIdx); bcT.classList.remove('swap'); }, 240);
+}
 const elLive = $('#live'), elEtxt = $('#etxt'), elConstrSticky = $('#construction .sticky');
 const mfill = $('#mfill'), mline = $('#mline'), contactH2 = $('#contact h2');
 
@@ -215,6 +229,7 @@ let capTimer = 0;
 function setCaption(i, force) {
   if (i === capIdx && !force) return;
   capIdx = i;
+  pdots.forEach((d, k) => d.classList.toggle('on', k === i));
   if (force) { fillCaption(i); return; }
   capT.classList.add('swap'); clearTimeout(capTimer);
   capTimer = setTimeout(() => { fillCaption(capIdx); capT.classList.remove('swap'); }, 260);
@@ -242,6 +257,15 @@ $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
   e.preventDefault(); scrollToTarget(a.getAttribute('href'));
 }));
 capA.addEventListener('click', e => { e.preventDefault(); const d = PH[capIdx]; openLink(d.href, d.ext); });
+function goY(yy) { if (lenis) lenis.scrollTo(yy, { duration: 1.1 }); else scrollTo({ top: yy, behavior: RM ? 'auto' : 'smooth' }); }
+const stepY = s2 => { const C = byId.construction; return C.top + (0.04 + (s2 / 4) * 0.9) * BUILD * (C.h - vh); };
+const phoneY = s2 => { const R = byId.realisations; return R.top + (0.2 + (s2 / 3) * 0.68) * (R.h - vh); };
+$('#b-prev').addEventListener('click', () => goY(stepY(Math.max(0, bIdx - 1))));
+$('#b-next').addEventListener('click', () => { const C = byId.construction; if (bIdx >= 4) goY(C.top + (BUILD + 0.44 * (1 - BUILD)) * (C.h - vh)); else goY(stepY(bIdx + 1)); });
+$('#p-prev').addEventListener('click', () => goY(phoneY(Math.max(0, capIdx - 1))));
+$('#p-next').addEventListener('click', () => { if (capIdx >= 3) scrollToTarget('#services'); else goY(phoneY(capIdx + 1)); });
+bdots.forEach((d, i) => d.addEventListener('click', () => goY(stepY(i))));
+pdots.forEach((d, i) => d.addEventListener('click', () => goY(phoneY(i))));
 $$('a[data-page]').forEach(a => a.addEventListener('click', e => {
   if (a.id === 'cap-a' || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
   e.preventDefault(); openLink(a.getAttribute('href'));
@@ -312,7 +336,7 @@ function circle(ctx, x, y, r) { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2
 /* --- website layers (a fictional bistro, "Saison") --- */
 function drawStructure(ctx) {
   ctx.clearRect(0, 0, TW, TH);
-  rr(ctx, 4, 4, TW - 8, TH - 8, 34); ctx.fillStyle = 'rgba(150,160,255,0.10)'; ctx.fill();
+  rr(ctx, 4, 4, TW - 8, TH - 8, 34); ctx.fillStyle = '#211D58'; ctx.fill();
   ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(205,210,255,0.85)'; ctx.stroke();
   ctx.save(); rr(ctx, 4, 4, TW - 8, TH - 8, 34); ctx.clip();
   const cw = (TW - 168 - 11 * 20) / 12;
@@ -544,21 +568,21 @@ function initGL() {
   logo.add(new THREE.Mesh(gOut, matIvory), new THREE.Mesh(gIn, matOrange));
   scene.add(logo);
 
-  /* website layers */
+  /* website build cards: each step adds one layer (coverflow carousel) */
   const LWd = 4.0, LHt = 2.5;
-  const layerDraw = [drawStructure, drawDesign, drawContent, c => drawAnim(c, true)];
   const shadowTex = tex(shadowCanvas());
-  const stack = new THREE.Group(); scene.add(stack);
-  const layers = layerDraw.map((fn, i) => {
-    const [c, ctx] = canvas2d(TW, TH); fn(ctx);
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(LWd, LHt), new THREE.MeshBasicMaterial({ map: tex(c), transparent: true, depthWrite: false, side: THREE.DoubleSide, toneMapped: false }));
-    m.renderOrder = 10 + i * 2;
-    const sh = new THREE.Mesh(new THREE.PlaneGeometry(LWd * 1.25, LHt * 1.35), new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, opacity: 0.4, toneMapped: false }));
-    sh.position.set(0.12, -0.16, -0.02); sh.renderOrder = 9 + i * 2;
-    const g = new THREE.Group(); g.add(sh, m); stack.add(g);
-    return { g, m, sh, lift: 0 };
+  const layerTex = [drawStructure, drawDesign, drawContent, c => drawAnim(c, true), c => drawAnim(c, false)].map(fn => { const [c, ctx] = canvas2d(TW, TH); fn(ctx); return tex(c); });
+  const CARD_LAYERS = [[0], [0, 1], [0, 1, 2], [0, 1, 2, 3], [1, 2, 4]];
+  const cardsGroup = new THREE.Group(); scene.add(cardsGroup);
+  const planeGeo = new THREE.PlaneGeometry(LWd, LHt);
+  const cards = CARD_LAYERS.map((ls, ci) => {
+    const g = new THREE.Group();
+    const sh = new THREE.Mesh(new THREE.PlaneGeometry(LWd * 1.25, LHt * 1.35), new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, opacity: 0.45, toneMapped: false }));
+    sh.position.set(0.1, -0.16, -0.06); sh.visible = ci !== 0; g.add(sh);
+    const planes = ls.map(li => { const m = new THREE.Mesh(planeGeo, new THREE.MeshBasicMaterial({ map: layerTex[li], transparent: true, depthWrite: false, side: THREE.DoubleSide, toneMapped: false })); g.add(m); return m; });
+    cardsGroup.add(g);
+    return { g, sh, planes, final: ci === 4 };
   });
-  layers[0].sh.visible = false;
 
   /* laptop */
   const LW = 4.6, LD = 3.05, BT = 0.13, LT = 0.075;
@@ -609,7 +633,7 @@ function initGL() {
   const ray = new THREE.Raycaster();
   const v3 = new THREE.Vector3(), q4 = new THREE.Quaternion(), s3 = new THREE.Vector3();
   const tmpQ = new THREE.Quaternion(), tmpE = new THREE.Euler();
-  return { renderer, scene, camera, FOV, CAMZ, logo, matOrange, stack, layers, laptop, hinge, screen, phones, phoneGroup, ray, v3, q4, s3, tmpQ, tmpE, LD, loadPhoneTextures, redrawYourSitePhone };
+  return { renderer, scene, camera, FOV, CAMZ, logo, matOrange, cards, cardsGroup, laptop, hinge, screen, phones, phoneGroup, ray, v3, q4, s3, tmpQ, tmpE, LD, loadPhoneTextures, redrawYourSitePhone };
 }
 
 function glResize() {
@@ -621,11 +645,12 @@ function glResize() {
 /* ---------------- per-frame 3D choreography ---------------- */
 let introT0 = null;
 const camBase = new THREE.Vector3(), camTarget = new THREE.Vector3(), lookAt = new THREE.Vector3();
-const stackPos = new THREE.Vector3(), stackQuat = new THREE.Quaternion();
 let hovered = -1;
+let spinA = 0, spinV = 0, lastLogoY = 0, lastSpinT = 0;
+const ZAXIS = new THREE.Vector3(0, 0, 1);
 
 function updateGL(t, y) {
-  const { camera, logo, stack, layers, laptop, hinge, screen, phones, phoneGroup } = G;
+  const { camera, logo, cards, cardsGroup, laptop, hinge, screen, phones, phoneGroup } = G;
   const visH = 2 * G.CAMZ * Math.tan((G.FOV * Math.PI) / 360), visW = visH * (vw / vh), upp = visH / vh;
   const mob = vw < 760;
   camera.position.set(0, 0, G.CAMZ); camera.lookAt(0, 0, 0);
@@ -643,23 +668,29 @@ function updateGL(t, y) {
   let lx, ly, lz = 0, ls, ry, rx, vis = true;
   const heroX = mob ? 0 : visW * 0.27, heroY = mob ? visH * 0.27 : 0.05;
   const idleY = Math.sin(t * 1.1) * 0.06;
+  // scroll momentum: the logo spins as soon as you scroll, then settles facing front
+  const dtS = clamp(t - lastSpinT, 0, 0.1), fr = dtS * 60; lastSpinT = t;
+  const dyS = clamp(y - lastLogoY, -300, 300); lastLogoY = y;
+  spinV = clamp((spinV + dyS * 0.0012) * Math.pow(0.9, fr), -0.2, 0.2);
+  spinA += spinV * fr;
+  if (Math.abs(spinV) < 0.004) spinA += (Math.round(spinA / (Math.PI * 2)) * Math.PI * 2 - spinA) * (1 - Math.pow(0.93, fr));
   if (y < man.top + man.h) {
     const a = easeInOut(aHero);
     lx = lerp(heroX, 0, a); ly = lerp(heroY, mob ? 0.4 : 0.36, a) + idleY;
     ls = lScale * lerp(1, 1.18, a) * (0.25 + 0.75 * intro);
-    ry = Math.sin(t * 0.45) * 0.3 * (1 - a) + mx * 0.5 + a * Math.PI + p * Math.PI * 2 + (1 - intro) * Math.PI * 1.5;
+    ry = Math.sin(t * 0.45) * 0.3 * (1 - a) + mx * 0.5 + spinA + (1 - intro) * Math.PI * 1.5;
     rx = my * 0.25 + Math.sin(t * 0.7) * 0.05;
-    ls *= 1 + sstep(0.2, 0.55, p) * 0.12;
-    const fly = easeInOut(sstep(0.78, 0.98, p));
+    ls *= 1 + sstep(0.15, 0.45, p) * 0.12;
+    const fly = easeInOut(sstep(0.62, 0.96, p));
     lz = fly * 10.5; rx += fly * 0.9; ly += fly * 0.4;
-    vis = p < 0.985;
+    vis = p < 0.975;
     G.logoMode = 'top';
   } else {
     // contact: floats above the headline, scrolls with it
     const r = con.top - y; // section top relative to viewport (px)
     const centerPx = contactH2.getBoundingClientRect().top - Math.min(vh * 0.19, 175);
     ly = -(centerPx - vh / 2) * upp; lx = 0;
-    ls = lScale * 0.72; ry = Math.sin(t * 0.6) * 0.5 + mx * 0.5; rx = my * 0.2 + 0.08;
+    ls = lScale * 0.72; ry = Math.sin(t * 0.6) * 0.5 + mx * 0.5 + spinA; rx = my * 0.2 + 0.08;
     vis = r < vh && r + con.h > 0;
   }
   logo.visible = vis;
@@ -671,66 +702,68 @@ function updateGL(t, y) {
     const sp = logo.position.clone().project(camera);
     const gx = (sp.x * 0.5) * vw, gy = (-sp.y * 0.5) * vh;
     elGlow.style.transform = `translate(${gx}px,${gy}px) scale(${0.6 + ls * 0.3})`;
-    glowO = (1 - orangeness) * (lum(bg) < 0.3 ? 1 : 0) * (1 - sstep(0.7, 0.9, p));
+    glowO = (1 - orangeness) * (lum(bg) < 0.3 ? 1 : 0) * (1 - sstep(0.55, 0.85, p));
   }
   elGlow.style.opacity = glowO;
 
-  /* ---- construction: layers + laptop ---- */
-  const C = byId.construction, q = constrQ(y), { e, stepf } = buildState(q);
+  /* ---- construction: build carousel (left to right) + laptop ---- */
+  const C = byId.construction, q = constrQ(y), { e, sp } = buildState(q);
   const anchor = -anchorPx(C, y) * upp;
   const inC = y + vh > C.top && y < C.top + C.h;
-  stack.visible = false;
+  cardsGroup.visible = inC;
   laptop.visible = inC && q < 1 && e > 0;
   if (inC) {
-    const k = clamp(visW / 4.8, 0.52, 1);
-    const m = easeInOut(sstep(4.05, 4.75, stepf));
-    const gap = 0.6 * (1 - m);
-    const si = Math.min(4, Math.floor(stepf));
-    layers.forEach((L, i) => {
-      const a = i === 0 ? 1 : easeOut(sstep(i - 0.3, i + 0.2, stepf));
-      const active = (i === si && m < 0.5) ? 1 : 0;
-      L.lift += (active - L.lift) * 0.12;
-      L.g.position.z = i * gap + (1 - a) * 3.2 + L.lift * 0.22 + i * 0.004;
-      L.m.material.opacity = i === 0 ? 1 - m : a;
-      L.sh.material.opacity = 0.42 * a * (1 - m);
-    });
-    // exploded pose -> merged card
-    const sx = mob ? 0 : lerp(visW * 0.17, visW * 0.15, m);
-    const sy = mob ? lerp(visH * 0.16, visH * 0.17, m) : lerp(-0.25, 0.08, m);
-    const sc = k * lerp(1, mob ? 1.12 : 1.16, m);
-    G.tmpE.set(lerp(-0.98, 0, m) + my * 0.08 * (1 - m), lerp(-0.2, 0, m) + mx * 0.14 * (1 - m * 0.6) + Math.sin(t * 0.4) * 0.04 * (1 - m), lerp(0.42, 0, m));
-    stackQuat.setFromEuler(G.tmpE);
-    stackPos.set(sx, sy + anchor + Math.sin(t * 0.8) * 0.04 * (1 - m), 0);
-    let stackScale = sc;
-
-    // laptop
+    const k = clamp(visW / 4.8, 0.52, 1) * (mob ? 1 : 0.95);
+    const spacing = (mob ? 2.75 : 3.7) * k;
+    const baseY = (mob ? 0.06 : -0.08) + anchor;
+    const out = easeInOut(sstep(0, 0.2, e));
+    // laptop: rises, opens, then the camera dives into the screen
     const lk = clamp(visW / 5.6, 0.48, 1);
-    const rise = easeOut(sstep(0, 0.16, e));
-    const open = easeInOut(sstep(0.12, 0.36, e));
-    const dolly = easeInOut(sstep(0.62, 0.985, e));
+    const rise = easeOut(sstep(0, 0.2, e));
+    const open = easeInOut(sstep(0.06, 0.32, e));
+    const dolly = easeInOut(sstep(0.56, 0.975, e));
     laptop.scale.setScalar(lk);
     laptop.position.set(mob ? 0 : visW * 0.13, lerp(-visH, mob ? visH * 0.08 : -0.85, rise) + anchor, 0);
-    laptop.rotation.set(lerp(0.36, 0.12, sstep(0.3, 0.7, e)) * (1 - dolly), lerp(lerp(0.6, 0.2, sstep(0, 0.4, e)), 0, dolly) + mx * 0.05 * (1 - dolly), 0);
+    laptop.rotation.set(lerp(0.36, 0.12, sstep(0.2, 0.55, e)) * (1 - dolly), lerp(lerp(0.6, 0.2, sstep(0, 0.35, e)), 0, dolly) + mx * 0.05 * (1 - dolly), 0);
     hinge.rotation.x = lerp(Math.PI / 2, -0.24, open);
     laptop.updateMatrixWorld(true);
-
-    // fly the merged card into the screen
-    const fk = easeInOut(sstep(0.14, 0.38, e));
-    if (fk > 0) {
-      screen.matrixWorld.decompose(G.v3, G.q4, G.s3);
-      stackPos.lerp(G.v3, fk);
-      stackQuat.slerp(G.q4, fk);
-      stackScale = lerp(stackScale, G.s3.x * (4.24 / 4.0), fk);
-    }
+    const fk = easeInOut(sstep(0.1, 0.34, e));
+    if (fk > 0) screen.matrixWorld.decompose(G.v3, G.q4, G.s3);
+    const order = [];
+    cards.forEach((Cd, i) => {
+      const d = i - sp, ad = Math.abs(d), w = Math.max(0, 1 - ad);
+      const gap = Cd.final ? 0.004 : lerp(0.3, 0.05, w);
+      Cd.planes.forEach((m, j) => { m.position.z = j * gap; });
+      let x = d * spacing, z = -ad * 1.5 + w * 0.35;
+      const yy = baseY + Math.sin(t * 0.9 + i * 1.7) * 0.035;
+      const ry = -clamp(d, -1.5, 1.5) * 0.6 + mx * 0.14 * w;
+      const rx = (mob ? 0 : my * 0.07) * w;
+      const sc = k * (0.9 + w * 0.12);
+      let op = clamp(2.7 - ad);
+      if (!Cd.final) { x -= out * visW * 0.75; op *= 1 - out; }
+      Cd.g.position.set(x, yy, z);
+      G.tmpE.set(rx, ry, 0); Cd.g.quaternion.setFromEuler(G.tmpE);
+      Cd.g.scale.setScalar(sc);
+      if (Cd.final && fk > 0) {
+        Cd.g.position.lerp(G.v3, fk);
+        Cd.g.quaternion.slerp(G.q4, fk);
+        Cd.g.scale.setScalar(lerp(sc, G.s3.x * (4.24 / 4.0), fk));
+      }
+      Cd.g.visible = op > 0.01 && !(Cd.final && fk >= 0.995);
+      Cd.planes.forEach(m => { m.material.opacity = op; });
+      Cd.sh.material.opacity = 0.45 * op;
+      order.push([Cd.g.position.z, Cd]);
+    });
+    order.sort((u, v) => u[0] - v[0]).forEach(([, Cd], rank) => {
+      Cd.sh.renderOrder = 100 + rank * 10;
+      Cd.planes.forEach((m, j) => { m.renderOrder = 101 + rank * 10 + j; });
+    });
     screen.visible = fk >= 0.995;
-    stack.visible = inC && fk < 0.995;
-    stack.position.copy(stackPos); stack.quaternion.copy(stackQuat); stack.scale.setScalar(stackScale);
 
-    // camera dive into the screen
     if (dolly > 0 && laptop.visible) {
       screen.updateMatrixWorld(true);
       screen.getWorldPosition(G.v3);
-      const n = new THREE.Vector3(0, 0, 1).applyQuaternion(screen.getWorldQuaternion(G.tmpQ));
+      const n = ZAXIS.clone().applyQuaternion(screen.getWorldQuaternion(G.tmpQ));
       camTarget.copy(G.v3).addScaledVector(n, 1.35 * lk);
       camBase.set(0, 0, G.CAMZ);
       camera.position.lerpVectors(camBase, camTarget, dolly);
@@ -803,22 +836,23 @@ function updateDOM(y) {
     g2.style.transform = `translate3d(${lerp(-g2w * 0.5, vw * 0.05, p)}px,0,0)`;
   }
 
-  // construction steps
+  // construction carousel
   const C = byId.construction;
   if (y + vh > C.top && y < C.top + C.h) {
-    const q = constrQ(y), { e, stepf } = buildState(q);
-    const ecr = q >= BUILD - 0.005;
-    const si = ecr ? -1 : Math.min(4, Math.floor(stepf));
-    if (si !== lastStep) {
-      stps.forEach((s, i) => s.classList.toggle('on', i === si));
-      bwords.forEach((w, i) => w.classList.toggle('on', i === si));
-      dots.forEach((d, i) => d.classList.toggle('on', i <= si));
-      lastStep = si;
+    const q = constrQ(y), { e, sp } = buildState(q);
+    const ecr = q >= BUILD - 0.002;
+    const si = clamp(Math.round(sp), 0, 4);
+    const wIdx = ecr ? -1 : si;
+    if (wIdx !== lastStep) {
+      bwords.forEach((w, i) => w.classList.toggle('on', i === wIdx));
+      bdots.forEach((d, i) => d.classList.toggle('on', i === si));
+      lastStep = wIdx;
     }
+    if (!ecr) setStep(si);
     if (ecr !== lastEcr) { elConstrSticky.classList.toggle('ecr', ecr); lastEcr = ecr; }
-    const live = !ecr && stepf > 4.35;
+    const live = !ecr && sp > 3.55;
     if (live !== lastLive) { elLive.classList.toggle('on', live); lastLive = live; }
-    const et = ecr && e > 0.34 && e < 0.62;
+    const et = ecr && e > 0.3 && e < 0.56;
     if (et !== lastEt) { elEtxt.classList.toggle('on', et); lastEt = et; }
     elFlash.style.opacity = G && q < 1 ? sstep(0.9, 0.985, e) : 0;
   } else elFlash.style.opacity = 0;
@@ -873,7 +907,7 @@ async function boot() {
   setLang(L, true);
   $('#b-fr').onclick = () => { setLang('fr'); if (G) G.redrawYourSitePhone(); };
   $('#b-en').onclick = () => { setLang('en'); if (G) G.redrawYourSitePhone(); };
-  fillCaption(0);
+  fillCaption(0); fillStep(0);
 
   // fonts (needed for canvas textures)
   try {
