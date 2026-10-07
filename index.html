@@ -73,21 +73,28 @@ if(/[?&]test/.test(q)||matchMedia('(prefers-reduced-motion: reduce)').matches||s
 </section>
 
 <section class="pin" id="construction">
-  <div class="sticky">
+  <div class="sticky" id="bsticky">
     <div class="bword" data-w="0" data-i="bw0">Structure</div>
     <div class="bword" data-w="1" data-i="bw1">Design</div>
     <div class="bword" data-w="2" data-i="bw2">Contenu</div>
     <div class="bword" data-w="3" data-i="bw3">Animations</div>
     <div class="bword" data-w="4" data-i="bw4">En ligne</div>
-    <div class="bk" data-i="bk">Comment on construit votre site</div>
-    <div class="stps">
-      <div class="stp" data-s="0"><div class="n">01<small>/ 05</small></div><h3 data-i="b1h">Structure</h3><p data-i="b1p">On pose les fondations : les sections qui font venir des clients, dans le bon ordre.</p></div>
-      <div class="stp" data-s="1"><div class="n">02<small>/ 05</small></div><h3 data-i="b2h">Design</h3><p data-i="b2p">Vos couleurs, vos polices, votre ambiance. Un site qui vous ressemble, pas un modèle.</p></div>
-      <div class="stp" data-s="2"><div class="n">03<small>/ 05</small></div><h3 data-i="b3h">Contenu</h3><p data-i="b3p">Des textes qui donnent envie, vos photos, des informations claires : horaires, prix, contact.</p></div>
-      <div class="stp" data-s="3"><div class="n">04<small>/ 05</small></div><h3 data-i="b4h">Animations</h3><p data-i="b4p">Des boutons qui réagissent, des transitions fluides : le détail qui fait la différence.</p></div>
-      <div class="stp" data-s="4"><div class="n">05<small>/ 05</small></div><h3 data-i="b5h">En ligne</h3><p data-i="b5p">Rapide, sécurisé, parfait sur mobile. Et trouvé sur Google.</p></div>
+    <div class="rl-head bhead"><div class="wrap fg"><div class="kick" data-i="bk">Comment on construit votre site</div><h2 class="split" data-i="bh" data-html>De l'idée <em>au site en ligne</em>.</h2></div></div>
+    <div class="cap bcap"><div class="wrap fg">
+      <div class="t" id="bcapt">
+        <div class="idx"><span id="bc-i">01</span> / 05</div>
+        <h3 id="bc-h">Structure</h3>
+        <p class="desc" id="bc-p">On pose les fondations : les sections qui font venir des clients, dans le bon ordre.</p>
+      </div>
+      <div class="cap-r"><div class="nav2"><button class="arr" id="b-prev" aria-label="Étape précédente">←</button><div class="hdots" id="bdots"><i class="on"></i><i></i><i></i><i></i><i></i></div><button class="arr" id="b-next" aria-label="Étape suivante">→</button></div></div>
+    </div></div>
+    <div hidden>
+      <span data-i="b1h">Structure</span><span data-i="b1p">On pose les fondations : les sections qui font venir des clients, dans le bon ordre.</span>
+      <span data-i="b2h">Design</span><span data-i="b2p">Vos couleurs, vos polices, votre ambiance. Un site qui vous ressemble, pas un modèle.</span>
+      <span data-i="b3h">Contenu</span><span data-i="b3p">Des textes qui donnent envie, vos photos, des informations claires : horaires, prix, contact.</span>
+      <span data-i="b4h">Animations</span><span data-i="b4p">Des boutons qui réagissent, des transitions fluides : le détail qui fait la différence.</span>
+      <span data-i="b5h">En ligne</span><span data-i="b5p">Rapide, sécurisé, parfait sur mobile. Et trouvé sur Google.</span>
     </div>
-    <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="ecran-txt" id="etxt">
       <h2 data-i="e-h" data-html>Le jour J, il est <em>en ligne</em>.</h2>
       <p data-i="e-p">Sur votre nom de domaine, en https, prêt à être partagé. Entrez, c'est ouvert.</p>
@@ -146,7 +153,8 @@ if(/[?&]test/.test(q)||matchMedia('(prefers-reduced-motion: reduce)').matches||s
         <div class="meta" id="cap-m">Restaurant · Lyon</div>
         <a class="btn ghost go" id="cap-a" href="exemples/restaurant/" data-page><span id="cap-l">Voir le site</span> →</a>
       </div>
-      <p class="note" data-i="w-note">Saison et Atelier Delorme sont des exemples imaginés par Maison Dev. Maison Motion est un vrai site en ligne.</p>
+      <div class="cap-r"><div class="nav2"><button class="arr" id="p-prev" aria-label="Site précédent">←</button><div class="hdots" id="pdots"><i class="on"></i><i></i><i></i><i></i></div><button class="arr" id="p-next" aria-label="Site suivant">→</button></div>
+      <p class="note" data-i="w-note">Saison et Atelier Delorme sont des exemples imaginés par Maison Dev. Maison Motion est un vrai site en ligne.</p></div>
     </div></div>
   </div>
 </section>
