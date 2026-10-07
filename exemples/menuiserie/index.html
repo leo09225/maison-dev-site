@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atelier Delorme · Menuiserie sur mesure à Annecy (exemple Maison Dev)</title>
+<meta name="description" content="Exemple de site réalisé par Maison Dev : Atelier Delorme, menuiserie fictive à Annecy. Cuisines, escaliers et dressings sur mesure.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1810'/%3E%3Cpath d='M18 46V18h12c9 0 16 6 16 14s-7 14-16 14z' fill='none' stroke='%23E8B04A' stroke-width='5'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Instrument Serif";src:url(../../fonts/is.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Instrument Serif";font-style:italic;src:url(../../fonts/is-i.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Inter;font-weight:400;src:url(../../fonts/inter-400.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Inter;font-weight:500;src:url(../../fonts/inter-500.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Inter;font-weight:600;src:url(../../fonts/inter-600.woff2) format("woff2");font-display:swap}
+:root{--bg:#F4EEE4;--paper:#FBF8F2;--ink:#1F1611;--soft:#5E4E42;--line:rgba(31,22,17,.13);--brass:#E8B04A;--walnut:#2A1810;--oak:#C49A64}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+em{font-style:italic;font-family:"Instrument Serif",Georgia,serif}
+.demo{background:#0B0B10;color:#F2EDE4;font-size:13px;position:relative;z-index:60}
+.demo .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:9px;padding-bottom:9px}
+.demo b{color:#FF5A1F;font-weight:600}
+.demo a{border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:4px 12px;white-space:nowrap}
+.demo a:hover{background:#FF5A1F;border-color:#FF5A1F;color:#0B0B10}
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;transition:background .3s,box-shadow .3s}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+nav.top.solid{background:rgba(244,238,228,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font:600 15px Inter;letter-spacing:.14em;text-transform:uppercase}
+.logo i{width:34px;height:34px;border-radius:9px;background:var(--walnut) url(noyer.jpg) center/cover;display:grid;place-items:center;font:400 22px "Instrument Serif";color:var(--brass);font-style:normal;letter-spacing:0}
+.links{display:flex;gap:30px;font-size:15px;color:var(--soft)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);padding:14px 22px;border-radius:99px;font-weight:500;font-size:15px;transition:transform .25s,background .25s}
+.btn:hover{transform:translateY(-2px);background:#3a2a20}
+.btn.brass{background:var(--brass);color:var(--walnut)}
+.btn.brass:hover{background:#f2c264}
+.btn.ghost{background:transparent;border:1px solid currentColor}
+.hero-dark nav.top:not(.solid){color:var(--paper)}
+.hero-dark nav.top:not(.solid) .links{color:rgba(251,248,242,.78)}.hero-dark nav.top:not(.solid) .links a:hover{color:#fff}
+/* hero */
+.hero{position:relative;margin-top:-76px;padding:160px 0 90px;min-height:92vh;color:var(--paper);overflow:hidden;background:var(--walnut)}
+.hero .bgwood{position:absolute;inset:-10% 0 0;background:url(noyer.jpg) center/cover;transform:scale(1.08);will-change:transform}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(26,14,8,.92) 0%,rgba(26,14,8,.72) 45%,rgba(26,14,8,.25) 100%)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);font-weight:600}
+.hero h1{font:400 clamp(48px,7vw,96px)/.98 "Instrument Serif",serif;margin:22px 0 26px;letter-spacing:-.01em}
+.hero h1 em{color:var(--brass)}
+.hero p.lead{font-size:19px;max-width:520px;color:rgba(251,248,242,.82)}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.hero .ctas .ghost{color:var(--paper)}
+.facts{display:flex;gap:36px;margin-top:54px;flex-wrap:wrap}
+.facts div{border-left:1px solid rgba(232,176,74,.5);padding-left:16px}
+.facts b{display:block;font:400 40px/1 "Instrument Serif";color:var(--paper)}
+.facts span{font-size:13px;color:rgba(251,248,242,.65)}
+/* hero drawing card */
+.blueprint{position:relative;aspect-ratio:4/5;border-radius:22px;background:rgba(251,248,242,.06);border:1px solid rgba(251,248,242,.18);backdrop-filter:blur(6px);padding:26px;display:flex;flex-direction:column}
+.blueprint small{font-size:12px;letter-spacing:.2em;color:rgba(251,248,242,.6);text-transform:uppercase}
+.blueprint svg{flex:1;width:100%}
+.blueprint svg path,.blueprint svg line,.blueprint svg rect{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s .4s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.stamp{position:absolute;right:-18px;bottom:40px;background:var(--brass);color:var(--walnut);border-radius:14px;padding:14px 18px;font-size:13px;line-height:1.35;box-shadow:0 20px 40px -18px rgba(0,0,0,.6)}
+.stamp b{display:block;font:400 26px/1 "Instrument Serif"}
+/* sections */
+section{padding:120px 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:56px;flex-wrap:wrap}
+.head h2{font:400 clamp(38px,5vw,64px)/1.02 "Instrument Serif";max-width:680px}
+.head p{max-width:380px;color:var(--soft)}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px 26px 28px;position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -30px rgba(42,24,16,.45)}
+.card svg{width:54px;height:54px;stroke:var(--ink);stroke-width:1.6;fill:none;margin-bottom:26px}
+.card h3{font:400 28px/1.1 "Instrument Serif";margin-bottom:10px}
+.card p{font-size:15px;color:var(--soft)}
+.card .from{margin-top:20px;font-size:13px;font-weight:600;letter-spacing:.06em;color:#9A6A2A}
+.card:after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:url(chene.jpg) center/cover;transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.card:hover:after{transform:scaleX(1)}
+/* projects */
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.filters button{font:500 14px Inter;background:transparent;border:1px solid var(--line);color:var(--ink);padding:9px 16px;border-radius:99px;cursor:pointer;transition:.25s}
+.filters button.on,.filters button:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.proj{grid-column:span 2;position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;color:var(--paper);transition:opacity .4s,transform .4s}
+.proj.big{grid-column:span 4;aspect-ratio:auto}
+.proj .tex{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.proj:hover .tex{transform:scale(1.06)}
+.proj:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(20,10,5,.78))}
+.proj svg.draw{position:absolute;z-index:1;inset:12% 10% 30%;width:80%;height:58%;stroke:rgba(255,250,240,.9);stroke-width:1.4;fill:none}
+.proj .cap{position:absolute;z-index:2;left:22px;right:22px;bottom:20px}
+.proj .cap small{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass)}
+.proj .cap h3{font:400 26px/1.1 "Instrument Serif";margin-top:4px}
+.proj .cap span{font-size:13px;opacity:.75}
+.proj.hide{opacity:.15;transform:scale(.97)}
+/* process */
+.dark{background:var(--walnut);color:var(--paper);position:relative;overflow:hidden}
+.dark:before{content:"";position:absolute;inset:0;background:url(noyer.jpg) center/cover;opacity:.18}
+.dark .wrap{position:relative}
+.dark .head p{color:rgba(251,248,242,.7)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(251,248,242,.2)}
+.step{padding:34px 26px 10px 0;position:relative}
+.step:before{content:"";position:absolute;top:-1px;left:0;height:2px;width:0;background:var(--brass);transition:width 1.2s ease}
+.step.in:before{width:calc(100% - 26px)}
+.step b{font:400 54px/1 "Instrument Serif";color:var(--brass)}
+.step h3{font:500 19px Inter;margin:16px 0 8px}
+.step p{font-size:15px;color:rgba(251,248,242,.7)}
+/* woods */
+.woods{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.wood{border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+.wood .sw{aspect-ratio:1;background-size:cover;transition:transform .8s}
+.wood:hover .sw{transform:scale(1.05)}
+.wood div.t{padding:18px 20px}
+.wood h3{font:400 26px "Instrument Serif"}
+.wood p{font-size:14px;color:var(--soft)}
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px}
+.rev .st{color:var(--brass);letter-spacing:3px}
+.rev q{display:block;font:400 23px/1.3 "Instrument Serif";margin:14px 0 18px;quotes:none}
+.rev span{font-size:14px;color:var(--soft)}
+/* devis */
+.devis{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.devis h2{font:400 clamp(38px,5vw,64px)/1.02 "Instrument Serif"}
+.devis ul{list-style:none;margin-top:30px;display:grid;gap:14px}
+.devis li{display:flex;gap:12px;align-items:center;color:var(--soft)}
+.devis li:before{content:"";width:22px;height:22px;border-radius:50%;background:var(--brass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12l4 4 8-8' fill='none' stroke='%232A1810' stroke-width='2.5'/%3E%3C/svg%3E") center/14px no-repeat;flex:none}
+form{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 40px 70px -50px rgba(42,24,16,.5)}
+form label.l{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin:22px 0 10px}
+form label.l:first-child{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{display:none}
+.chips span{display:inline-block;border:1px solid var(--line);padding:10px 16px;border-radius:99px;font-size:15px;cursor:pointer;transition:.2s}
+.chips input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+input[type=range]{width:100%;accent-color:#9A6A2A}
+.budget{font:400 34px "Instrument Serif"}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{width:100%;font:400 16px Inter;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.field:focus{outline:2px solid var(--brass);border-color:transparent}
+form .btn{margin-top:24px;border:0;cursor:pointer;width:100%;justify-content:center;padding:17px}
+.ok{display:none;margin-top:16px;padding:14px 16px;border-radius:12px;background:#F3E6CC;font-size:14px}
+/* zone + footer */
+.zone{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.zone .map{border-radius:20px;background:#E9E0D2;border:1px solid var(--line);position:relative;overflow:hidden;min-height:320px}
+.zone .map svg{position:absolute;inset:0;width:100%;height:100%}
+.pulse{position:absolute;left:52%;top:48%;width:16px;height:16px;border-radius:50%;background:#9A6A2A;transform:translate(-50%,-50%)}
+.pulse:after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid #9A6A2A;animation:pulse 2s infinite}
+@keyframes pulse{from{transform:scale(.4);opacity:1}to{transform:scale(2.4);opacity:0}}
+.info{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px;display:grid;gap:22px}
+.info h3{font:400 30px "Instrument Serif"}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:8px 22px;font-size:15px}
+.info dt{color:var(--soft)}
+footer{background:var(--ink);color:rgba(251,248,242,.7);padding:60px 0 40px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer .logo{color:var(--paper)}
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.hl .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.hl .w>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.hl.in .w>span{transform:none}
+@media (max-width:980px){
+ .links{display:none}
+ .hero .wrap{grid-template-columns:1fr}
+ .blueprint{display:none}
+ .svc,.woods{grid-template-columns:1fr 1fr}
+ .grid{grid-template-columns:1fr 1fr}.proj,.proj.big{grid-column:span 1;aspect-ratio:4/5}.proj.big{grid-column:span 2;aspect-ratio:16/11}
+ .steps,.revs{grid-template-columns:1fr 1fr}
+ .devis,.zone{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+ .wrap{padding:0 18px}
+ section{padding:84px 0}
+ nav.top .btn{display:none}
+ .demo .wrap{font-size:12px}
+ .svc,.woods,.revs,.steps{grid-template-columns:1fr}
+ .grid{grid-template-columns:1fr}.proj.big{grid-column:span 1;aspect-ratio:4/5}
+ .row{grid-template-columns:1fr}
+ form{padding:24px}
+ .facts{gap:22px}.facts b{font-size:32px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}.hl .w>span{transform:none}}
+</style>
+</head>
+<body class="hero-dark">
+
+<div class="demo"><div class="wrap"><span><b>Exemple</b> · Site fictif imaginé par Maison Dev pour montrer notre travail.</span><a href="../../index.html#realisations">← Retour à Maison Dev</a></div></div>
+
+<nav class="top" id="nav"><div class="wrap">
+  <a href="#" class="logo"><i>D</i>Atelier Delorme</a>
+  <div class="links"><a href="#savoir-faire">Savoir-faire</a><a href="#realisations">Réalisations</a><a href="#methode">Méthode</a><a href="#bois">Nos bois</a></div>
+  <a href="#devis" class="btn brass">Devis gratuit</a>
+</div></nav>
+
+<header class="hero">
+  <div class="bgwood" id="bgwood"></div>
+  <div class="wrap">
+    <div>
+      <p class="kicker rv">Menuiserie · Annecy · depuis 1998</p>
+      <h1 class="hl">Du bois massif, <em>pensé pour</em> votre maison.</h1>
+      <p class="lead rv">Cuisines, escaliers, dressings et bibliothèques fabriqués à la main dans notre atelier de Seynod, posés par nous, garantis 10 ans.</p>
+      <div class="ctas rv"><a class="btn brass" href="#devis">Demander un devis gratuit →</a><a class="btn ghost" href="#realisations">Voir nos réalisations</a></div>
+      <div class="facts rv">
+        <div><b class="count" data-to="640">0</b><span>projets livrés</span></div>
+        <div><b>4,9★</b><span>sur 128 avis Google</span></div>
+        <div><b class="count" data-to="28">0</b><span>ans d'atelier</span></div>
+      </div>
+    </div>
+    <div class="blueprint rv">
+      <small>Plan · escalier quart tournant · chêne</small>
+      <svg viewBox="0 0 400 460" fill="none" stroke="#F4D9A2" stroke-width="1.6">
+        <rect x="40" y="40" width="320" height="380"/>
+        <path d="M40 380h60v-40h60v-40h60v-40h60v-40h40"/>
+        <path d="M100 380v40M160 340v80M220 300v120M280 260v160"/>
+        <path d="M360 220V120h-60M300 120v-40h-60"/>
+        <line x1="40" y1="440" x2="360" y2="440"/>
+        <path d="M40 432v16M360 432v16"/>
+        <path d="M70 70l80 80M150 70l-80 80" stroke-opacity=".35"/>
+      </svg>
+      <div class="stamp"><b>Sur mesure</b>au millimètre près</div>
+    </div>
+  </div>
+</header>
+
+<section id="savoir-faire">
+  <div class="wrap">
+    <div class="head"><h2 class="hl">Tout ce qui se fabrique <em>en bois</em>, chez vous.</h2><p class="rv">Un seul interlocuteur, du premier croquis à la dernière vis. Nous dessinons, fabriquons et posons nous-mêmes.</p></div>
+    <div class="svc">
+      <div class="card rv"><svg viewBox="0 0 54 54"><rect x="6" y="20" width="42" height="28" rx="2"/><path d="M6 30h42M20 20v28M34 20v28M10 12h34v8H10z"/></svg><h3>Cuisines</h3><p>Façades massives, plans de travail, îlots. Dessinées autour de votre façon de cuisiner.</p><p class="from">DÈS 9 800 €</p></div>
+      <div class="card rv"><svg viewBox="0 0 54 54"><path d="M6 48h10v-8h10v-8h10v-8h10v-8h4"/><path d="M8 48V8"/></svg><h3>Escaliers</h3><p>Droits, quart tournant ou suspendus. Chêne, frêne ou noyer, finition huile ou vernis.</p><p class="from">DÈS 6 400 €</p></div>
+      <div class="card rv"><svg viewBox="0 0 54 54"><rect x="8" y="6" width="38" height="42" rx="2"/><path d="M27 6v42M14 18h7M33 18h7M22 30h2M30 30h2"/></svg><h3>Dressings</h3><p>Sous pente, en niche ou walk-in. Chaque centimètre utilisé, rien de standard.</p><p class="from">DÈS 2 900 €</p></div>
+      <div class="card rv"><svg viewBox="0 0 54 54"><rect x="6" y="6" width="42" height="42" rx="2"/><path d="M6 20h42M6 34h42M20 6v14M34 20v14M22 34v14"/></svg><h3>Agencement</h3><p>Bibliothèques, verrières, banquettes, comptoirs de boutique et de restaurant.</p><p class="from">SUR DEVIS</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="realisations" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head"><h2 class="hl">Quelques <em>réalisations</em> récentes.</h2>
+      <div class="filters rv" id="filters"><button class="on" data-f="all">Tout</button><button data-f="cuisine">Cuisines</button><button data-f="escalier">Escaliers</button><button data-f="dressing">Dressings</button></div>
+    </div>
+    <div class="grid">
+      <a class="proj big rv" data-c="cuisine" href="#devis"><div class="tex" style="background-image:url(chene.jpg)"></div>
+        <svg class="draw" viewBox="0 0 400 200"><rect x="20" y="20" width="360" height="60"/><path d="M20 120h360v70H20zM110 120v70M200 120v70M290 120v70M80 80v40M320 80v40"/><circle cx="300" cy="100" r="8"/></svg>
+        <div class="cap"><small>Cuisine · Talloires</small><h3>Cuisine en chêne huilé et îlot central</h3><span>4,2 m linéaires · 6 semaines</span></div></a>
+      <a class="proj rv" data-c="escalier" href="#devis"><div class="tex" style="background-image:url(noyer.jpg)"></div>
+        <svg class="draw" viewBox="0 0 200 240"><path d="M20 220h36v-30h36v-30h36v-30h36v-30h16"/><path d="M20 220V20M190 100v120"/></svg>
+        <div class="cap"><small>Escalier · Annecy-le-Vieux</small><h3>Escalier suspendu en noyer</h3><span>14 marches · ancrage invisible</span></div></a>
+      <a class="proj rv" data-c="dressing" href="#devis"><div class="tex" style="background-image:url(frene.jpg)"></div>
+        <svg class="draw" viewBox="0 0 200 240" style="stroke:rgba(60,40,20,.75)"><rect x="20" y="20" width="160" height="200"/><path d="M73 20v200M126 20v200M20 70h53M126 120h54M90 60h20"/></svg>
+        <div class="cap"><small>Dressing · Sévrier</small><h3>Dressing sous pente en frêne</h3><span>3 portes coulissantes</span></div></a>
+      <a class="proj rv" data-c="cuisine" href="#devis"><div class="tex" style="background-image:url(merisier.jpg)"></div>
+        <svg class="draw" viewBox="0 0 200 240"><rect x="20" y="60" width="160" height="120"/><path d="M20 100h160M73 60v120M126 60v120M40 30h120"/></svg>
+        <div class="cap"><small>Cuisine · Veyrier-du-Lac</small><h3>Cuisine de chalet en merisier</h3><span>Rénovation complète</span></div></a>
+      <a class="proj rv" data-c="escalier" href="#devis"><div class="tex" style="background-image:url(chene.jpg);filter:saturate(.8) brightness(.9)"></div>
+        <svg class="draw" viewBox="0 0 200 240"><path d="M30 220c0-60 40-100 100-120M50 220c0-50 35-85 90-100"/><path d="M40 200h20M55 175h22M75 152h22M98 132h22M120 116h20"/></svg>
+        <div class="cap"><small>Escalier · Seynod</small><h3>Hélicoïdal en chêne massif</h3><span>Rampe acier noir</span></div></a>
+      <a class="proj rv" data-c="dressing" href="#devis"><div class="tex" style="background-image:url(noyer.jpg);filter:brightness(1.15)"></div>
+        <svg class="draw" viewBox="0 0 200 240"><rect x="20" y="20" width="160" height="200"/><path d="M20 60h160M20 100h160M20 140h160M20 180h160M100 20v200"/></svg>
+        <div class="cap"><small>Bibliothèque · Annecy</small><h3>Mur bibliothèque en noyer</h3><span>Du sol au plafond, 3,1 m</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="methode">
+  <div class="wrap">
+    <div class="head"><h2 class="hl">De l'idée à la pose, <em>sans surprise</em>.</h2><p class="rv">Un devis détaillé, un planning tenu, un chantier rendu propre. C'est notre promesse depuis 28 ans.</p></div>
+    <div class="steps" id="steps">
+      <div class="step"><b>01</b><h3>Visite & mesures</h3><p>On vient chez vous, gratuitement, sous 7 jours. On écoute, on mesure, on conseille.</p></div>
+      <div class="step"><b>02</b><h3>Plans 3D & devis</h3><p>Vous voyez votre projet en 3D avant de signer. Prix ferme, sans ligne cachée.</p></div>
+      <div class="step"><b>03</b><h3>Fabrication</h3><p>Tout est fabriqué dans notre atelier de Seynod, avec des bois issus de forêts gérées.</p></div>
+      <div class="step"><b>04</b><h3>Pose & garantie</h3><p>Pose par l'équipe qui a fabriqué. Garantie décennale et suivi pendant 10 ans.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="bois">
+  <div class="wrap">
+    <div class="head"><h2 class="hl">Quatre essences, <em>choisies</em> avec soin.</h2><p class="rv">Venez les toucher à l'atelier : on vous prépare des échantillons avant de décider.</p></div>
+    <div class="woods">
+      <div class="wood rv"><div class="sw" style="background-image:url(chene.jpg)"></div><div class="t"><h3>Chêne</h3><p>Solide, chaleureux, intemporel.</p></div></div>
+      <div class="wood rv"><div class="sw" style="background-image:url(noyer.jpg)"></div><div class="t"><h3>Noyer</h3><p>Sombre et élégant, pour les pièces fortes.</p></div></div>
+      <div class="wood rv"><div class="sw" style="background-image:url(frene.jpg)"></div><div class="t"><h3>Frêne</h3><p>Clair et lumineux, parfait sous les pentes.</p></div></div>
+      <div class="wood rv"><div class="sw" style="background-image:url(merisier.jpg)"></div><div class="t"><h3>Merisier</h3><p>Le bois des chalets, qui se patine avec le temps.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2 class="hl">Ce qu'en disent <em>nos clients</em>.</h2><p class="rv">4,9 sur 5 · 128 avis Google</p></div>
+    <div class="revs">
+      <div class="rev rv"><div class="st">★★★★★</div><q>Notre escalier est devenu la pièce maîtresse de la maison. Délais tenus au jour près.</q><span>Claire M. · Annecy</span></div>
+      <div class="rev rv"><div class="st">★★★★★</div><q>Ils ont tiré parti du moindre recoin sous les combles. Un travail d'orfèvre.</q><span>Julien et Sarah · Sévrier</span></div>
+      <div class="rev rv"><div class="st">★★★★★</div><q>Chantier impeccable, toujours propre le soir. On recommande les yeux fermés.</q><span>Martine D. · Talloires</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="devis" style="background:#EDE4D6">
+  <div class="wrap devis">
+    <div>
+      <p class="kicker" style="color:#9A6A2A">Devis gratuit</p>
+      <h2 class="hl" style="margin-top:16px">Parlons de <em>votre projet</em>.</h2>
+      <ul class="rv"><li>Réponse sous 48 h</li><li>Visite et mesures offertes</li><li>Plans 3D avant de signer</li><li>Garantie décennale</li></ul>
+    </div>
+    <form class="rv" id="f" onsubmit="return false">
+      <label class="l">Votre projet</label>
+      <div class="chips"><label><input type="radio" name="p" checked><span>Cuisine</span></label><label><input type="radio" name="p"><span>Escalier</span></label><label><input type="radio" name="p"><span>Dressing</span></label><label><input type="radio" name="p"><span>Autre</span></label></div>
+      <label class="l">Budget estimé</label>
+      <div class="budget" id="bv">8 000 €</div>
+      <input type="range" min="2000" max="40000" step="500" value="8000" id="br">
+      <label class="l">Vos coordonnées</label>
+      <div class="row"><input class="field" placeholder="Nom"><input class="field" placeholder="Téléphone"></div>
+      <input class="field" style="margin-top:12px" placeholder="Commune (ex. Annecy, Sévrier…)">
+      <button class="btn" id="send">Recevoir mon devis gratuit →</button>
+      <p class="ok" id="ok">Ceci est un site d'exemple : aucune demande n'a été envoyée. Sur votre vrai site, elle arriverait directement dans votre boîte mail.</p>
+    </form>
+  </div>
+</section>
+
+<section>
+  <div class="wrap zone">
+    <div class="map rv">
+      <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice"><path d="M330 120c40-10 70 20 75 60s-10 90-40 110-55 10-60-30 0-60 5-90 0-45 20-50z" fill="#B9CED6"/><g stroke="#CDBFAA" stroke-width="2" fill="none"><path d="M0 200C120 180 220 230 300 210S480 150 600 170"/><path d="M120 0c30 120 80 200 190 230s140 120 160 170"/><path d="M0 330c150-40 260-20 330 10s170 20 270-10"/></g><circle cx="312" cy="192" r="150" fill="none" stroke="#9A6A2A" stroke-dasharray="6 8" stroke-width="2"/><text x="420" y="70" font-family="Inter" font-size="14" fill="#5E4E42">Zone d'intervention · 40 km</text></svg>
+      <div class="pulse"></div>
+    </div>
+    <div class="info rv">
+      <h3>L'atelier</h3>
+      <dl><dt>Adresse</dt><dd>Zone artisanale des Puisots, Seynod (adresse fictive)</dd><dt>Showroom</dt><dd>Mardi au samedi · 9 h – 18 h</dd><dt>Téléphone</dt><dd>04 50 00 00 00 (fictif)</dd><dt>Intervention</dt><dd>Annecy, lac, Aravis, Genevois · 40 km autour</dd></dl>
+      <a class="btn" href="#devis" style="justify-self:start">Prendre rendez-vous</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><a class="logo" href="#"><i>D</i>Atelier Delorme</a><span>© Atelier Delorme · Entreprise fictive · Site d'exemple conçu par <a href="../../index.html" style="color:#E8B04A">Maison Dev</a></span></div></footer>
+
+<script>
+(()=>{
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('.hl').forEach(el=>{
+  const walk=n=>{const f=document.createDocumentFragment();n.childNodes.forEach(c=>{if(c.nodeType===3){c.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(' '));return}const w=document.createElement('span');w.className='w';const s=document.createElement('span');s.textContent=t;w.appendChild(s);f.appendChild(w)})}else if(c.nodeName==='EM'){const e=document.createElement('em');e.appendChild(walk(c));f.appendChild(e)}else f.appendChild(c.cloneNode(true))});return f};
+  const fr=walk(el);el.innerHTML='';el.appendChild(fr);el.querySelectorAll('.w>span').forEach((s,i)=>s.style.transitionDelay=(i*.06)+'s');
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv,.hl').forEach((el,i)=>{const sib=[...el.parentNode.children].filter(c=>c.classList.contains('rv'));el.style.transitionDelay=el.classList.contains('rv')?(Math.max(0,sib.indexOf(el))*.08)+'s':'';io.observe(el)});
+const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){[...e.target.children].forEach((s,i)=>setTimeout(()=>s.classList.add('in'),i*350));sio.disconnect()}}),{threshold:.3});
+sio.observe(document.getElementById('steps'));
+setTimeout(()=>document.querySelectorAll('.count').forEach(c=>{const to=+c.dataset.to,t0=performance.now();const f=t=>{const u=Math.min(1,(t-t0)/1600);c.textContent=Math.round(to*(1-Math.pow(1-u,3)));if(u<1)requestAnimationFrame(f)};requestAnimationFrame(f)}),RM?0:600);
+const nav=document.getElementById('nav'),bg=document.getElementById('bgwood');
+const onS=()=>{const y=scrollY;nav.classList.toggle('solid',y>40);if(!RM)bg.style.transform=`scale(1.08) translateY(${y*.25}px)`};addEventListener('scroll',onS,{passive:true});onS();
+document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;document.querySelectorAll('.proj').forEach(p=>p.classList.toggle('hide',f!=='all'&&p.dataset.c!==f))});
+const br=document.getElementById('br'),bv=document.getElementById('bv');br.oninput=()=>bv.textContent=(+br.value).toLocaleString('fr-FR')+(br.value==br.max?' € et +':' €');
+document.getElementById('send').onclick=()=>{document.getElementById('ok').style.display='block'};
+})();
+</script>
+</body>
+</html>
