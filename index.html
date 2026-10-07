@@ -2,117 +2,107 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Maison Dev — Sites web rapides et élégants</title>
-<meta name="description" content="Maison Dev conçoit des sites vitrines et des landing pages rapides, élégants et pensés pour attirer des clients. Maquette offerte, en ligne en 7 jours.">
-<meta property="og:title" content="Maison Dev — Sites web rapides et élégants">
-<meta property="og:description" content="Sites vitrines et landing pages. Maquette offerte, en ligne en 7 jours.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Maison Dev — Des sites qu'on n'oublie pas</title>
+<meta name="description" content="Maison Dev conçoit des sites vitrines et des landing pages rapides, élégants et vivants pour les entreprises. Maquette offerte, en ligne en 7 jours.">
+<meta property="og:title" content="Maison Dev — Des sites qu'on n'oublie pas">
+<meta property="og:description" content="Sites vitrines et landing pages rapides, élégants et vivants. Maquette offerte en 48 h.">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0B10">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 220 194'%3E%3Cpath d='M20 166V64L65 19l35 35 35-35 45 45v102' fill='none' stroke='%230B0B10' stroke-width='18'/%3E%3Cpath d='M48 166V84l17-17 35 35 35-35 17 17v82' fill='none' stroke='%23FF5A1F' stroke-width='12'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="home.css">
-<style>header.top{display:block;padding:0}</style>
+<link rel="preload" href="fonts/is.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>
+(function(){var d=document.documentElement,q=location.search;
+if(/[?&]test/.test(q)||matchMedia('(prefers-reduced-motion: reduce)').matches||sessionStorage.getItem('md-seen'))d.classList.add('no-anim');})();
+</script>
 </head>
-<body>
-<div class="progress" id="prog"></div>
-<header class="top" id="hdr"><div class="in">
-  <a class="brand" href="#top" aria-label="Maison Dev"><svg viewBox="-10 -10 220 194" aria-hidden="true"><path d="M20 166 V64 L65 19 L100 54 L135 19 L180 64 V166" fill="none" stroke="currentColor" stroke-width="18"/><path d="M48 166 V84 L65 67 L100 102 L135 67 L152 84 V166" fill="none" stroke="var(--accent)" stroke-width="12"/></svg><span><b>Maison</b><small>DEV</small></span></a>
-  <nav>
+<body data-tone="dark">
+
+<div id="loader" aria-hidden="true"><div class="lg">
+  <svg viewBox="-10 -10 220 194"><path d="M20 166V64L65 19l35 35 35-35 45 45v102" fill="none" stroke="#F2EDE4" stroke-width="18"/><path d="M48 166V84l17-17 35 35 35-35 17 17v82" fill="none" stroke="#FF5A1F" stroke-width="12"/></svg>
+  <div class="pc"><span id="pct">0</span> %</div>
+</div></div>
+<div id="curtain" aria-hidden="true"></div>
+<div id="prog"></div>
+<div class="glow" id="glow"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="flash" aria-hidden="true"></div>
+<div class="cursor" id="cursor"><span data-i="see-short">Voir</span></div>
+
+<header class="nav" id="nav"><div class="in">
+  <a class="brand" href="#top" aria-label="Maison Dev"><svg viewBox="-10 -10 220 194" aria-hidden="true"><path d="M20 166V64L65 19l35 35 35-35 45 45v102" fill="none" stroke="currentColor" stroke-width="18"/><path d="M48 166V84l17-17 35 35 35-35 17 17v82" fill="none" stroke="#FF5A1F" stroke-width="12"/></svg><span><b>Maison</b><small>DEV</small></span></a>
+  <nav class="links">
+    <a href="#construction" data-i="nav0">Méthode</a>
+    <a href="#realisations" data-i="nav6">Réalisations</a>
     <a href="#services" data-i="nav1">Services</a>
-    <a href="tarifs.html" data-i="nav5">Tarifs</a>
-    <a href="#methode" data-i="nav2">Méthode</a>
+    <a href="tarifs.html" data-i="nav5" data-page>Tarifs</a>
     <a href="#faq" data-i="nav3">FAQ</a>
-    <a href="#contact" data-i="nav4">Contact</a>
-    <span class="lang" role="group" aria-label="Langue"><button id="b-fr" aria-pressed="true">FR</button><button id="b-en" aria-pressed="false">EN</button></span>
   </nav>
+  <span class="lang" role="group" aria-label="Langue"><button id="b-fr" aria-pressed="true">FR</button><button id="b-en" aria-pressed="false">EN</button></span>
+  <a class="pill magnet" href="#contact" data-i="navcta">Ma maquette gratuite</a>
 </div></header>
 
-<div class="wrap">
-  <div class="hero2" id="top">
-    <div class="blob" id="blob"></div>
-    <div>
-      <div class="eyebrow fade-up" data-i="eyebrow">Studio web · Lyon — Stockholm</div>
-      <h1 class="split" data-i="h1" data-html>Un site qui <em>travaille</em> pour vous.</h1>
-      <p class="lead fade-up" data-i="lead">Maison Dev conçoit des sites vitrines et des landing pages rapides, élégants et pensés pour transformer vos visiteurs en clients. On vous montre la maquette avant que vous payiez quoi que ce soit.</p>
-      <div class="ctas fade-up">
-        <a class="btn magnet" href="#contact"><span class="dot"></span><span data-i="cta1">Recevoir ma maquette gratuite</span></a>
-        <a class="btn ghost magnet" href="#avant-apres" data-i="cta2">Voir un avant / après</a>
-      </div>
-      <div class="facts fade-up">
-        <div><b><span class="count" data-to="7">0</span> <span data-i="f1u">jours</span></b><span data-i="f1b">pour être en ligne</span></div>
-        <div><b>&lt; <span class="count" data-to="1">0</span> s</b><span data-i="f2b">de chargement</span></div>
-        <div><b><span class="count" data-to="100">0</span> %</b><span data-i="f3b">adapté au mobile</span></div>
-      </div>
+<main>
+<section class="hero" id="top" data-bg="#0B0B10">
+  <div class="wrap fg">
+    <div class="eyebrow rv" data-i="eyebrow">Studio web · Lyon — Stockholm</div>
+    <h1 class="split" data-i="h1" data-html>Des sites qu'on <em>n'oublie pas</em>.</h1>
+    <p class="lead rv" data-i="lead">Maison Dev conçoit des sites rapides, élégants et vivants pour les entreprises. Vous voyez la maquette avant de payer quoi que ce soit.</p>
+    <div class="ctas rv">
+      <a class="btn main magnet" href="#contact"><span class="dot"></span><span data-i="cta1">Recevoir ma maquette gratuite</span></a>
+      <a class="btn ghost magnet" href="#construction" data-i="cta2">Voir comment on construit ↓</a>
     </div>
-    <div class="fade-up" style="position:relative;perspective:1200px">
-      <div class="tilt" id="tilt">
-        <div class="browser" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><div class="url">votre-entreprise.fr</div></div>
-          <div class="mock">
-            <div class="m-nav"><div class="blk" style="width:90px;background:#0B0B10;animation-delay:.6s"></div><div class="blk" style="width:160px;animation-delay:.7s"></div></div>
-            <div class="m-hero">
-              <div style="display:grid;gap:10px">
-                <div class="blk" style="height:22px;width:95%;background:#0B0B10;animation-delay:.75s"></div>
-                <div class="blk" style="height:22px;width:70%;background:#0B0B10;animation-delay:.82s"></div>
-                <div class="blk" style="height:10px;width:85%;animation-delay:.9s"></div>
-                <div class="blk" style="height:10px;width:60%;animation-delay:.95s"></div>
-                <div class="m-cta" style="animation-delay:1.1s"></div>
-              </div>
-              <div class="m-img" style="animation-delay:1s"></div>
-            </div>
-            <div class="m-cards"><div class="m-card" style="animation-delay:1.2s"></div><div class="m-card" style="animation-delay:1.3s"></div><div class="m-card" style="animation-delay:1.4s"></div></div>
-          </div>
-        </div>
-        <div class="score" style="transform:translateZ(60px)"><div class="ring"><span>98</span></div><div><b data-i="score1">Performance</b><small data-i="score2">Google Lighthouse</small></div></div>
-      </div>
+    <div class="facts rv">
+      <div><b>7 <span data-i="f1u" style="font:inherit">jours</span></b><span data-i="f1b">pour être en ligne</span></div>
+      <div><b>&lt; 1 s</b><span data-i="f2b">de chargement</span></div>
+      <div><b>100 %</b><span data-i="f3b">adapté au mobile</span></div>
     </div>
-    <div class="scroll-hint"><span data-i="scroll">DÉFILER</span><i></i></div>
   </div>
-</div>
+  <svg class="fallback" viewBox="-10 -10 220 194" aria-hidden="true"><path d="M20 166V64L65 19l35 35 35-35 45 45v102" fill="none" stroke="#F2EDE4" stroke-width="18"/><path d="M48 166V84l17-17 35 35 35-35 17 17v82" fill="none" stroke="#FF5A1F" stroke-width="12"/></svg>
+  <div class="hint fg"><span data-i="scroll">DÉFILER</span><i></i></div>
+</section>
 
-<div class="marquee" aria-hidden="true"><div class="track" id="mq"><span data-i="mq">Sites vitrines</span><span data-i="mq2">Landing pages</span><span data-i="mq3">Refontes</span><span data-i="mq4">Référencement</span><span data-i="mq5">100 % mobile</span><span data-i="mq6">Ultra rapide</span><span data-i="mq">Sites vitrines</span><span data-i="mq2">Landing pages</span><span data-i="mq3">Refontes</span><span data-i="mq4">Référencement</span><span data-i="mq5">100 % mobile</span><span data-i="mq6">Ultra rapide</span></div></div>
-
-<div class="wrap statement"><p id="stmt" data-i="stmt">Votre site est souvent la première chose que vos clients voient de vous. Il mérite d'être aussi *soigné* que votre travail.</p></div>
-
-<section class="build" id="build" data-s="0" style="border-top:0;padding:0">
-  <div class="pin">
-    <div class="bsteps">
-      <div><div class="k" data-i="bk">Comment on construit votre site</div><h2 data-i="bh" data-html>De l'idée <em>au site en ligne</em>.</h2></div>
-      <div class="bstep on" data-step="0"><div class="n">01</div><div><b data-i="b1h">Structure</b><span data-i="b1p">On pose les sections qui font venir des clients : accroche, services, preuves, contact.</span></div></div>
-      <div class="bstep" data-step="1"><div class="n">02</div><div><b data-i="b2h">Design</b><span data-i="b2p">Vos couleurs, vos polices, votre ambiance. Un site qui vous ressemble.</span></div></div>
-      <div class="bstep" data-step="2"><div class="n">03</div><div><b data-i="b3h">Contenu</b><span data-i="b3p">Textes qui donnent envie, photos de qualité, informations claires.</span></div></div>
-      <div class="bstep" data-step="3"><div class="n">04</div><div><b data-i="b4h">En ligne</b><span data-i="b4p">Rapide, sécurisé, parfait sur mobile. Et trouvé sur Google.</span></div></div>
-      <div class="bbar"><i id="bbar"></i></div>
-    </div>
-    <div class="stage">
-      <div class="bw">
-        <div class="bar"><i></i><i></i><i></i><div class="url"><span>jardins-delmas.fr</span><b>🔒 https</b></div></div>
-        <div class="site">
-          <div class="s-nav"><div class="s-logo L"></div><div class="s-links"><i></i><i></i><i></i></div></div>
-          <div class="s-hero">
-            <div class="txtblock">
-              <div class="s-t1 L"></div><div class="s-t2 L"></div><div class="s-p L"></div><div class="s-p L" style="width:60%"></div>
-              <div class="s-txt"><h4 data-i="bs1" data-html>Des jardins <em>qui vous ressemblent</em>.</h4><p data-i="bs2">Paysagiste à Lyon · création et entretien</p></div>
-              <div class="s-btn L"></div>
-            </div>
-            <div class="s-img L"><div class="s-real plant"></div></div>
-          </div>
-          <div class="s-cards"><i class="L"><span class="lbl" data-i="bs3">Création</span></i><i class="L"><span class="lbl" data-i="bs4">Entretien</span></i><i class="L"><span class="lbl" data-i="bs5">Devis gratuit</span></i></div>
-        </div>
-      </div>
-      <div class="phone"><div class="scr"><h5 data-i="bs1" data-html>Des jardins <em>qui vous ressemblent</em>.</h5><div class="pi"></div></div></div>
-      <div class="live"><div class="ring"><span>98</span></div><div><b data-i="bs6">En ligne</b><small data-i="bs7">Rapide · sécurisé · mobile</small></div></div>
-    </div>
+<section class="pin" id="manifeste">
+  <div class="sticky">
+    <div class="giant r1" id="g1" aria-hidden="true"><span data-i="g1a">Rapide</span> · <span class="o" data-i="g1b">Sur mesure</span> · <span data-i="g1c">Mobile</span> · <span class="o" data-i="g1d">Rapide</span> · </div>
+    <div class="giant r2" id="g2" aria-hidden="true"><span class="o" data-i="g2a">Trouvé sur Google</span> · <span data-i="g2b">Inoubliable</span> · <span class="o" data-i="g2c">Trouvé sur Google</span> · </div>
+    <div class="statement"><p class="split" data-i="stmt" data-html>Votre site est souvent la première chose que vos clients voient de vous. Faisons en sorte qu'elle soit <em>mémorable</em>.</p></div>
   </div>
 </section>
 
-<section id="avant-apres">
-  <div class="wrap">
+<section class="pin" id="construction">
+  <div class="sticky">
+    <div class="bword" data-w="0" data-i="bw0">Structure</div>
+    <div class="bword" data-w="1" data-i="bw1">Design</div>
+    <div class="bword" data-w="2" data-i="bw2">Contenu</div>
+    <div class="bword" data-w="3" data-i="bw3">Animations</div>
+    <div class="bword" data-w="4" data-i="bw4">En ligne</div>
+    <div class="bk" data-i="bk">Comment on construit votre site</div>
+    <div class="stps">
+      <div class="stp" data-s="0"><div class="n">01<small>/ 05</small></div><h3 data-i="b1h">Structure</h3><p data-i="b1p">On pose les fondations : les sections qui font venir des clients, dans le bon ordre.</p></div>
+      <div class="stp" data-s="1"><div class="n">02<small>/ 05</small></div><h3 data-i="b2h">Design</h3><p data-i="b2p">Vos couleurs, vos polices, votre ambiance. Un site qui vous ressemble, pas un modèle.</p></div>
+      <div class="stp" data-s="2"><div class="n">03<small>/ 05</small></div><h3 data-i="b3h">Contenu</h3><p data-i="b3p">Des textes qui donnent envie, vos photos, des informations claires : horaires, prix, contact.</p></div>
+      <div class="stp" data-s="3"><div class="n">04<small>/ 05</small></div><h3 data-i="b4h">Animations</h3><p data-i="b4p">Des boutons qui réagissent, des transitions fluides : le détail qui fait la différence.</p></div>
+      <div class="stp" data-s="4"><div class="n">05<small>/ 05</small></div><h3 data-i="b5h">En ligne</h3><p data-i="b5p">Rapide, sécurisé, parfait sur mobile. Et trouvé sur Google.</p></div>
+    </div>
+    <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="ecran-txt" id="etxt">
+      <h2 data-i="e-h" data-html>Le jour J, il est <em>en ligne</em>.</h2>
+      <p data-i="e-p">Sur votre nom de domaine, en https, prêt à être partagé. Entrez, c'est ouvert.</p>
+    </div>
+    <div class="live" id="live"><div class="ring"><span>98</span></div><div><b data-i="live1">En ligne</b><small data-i="live2">Score Google Lighthouse</small></div></div>
+  </div>
+</section>
+
+<section class="sec" id="avant-apres" data-bg="#F2EDE4">
+  <div class="wrap fg">
     <div class="sec-head">
       <h2 class="split" data-i="ba-h" data-html>Imaginez <em>votre</em> site, demain.</h2>
-      <p class="fade-up" data-i="ba-p">Faites glisser le curseur : à gauche, le site d'une boulangerie aujourd'hui. À droite, le même site refait par Maison Dev. C'est ce que vous recevez, gratuitement, avec votre maquette.</p>
+      <p class="rv" data-i="ba-p">Faites glisser le curseur : à gauche, le site d'une boulangerie aujourd'hui. À droite, le même site refait par Maison Dev. C'est ce que vous recevez, gratuitement, avec votre maquette.</p>
     </div>
-    <div class="ba fade-up" id="ba" style="--x:50%">
+    <div class="ba rv" id="ba" style="--x:50%">
       <div class="ba-pane old" aria-hidden="true">
         <div class="o-top">Boulangerie Martin</div>
         <div class="o-marquee" data-i="b-o1">*** Bienvenue sur notre site internet !!! ***</div>
@@ -140,86 +130,92 @@
       </div>
       <div class="ba-line"><span>‹ ›</span></div>
       <span class="ba-tag l" data-i="ba-before">Avant</span><span class="ba-tag r" data-i="ba-after">Après</span>
-      <input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après" oninput="this.parentNode.style.setProperty('--x',this.value+'%')">
+      <input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après">
     </div>
     <p class="ba-note" data-i="ba-note">Exemple fictif · chaque maquette est créée pour votre entreprise.</p>
   </div>
 </section>
 
-<section class="hz" id="services" data-dark="1" style="padding:0;border-top:0">
-  <div class="pin">
-    <div class="head"><h2 data-i="sv-h" data-html>Ce que l'on <em>construit</em> pour vous.</h2><a class="btn ghost" style="color:inherit;border-color:currentColor" href="tarifs.html" data-i="sv-link">Voir les tarifs →</a></div>
-    <div class="rail" id="rail">
-      <div class="card c1"><div class="num">01</div><div><h3 data-i="sv1h">Site vitrine</h3><p data-i="sv1p">Pour les commerces, artisans, cabinets et indépendants : présenter votre activité, rassurer, et être trouvé sur Google.</p></div><div class="deco"></div></div>
-      <div class="card c2"><div class="num">02</div><div><h3 data-i="sv2h">Landing page</h3><p data-i="sv2p">Une page unique pour lancer un produit, une offre ou un événement, et transformer chaque visite en demande.</p></div><div class="deco"></div></div>
-      <div class="card c3"><div class="num">03</div><div><h3 data-i="sv3h">Refonte</h3><p data-i="sv3p">Votre site existe déjà mais il est lent, daté ou illisible sur téléphone ? On le remet à neuf, avec vos contenus.</p></div><div class="deco"></div></div>
-      <div class="card c4"><div class="num">04</div><div><h3 data-i="sv4h">Entretien</h3><p data-i="sv4p">Hébergement, sécurité, sauvegardes et petites modifications. Un mail suffit, on s'occupe du reste.</p></div><div class="deco"></div></div>
-      <div class="card c5"><p style="font:400 40px/1.05 'Instrument Serif',serif;max-width:300px" data-i="sv-from2">À partir de 329 € HT, prix fixe annoncé avant de commencer.</p><a class="go" href="tarifs.html" data-i="sv-link">Voir les tarifs →</a></div>
-    </div>
+<section class="pin" id="realisations">
+  <div class="sticky" id="rlsticky">
+    <div class="rl-head"><div class="wrap fg"><div class="kick" data-i="w-k">Réalisations</div><h2 class="split" data-i="w-h" data-html>Des sites <em>soignés</em>, jusqu'au moindre détail.</h2></div></div>
+    <div class="cap"><div class="wrap fg">
+      <div class="t" id="capt">
+        <div class="idx"><span id="cap-i">01</span> / 04</div>
+        <h3 id="cap-h">Saison</h3>
+        <div class="meta" id="cap-m">Restaurant · Lyon</div>
+        <a class="btn ghost go" id="cap-a" href="exemples/restaurant/" data-page><span id="cap-l">Voir le site</span> →</a>
+      </div>
+      <p class="note" data-i="w-note">Saison et Atelier Delorme sont des exemples imaginés par Maison Dev. Maison Motion est un vrai site en ligne.</p>
+    </div></div>
   </div>
 </section>
 
-<section id="realisations">
-  <div class="wrap">
+<section class="sec" id="services" data-bg="#0B0B10">
+  <div class="wrap fg">
     <div class="sec-head">
-      <h2 class="split" data-i="w-h" data-html>Des sites <em>soignés</em> jusqu'au moindre détail.</h2>
-      <p class="fade-up" data-i="w-p">Chaque site est dessiné pour votre activité, pas tiré d'un modèle. Quelques exemples de notre travail et de nos maquettes.</p>
+      <div><div class="kick" data-i="sv-k">Services</div><h2 class="split" data-i="sv-h" data-html>Ce que l'on <em>construit</em> pour vous.</h2></div>
+      <p class="rv" data-i="sv-p">Un site pensé pour une seule chose : transformer vos visiteurs en clients. On s'occupe de tout, de la maquette à la mise en ligne.</p>
     </div>
-    <div class="work">
-      <a class="lk" href="https://maison-motion.fr" target="_blank" rel="noopener"><figure class="shot fade-up"><div style="overflow:hidden"><img class="px" src="img/work-maisonmotion.jpg" alt="Site maison-motion.fr" loading="lazy" width="1200" height="750"></div><figcaption><b>maison-motion.fr</b><span><span data-i="w1">Site bilingue · studio vidéo</span> <i class="go">↗</i></span></figcaption></figure></a>
-      <div class="concepts">
-        <a class="lk" href="exemples/restaurant/"><figure class="mini resto fade-up"><div class="face"><span style="font-size:12px;letter-spacing:.2em" data-i="r1">RESTAURANT · LYON</span><b data-i="r2">Saison · une cuisine de saison, tous les midis.</b><span class="pill" data-i="r3">Réserver une table</span></div><figcaption><span data-i="r4">Exemple · restaurant</span><i class="go" data-i="see">Voir le site →</i></figcaption></figure></a>
-        <a class="lk" href="exemples/menuiserie/"><figure class="mini artisan fade-up"><div class="face"><span style="font-size:12px;letter-spacing:.2em" data-i="a1">MENUISERIE · ANNECY</span><b data-i="a2">Atelier Delorme · cuisines et escaliers sur mesure.</b><span class="pill" data-i="a3">Demander un devis</span></div><figcaption><span data-i="a4">Exemple · artisan</span><i class="go" data-i="see">Voir le site →</i></figcaption></figure></a>
+    <div class="cards">
+      <div class="card rv"><div><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="9" width="38" height="30" rx="4"/><path d="M5 17h38M11 13h2M16 13h2"/><rect x="11" y="23" width="12" height="10" rx="1.5"/><path d="M28 24h9M28 29h6"/></svg><div class="num">01</div></div><div><h3 data-i="sv1h">Site vitrine</h3><p data-i="sv1p">Pour les commerces, artisans, cabinets et indépendants : présenter votre activité, rassurer, et être trouvé sur Google.</p></div></div>
+      <div class="card rv"><div><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M18 14h12M18 20h8"/><rect x="18" y="28" width="12" height="6" rx="3"/></svg><div class="num">02</div></div><div><h3 data-i="sv2h">Landing page</h3><p data-i="sv2p">Une page unique pour lancer un produit, une offre ou un événement, et transformer chaque visite en demande.</p></div></div>
+      <div class="card rv"><div><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M40 20a16 16 0 1 0 1 10"/><path d="M41 10v10H31"/></svg><div class="num">03</div></div><div><h3 data-i="sv3h">Refonte</h3><p data-i="sv3p">Votre site existe déjà mais il est lent, daté ou illisible sur téléphone ? On le remet à neuf, avec vos contenus.</p></div></div>
+      <div class="card rv"><div><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M24 4l16 6v12c0 10-7 17-16 22C15 39 8 32 8 22V10z"/><path d="M17 24l5 5 10-10"/></svg><div class="num">04</div></div><div><h3 data-i="sv4h">Entretien</h3><p data-i="sv4p">Hébergement, sécurité, sauvegardes et petites modifications. Un mail suffit, on s'occupe du reste.</p></div></div>
+    </div>
+    <div class="price-row rv"><p data-i="sv-from" data-html>À partir de <em>329 € HT</em>, prix fixe annoncé avant de commencer.</p><a class="btn main magnet" href="tarifs.html" data-page data-i="sv-link">Voir les tarifs →</a></div>
+  </div>
+</section>
+
+<section class="sec" id="methode" data-bg="#F2EDE4">
+  <div class="wrap fg">
+    <div class="sec-head">
+      <div><div class="kick" data-i="m-k">Méthode</div><h2 class="split" data-i="m-h" data-html>Simple, <em>du début à la fin</em>.</h2></div>
+      <p class="rv" data-i="m-p">Vous n'avez rien de technique à gérer. On s'occupe de tout, vous validez.</p>
+    </div>
+    <div class="mline" id="mline"><div class="track"></div><div class="fill" id="mfill"></div>
+      <div class="msteps">
+        <div class="mstep rv"><div class="n">01</div><h3 data-i="s1h">Maquette offerte</h3><p data-i="s1p">En 48 h, vous recevez la maquette de votre future page d'accueil. Gratuitement, sans engagement.</p></div>
+        <div class="mstep rv"><div class="n">02</div><h3 data-i="s2h">Validation</h3><p data-i="s2p">On ajuste les textes, les couleurs et les photos avec vous. Deux séries de retouches incluses.</p></div>
+        <div class="mstep rv"><div class="n">03</div><h3 data-i="s3h">Mise en ligne</h3><p data-i="s3p">Votre site est en ligne sur votre nom de domaine, rapide et sécurisé (https).</p></div>
+        <div class="mstep rv"><div class="n">04</div><h3 data-i="s4h">On reste là</h3><p data-i="s4p">Une modification, une nouvelle photo, une offre à ajouter ? Un mail suffit.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="methode">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 class="split" data-i="m-h" data-html>Simple, <em>du début à la fin</em>.</h2>
-      <p class="fade-up" data-i="m-p">Vous n'avez rien de technique à gérer. On s'occupe de tout, vous validez.</p>
+<section class="sec" id="faq" data-bg="#F2EDE4" style="padding-top:20px">
+  <div class="wrap fg">
+    <div class="sec-head"><div><div class="kick" data-i="q-k">FAQ</div><h2 class="split" data-i="q-h" data-html>Questions <em>fréquentes</em>.</h2></div></div>
+    <div class="faq">
+      <div class="q"><button aria-expanded="false"><span data-i="q1">Combien de temps faut-il ?</span><i></i></button><div class="a"><div><p data-i="q1a">La maquette arrive en 48 h. Le site complet est en ligne en 5 à 7 jours après votre validation.</p></div></div></div>
+      <div class="q"><button aria-expanded="false"><span data-i="q2">Je n'ai ni textes ni photos, c'est un problème ?</span><i></i></button><div class="a"><div><p data-i="q2a">Non. On rédige les textes avec vous à partir d'un court échange, et on utilise vos photos ou des photos libres de droits de qualité.</p></div></div></div>
+      <div class="q"><button aria-expanded="false"><span data-i="q3">Est-ce que je pourrai modifier mon site moi-même ?</span><i></i></button><div class="a"><div><p data-i="q3a">Oui si vous le souhaitez. Sinon, avec l'entretien à 15 € par mois, il vous suffit d'envoyer un mail et c'est fait.</p></div></div></div>
+      <div class="q"><button aria-expanded="false"><span data-i="q4">Le nom de domaine et l'hébergement sont-ils compris ?</span><i></i></button><div class="a"><div><p data-i="q4a">Oui, la première année. Ensuite, l'entretien à 15 € par mois couvre l'hébergement, ou vous pouvez tout reprendre chez votre propre hébergeur.</p></div></div></div>
+      <div class="q"><button aria-expanded="false"><span data-i="q5">Comment se passe le paiement ?</span><i></i></button><div class="a"><div><p data-i="q5a">50 % à la validation de la maquette, 50 % à la mise en ligne. Vous ne payez rien pour recevoir la maquette.</p></div></div></div>
+      <div class="q"><button aria-expanded="false"><span data-i="q6">Les animations ralentissent-elles le site ?</span><i></i></button><div class="a"><div><p data-i="q6a">Non. Chaque effet est dosé selon votre activité et optimisé pour charger vite, même sur un vieux téléphone. Un site d'artisan n'a pas besoin de la même chose qu'une marque de mode : on choisit avec vous.</p></div></div></div>
     </div>
-    <div class="mline" id="mline"><div class="track"></div><div class="fill" id="mfill"></div>
-    <div class="steps">
-      <div class="step fade-up"><div class="n">01</div><h3 data-i="s1h">Maquette offerte</h3><p data-i="s1p">En 48 h, vous recevez la maquette de votre future page d'accueil. Gratuitement, sans engagement.</p></div>
-      <div class="step fade-up"><div class="n">02</div><h3 data-i="s2h">Validation</h3><p data-i="s2p">On ajuste les textes, les couleurs et les photos avec vous. Deux séries de retouches incluses.</p></div>
-      <div class="step fade-up"><div class="n">03</div><h3 data-i="s3h">Mise en ligne</h3><p data-i="s3p">Votre site est en ligne sur votre nom de domaine, rapide et sécurisé (https).</p></div>
-      <div class="step fade-up"><div class="n">04</div><h3 data-i="s4h">On reste là</h3><p data-i="s4p">Une modification, une nouvelle photo, une offre à ajouter ? Un mail suffit.</p></div>
-    </div></div>
   </div>
 </section>
 
-<section id="faq">
-  <div class="wrap">
-    <div class="sec-head"><h2 data-i="q-h" data-html>Questions <em>fréquentes</em></h2><p></p></div>
-    <details><summary data-i="q1">Combien de temps faut-il ?</summary><p data-i="q1a">La maquette arrive en 48 h. Le site complet est en ligne en 5 à 7 jours après votre validation.</p></details>
-    <details><summary data-i="q2">Je n'ai ni textes ni photos, c'est un problème ?</summary><p data-i="q2a">Non. On rédige les textes avec vous à partir d'un court échange, et on utilise vos photos ou des photos libres de droits de qualité.</p></details>
-    <details><summary data-i="q3">Est-ce que je pourrai modifier mon site moi-même ?</summary><p data-i="q3a">Oui si vous le souhaitez. Sinon, avec l'entretien à 15 € par mois, il vous suffit d'envoyer un mail et c'est fait.</p></details>
-    <details><summary data-i="q4">Le nom de domaine et l'hébergement sont-ils compris ?</summary><p data-i="q4a">Oui, la première année. Ensuite, l'entretien à 15 € par mois couvre l'hébergement, ou vous pouvez tout reprendre chez votre propre hébergeur.</p></details>
-    <details><summary data-i="q5">Comment se passe le paiement ?</summary><p data-i="q5a">50 % à la validation de la maquette, 50 % à la mise en ligne. Vous ne payez rien pour recevoir la maquette.</p></details>
-  </div>
-</section>
-
-<section id="contact" data-dark="1" style="border-top:0">
-  <div class="wrap">
-    <div class="contact big">
+<section id="contact" data-bg="#FF5A1F">
+  <div class="wrap fg">
+    <div class="contact">
+      <div class="kick" data-i="c-k">Contact</div>
       <h2 class="split" data-i="c-h" data-html>Votre maquette, <em>offerte</em>.</h2>
       <p data-i="c-p">Envoyez-nous le nom de votre entreprise et votre site actuel si vous en avez un. Vous recevez une maquette de votre future page d'accueil sous 48 h.</p>
-      <a class="btn magnet" id="mailbtn" href="mailto:contact@maison-dev.com?subject=Ma%20maquette%20gratuite"><span data-i="c-cta">Demander ma maquette</span> →</a>
-      <span class="mail" id="mailtxt">contact@maison-dev.com</span>
+      <a class="btn main magnet" id="mailbtn" href="mailto:contact@maison-dev.com?subject=Ma%20maquette%20gratuite"><span data-i="c-cta">Demander ma maquette</span> →</a>
+      <span class="mail">contact@maison-dev.com</span>
     </div>
   </div>
 </section>
 
-<div class="wrap">
-  <footer>
-    <span>© 2026 Maison Dev · <span data-i="sister">Maison sœur de</span> <a href="https://maison-motion.fr">Maison Motion</a></span>
-    <span data-i="legal">Mentions légales</span>
-  </footer>
-</div>
-<script src="i18n.js"></script>
-<script src="home.js"></script>
+<footer id="pied" data-bg="#0B0B10"><div class="wrap">
+  <span>© 2026 Maison Dev · <span data-i="sister">Maison sœur de</span> <a href="https://maison-motion.fr" target="_blank" rel="noopener">Maison Motion</a></span>
+  <span data-i="legal">Mentions légales</span>
+</div></footer>
+</main>
+
+<script src="js/app.js" defer></script>
 </body>
 </html>
