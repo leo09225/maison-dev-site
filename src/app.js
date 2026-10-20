@@ -72,7 +72,7 @@ const EN = {
   sv2h: 'Landing page', sv2p: 'A single page to launch a product, an offer or an event, and turn every visit into a lead.',
   sv3h: 'Redesign', sv3p: "Your site already exists but it's slow, dated or unreadable on phones? We rebuild it with your content.",
   sv4h: 'Care plan', sv4p: 'Hosting, security, backups and small changes. One email is enough, we handle the rest.',
-  'sv-from': 'From <em>€329 excl. VAT</em>, fixed price agreed before we start.', 'sv-link': 'See pricing →',
+  'sv-from': 'From <em>€149 excl. VAT</em>, launch price for our first 3 clients.', 'sv-link': 'See pricing →',
   'm-k': 'Process', 'm-h': 'Simple, <em>start to finish</em>.', 'm-p': 'Nothing technical for you to handle. We do everything, you approve.',
   s1h: 'Free mockup', s1p: 'Within 48 h you get a mockup of your future homepage. Free, no commitment.',
   s2h: 'Approval', s2p: 'We fine-tune texts, colours and photos with you. Two rounds of changes included.',
