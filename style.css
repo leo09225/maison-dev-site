@@ -73,6 +73,7 @@ h2 em{font-style:italic;color:var(--accent)}
 .offer li:before{content:"";position:absolute;left:0;top:9px;width:10px;height:2px;background:var(--accent)}
 .offer .btn{margin-top:auto;justify-content:center}
 .offer.hl .btn{background:var(--accent);color:var(--ink)}
+.vs{margin:22px 0 0;font-size:17px;color:var(--muted)}.vs b{color:var(--ink)}
 .care{margin-top:18px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--paper2);border-radius:18px;padding:24px 30px}
 .care b{font:400 28px "Instrument Serif",serif}
 .care span{color:var(--muted);font-size:15px}
@@ -122,8 +123,8 @@ details p{color:var(--muted);margin-top:12px;max-width:760px}
 .contact .mail{display:block;margin-top:16px;color:#C9C4BA;font-size:15px}
 footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:36px 0 48px;font-size:14px;color:var(--muted)}
 footer a{color:var(--muted)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}
-.reveal.in{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}
+.js .reveal.in{opacity:1;transform:none}
 @media (max-width:900px){
   .hero,.sec-head,.work,.contact{grid-template-columns:1fr}
   .offers,.why{grid-template-columns:1fr}
@@ -133,7 +134,7 @@ footer a{color:var(--muted)}
   .contact{padding:48px 28px}
 }
 @media (max-width:520px){.steps{grid-template-columns:1fr}.m-cards{grid-template-columns:1fr 1fr}.m-cards .m-card:nth-child(3){display:none}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
 /* before / after */
 .ba{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 80px -40px rgba(11,11,16,.35);container-type:inline-size;user-select:none}
 .ba-pane{position:absolute;inset:0}

@@ -1,9 +1,17 @@
 /* Maison Dev — site v3 (3D, scroll-driven)
-   Build: NODE_PATH=<node_modules> esbuild src/app.js --bundle --minify --format=iife --target=es2019 --outfile=js/app.js */
-import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+   Build (three 0.186, lenis 1.3.26): rm -f js/*.js && NODE_PATH=<node_modules> esbuild src/app.js --bundle --minify --format=esm --splitting --target=es2019 --outdir=js --entry-names=main --chunk-names=[name]-[hash]
+   js/main.js is the page script; three.js (src/three-lib.js) becomes its own chunk, loaded once the page is on screen. */
 import Lenis from 'lenis';
+
+// three.js and its add-ons, filled in by loadThree()
+let THREE, RoomEnvironment, RoundedBoxGeometry;
+async function loadThree() {
+  const m = await import('./three-lib.js');
+  THREE = m; RoomEnvironment = m.RoomEnvironment; RoundedBoxGeometry = m.RoundedBoxGeometry;
+}
+
+// content that waits for its reveal is hidden only once this script runs (see .js .rv in site.css)
+document.documentElement.classList.add('js');
 
 /* ---------------- utils ---------------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -88,6 +96,10 @@ const EN = {
   'c-k': 'Contact', 'c-h': 'Your mockup, <em>on us</em>.',
   'c-p': "Three lines are enough. You'll get a mockup of your future homepage within 48 h, free and with no commitment.",
   'c-cta': 'Request my mockup', sister: 'Sister studio of', legal: 'Legal notice',
+  'ab-k': 'Who is behind it', 'ab-h': 'An engineering student, <em>not an agency</em>.',
+  'ab-p1': 'Maison Dev is Léo, a computer engineering student at INSA Lyon. I design and code every website myself, from mockup to launch: you always talk to the same person.',
+  'ab-p2': "No office or sales team to pay for: that's why my prices are far below an agency's.",
+  'ab-c1': 'Business website, agency', 'ab-c1v': '€1,500 to €5,000', 'ab-c2': 'With Maison Dev', 'ab-c2v': '€299 excl. VAT',
   'lf-biz': 'Your business and city', 'lf-biz-ph': 'Martin Bakery, Lyon', 'lf-site': 'Current website (optional)', 'lf-site-ph': 'martin-bakery.com',
   'lf-contact': 'Your email or phone', 'lf-contact-ph': 'you@example.com', 'lf-or': 'Prefer to write?',
   'lf-sending': 'Sending…', 'lf-ok': "Thank you! You'll hear from us within 24 h, and your mockup follows within 48 h.",
@@ -102,6 +114,7 @@ Object.assign(FR, {
 });
 const tr = k => (LANG === 'en' ? EN : FR)[k];
 let LANG = 'fr';
+const TITLE_FR = document.title;
 
 function splitEl(el) {
   const walk = node => {
@@ -137,7 +150,7 @@ function setLang(l, init) {
   $('#b-fr').setAttribute('aria-pressed', l === 'fr');
   $('#b-en').setAttribute('aria-pressed', l === 'en');
   $('#mailbtn').href = 'mailto:contact@maison-dev.com?subject=' + encodeURIComponent(l === 'en' ? 'My free mockup' : 'Ma maquette gratuite');
-  document.title = l === 'en' ? 'Maison Dev — Websites people remember' : "Maison Dev — Des sites qu'on n'oublie pas";
+  document.title = l === 'en' ? 'Maison Dev — Websites from €149 · free mockup' : TITLE_FR;
   try { localStorage.setItem('lang', l); } catch (e) { /* ignore */ }
   splitAll();
   if (!init) { $$('.split').forEach(e => e.classList.add('in')); measure(); setCaption(capIdx, true); setStep(bIdx, true); }
@@ -541,6 +554,7 @@ function strokeShape(pts, w) {
 }
 
 function initGL() {
+  camBase = new THREE.Vector3(); camTarget = new THREE.Vector3(); lookAt = new THREE.Vector3(); ZAXIS = new THREE.Vector3(0, 0, 1);
   const canvas = $('#gl');
   let renderer;
   try {
@@ -656,10 +670,10 @@ function glResize() {
 
 /* ---------------- per-frame 3D choreography ---------------- */
 let introT0 = null;
-const camBase = new THREE.Vector3(), camTarget = new THREE.Vector3(), lookAt = new THREE.Vector3();
+let camBase, camTarget, lookAt; // THREE.Vector3, created in initGL
 let hovered = -1;
 let spinA = 0, spinV = 0, lastLogoY = 0, lastSpinT = 0;
-const ZAXIS = new THREE.Vector3(0, 0, 1);
+let ZAXIS;
 
 function updateGL(t, y) {
   const { camera, logo, cards, cardsGroup, laptop, hinge, screen, phones, phoneGroup } = G;
@@ -807,7 +821,10 @@ function updateGL(t, y) {
     });
   }
 
-  G.renderer.render(G.scene, camera);
+  // nothing 3D on screen (services, method, FAQ): draw one empty frame, then skip rendering until something comes back
+  const any = logo.visible || cardsGroup.visible || phoneGroup.visible;
+  if (any || !G.blank) G.renderer.render(G.scene, camera);
+  G.blank = !any;
 }
 
 /* hover / click on phones */
@@ -943,12 +960,16 @@ const LITE = !!(navigator.connection && navigator.connection.saveData) || (navig
 async function boot() {
   // language
   let L = 'fr';
-  try { L = localStorage.getItem('lang') || ((navigator.language || 'fr').toLowerCase().startsWith('fr') ? 'fr' : 'en'); } catch (e) { /* ignore */ }
+  // French unless the visitor chose English (button or ?lang=en): this URL is the French page, and search engines
+  // (which run with an English browser) must index it in French
+  try { L = localStorage.getItem('lang') || 'fr'; } catch (e) { /* ignore */ }
   const ql = QS.get('lang'); if (ql === 'en' || ql === 'fr') L = ql;
   setLang(L, true);
   $('#b-fr').onclick = () => { setLang('fr'); if (G) G.redrawYourSitePhone(); };
   $('#b-en').onclick = () => { setLang('en'); if (G) G.redrawYourSitePhone(); };
   fillCaption(0); fillStep(0);
+  // three.js starts downloading now; the scene itself is built once the page is on screen and the browser is idle
+  const threeReady = LITE ? null : loadThree().then(() => true, e => { console.warn(e); return false; });
 
   // fonts (needed for the headline, and later for the canvas textures)
   const fontsReady = Promise.all(['400 80px "Instrument Serif"', 'italic 400 80px "Instrument Serif"', '400 20px Inter', '500 20px Inter', '600 20px Inter', '800 80px Inter'].map(f => document.fonts.load(f))).catch(() => {});
@@ -963,7 +984,7 @@ async function boot() {
   // WebGL, once the page is on screen
   await Promise.race([fontsReady, wait(2500)]);
   await idle();
-  if (!LITE) { try { G = initGL(); } catch (e) { console.warn(e); G = null; } }
+  if (threeReady && await threeReady) { try { G = initGL(); } catch (e) { console.warn(e); G = null; } }
   if (!G) { document.documentElement.classList.add('no-gl'); return; }
   G.loadPhoneTextures().catch(() => {});
   introT0 = performance.now() + (NOANIM ? -1e5 : 0);
