@@ -1,9 +1,17 @@
 /* Maison Dev — site v3 (3D, scroll-driven)
-   Build: NODE_PATH=<node_modules> esbuild src/app.js --bundle --minify --format=iife --target=es2019 --outfile=js/app.js */
-import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+   Build (three 0.186, lenis 1.3.26): rm -f js/*.js && NODE_PATH=<node_modules> esbuild src/app.js --bundle --minify --format=esm --splitting --target=es2019 --outdir=js --entry-names=main --chunk-names=[name]-[hash]
+   js/main.js is the page script; three.js (src/three-lib.js) becomes its own chunk, loaded once the page is on screen. */
 import Lenis from 'lenis';
+
+// three.js and its add-ons, filled in by loadThree()
+let THREE, RoomEnvironment, RoundedBoxGeometry;
+async function loadThree() {
+  const m = await import('./three-lib.js');
+  THREE = m; RoomEnvironment = m.RoomEnvironment; RoundedBoxGeometry = m.RoundedBoxGeometry;
+}
+
+// content that waits for its reveal is hidden only once this script runs (see .js .rv in site.css)
+document.documentElement.classList.add('js');
 
 /* ---------------- utils ---------------- */
 const $ = (s, r = document) => r.querySelector(s);
@@ -86,12 +94,27 @@ const EN = {
   q5: 'How does payment work?', q5a: '50% when you approve the mockup, 50% at launch. The mockup itself is free.',
   q6: 'Do animations slow the site down?', q6a: "No. Every effect is tailored to your business and optimised to load fast, even on an old phone. A joiner doesn't need the same thing as a fashion brand: we choose together.",
   'c-k': 'Contact', 'c-h': 'Your mockup, <em>on us</em>.',
-  'c-p': "Send us your company name and your current website if you have one. You'll get a mockup of your future homepage within 48 h.",
-  'c-cta': 'Request my mockup', sister: 'Sister studio of', legal: 'Legal notice'
+  'c-p': "Three lines are enough. You'll get a mockup of your future homepage within 48 h, free and with no commitment.",
+  'c-cta': 'Request my mockup', sister: 'Sister studio of', legal: 'Legal notice',
+  'ab-k': 'Who is behind it', 'ab-h': 'An engineering student, <em>not an agency</em>.',
+  'ab-p1': 'Maison Dev is Léo, a computer engineering student at INSA Lyon. I design and code every website myself, from mockup to launch: you always talk to the same person.',
+  'ab-p2': "No office or sales team to pay for: that's why my prices are far below an agency's.",
+  'ab-c1': 'Business website, agency', 'ab-c1v': '€1,500 to €5,000', 'ab-c2': 'With Maison Dev', 'ab-c2v': '€299 excl. VAT',
+  'lf-biz': 'Your business and city', 'lf-biz-ph': 'Martin Bakery, Lyon', 'lf-site': 'Current website (optional)', 'lf-site-ph': 'martin-bakery.com',
+  'lf-contact': 'Your email or phone', 'lf-contact-ph': 'you@example.com', 'lf-or': 'Prefer to write?',
+  'lf-sending': 'Sending…', 'lf-ok': "Thank you! You'll hear from us within 24 h, and your mockup follows within 48 h.",
+  'lf-err': 'Please fill in your business and an email or phone number.', 'lf-fail': 'The form could not be sent, so your mail app opens with the message ready.'
 };
 const FR = {};
 $$('[data-i]').forEach(e => { const k = e.dataset.i; if (!(k in FR)) FR[k] = e.hasAttribute('data-html') ? e.innerHTML : e.textContent; });
+$$('[data-ph]').forEach(e => { FR[e.dataset.ph] = e.placeholder; });
+Object.assign(FR, {
+  'lf-sending': 'Envoi…', 'lf-ok': 'Merci ! Vous avez une réponse sous 24 h, et votre maquette sous 48 h.',
+  'lf-err': 'Indiquez votre entreprise et un e-mail ou un téléphone.', 'lf-fail': "Le formulaire n'a pas pu partir : votre messagerie s'ouvre avec le message prêt à envoyer."
+});
+const tr = k => (LANG === 'en' ? EN : FR)[k];
 let LANG = 'fr';
+const TITLE_FR = document.title;
 
 function splitEl(el) {
   const walk = node => {
@@ -112,7 +135,8 @@ function splitEl(el) {
   const fr = walk(el); el.innerHTML = ''; el.appendChild(fr);
   el.querySelectorAll('.w>span').forEach((s, i) => { s.style.transitionDelay = (i * 0.045) + 's'; });
 }
-const splitAll = () => $$('.split').forEach(splitEl);
+// only text still waiting for its reveal needs splitting; text already shown stays untouched (keeps the hero headline painted once, for a fast LCP)
+const splitAll = () => $$('.split:not(.in)').forEach(splitEl);
 
 function setLang(l, init) {
   LANG = l;
@@ -120,12 +144,13 @@ function setLang(l, init) {
   document.documentElement.lang = l;
   $$('[data-i]').forEach(e => {
     const v = D[e.dataset.i]; if (v == null) return;
-    if (e.hasAttribute('data-html')) e.innerHTML = v; else e.textContent = v;
+    if (e.hasAttribute('data-html')) { if (e.innerHTML !== v) e.innerHTML = v; } else if (e.textContent !== v) e.textContent = v;
   });
+  $$('[data-ph]').forEach(e => { const v = D[e.dataset.ph]; if (v != null) e.placeholder = v; });
   $('#b-fr').setAttribute('aria-pressed', l === 'fr');
   $('#b-en').setAttribute('aria-pressed', l === 'en');
   $('#mailbtn').href = 'mailto:contact@maison-dev.com?subject=' + encodeURIComponent(l === 'en' ? 'My free mockup' : 'Ma maquette gratuite');
-  document.title = l === 'en' ? 'Maison Dev — Websites people remember' : "Maison Dev — Des sites qu'on n'oublie pas";
+  document.title = l === 'en' ? 'Maison Dev — Websites from €149 · free mockup' : TITLE_FR;
   try { localStorage.setItem('lang', l); } catch (e) { /* ignore */ }
   splitAll();
   if (!init) { $$('.split').forEach(e => e.classList.add('in')); measure(); setCaption(capIdx, true); setStep(bIdx, true); }
@@ -529,6 +554,7 @@ function strokeShape(pts, w) {
 }
 
 function initGL() {
+  camBase = new THREE.Vector3(); camTarget = new THREE.Vector3(); lookAt = new THREE.Vector3(); ZAXIS = new THREE.Vector3(0, 0, 1);
   const canvas = $('#gl');
   let renderer;
   try {
@@ -644,10 +670,10 @@ function glResize() {
 
 /* ---------------- per-frame 3D choreography ---------------- */
 let introT0 = null;
-const camBase = new THREE.Vector3(), camTarget = new THREE.Vector3(), lookAt = new THREE.Vector3();
+let camBase, camTarget, lookAt; // THREE.Vector3, created in initGL
 let hovered = -1;
 let spinA = 0, spinV = 0, lastLogoY = 0, lastSpinT = 0;
-const ZAXIS = new THREE.Vector3(0, 0, 1);
+let ZAXIS;
 
 function updateGL(t, y) {
   const { camera, logo, cards, cardsGroup, laptop, hinge, screen, phones, phoneGroup } = G;
@@ -795,7 +821,10 @@ function updateGL(t, y) {
     });
   }
 
-  G.renderer.render(G.scene, camera);
+  // nothing 3D on screen (services, method, FAQ): draw one empty frame, then skip rendering until something comes back
+  const any = logo.visible || cardsGroup.visible || phoneGroup.visible;
+  if (any || !G.blank) G.renderer.render(G.scene, camera);
+  G.blank = !any;
 }
 
 /* hover / click on phones */
@@ -892,51 +921,74 @@ addEventListener('resize', () => {
   }, 120);
 });
 
-/* ---------------- boot ---------------- */
-async function boot() {
-  const t0 = performance.now();
-  const pct = $('#pct');
-  let shown = 0, target = 8;
-  const tick = () => { shown += (target - shown) * 0.12; pct.textContent = Math.round(shown); if (shown < 99.5) requestAnimationFrame(tick); else pct.textContent = 100; };
-  if (!NOANIM) requestAnimationFrame(tick);
+/* ---------------- contact form ---------------- */
+// Sent through FormSubmit (free, no account) to contact@maison-dev.com. If it fails for any reason,
+// the visitor's mail app opens with the same message, so a request is never lost.
+(function leadForm() {
+  const f = $('#leadform'); if (!f) return;
+  const msg = $('#lf-msg');
+  const offre = QS.get('offre'); if (offre) $('#lf-offre').value = offre.slice(0, 40);
+  f.addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const d = Object.fromEntries(new FormData(f));
+    if (d._honey) return;
+    if (!d.entreprise.trim() || !d.contact.trim()) { msg.textContent = tr('lf-err'); return; }
+    const lines = [`Entreprise : ${d.entreprise}`, `Site actuel : ${d.site_actuel || '-'}`, `Contact : ${d.contact}`, d.offre ? `Offre : ${d.offre}` : '', `Langue : ${LANG}`].filter(Boolean);
+    const mailto = () => { location.href = 'mailto:contact@maison-dev.com?subject=' + encodeURIComponent('Maquette gratuite : ' + d.entreprise) + '&body=' + encodeURIComponent(lines.join('\n')); };
+    msg.textContent = tr('lf-sending');
+    f.querySelector('button').disabled = true;
+    try {
+      const r = await fetch('https://formsubmit.co/ajax/contact@maison-dev.com', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ _subject: 'Maquette gratuite : ' + d.entreprise, _template: 'table', _captcha: 'false', entreprise: d.entreprise, site_actuel: d.site_actuel, contact: d.contact, offre: d.offre, langue: LANG })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || r.status);
+      f.classList.add('sent'); msg.textContent = tr('lf-ok');
+    } catch (e) {
+      console.warn(e); msg.textContent = tr('lf-fail'); f.querySelector('button').disabled = false; mailto();
+    }
+  });
+})();
 
+/* ---------------- boot ---------------- */
+// The page shows as soon as the fonts are in (or after a short timeout); WebGL is built afterwards,
+// when the browser is idle, so the 3D scene never delays the first screen.
+const idle = () => new Promise(r => (window.requestIdleCallback ? requestIdleCallback(() => r(), { timeout: 1200 }) : setTimeout(r, 200)));
+const LITE = !!(navigator.connection && navigator.connection.saveData) || (navigator.deviceMemory !== undefined && navigator.deviceMemory < 2);
+
+async function boot() {
   // language
   let L = 'fr';
-  try { L = localStorage.getItem('lang') || ((navigator.language || 'fr').toLowerCase().startsWith('fr') ? 'fr' : 'en'); } catch (e) { /* ignore */ }
+  // French unless the visitor chose English (button or ?lang=en): this URL is the French page, and search engines
+  // (which run with an English browser) must index it in French
+  try { L = localStorage.getItem('lang') || 'fr'; } catch (e) { /* ignore */ }
   const ql = QS.get('lang'); if (ql === 'en' || ql === 'fr') L = ql;
   setLang(L, true);
   $('#b-fr').onclick = () => { setLang('fr'); if (G) G.redrawYourSitePhone(); };
   $('#b-en').onclick = () => { setLang('en'); if (G) G.redrawYourSitePhone(); };
   fillCaption(0); fillStep(0);
+  // three.js starts downloading now; the scene itself is built once the page is on screen and the browser is idle
+  const threeReady = LITE ? null : loadThree().then(() => true, e => { console.warn(e); return false; });
 
-  // fonts (needed for canvas textures)
-  try {
-    await Promise.race([
-      Promise.all(['400 80px "Instrument Serif"', 'italic 400 80px "Instrument Serif"', '400 20px Inter', '500 20px Inter', '600 20px Inter', '800 80px Inter'].map(f => document.fonts.load(f))),
-      wait(3000)
-    ]);
-  } catch (e) { /* ignore */ }
-  target = 45;
+  // fonts (needed for the headline, and later for the canvas textures)
+  const fontsReady = Promise.all(['400 80px "Instrument Serif"', 'italic 400 80px "Instrument Serif"', '400 20px Inter', '500 20px Inter', '600 20px Inter', '800 80px Inter'].map(f => document.fonts.load(f))).catch(() => {});
   measure();
-
-  // WebGL
-  try { G = initGL(); } catch (e) { console.warn(e); G = null; }
-  if (!G) document.documentElement.classList.add('no-gl');
-  else { await Promise.race([G.loadPhoneTextures(), wait(4000)]); }
-  target = 100;
-
   observeReveals();
   raf = requestAnimationFrame(frame);
-
-  const minT = NOANIM ? 0 : 1300;
-  const el = performance.now() - t0;
-  if (el < minT) await wait(minT - el);
-  const loader = $('#loader');
-  if (!NOANIM) { loader.classList.add('out'); setTimeout(() => loader.remove(), 1100); } else loader.remove();
   try { sessionStorage.setItem('md-seen', '1'); } catch (e) { /* ignore */ }
-  introT0 = performance.now() + (NOANIM ? -1e5 : 250);
-  heroEls.forEach((el2, i) => setTimeout(() => el2.classList.add('in'), (NOANIM ? 0 : 380) + i * 90));
+  await Promise.race([fontsReady, wait(1500)]);
+  measure();
   setTimeout(measure, 600);
+
+  // WebGL, once the page is on screen
+  await Promise.race([fontsReady, wait(2500)]);
+  await idle();
+  if (threeReady && await threeReady) { try { G = initGL(); } catch (e) { console.warn(e); G = null; } }
+  if (!G) { document.documentElement.classList.add('no-gl'); return; }
+  G.loadPhoneTextures().catch(() => {});
+  introT0 = performance.now() + (NOANIM ? -1e5 : 0);
+  document.documentElement.classList.add('gl-on');
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 window.__md = { get G() { return G; }, measure };
