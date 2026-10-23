@@ -23,7 +23,8 @@ em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:40
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
 /* layers */
-#gl{position:fixed;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;display:block}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;display:block;opacity:0;transition:opacity .7s var(--ease)}
+.gl-on #gl{opacity:1}
 #flash{position:fixed;inset:0;z-index:4;background:#F2EDE4;opacity:0;pointer-events:none}
 .glow{position:fixed;z-index:1;width:70vmax;height:70vmax;left:50%;top:50%;margin:-35vmax 0 0 -35vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,90,31,.32),rgba(255,90,31,0) 62%);pointer-events:none;opacity:0;will-change:transform,opacity}
 
@@ -69,8 +70,13 @@ em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:40
 .split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
 .split .w>span{display:inline-block;transform:translateY(110%);transition:transform 1.1s var(--ease)}
 .split.in .w>span{transform:none}
-.rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.rv.in{opacity:1;transform:none}
+.js .rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+/* hero: shown from the first paint, with a CSS entrance that does not wait for the script */
+.hero .rv.in{animation:hero-in 1s var(--ease) both}
+.hero .lead.in{animation-delay:.08s}.hero .ctas.in{animation-delay:.16s}.hero .facts.in{animation-delay:.24s}
+@keyframes hero-in{from{opacity:0;transform:translateY(24px)}}
+.no-anim .hero .rv.in{animation:none}
 
 /* hero */
 .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:110px 0 60px;position:relative}
@@ -241,6 +247,20 @@ body[data-tone=light] .mstep .n{color:#E04A12}
 .q .a>div{overflow:hidden}
 .q .a p{padding:0 60px 26px 0;color:var(--muted)}
 
+/* who is behind it */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,5vw,80px);align-items:start}
+.about h2{font:400 clamp(44px,6vw,84px)/.95 "Instrument Serif",serif;margin:14px 0 0}
+.about h2 em{color:var(--orange)}body[data-tone=light] .about h2 em{color:#E04A12}
+.about p{font-size:19px;line-height:1.55;color:var(--muted);margin:0 0 16px;max-width:560px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;max-width:560px}
+.cmp div{border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:grid;gap:8px}
+.cmp span{font:600 12px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cmp b{font:400 clamp(28px,3vw,36px)/1 "Instrument Serif",serif;font-weight:400}
+.cmp div:first-child b{text-decoration:line-through;text-decoration-thickness:1px;opacity:.75}
+.cmp .me{background:var(--orange);border-color:var(--orange);color:#0B0B10}
+.cmp .me span{color:rgba(11,11,16,.7)}
+@media (max-width:760px){.about{grid-template-columns:1fr}.about p{font-size:17px}}
+@media (max-width:480px){.cmp{grid-template-columns:1fr}}
 /* contact */
 #contact{min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:38vh 0 120px}
 .contact{text-align:center;max-width:900px;margin:0 auto}
@@ -250,7 +270,20 @@ body[data-tone=dark] .contact h2 em{color:var(--orange)}
 .contact p{max-width:560px;margin:26px auto 36px;font-size:19px;color:var(--muted)}
 .contact .btn.main{background:#0B0B10;color:#F2EDE4;font-size:18px;padding:20px 32px}
 body[data-tone=dark] .contact .btn.main{background:var(--orange);color:#0B0B10}
-.contact .mail{display:block;margin-top:18px;font-size:15px;color:var(--muted)}
+.contact .mail{display:block;margin:22px auto 0;font-size:15px;color:var(--muted)}
+.contact .mail a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+.leadf{max-width:640px;margin:0 auto;display:grid;gap:14px;text-align:left}
+.leadf .lf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.leadf label{display:grid;gap:6px;font:600 13px Inter;letter-spacing:.02em}
+.leadf input{font:400 16px Inter;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;width:100%;transition:border-color .2s,background .2s}
+.leadf input::placeholder{color:var(--muted);opacity:.7}
+.leadf input:focus{outline:none;border-color:var(--fg);background:transparent}
+.leadf .btn{justify-self:center;margin-top:8px;border:0;cursor:pointer}
+.leadf .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.contact .leadf .lf-msg{margin:4px auto 0;min-height:1.4em;font-size:15px;text-align:center;color:var(--fg)}
+.leadf.sent label,.leadf.sent .lf-row,.leadf.sent .btn{display:none}
+.leadf.sent .lf-msg{font-size:20px}
+@media (max-width:640px){.leadf .lf-row{grid-template-columns:1fr}}
 footer{position:relative;z-index:3;padding:34px 0 40px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
 footer a{text-decoration:underline;text-underline-offset:3px}
