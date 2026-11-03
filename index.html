@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash)</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Maison Dev — Création de sites internet dès 149 € · maquette offerte</title>
 <meta name="description" content="Création de site internet pour artisans, commerces et PME : site vitrine 299 €, landing page 149 €, refonte dès 249 €. Maquette offerte en 48 h, en ligne en 7 jours.">
@@ -17,10 +18,12 @@
 <link rel="canonical" href="https://maison-dev.com/">
 <link rel="alternate" hreflang="fr" href="https://maison-dev.com/">
 <link rel="alternate" hreflang="en" href="https://maison-dev.com/?lang=en">
-<link rel="apple-touch-icon" href="img/logo-maison-dev.png">
 <meta name="theme-color" content="#0B0B10">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://maison-dev.com/#studio", "name": "Maison Dev", "url": "https://maison-dev.com/", "email": "contact@maison-dev.com", "logo": "https://maison-dev.com/img/logo-maison-dev.png", "image": "https://maison-dev.com/img/og.jpg", "description": "Création de sites vitrines, landing pages et refontes de sites pour les entreprises, artisans et commerces. Maquette offerte en 48 h, site en ligne en 7 jours.", "areaServed": {"@type": "Country", "name": "France"}, "priceRange": "149 € – 299 €", "sameAs": ["https://maison-motion.fr/"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Tarifs de lancement", "itemListElement": [{"@type": "Offer", "name": "Landing page", "price": "149", "priceCurrency": "EUR", "url": "https://maison-dev.com/tarifs.html"}, {"@type": "Offer", "name": "Site vitrine (jusqu'à 5 pages)", "price": "299", "priceCurrency": "EUR", "url": "https://maison-dev.com/tarifs.html"}, {"@type": "Offer", "name": "Refonte de site", "price": "249", "priceCurrency": "EUR", "url": "https://maison-dev.com/tarifs.html"}, {"@type": "Offer", "name": "Entretien mensuel", "price": "15", "priceCurrency": "EUR", "url": "https://maison-dev.com/tarifs.html"}]}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Combien de temps faut-il ?", "acceptedAnswer": {"@type": "Answer", "text": "La maquette arrive en 48 h. Le site complet est en ligne en 5 à 7 jours après votre validation."}}, {"@type": "Question", "name": "Je n'ai ni textes ni photos, c'est un problème ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. On rédige les textes avec vous à partir d'un court échange, et on utilise vos photos ou des photos libres de droits de qualité."}}, {"@type": "Question", "name": "Est-ce que je pourrai modifier mon site moi-même ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui si vous le souhaitez. Sinon, avec l'entretien à 15 € par mois, il vous suffit d'envoyer un mail et c'est fait."}}, {"@type": "Question", "name": "Le nom de domaine et l'hébergement sont-ils compris ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, la première année. Ensuite, l'entretien à 15 € par mois couvre l'hébergement, ou vous pouvez tout reprendre chez votre propre hébergeur."}}, {"@type": "Question", "name": "Comment se passe le paiement ?", "acceptedAnswer": {"@type": "Answer", "text": "50 % à la validation de la maquette, 50 % à la mise en ligne. Vous ne payez rien pour recevoir la maquette."}}, {"@type": "Question", "name": "Les animations ralentissent-elles le site ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Chaque effet est dosé selon votre activité et optimisé pour charger vite, même sur un vieux téléphone."}}]}]}</script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 220 194'%3E%3Cpath d='M20 166V64L65 19l35 35 35-35 45 45v102' fill='none' stroke='%230B0B10' stroke-width='18'/%3E%3Cpath d='M48 166V84l17-17 35 35 35-35 17 17v82' fill='none' stroke='%23FF5A1F' stroke-width='12'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="fonts/is.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/site.css">
@@ -36,7 +39,7 @@ if(/[?&]test/.test(q)||matchMedia('(prefers-reduced-motion: reduce)').matches||s
 <div class="glow" id="glow"></div>
 <canvas id="gl" aria-hidden="true"></canvas>
 <div id="flash" aria-hidden="true"></div>
-<div class="cursor" id="cursor"><span data-i="see-short">Voir</span></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span data-i="see-short">Voir</span></div>
 
 <header class="nav" id="nav"><div class="in">
   <a class="brand" href="#top" aria-label="Maison Dev"><svg viewBox="-10 -10 220 194" aria-hidden="true"><path d="M20 166V64L65 19l35 35 35-35 45 45v102" fill="none" stroke="currentColor" stroke-width="18"/><path d="M48 166V84l17-17 35 35 35-35 17 17v82" fill="none" stroke="#FF5A1F" stroke-width="12"/></svg><span><b>Maison</b><small>DEV</small></span></a>
@@ -178,7 +181,7 @@ if(/[?&]test/.test(q)||matchMedia('(prefers-reduced-motion: reduce)').matches||s
       <div class="card rv"><div><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M40 20a16 16 0 1 0 1 10"/><path d="M41 10v10H31"/></svg><div class="num">03</div></div><div><h3 data-i="sv3h">Refonte</h3><p data-i="sv3p">Votre site existe déjà mais il est lent, daté ou illisible sur téléphone ? On le remet à neuf, avec vos contenus.</p></div></div>
       <div class="card rv"><div><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M24 4l16 6v12c0 10-7 17-16 22C15 39 8 32 8 22V10z"/><path d="M17 24l5 5 10-10"/></svg><div class="num">04</div></div><div><h3 data-i="sv4h">Entretien</h3><p data-i="sv4p">Hébergement, sécurité, sauvegardes et petites modifications. Un mail suffit, on s'occupe du reste.</p></div></div>
     </div>
-    <div class="price-row rv"><p data-i="sv-from" data-html>À partir de <em>149 € HT</em>, tarif de lancement réservé à nos 3 premiers clients.</p><a class="btn main magnet" href="tarifs.html" data-page data-i="sv-link">Voir les tarifs →</a></div>
+    <div class="price-row rv"><p data-i="sv-from" data-html>À partir de <em>149 € HT</em>, tarif de lancement réservé à nos 3 premiers clients.</p><a class="btn ghost magnet" href="tarifs.html" data-page data-i="sv-link">Voir les tarifs →</a></div>
   </div>
 </section>
 
@@ -246,7 +249,7 @@ if(/[?&]test/.test(q)||matchMedia('(prefers-reduced-motion: reduce)').matches||s
         <label><span data-i="lf-contact">Votre e-mail ou téléphone</span><input name="contact" required maxlength="120" data-ph="lf-contact-ph" placeholder="vous@exemple.fr"></label>
         <input type="hidden" name="offre" id="lf-offre" value="">
         <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn main magnet" type="submit"><span data-i="c-cta">Demander ma maquette</span> →</button>
+        <button class="btn main magnet" type="submit"><span data-i="c-cta">Recevoir ma maquette gratuite</span> →</button>
         <p class="lf-msg" id="lf-msg" role="status" aria-live="polite"></p>
       </form>
       <p class="mail"><span data-i="lf-or">Vous préférez écrire ?</span> <a id="mailbtn" href="mailto:contact@maison-dev.com?subject=Ma%20maquette%20gratuite">contact@maison-dev.com</a></p>
@@ -256,7 +259,7 @@ if(/[?&]test/.test(q)||matchMedia('(prefers-reduced-motion: reduce)').matches||s
 
 <footer id="pied" data-bg="#0B0B10"><div class="wrap">
   <span>© 2026 Maison Dev · <span data-i="sister">Maison sœur de</span> <a href="https://maison-motion.fr" target="_blank" rel="noopener">Maison Motion</a></span>
-  <a href="mentions-legales.html" data-i="legal">Mentions légales</a>
+  <span class="legal-links"><a href="mentions-legales.html" data-i="legal">Mentions légales</a> · <a href="confidentialite.html" data-i="privacy">Confidentialité</a> · <a href="cgu.html" data-i="terms">CGU</a></span>
 </div></footer>
 </main>
 

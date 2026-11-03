@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash)</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Saison · Bistrot de saison à Lyon (exemple Maison Dev)</title>
 <meta name="description" content="Exemple de site réalisé par Maison Dev : Saison, bistrot fictif à Lyon. Carte de saison, menu du midi, réservation en ligne.">
@@ -118,6 +119,7 @@ section{padding:120px 0}
 .resa{background:var(--green);color:var(--paper);border-radius:36px;padding:70px;display:grid;grid-template-columns:1fr 1fr;gap:60px;position:relative;overflow:hidden}
 .resa h2{font:400 clamp(40px,5vw,68px)/1 "Instrument Serif"}
 .resa p{opacity:.75;margin-top:16px}
+.resa .kick{color:#C09752;opacity:1}
 .resa form{background:var(--paper);color:var(--ink);border-radius:24px;padding:30px;position:relative;z-index:1}
 .resa label{display:block;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:18px 0 10px}
 .resa label:first-child{margin-top:0}
@@ -315,7 +317,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;
     <div class="resa">
       <svg class="deco" viewBox="0 0 90 60"><path d="M4 50C20 10 60 0 86 8 70 40 40 58 4 50z" fill="#2C5240"/></svg>
       <div>
-        <p class="kick" style="color:var(--saffron)">Réservation</p>
+        <p class="kick">Réservation</p>
         <h2 class="hl">Gardez-vous <em>une place</em> à table.</h2>
         <p class="rv">Réservation confirmée par SMS. Pour les groupes de plus de 8 personnes, appelez-nous directement.</p>
       </div>
@@ -339,7 +341,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;
   </div>
 </section>
 
-<footer><div class="wrap"><a class="logo" href="#" style="font-size:28px">Saison</a><span>© Saison · Restaurant fictif · Site d'exemple conçu par <a href="../../index.html" style="color:var(--tomato)">Maison Dev</a></span></div></footer>
+<footer><div class="wrap"><a class="logo" href="#" style="font-size:28px">Saison</a><span>© Saison · Restaurant fictif · Site d'exemple conçu par <a href="../../index.html" style="color:#B74A32;text-decoration:underline">Maison Dev</a></span></div></footer>
 
 <script>
 (()=>{
