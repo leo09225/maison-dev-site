@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash)</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Atelier Delorme · Menuiserie sur mesure à Annecy (exemple Maison Dev)</title>
 <meta name="description" content="Exemple de site réalisé par Maison Dev : Atelier Delorme, menuiserie fictive à Annecy. Cuisines, escaliers et dressings sur mesure.">
@@ -304,19 +305,19 @@ footer .logo{color:var(--paper)}
 <section id="devis" style="background:#EDE4D6">
   <div class="wrap devis">
     <div>
-      <p class="kicker" style="color:#9A6A2A">Devis gratuit</p>
+      <p class="kicker" style="color:#895E25">Devis gratuit</p>
       <h2 class="hl" style="margin-top:16px">Parlons de <em>votre projet</em>.</h2>
       <ul class="rv"><li>Réponse sous 48 h</li><li>Visite et mesures offertes</li><li>Plans 3D avant de signer</li><li>Garantie décennale</li></ul>
     </div>
     <form class="rv" id="f" onsubmit="return false">
       <label class="l">Votre projet</label>
       <div class="chips"><label><input type="radio" name="p" checked><span>Cuisine</span></label><label><input type="radio" name="p"><span>Escalier</span></label><label><input type="radio" name="p"><span>Dressing</span></label><label><input type="radio" name="p"><span>Autre</span></label></div>
-      <label class="l">Budget estimé</label>
+      <label class="l" for="br">Budget estimé</label>
       <div class="budget" id="bv">8 000 €</div>
       <input type="range" min="2000" max="40000" step="500" value="8000" id="br">
       <label class="l">Vos coordonnées</label>
-      <div class="row"><input class="field" placeholder="Nom"><input class="field" placeholder="Téléphone"></div>
-      <input class="field" style="margin-top:12px" placeholder="Commune (ex. Annecy, Sévrier…)">
+      <div class="row"><input class="field" placeholder="Nom" aria-label="Nom"><input class="field" placeholder="Téléphone" aria-label="Téléphone"></div>
+      <input class="field" style="margin-top:12px" placeholder="Commune (ex. Annecy, Sévrier…)" aria-label="Commune">
       <button class="btn" id="send">Recevoir mon devis gratuit →</button>
       <p class="ok" id="ok">Ceci est un site d'exemple : aucune demande n'a été envoyée. Sur votre vrai site, elle arriverait directement dans votre boîte mail.</p>
     </form>
@@ -337,7 +338,7 @@ footer .logo{color:var(--paper)}
   </div>
 </section>
 
-<footer><div class="wrap"><a class="logo" href="#"><i>D</i>Atelier Delorme</a><span>© Atelier Delorme · Entreprise fictive · Site d'exemple conçu par <a href="../../index.html" style="color:#E8B04A">Maison Dev</a></span></div></footer>
+<footer><div class="wrap"><a class="logo" href="#"><i>D</i>Atelier Delorme</a><span>© Atelier Delorme · Entreprise fictive · Site d'exemple conçu par <a href="../../index.html" style="color:#E8B04A;text-decoration:underline">Maison Dev</a></span></div></footer>
 
 <script>
 (()=>{
