@@ -174,12 +174,12 @@ body[data-tone=light] .sec-head h2 em{color:#E04A12}
 .n-nav span{color:#7A6A58}
 .n-nav i{font-style:normal;background:#2A1D12;color:#F7F1E6;border-radius:999px;padding:1cqw 2cqw}
 .n-hero{display:grid;grid-template-columns:1fr 1.05fr;gap:3cqw;padding:2cqw 4cqw;align-items:center}
-.n-hero small{font-size:1.15cqw;letter-spacing:.2em;color:#B5651D;font-weight:600}
+.n-hero small{font-size:1.15cqw;letter-spacing:.2em;color:#A55C1A;font-weight:600}
 .n-hero h3{font:400 5.6cqw/1 "Instrument Serif",serif;margin:1.4cqw 0}
-.n-hero h3 em{color:#B5651D}
+.n-hero h3 em{color:#A55C1A}
 .n-hero p{font-size:1.6cqw;color:#6B5A48}
 .n-ctas{display:flex;align-items:center;gap:2cqw;margin-top:2.4cqw;flex-wrap:wrap}
-.n-btn{background:#B5651D;color:#fff;border-radius:999px;padding:1.3cqw 2.4cqw;font-size:1.5cqw;font-weight:600}
+.n-btn{background:#A55C1A;color:#fff;border-radius:999px;padding:1.3cqw 2.4cqw;font-size:1.5cqw;font-weight:600}
 .n-stars{color:#E3A008;font-size:1.5cqw}.n-stars em{color:#7A6A58;font-style:normal;font-size:1.25cqw;font-family:Inter}
 .n-photo{order:-1;aspect-ratio:4/4.4;border-radius:2cqw;background:#7A3E12 url(../img/boulangerie.jpg) center 30%/cover no-repeat;position:relative;box-shadow:0 3cqw 5cqw -3cqw rgba(60,30,0,.5)}
 .n-card{position:absolute;right:-3cqw;bottom:3cqw;background:#fff;border-radius:1.4cqw;padding:1.4cqw 2cqw;box-shadow:0 2cqw 4cqw -2cqw rgba(0,0,0,.35);display:grid;font-size:1.3cqw;color:#7A6A58}
@@ -258,7 +258,7 @@ body[data-tone=light] .mstep .n{color:#E04A12}
 .cmp b{font:400 clamp(28px,3vw,36px)/1 "Instrument Serif",serif;font-weight:400}
 .cmp div:first-child b{text-decoration:line-through;text-decoration-thickness:1px;opacity:.75}
 .cmp .me{background:var(--orange);border-color:var(--orange);color:#0B0B10}
-.cmp .me span{color:rgba(11,11,16,.7)}
+.cmp .me span{color:rgba(11,11,16,.85)}
 @media (max-width:760px){.about{grid-template-columns:1fr}.about p{font-size:17px}}
 @media (max-width:480px){.cmp{grid-template-columns:1fr}}
 /* contact */
@@ -287,6 +287,7 @@ body[data-tone=dark] .contact .btn.main{background:var(--orange);color:#0B0B10}
 footer{position:relative;z-index:3;padding:34px 0 40px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
 footer a{text-decoration:underline;text-underline-offset:3px}
+.legal-links a{display:inline-block;padding:4px 0}
 
 /* cursor */
 .cursor{position:fixed;left:0;top:0;z-index:70;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--orange);pointer-events:none;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),opacity .3s;display:grid;place-items:center;font:600 12px Inter;color:#0B0B10;opacity:0}

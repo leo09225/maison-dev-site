@@ -95,7 +95,7 @@ const EN = {
   q6: 'Do animations slow the site down?', q6a: "No. Every effect is tailored to your business and optimised to load fast, even on an old phone. A joiner doesn't need the same thing as a fashion brand: we choose together.",
   'c-k': 'Contact', 'c-h': 'Your mockup, <em>on us</em>.',
   'c-p': "Three lines are enough. You'll get a mockup of your future homepage within 48 h, free and with no commitment.",
-  'c-cta': 'Request my mockup', sister: 'Sister studio of', legal: 'Legal notice',
+  'c-cta': 'Get my free mockup', sister: 'Sister studio of', legal: 'Legal notice', privacy: 'Privacy', terms: 'Terms',
   'ab-k': 'Who is behind it', 'ab-h': 'An engineering student, <em>not an agency</em>.',
   'ab-p1': 'Maison Dev is Léo, a computer engineering student at INSA Lyon. I design and code every website myself, from mockup to launch: you always talk to the same person.',
   'ab-p2': "No office or sales team to pay for: that's why my prices are far below an agency's.",
@@ -103,14 +103,14 @@ const EN = {
   'lf-biz': 'Your business and city', 'lf-biz-ph': 'Martin Bakery, Lyon', 'lf-site': 'Current website (optional)', 'lf-site-ph': 'martin-bakery.com',
   'lf-contact': 'Your email or phone', 'lf-contact-ph': 'you@example.com', 'lf-or': 'Prefer to write?',
   'lf-sending': 'Sending…', 'lf-ok': "Thank you! You'll hear from us within 24 h, and your mockup follows within 48 h.",
-  'lf-err': 'Please fill in your business and an email or phone number.', 'lf-fail': 'The form could not be sent, so your mail app opens with the message ready.'
+  'lf-err': 'Please fill in your business and an email or phone number.', 'lf-again': 'Please check your details, then click the button again.', 'lf-fail': 'The form could not be sent, so your mail app opens with the message ready.'
 };
 const FR = {};
 $$('[data-i]').forEach(e => { const k = e.dataset.i; if (!(k in FR)) FR[k] = e.hasAttribute('data-html') ? e.innerHTML : e.textContent; });
 $$('[data-ph]').forEach(e => { FR[e.dataset.ph] = e.placeholder; });
 Object.assign(FR, {
   'lf-sending': 'Envoi…', 'lf-ok': 'Merci ! Vous avez une réponse sous 24 h, et votre maquette sous 48 h.',
-  'lf-err': 'Indiquez votre entreprise et un e-mail ou un téléphone.', 'lf-fail': "Le formulaire n'a pas pu partir : votre messagerie s'ouvre avec le message prêt à envoyer."
+  'lf-err': 'Indiquez votre entreprise et un e-mail ou un téléphone.', 'lf-again': 'Vérifiez vos informations, puis cliquez à nouveau sur le bouton.', 'lf-fail': "Le formulaire n'a pas pu partir : votre messagerie s'ouvre avec le message prêt à envoyer."
 });
 const tr = k => (LANG === 'en' ? EN : FR)[k];
 let LANG = 'fr';
@@ -239,7 +239,7 @@ const PH = [
   { img: 'img/phone-saison.jpg', t: { fr: 'Saison', en: 'Saison' }, m: { fr: 'Restaurant · Lyon · exemple', en: 'Restaurant · Lyon · example' }, href: 'exemples/restaurant/', l: { fr: 'Voir le site', en: 'View the site' } },
   { img: 'img/phone-delorme.jpg', t: { fr: 'Atelier Delorme', en: 'Atelier Delorme' }, m: { fr: 'Menuiserie · Annecy · exemple', en: 'Joinery · Annecy · example' }, href: 'exemples/menuiserie/', l: { fr: 'Voir le site', en: 'View the site' } },
   { img: 'img/phone-motion.jpg', t: { fr: 'Maison Motion', en: 'Maison Motion' }, m: { fr: 'Studio vidéo · site bilingue · en ligne', en: 'Video studio · bilingual site · live' }, href: 'https://maison-motion.fr', ext: true, l: { fr: 'Voir le site', en: 'View the site' } },
-  { img: null, t: { fr: 'Votre site ?', en: 'Your website?' }, m: { fr: 'Maquette offerte en 48 h', en: 'Free mockup within 48 h' }, href: '#contact', l: { fr: 'Demander ma maquette', en: 'Get my mockup' } }
+  { img: null, t: { fr: 'Votre site ?', en: 'Your website?' }, m: { fr: 'Maquette offerte en 48 h', en: 'Free mockup within 48 h' }, href: '#contact', l: { fr: 'Recevoir ma maquette gratuite', en: 'Get my free mockup' } }
 ];
 let capIdx = 0;
 const capT = $('#capt'), capI = $('#cap-i'), capH = $('#cap-h'), capM = $('#cap-m'), capA = $('#cap-a'), capL = $('#cap-l');
@@ -924,15 +924,22 @@ addEventListener('resize', () => {
 /* ---------------- contact form ---------------- */
 // Sent through FormSubmit (free, no account) to contact@maison-dev.com. If it fails for any reason,
 // the visitor's mail app opens with the same message, so a request is never lost.
+const SPAM_WORDS = 'casino, viagra, cialis, porn, backlinks, bitcoin investment, forex signals, crypto investment';
 (function leadForm() {
   const f = $('#leadform'); if (!f) return;
   const msg = $('#lf-msg');
   const offre = QS.get('offre'); if (offre) $('#lf-offre').value = offre.slice(0, 40);
+  // anti-spam: a filled honeypot gets a fake "thank you"; a form sent less than 1.5 s after it was first touched
+  // (bots fill it instantly) asks for a second click instead of being dropped, so a real visitor never loses a request
+  let touched = 0;
+  const touch = () => { touched = touched || Date.now(); };
+  f.addEventListener('focusin', touch); f.addEventListener('input', touch);
   f.addEventListener('submit', async ev => {
     ev.preventDefault();
     const d = Object.fromEntries(new FormData(f));
-    if (d._honey) return;
-    if (!d.entreprise.trim() || !d.contact.trim()) { msg.textContent = tr('lf-err'); return; }
+    if (d._honey) { f.classList.add('sent'); msg.textContent = tr('lf-ok'); return; }
+    if (!touched || Date.now() - touched < 1500) { touch(); msg.textContent = tr('lf-again'); return; }
+    if (!d.entreprise.trim() || !/@|\d{6,}/.test(d.contact.replace(/[\s.()+-]/g, ''))) { msg.textContent = tr('lf-err'); return; }
     const lines = [`Entreprise : ${d.entreprise}`, `Site actuel : ${d.site_actuel || '-'}`, `Contact : ${d.contact}`, d.offre ? `Offre : ${d.offre}` : '', `Langue : ${LANG}`].filter(Boolean);
     const mailto = () => { location.href = 'mailto:contact@maison-dev.com?subject=' + encodeURIComponent('Maquette gratuite : ' + d.entreprise) + '&body=' + encodeURIComponent(lines.join('\n')); };
     msg.textContent = tr('lf-sending');
@@ -940,7 +947,7 @@ addEventListener('resize', () => {
     try {
       const r = await fetch('https://formsubmit.co/ajax/contact@maison-dev.com', {
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ _subject: 'Maquette gratuite : ' + d.entreprise, _template: 'table', _captcha: 'false', entreprise: d.entreprise, site_actuel: d.site_actuel, contact: d.contact, offre: d.offre, langue: LANG })
+        body: JSON.stringify({ _subject: 'Maquette gratuite : ' + d.entreprise, _template: 'table', _captcha: 'false', _blacklist: SPAM_WORDS, entreprise: d.entreprise, site_actuel: d.site_actuel, contact: d.contact, offre: d.offre, langue: LANG })
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || r.status);
@@ -976,7 +983,6 @@ async function boot() {
   measure();
   observeReveals();
   raf = requestAnimationFrame(frame);
-  try { sessionStorage.setItem('md-seen', '1'); } catch (e) { /* ignore */ }
   await Promise.race([fontsReady, wait(1500)]);
   measure();
   setTimeout(measure, 600);
