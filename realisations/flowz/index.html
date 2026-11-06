@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>FLOWZ</title>
+<meta name="robots" content="noindex">
 <meta name="description" content="FLOWZ : casquettes en velours, maille brodée de roses, maillots, bonnets et chapka. Wear FLOWZ with flow.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -370,8 +371,20 @@ body.menu-open{overflow:hidden}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
 </style>
+<style>
+/* Ajout Maison Dev : petit bandeau discret en haut de page (ne fait pas partie du site FLOWZ).
+   Il défile avec la page ; tant qu'il est visible, l'en-tête fixe de FLOWZ se place juste dessous. */
+.md-bandeau{position:relative;z-index:100;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2px 12px;min-height:38px;padding:4px 16px;background:var(--ink-2);border-bottom:1px solid var(--line);color:var(--cream-2);font:400 14px/1.4 var(--f-display);text-align:center}
+.md-bandeau a{display:inline-flex;align-items:center;gap:6px;min-height:34px;color:var(--cream);text-decoration:underline;text-underline-offset:3px}
+.md-bandeau a:hover{color:#fff}
+.md-bandeau svg{width:15px;height:15px;flex:none}
+.hd{top:var(--md-bandeau,0px)}
+@media (max-width:600px){.md-bandeau{font-size:16px;padding:6px 16px}.md-point{display:none}}
+</style>
 </head>
 <body>
+<div class="md-bandeau" role="note"><span>Site créé par Maison Dev pour FLOWZ</span><span class="md-point" aria-hidden="true">·</span><a href="/#realisations"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.5 10H4M9 4.8 3.8 10 9 15.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Retour à Maison Dev</a></div>
+<script>(function(){var b=document.querySelector('.md-bandeau'),r=document.documentElement,w=false;function u(){w=false;r.style.setProperty('--md-bandeau',Math.max(0,b.offsetHeight-scrollY)+'px')}addEventListener('scroll',function(){if(!w){w=true;requestAnimationFrame(u)}},{passive:true});addEventListener('resize',u);u()})();</script>
 
 
 <svg class="defs" aria-hidden="true" focusable="false">
