@@ -2,7 +2,7 @@
 <html lang="fr" data-title-en="Maison Dev — Websites for craftspeople, restaurants and shops, about €200">
 <head>
 <meta charset="utf-8">
-<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash);document.documentElement.classList.add('js')</script>
+<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash);document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion')</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Maison Dev — Sites pour artisans, restaurants et commerces, environ 200 €</title>
 <meta name="description" content="Sites internet pour artisans, restaurants, commerces, associations et mairies : environ 200 € le site, 10 €/mois d'hébergement. Maquette offerte en 48 h.">
@@ -19,327 +19,397 @@
 <link rel="alternate" hreflang="fr" href="https://maison-dev.com/">
 <link rel="alternate" hreflang="en" href="https://maison-dev.com/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://maison-dev.com/">
-<meta name="theme-color" content="#F3EADF">
+<meta name="theme-color" content="#2E2420">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://maison-dev.com/#studio","name":"Maison Dev","url":"https://maison-dev.com/","email":"contact@maison-dev.com","logo":"https://maison-dev.com/img/logo-maison-dev.png","image":"https://maison-dev.com/img/og.jpg","description":"Création de sites internet pour les artisans, les restaurants, les commerces de quartier, les associations et les mairies. Environ 200 € le site, maquette de la page d'accueil offerte en 48 h, site en ligne en 7 jours.","areaServed":{"@type":"Country","name":"France"},"priceRange":"150 € – 250 €","sameAs":["https://maison-motion.fr/"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Tarifs","itemListElement":[{"@type":"Offer","name":"Site internet (vitrine, page unique ou refonte)","url":"https://maison-dev.com/tarifs","priceSpecification":{"@type":"PriceSpecification","price":"200","minPrice":"150","maxPrice":"250","priceCurrency":"EUR"}},{"@type":"Offer","name":"Entretien : hébergement, nom de domaine et modifications","url":"https://maison-dev.com/tarifs","priceSpecification":{"@type":"UnitPriceSpecification","price":"10","priceCurrency":"EUR","unitText":"mois"}},{"@type":"Offer","name":"Maquette de la page d'accueil","price":"0","priceCurrency":"EUR","url":"https://maison-dev.com/#contact"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien de temps faut-il ?","acceptedAnswer":{"@type":"Answer","text":"La maquette arrive en 48&nbsp;h. Le site complet est en ligne en 5 à 7 jours après votre validation."}},{"@type":"Question","name":"Je n'ai ni textes ni photos, c'est un problème ?","acceptedAnswer":{"@type":"Answer","text":"Non. On rédige les textes avec vous à partir d'un court échange, et on utilise vos photos ou des photos libres de droits de qualité."}},{"@type":"Question","name":"Est-ce que je pourrai modifier mon site moi-même ?","acceptedAnswer":{"@type":"Answer","text":"Oui si vous le souhaitez. Sinon, avec l'entretien à 10&nbsp;€ par mois, il vous suffit d'envoyer un mail et c'est fait."}},{"@type":"Question","name":"Le nom de domaine et l'hébergement sont-ils compris ?","acceptedAnswer":{"@type":"Answer","text":"Oui, la première année. Ensuite, l'entretien à 10&nbsp;€ par mois couvre l'hébergement, ou vous pouvez tout reprendre chez votre propre hébergeur."}},{"@type":"Question","name":"Comment se passe le paiement ?","acceptedAnswer":{"@type":"Answer","text":"50 % à la validation de la maquette, 50 % à la mise en ligne. Vous ne payez rien pour recevoir la maquette."}},{"@type":"Question","name":"Combien coûte un site, exactement ?","acceptedAnswer":{"@type":"Answer","text":"Environ 200 €, entre 150 et 250 € selon le contenu. Vous connaissez le prix exact avant de dire oui."}}]}]}</script>
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-mono-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/img/realisations/cedric-le-calve-ecran.webp" as="image" media="(min-aspect-ratio: 4/5)" fetchpriority="high">
+<link rel="preload" href="/img/realisations/cedric-le-calve-tel-780.webp" as="image" media="(max-aspect-ratio: 4/5)" fetchpriority="high">
 <link rel="stylesheet" href="/style.css">
 <script src="/i18n.js" defer></script>
 <script src="/site.js" defer></script>
 </head>
-<body>
+<body class="accueil">
 <a class="skip" href="#contenu" data-i="skip">Aller au contenu</a>
 
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="md-lettres" pathLength="1000" d="M1173.3200000000002 0 1506.3200000000002 -688H1778.3200000000002L2111.32 0H1846.3200000000002L1805.3200000000002 -91H1468.3200000000002L1428.3200000000002 0ZM1543.3200000000002 -262H1730.3200000000002L1682.3200000000002 -378Q1679.3200000000002 -386 1674.3200000000002 -399.5Q1669.3200000000002 -413 1663.3200000000002 -430.0Q1657.3200000000002 -447 1651.8200000000002 -464.0Q1646.3200000000002 -481 1641.3200000000002 -495H1634.3200000000002Q1628.3200000000002 -478 1620.3200000000002 -456.0Q1612.3200000000002 -434 1604.8200000000002 -413.0Q1597.3200000000002 -392 1591.3200000000002 -378Z M2173.32 0V-688H2420.32V0Z M2942.32 12Q2853.32 12 2776.32 1.5Q2699.32 -9 2641.32 -34.5Q2583.32 -60 2550.32 -105.5Q2517.32 -151 2517.32 -220Q2517.32 -222 2517.32 -225.5Q2517.32 -229 2518.32 -233H2759.32Q2758.32 -229 2758.32 -225.5Q2758.32 -222 2758.32 -219Q2758.32 -189 2778.32 -173.0Q2798.32 -157 2834.32 -151.5Q2870.32 -146 2917.32 -146Q2936.32 -146 2956.82 -146.5Q2977.32 -147 2996.82 -149.5Q3016.32 -152 3031.82 -157.0Q3047.32 -162 3056.82 -170.5Q3066.32 -179 3066.32 -192Q3066.32 -210 3043.82 -220.0Q3021.32 -230 2982.82 -235.5Q2944.32 -241 2896.82 -246.0Q2849.32 -251 2798.32 -259.0Q2747.32 -267 2699.82 -281.5Q2652.32 -296 2613.82 -321.0Q2575.32 -346 2552.82 -385.0Q2530.32 -424 2530.32 -480Q2530.32 -540 2561.82 -582.0Q2593.32 -624 2647.32 -650.0Q2701.32 -676 2771.32 -688.0Q2841.32 -700 2917.32 -700Q2995.32 -700 3063.82 -688.5Q3132.32 -677 3184.82 -652.0Q3237.32 -627 3267.32 -586.5Q3297.32 -546 3297.32 -488V-476H3058.32V-480Q3058.32 -500 3045.32 -515.5Q3032.32 -531 3003.32 -540.5Q2974.32 -550 2927.32 -550Q2879.32 -550 2847.32 -544.0Q2815.32 -538 2799.82 -527.5Q2784.32 -517 2784.32 -505Q2784.32 -487 2806.82 -477.0Q2829.32 -467 2867.82 -461.5Q2906.32 -456 2953.82 -451.0Q3001.32 -446 3052.32 -438.5Q3103.32 -431 3150.82 -417.5Q3198.32 -404 3236.82 -380.0Q3275.32 -356 3297.82 -319.0Q3320.32 -282 3320.32 -228Q3320.32 -143 3270.82 -90.0Q3221.32 -37 3135.82 -12.5Q3050.32 12 2942.32 12Z M3839.918382749326 12.0Q3699.789002695418 12.0 3596.554501347709 -31.0Q3493.32 -74 3437.32 -153.5Q3381.32 -233 3381.32 -343.52697095435684Q3381.32 -455 3437.32 -535.0Q3493.32 -615 3596.554501347709 -657.5Q3699.789002695418 -700.0 3839.918382749326 -700.0Q3982.32 -700 4084.8199999999997 -657.5Q4187.32 -615 4243.32 -535.0Q4299.32 -455 4299.32 -343.52697095435684Q4299.32 -233 4243.32 -153.5Q4187.32 -74 4084.8199999999997 -31.0Q3982.32 12 3839.918382749326 12.0ZM3840.32 -159Q3887.32 -159 3925.32 -171.5Q3963.32 -184 3990.32 -207.5Q4017.32 -231 4031.32 -263.08333333333337Q4045.32 -295.1666666666667 4045.32 -333V-357Q4045.32 -394.63013698630135 4031.32 -426.31506849315065Q4017.32 -458 3990.32 -481.0Q3963.32 -504 3925.32 -516.5Q3887.32 -529 3840.32 -529Q3793.32 -529 3755.32 -516.5Q3717.32 -504 3690.32 -481.0Q3663.32 -458 3649.32 -426.31506849315065Q3635.32 -394.63013698630135 3635.32 -357V-333Q3635.32 -295.1666666666667 3649.32 -263.08333333333337Q3663.32 -231 3690.32 -207.5Q3717.32 -184 3755.32 -171.5Q3793.32 -159 3840.32 -159Z M4398.32 0V-688H4613.32L4953.32 -401Q4959.32 -396 4970.32 -386.0Q4981.32 -376 4993.32 -365.0Q5005.32 -354 5015.32 -345H5025.32Q5025.32 -359 5025.32 -382.5Q5025.32 -406 5025.32 -428V-688H5257.32V0H5044.32L4721.32 -271Q4700.32 -288 4676.82 -309.0Q4653.32 -330 4639.32 -343H4630.32Q4630.32 -329 4630.32 -303.5Q4630.32 -278 4630.32 -252V0Z"/>
+    <path id="md-maison" pathLength="1000" d="M113.6,0.0 L113.6,-559.8 L360.6,-806.7 L552.6,-614.6 L744.7,-806.7 L991.7,-559.8 L991.7,0.0"/>
+    <path id="md-m" pathLength="1000" d="M330.0,0.0 L330.0,-450.0 L402.8,-543.3 L552.6,-351.2 L702.4,-543.3 L775.2,-450.0 L775.2,0.0"/>
+    <polygon id="md-fenetre" points="113.6,0.0 113.6,-559.8 360.6,-806.7 552.6,-614.6 744.7,-806.7 991.7,-559.8 991.7,0.0"/>
+    <symbol id="i-maison" viewBox="-10 -10 220 194"><path d="M20 166V64L65 19l35 35 35-35 45 45v102" fill="none" stroke="currentColor" stroke-width="20"/><path d="M48 166V84l17-17 35 35 35-35 17 17v82" fill="none" stroke="currentColor" stroke-width="14"/></symbol>
+    <symbol id="i-fleche" viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bas" viewBox="0 0 16 16"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copier" viewBox="0 0 16 16"><path d="M5.5 5.5h7v7h-7zM3.5 10.5v-7h7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-deplacer" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M12 3 9.5 5.5M12 3l2.5 2.5M12 21l-2.5-2.5M12 21l2.5-2.5M3 12l2.5-2.5M3 12l2.5 2.5M21 12l-2.5-2.5M21 12l-2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"><span class="cursor__label" data-i="voir">Voir</span></div></div>
+
 <header class="hd" id="hd">
-  <div class="wrap hd-in">
-    <a class="logo" href="/" aria-label="Maison Dev, accueil" data-i-attr="aria-label:logo">
-      <svg viewBox="-10 -10 220 194" aria-hidden="true"><path d="M20 166V64L65 19l35 35 35-35 45 45v102" fill="none" stroke="#2E2420" stroke-width="18"/><path d="M48 166V84l17-17 35 35 35-35 17 17v82" fill="none" stroke="#C65D3B" stroke-width="12"/></svg>
-      <span class="logo-t"><b>Maison</b> <small>DEV</small></span>
-    </a>
-    <div class="hd-menu" id="menu">
-      <nav class="hd-nav" aria-label="Navigation principale" data-i-attr="aria-label:nav">
-        <a href="#realisations" data-i="nav-real">Réalisations</a>
-        <a href="#services" data-i="nav-serv">Services</a>
-        <a href="/tarifs" data-i="nav-tarifs">Tarifs</a>
-        <a href="#faq" data-i="nav-faq">FAQ</a>
-      </nav>
-      <div class="lang" role="group" aria-label="Langue" data-i-attr="aria-label:lang"><button type="button" id="b-fr" aria-pressed="true" lang="fr">FR</button><span aria-hidden="true">|</span><button type="button" id="b-en" aria-pressed="false" lang="en">EN</button></div>
-    </div>
-    <a class="btn btn-sm" href="#contact" data-i="nav-cta">Ma maquette gratuite</a>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+  <a class="hd__logo" href="#top" aria-label="Maison Dev, retour en haut" data-i-attr="aria-label:logo-top"><svg viewBox="25.6 -927.8 5313.7 949.8" aria-hidden="true"><use href="#md-lettres" class="lg-fill"/><use href="#md-maison" class="lg-out"/><use href="#md-m" class="lg-in"/></svg><span class="hd__dev mono">Dev</span></a>
+  <nav class="hd__nav" aria-label="Navigation principale" data-i-attr="aria-label:nav">
+    <a href="#realisations" data-i="nav-real">Réalisations</a>
+    <a href="#services" data-i="nav-serv">Services</a>
+    <a href="/tarifs" data-i="nav-tarifs">Tarifs</a>
+    <a href="#faq" data-i="nav-faq">FAQ</a>
+  </nav>
+  <div class="hd__right">
+    <div class="lang mono" role="group" aria-label="Langue" data-i-attr="aria-label:lang"><button type="button" id="b-fr" data-lang="fr" aria-pressed="true" lang="fr">FR</button><span aria-hidden="true">/</span><button type="button" id="b-en" data-lang="en" aria-pressed="false" lang="en">EN</button></div>
+    <a class="pill" href="#contact" data-magnetic><span class="pill__long" data-i="nav-cta">Ma maquette gratuite</span><span class="pill__court" data-i="nav-cta-short">Maquette gratuite</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+    <button class="hd__menu mono" type="button" aria-expanded="false" aria-controls="menu" data-i="menu">Menu</button>
   </div>
 </header>
 
+<nav class="menu" id="menu" aria-label="Menu" data-i-attr="aria-label:menu" hidden>
+  <a href="#realisations" data-i="nav-real">Réalisations</a>
+  <a href="#services" data-i="nav-serv">Services</a>
+  <a href="/tarifs" data-i="nav-tarifs">Tarifs</a>
+  <a href="#methode" data-i="nav-meth">Méthode</a>
+  <a href="#faq" data-i="nav-faq">FAQ</a>
+  <a href="#contact" data-i="nav-contact">Contact</a>
+  <a class="btn btn--plein menu__cta" href="#contact"><span data-i="h-cta">Recevoir ma maquette gratuite</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+  <p class="menu__foot mono" data-i="menu-foot">Maquette offerte en 48&nbsp;h</p>
+  <div class="lang mono menu__lang" role="group" aria-label="Langue" data-i-attr="aria-label:lang"><button type="button" data-lang="fr" aria-pressed="true" lang="fr">FR</button><span aria-hidden="true">/</span><button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button></div>
+</nav>
+
+<div class="site">
+<div class="bgtint" aria-hidden="true"></div>
 <main id="contenu">
 
-<section class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div class="hero-txt">
-      <p class="eyebrow" data-i="h-k">Création de sites pour artisans, restaurants et commerces</p>
-      <h1 data-i="h-h" data-html>Votre site, <em>enfin à votre image.</em></h1>
-      <p class="lead"><span class="s" data-i="h-p1">Un site clair, rapide et beau sur téléphone, pour que vos clients vous trouvent et vous appellent.</span> <strong class="s" data-i="h-p2">Environ 200&nbsp;€ le site, maquette offerte en 48&nbsp;h.</strong></p>
-      <div class="ctas">
-        <a class="btn" href="#contact"><span data-i="h-cta">Recevoir ma maquette gratuite</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12.5M11 4.8l5.2 5.2-5.2 5.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="alink" href="#realisations" data-i="h-link">Voir les réalisations</a>
-      </div>
-      <ul class="facts" id="facts">
-        <li><b data-i="f1v" data-html><span class="n" data-to="48">48</span>&nbsp;h</b><span data-i="f1">pour recevoir votre maquette</span></li>
-        <li><b data-i="f2v" data-html><span class="n" data-to="7">7</span>&nbsp;jours</b><span data-i="f2">pour être en ligne</span></li>
-        <li><b data-i="f3v" data-html><span class="n" data-to="10">10</span>&nbsp;€/mois</b><span data-i="f3">hébergement et modifications</span></li>
-      </ul>
-    </div>
-    <div class="hero-vis">
-      <div class="stage" id="stage">
-        <div class="browser">
-          <div class="bar" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
-          <div class="screens">
-            <img class="on" src="/img/realisations/cedric-le-calve-ordi-1200.webp" srcset="/img/realisations/cedric-le-calve-ordi-640.webp 640w, /img/realisations/cedric-le-calve-ordi-1200.webp 1200w" sizes="(min-width:1024px) 450px, calc(100vw - 72px)" width="1200" height="750" fetchpriority="high" decoding="async" alt="Page d'accueil du site de Cédric Le Calvé, écrivain : son nom en grandes lettres, son portrait et trois de ses romans sur fond crème." data-i-attr="alt:alt1">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/flowz-ordi-1200.webp" data-srcset="/img/realisations/flowz-ordi-640.webp 640w, /img/realisations/flowz-ordi-1200.webp 1200w" sizes="(min-width:1024px) 450px, calc(100vw - 72px)" width="1200" height="750" decoding="async" alt="Page d'accueil du site FLOWZ, marque de vêtements : le logo FLOWZ en grand sur fond noir, avec une photo de la collection dans la fleur du logo." data-i-attr="alt:alt2">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/maison-motion-ordi-1200.webp" data-srcset="/img/realisations/maison-motion-ordi-640.webp 640w, /img/realisations/maison-motion-ordi-1200.webp 1200w" sizes="(min-width:1024px) 450px, calc(100vw - 72px)" width="1200" height="750" decoding="async" alt="Page d'accueil du site Maison Motion, studio de vidéos animées : le titre « Votre marque, en mouvement. » sur fond crème, au-dessus d'une vidéo bleue." data-i-attr="alt:alt3">
-            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/atelier-delorme-ordi-1200.webp" data-srcset="/img/realisations/atelier-delorme-ordi-640.webp 640w, /img/realisations/atelier-delorme-ordi-1200.webp 1200w" sizes="(min-width:1024px) 450px, calc(100vw - 72px)" width="1200" height="750" decoding="async" alt="Page d'accueil de la maquette Atelier Delorme, menuiserie à Annecy : le titre « Du bois massif, pensé pour votre maison. » sur un fond de bois sombre." data-i-attr="alt:alt4">
+  <!-- HAUT DE PAGE : le M de MAISON est une fenêtre sur les sites réalisés -->
+  <section class="hero" id="top" aria-labelledby="hero-h1">
+    <div class="hero__stage">
+      <svg class="hero__svg" aria-hidden="true" focusable="false" data-fc="552.6 -268.9" data-rmin="265.7">
+        <defs>
+          <clipPath id="hero-fenetre" clipPathUnits="userSpaceOnUse"><use class="hero__win" href="#md-fenetre"/></clipPath>
+          <linearGradient id="hero-ombre" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E2420" stop-opacity=".8"/><stop offset=".5" stop-color="#2E2420" stop-opacity=".86"/><stop offset="1" stop-color="#2E2420" stop-opacity=".94"/></linearGradient>
+        </defs>
+        <g class="hero__photos" clip-path="url(#hero-fenetre)">
+          <rect class="hero__fond" x="0" y="0" width="100" height="100"/>
+          <image class="hero__img is-on" href="" data-ordi="/img/realisations/cedric-le-calve-ecran.webp" data-tel="/img/realisations/cedric-le-calve-tel-780.webp" data-fx=".7" data-fy=".32" data-tfx=".3" data-tfy=".76" data-nom="Cédric Le Calvé" data-genre="r1-job"/>
+          <image class="hero__img" href="" data-ordi="/img/realisations/flowz-ecran.webp" data-tel="/img/realisations/flowz-tel-780.webp" data-fx=".445" data-fy=".5" data-tfx=".42" data-tfy=".5" data-nom="FLOWZ" data-genre="r2-job"/>
+          <image class="hero__img" href="" data-ordi="/img/realisations/maison-motion-ecran.webp" data-tel="/img/realisations/maison-motion-tel-780.webp" data-fx=".28" data-fy=".31" data-tfx=".35" data-tfy=".3" data-nom="Maison Motion" data-genre="r3-job"/>
+          <image class="hero__img" href="" data-ordi="/img/realisations/atelier-delorme-ecran.webp" data-tel="/img/realisations/atelier-delorme-tel-780.webp" data-fx=".29" data-fy=".44" data-tfx=".4" data-tfy=".33" data-nom="Atelier Delorme" data-genre="r4-cap"/>
+          <rect class="hero__ombre" x="0" y="0" width="100" height="100" fill="url(#hero-ombre)" opacity="0"/>
+        </g>
+        <g class="hero__logo">
+          <use class="lg-fill" href="#md-lettres"/>
+          <use class="lg-out" href="#md-maison"/>
+          <use class="lg-in" href="#md-m"/>
+        </g>
+      </svg>
+      <p class="hero__dev mono" aria-hidden="true">Dev</p>
+
+      <div class="hero__ui">
+        <p class="hero__statement" aria-hidden="true"><span class="st-a" data-i="st-a">Votre site,</span><span class="st-b" data-i="st-b">enfin à votre image.</span></p>
+        <div class="hero__bar">
+          <div class="hero__txt">
+            <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="h-k">Création de sites pour artisans, restaurants et commerces</span></p>
+            <h1 class="hero__h1" id="hero-h1" data-i="h-h" data-html><span class="h1-a">Votre site,</span> <em class="h1-b">enfin à votre image.</em></h1>
+          </div>
+          <div class="hero__side">
+            <p class="hero__prix" data-i="h-p2">Environ 200&nbsp;€ le site, maquette offerte en 48&nbsp;h.</p>
+            <div class="hero__ctas">
+              <a class="btn btn--plein" href="#contact" data-magnetic><span data-i="h-cta">Recevoir ma maquette gratuite</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+              <a class="lien" href="#realisations"><span data-i="h-link">Voir les réalisations</span><svg class="arr" aria-hidden="true"><use href="#i-bas"/></svg></a>
+            </div>
           </div>
         </div>
-        <div class="stage-foot">
-          <p class="caps" aria-hidden="true"><span class="on">Cédric Le Calvé<em>&nbsp;·&nbsp;<span data-i="r1-job">Écrivain</span></em></span><span>FLOWZ<em>&nbsp;·&nbsp;<span data-i="r2-job">Marque de vêtements</span></em></span><span>Maison Motion<em>&nbsp;·&nbsp;<span data-i="r3-job">Studio de vidéos animées</span></em></span><span>Atelier Delorme<em>&nbsp;·&nbsp;<span data-i="r4-cap">Maquette</span></em></span></p>
-          <button class="pause" type="button" aria-pressed="false" aria-label="Mettre en pause le défilement des sites" data-i-attr="aria-label:pause"><svg class="i-pause" viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 4v12M13.5 4v12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 3.8v12.4L16 10z" fill="currentColor"/></svg></button>
+        <div class="hero__foot">
+          <p class="hero__cap mono" aria-hidden="true"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span class="hero__capnom">Cédric Le Calvé</span><span class="hero__capgenre">Écrivain</span></p>
+          <a class="hero__cue mono" href="#maison"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="h-cue">Défilez</span></a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDEAU -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__band">
+      <div class="marquee__track">
+        <div class="marquee__set"><span data-i="mq1">Sites vitrines</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq2">Pages uniques</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq3">Refontes</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq4">Entretien</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq5">Maquette offerte</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq6">En ligne en 7 jours</span><svg class="mi"><use href="#i-maison"/></svg></div>
+        <div class="marquee__set"><span data-i="mq1">Sites vitrines</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq2">Pages uniques</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq3">Refontes</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq4">Entretien</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq5">Maquette offerte</span><svg class="mi"><use href="#i-maison"/></svg><span data-i="mq6">En ligne en 7 jours</span><svg class="mi"><use href="#i-maison"/></svg></div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="sec real" id="realisations" aria-labelledby="r-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow" data-i="r-k">Réalisations</p>
-      <h2 id="r-h" data-i="r-h" data-html>Ils nous ont fait <em>confiance.</em></h2>
-      <p data-i="r-p">Des sites faits à la main, un par un. Cliquez pour les visiter.</p>
+  <!-- LA MAISON -->
+  <section class="sec" id="maison" aria-labelledby="maison-h">
+    <div class="wrap mani">
+      <div>
+        <p class="eyebrow" id="maison-h"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="mani-k">La maison</span></p>
+        <p class="mani__text" data-i="mani" data-html>Un site <em>clair</em>, <em>rapide</em> et <em>beau</em> sur téléphone, pour que vos clients vous trouvent et vous appellent.</p>
+      </div>
+      <div class="mani__side rise">
+        <p data-i="mani-p">Maison Dev crée des sites internet pour les artisans, les restaurants, les commerces de quartier, les associations et les mairies.</p>
+        <p class="mani__sign mono"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="mani-s">Fait main, un par un</span></p>
+      </div>
     </div>
-    <ul class="works" id="works">
-      <li class="work">
-        <div class="shot">
-          <div class="frame">
-            <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="view">
-              <img class="top" src="/img/realisations/cedric-le-calve-ordi-640.webp" srcset="/img/realisations/cedric-le-calve-ordi-640.webp 640w, /img/realisations/cedric-le-calve-ordi-1200.webp 1200w" sizes="(min-width:1240px) 540px, (min-width:761px) calc(50vw - 76px), calc(86vw - 32px)" width="1200" height="750" loading="lazy" decoding="async" alt="Page d'accueil du site de Cédric Le Calvé, écrivain : son nom en grandes lettres, son portrait et trois de ses romans sur fond crème." data-i-attr="alt:alt1">
-              <img class="full" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/cedric-le-calve-page.webp" width="800" height="7902" decoding="async" alt="">
-            </div>
-          </div>
-          <div class="tel"><img src="/img/realisations/cedric-le-calve-tel-240.webp" srcset="/img/realisations/cedric-le-calve-tel-240.webp 240w, /img/realisations/cedric-le-calve-tel.webp 390w" sizes="100px" width="390" height="844" loading="lazy" decoding="async" alt="Le site de Cédric Le Calvé sur téléphone." data-i-attr="alt:alt1t"></div>
-        </div>
-        <div class="work-t">
-          <h3>Cédric Le Calvé</h3>
-          <p class="job" data-i="r1-job">Écrivain</p>
-          <a class="more" href="https://cedriclecalve.fr" target="_blank" rel="noopener"><span data-i="r-voir">Voir le site</span><span class="sr" data-i="r1-sr"> de Cédric Le Calvé (nouvel onglet)</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12.5M11 4.8l5.2 5.2-5.2 5.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </li>
-      <li class="work">
-        <div class="shot">
-          <div class="frame">
-            <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="view">
-              <img class="top" src="/img/realisations/flowz-ordi-640.webp" srcset="/img/realisations/flowz-ordi-640.webp 640w, /img/realisations/flowz-ordi-1200.webp 1200w" sizes="(min-width:1240px) 540px, (min-width:761px) calc(50vw - 76px), calc(86vw - 32px)" width="1200" height="750" loading="lazy" decoding="async" alt="Page d'accueil du site FLOWZ, marque de vêtements : le logo FLOWZ en grand sur fond noir, avec une photo de la collection dans la fleur du logo." data-i-attr="alt:alt2">
-              <img class="full" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/flowz-page.webp" width="800" height="8742" decoding="async" alt="">
-            </div>
-          </div>
-          <div class="tel"><img src="/img/realisations/flowz-tel-240.webp" srcset="/img/realisations/flowz-tel-240.webp 240w, /img/realisations/flowz-tel.webp 390w" sizes="100px" width="390" height="844" loading="lazy" decoding="async" alt="Le site FLOWZ sur téléphone." data-i-attr="alt:alt2t"></div>
-        </div>
-        <div class="work-t">
-          <h3>FLOWZ</h3>
-          <p class="job" data-i="r2-job">Marque de vêtements</p>
-          <a class="more" href="/realisations/flowz/"><span data-i="r-voir">Voir le site</span><span class="sr" data-i="r2-sr"> de FLOWZ</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12.5M11 4.8l5.2 5.2-5.2 5.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </li>
-      <li class="work">
-        <div class="shot">
-          <div class="frame">
-            <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="view">
-              <img class="top" src="/img/realisations/maison-motion-ordi-640.webp" srcset="/img/realisations/maison-motion-ordi-640.webp 640w, /img/realisations/maison-motion-ordi-1200.webp 1200w" sizes="(min-width:1240px) 540px, (min-width:761px) calc(50vw - 76px), calc(86vw - 32px)" width="1200" height="750" loading="lazy" decoding="async" alt="Page d'accueil du site Maison Motion, studio de vidéos animées : le titre « Votre marque, en mouvement. » sur fond crème, au-dessus d'une vidéo bleue." data-i-attr="alt:alt3">
-              <img class="full" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/maison-motion-page.webp" width="800" height="3344" decoding="async" alt="">
-            </div>
-          </div>
-          <div class="tel"><img src="/img/realisations/maison-motion-tel-240.webp" srcset="/img/realisations/maison-motion-tel-240.webp 240w, /img/realisations/maison-motion-tel.webp 390w" sizes="100px" width="390" height="844" loading="lazy" decoding="async" alt="Le site Maison Motion sur téléphone." data-i-attr="alt:alt3t"></div>
-        </div>
-        <div class="work-t">
-          <h3>Maison Motion</h3>
-          <p class="job" data-i="r3-job">Studio de vidéos animées</p>
-          <a class="more" href="https://maison-motion.fr" target="_blank" rel="noopener"><span data-i="r-voir">Voir le site</span><span class="sr" data-i="r3-sr"> de Maison Motion (nouvel onglet)</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12.5M11 4.8l5.2 5.2-5.2 5.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </li>
-      <li class="work">
-        <div class="shot">
-          <div class="frame">
-            <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="view">
-              <img class="top" src="/img/realisations/atelier-delorme-ordi-640.webp" srcset="/img/realisations/atelier-delorme-ordi-640.webp 640w, /img/realisations/atelier-delorme-ordi-1200.webp 1200w" sizes="(min-width:1240px) 540px, (min-width:761px) calc(50vw - 76px), calc(86vw - 32px)" width="1200" height="750" loading="lazy" decoding="async" alt="Page d'accueil de la maquette Atelier Delorme, menuiserie à Annecy : le titre « Du bois massif, pensé pour votre maison. » sur un fond de bois sombre." data-i-attr="alt:alt4">
-              <img class="full" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/atelier-delorme-page.webp" width="800" height="3797" decoding="async" alt="">
-            </div>
-          </div>
-          <div class="tel"><img src="/img/realisations/atelier-delorme-tel-240.webp" srcset="/img/realisations/atelier-delorme-tel-240.webp 240w, /img/realisations/atelier-delorme-tel.webp 390w" sizes="100px" width="390" height="844" loading="lazy" decoding="async" alt="La maquette Atelier Delorme sur téléphone." data-i-attr="alt:alt4t"></div>
-          <span class="tag" data-i="r-tag">Maquette</span>
-        </div>
-        <div class="work-t">
-          <h3>Atelier Delorme</h3>
-          <p class="job" data-i="r4-job">Menuiserie · Annecy</p>
-          <a class="more" href="/exemples/menuiserie/"><span data-i="r-voir-m">Voir la maquette</span><span class="sr" data-i="r4-sr"> Atelier Delorme</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12.5M11 4.8l5.2 5.2-5.2 5.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <p class="note" data-i="r4-note">Maquette réalisée par Maison Dev pour montrer son travail.</p>
-        </div>
-      </li>
+    <ul class="faits wrap" id="faits">
+      <li><b data-i="f1v" data-html><span class="n" data-to="48">48</span>&nbsp;h</b><span class="mono" data-i="f1">pour recevoir votre maquette</span></li>
+      <li><b data-i="f2v" data-html><span class="n" data-to="7">7</span>&nbsp;jours</b><span class="mono" data-i="f2">pour être en ligne</span></li>
+      <li><b data-i="f3v" data-html><span class="n" data-to="10">10</span>&nbsp;€/mois</b><span class="mono" data-i="f3">hébergement et modifications</span></li>
     </ul>
-    <div class="dots" id="dots" role="group" aria-label="Choisir une réalisation" data-i-attr="aria-label:dots"><button type="button" aria-label="Cédric Le Calvé" aria-current="true"></button><button type="button" aria-label="FLOWZ" aria-current="false"></button><button type="button" aria-label="Maison Motion" aria-current="false"></button><button type="button" aria-label="Atelier Delorme" aria-current="false"></button></div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="avant-apres" aria-labelledby="ba-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="ba-h" data-i="ba-h" data-html>Imaginez votre site, <em>demain.</em></h2>
-      <p><span class="s" data-i="ba-p1">Faites glisser le curseur&nbsp;: à gauche, le site d'une boulangerie aujourd'hui. À droite, le même site refait par Maison Dev.</span> <span class="s" data-i="ba-p2">C'est ce que vous recevez, gratuitement, avec votre maquette.</span></p>
-    </div>
-    <div class="ba" id="ba" style="--x:50%">
-      <div class="ba-pane old" aria-hidden="true">
-        <div class="o-top">Boulangerie Martin</div>
-        <div class="o-marquee" data-i="b-o1">*** Bienvenue sur notre site internet&nbsp;!!! ***</div>
-        <div class="o-body">
-          <div class="o-side"><a data-i="b-o2">Accueil</a><a data-i="b-o3">Nos produits</a><a data-i="b-o4">Horaires</a><a data-i="b-o5">Contact</a><a data-i="b-o6">Liens</a></div>
-          <div class="o-main">
-            <p class="o-h" data-i="b-o7">Bienvenue chez Boulangerie Martin</p>
-            <p data-i="b-o8">Nous sommes une boulangerie artisanale. Cliquez sur les liens à gauche pour découvrir nos produits. Site en construction, merci de votre compréhension.</p>
-            <div class="o-img">[ photo.jpg ]</div>
-            <p class="o-small" data-i="b-o9">Vous êtes le visiteur n° 004127 · Dernière mise à jour&nbsp;: 2014</p>
-          </div>
+  <!-- RÉALISATIONS : galerie horizontale -->
+  <section class="galerie" id="realisations" aria-labelledby="r-h">
+    <div class="galerie__pin">
+      <div class="galerie__rail">
+        <div class="galerie__intro">
+          <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="r-k">Réalisations</span></p>
+          <h2 class="title" id="r-h"><span class="title__art" data-i="r-ha">Ils nous ont fait</span> <span class="title__noun" data-i="r-hn">Confiance.</span></h2>
+          <p class="lede" data-i="r-p">Des sites faits à la main, un par un. Cliquez pour les visiter.</p>
+          <p class="galerie__hint mono"><span data-i="r-hint">Faites défiler pour voir les quatre sites</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></p>
+        </div>
+        <div class="galerie__track" id="works">
+
+        <article class="card" data-cursor="voir">
+          <a class="card__media" href="https://cedriclecalve.fr" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img class="card__img" src="/img/realisations/cedric-le-calve-tel-240.webp" srcset="/img/realisations/cedric-le-calve-tel-240.webp 240w, /img/realisations/cedric-le-calve-tel-780.webp 780w" sizes="(min-width:900px) 380px, 76vw" width="390" height="844" loading="lazy" decoding="async" alt="Page d'accueil du site de Cédric Le Calvé sur téléphone : son nom en grandes lettres et son portrait, sur fond crème." data-i-attr="alt:alt1">
+            <img class="card__page" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/cedric-le-calve-page.webp" width="800" height="7902" decoding="async" alt="">
+          </a>
+          <p class="card__num mono"><span>N°01</span><span data-i="r-live">En ligne</span></p>
+          <h3 class="name">Cédric Le Calvé</h3>
+          <p class="card__mat mono" data-i="r1-job">Écrivain</p>
+          <div class="card__row"><a class="lien" href="https://cedriclecalve.fr" target="_blank" rel="noopener"><span data-i="r-voir">Voir le site</span><span class="sr" data-i="r1-sr"> de Cédric Le Calvé (nouvel onglet)</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a></div>
+        </article>
+
+        <article class="card" data-cursor="voir">
+          <a class="card__media" href="/realisations/flowz/" tabindex="-1" aria-hidden="true">
+            <img class="card__img" src="/img/realisations/flowz-tel-240.webp" srcset="/img/realisations/flowz-tel-240.webp 240w, /img/realisations/flowz-tel-780.webp 780w" sizes="(min-width:900px) 380px, 76vw" width="390" height="844" loading="lazy" decoding="async" alt="Page d'accueil du site FLOWZ sur téléphone : le logo FLOWZ sur fond noir, avec une photo de la collection dans la fleur du logo." data-i-attr="alt:alt2">
+            <img class="card__page" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/flowz-page.webp" width="800" height="8742" decoding="async" alt="">
+          </a>
+          <p class="card__num mono"><span>N°02</span><span data-i="r-live">En ligne</span></p>
+          <h3 class="name">FLOWZ</h3>
+          <p class="card__mat mono" data-i="r2-job">Marque de vêtements</p>
+          <div class="card__row"><a class="lien" href="/realisations/flowz/"><span data-i="r-voir">Voir le site</span><span class="sr" data-i="r2-sr"> de FLOWZ</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a></div>
+        </article>
+
+        <article class="card" data-cursor="voir">
+          <a class="card__media" href="https://maison-motion.fr" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <img class="card__img" src="/img/realisations/maison-motion-tel-240.webp" srcset="/img/realisations/maison-motion-tel-240.webp 240w, /img/realisations/maison-motion-tel-780.webp 780w" sizes="(min-width:900px) 380px, 76vw" width="390" height="844" loading="lazy" decoding="async" alt="Page d'accueil du site Maison Motion sur téléphone : le titre « Votre marque, en mouvement. » sur fond crème." data-i-attr="alt:alt3">
+            <img class="card__page" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/maison-motion-page.webp" width="800" height="3344" decoding="async" alt="">
+          </a>
+          <p class="card__num mono"><span>N°03</span><span data-i="r-live">En ligne</span></p>
+          <h3 class="name">Maison Motion</h3>
+          <p class="card__mat mono" data-i="r3-job">Studio de vidéos animées</p>
+          <div class="card__row"><a class="lien" href="https://maison-motion.fr" target="_blank" rel="noopener"><span data-i="r-voir">Voir le site</span><span class="sr" data-i="r3-sr"> de Maison Motion (nouvel onglet)</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a></div>
+        </article>
+
+        <article class="card" data-cursor="voir">
+          <a class="card__media" href="/exemples/menuiserie/" tabindex="-1" aria-hidden="true">
+            <img class="card__img" src="/img/realisations/atelier-delorme-tel-240.webp" srcset="/img/realisations/atelier-delorme-tel-240.webp 240w, /img/realisations/atelier-delorme-tel-780.webp 780w" sizes="(min-width:900px) 380px, 76vw" width="390" height="844" loading="lazy" decoding="async" alt="Page d'accueil de la maquette Atelier Delorme sur téléphone : le titre « Du bois massif, pensé pour votre maison. » sur un fond de bois sombre." data-i-attr="alt:alt4">
+            <img class="card__page" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/img/realisations/atelier-delorme-page.webp" width="800" height="3797" decoding="async" alt="">
+            <span class="tampon tampon--carte" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="tampon-carte" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs><g class="tampon__anneau"><text><textPath href="#tampon-carte" data-i="tampon-maq">Maquette · Maquette · Maquette ·&nbsp;</textPath></text></g><use href="#i-maison" x="44" y="45" width="32" height="30"/></svg></span>
+          </a>
+          <p class="card__num mono"><span>N°04</span><span data-i="r-tag">Maquette</span></p>
+          <h3 class="name">Atelier Delorme</h3>
+          <p class="card__mat mono" data-i="r4-job">Menuiserie · Annecy</p>
+          <div class="card__row"><a class="lien" href="/exemples/menuiserie/"><span data-i="r-voir-m">Voir la maquette</span><span class="sr" data-i="r4-sr"> Atelier Delorme</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a></div>
+          <p class="card__note" data-i="r4-note">Maquette réalisée par Maison Dev pour montrer son travail.</p>
+        </article>
+
+        <div class="galerie__fin">
+          <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="r-end-k">Votre tour</span></p>
+          <p class="name" data-i="r-end">Et si le prochain, c'était le vôtre&nbsp;?</p>
+          <a class="btn" href="#contact" data-magnetic><span data-i="h-cta">Recevoir ma maquette gratuite</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a>
+        </div>
         </div>
       </div>
-      <div class="ba-clip" aria-hidden="true">
-        <div class="ba-pane new">
-          <div class="n-nav"><b>Martin</b><span data-i="b-n1">Pains · Viennoiseries · Horaires</span><i data-i="b-n2">Commander</i></div>
-          <div class="n-hero">
-            <div>
-              <small data-i="b-n3">BOULANGERIE ARTISANALE · DEPUIS 1987</small>
-              <h3 data-i="b-n4" data-html>Le pain du quartier, <em>chaud dès 6 h</em>.</h3>
-              <p data-i="b-n5">Levain naturel, farines locales, viennoiseries maison.</p>
-              <div class="n-ctas"><span class="n-btn" data-i="b-n6">Commander pour demain</span><span class="n-stars">★★★★★ <em data-i="b-n7">4,9 · 212 avis Google</em></span></div>
+      <div class="galerie__progress" aria-hidden="true"><span></span></div>
+      <div class="dots" id="dots" role="group" aria-label="Choisir une réalisation" data-i-attr="aria-label:dots"><button type="button" aria-label="Cédric Le Calvé" aria-current="true"></button><button type="button" aria-label="FLOWZ" aria-current="false"></button><button type="button" aria-label="Maison Motion" aria-current="false"></button><button type="button" aria-label="Atelier Delorme" aria-current="false"></button></div>
+    </div>
+  </section>
+
+  <!-- AVANT / APRÈS -->
+  <section class="sec papier" id="avant-apres" aria-labelledby="ba-h" data-tone="clair">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="ba-k">Avant / après</span></p>
+        <h2 class="title" id="ba-h"><span class="title__art" data-i="ba-ha">Imaginez votre site,</span> <span class="title__noun" data-i="ba-hn">Demain.</span></h2>
+        <p class="lede"><span class="s" data-i="ba-p1">Faites glisser le curseur&nbsp;: à gauche, le site d'une boulangerie aujourd'hui. À droite, le même site refait par Maison Dev.</span> <span class="s" data-i="ba-p2">C'est ce que vous recevez, gratuitement, avec votre maquette.</span></p>
+      </header>
+      <div class="ba" id="ba" style="--x:50%" data-cursor="glisser">
+        <div class="ba-pane old" aria-hidden="true">
+          <div class="o-top">Boulangerie Martin</div>
+          <div class="o-marquee" data-i="b-o1">*** Bienvenue sur notre site internet&nbsp;!!! ***</div>
+          <div class="o-body">
+            <div class="o-side"><a data-i="b-o2">Accueil</a><a data-i="b-o3">Nos produits</a><a data-i="b-o4">Horaires</a><a data-i="b-o5">Contact</a><a data-i="b-o6">Liens</a></div>
+            <div class="o-main">
+              <p class="o-h" data-i="b-o7">Bienvenue chez Boulangerie Martin</p>
+              <p data-i="b-o8">Nous sommes une boulangerie artisanale. Cliquez sur les liens à gauche pour découvrir nos produits. Site en construction, merci de votre compréhension.</p>
+              <div class="o-img">[ photo.jpg ]</div>
+              <p class="o-small" data-i="b-o9">Vous êtes le visiteur n° 004127 · Dernière mise à jour&nbsp;: 2014</p>
             </div>
-            <div class="n-photo"><img src="/img/boulangerie-560.webp" srcset="/img/boulangerie-560.webp 560w, /img/boulangerie.webp 864w" sizes="(min-width:761px) 640px, 360px" width="864" height="800" loading="lazy" decoding="async" alt=""><div class="n-card"><b data-i="b-n8">Ouvert</b><span data-i="b-n9">jusqu'à 19 h 30</span></div></div>
           </div>
         </div>
+        <div class="ba-clip" aria-hidden="true">
+          <div class="ba-pane new">
+            <div class="n-nav"><b>Martin</b><span data-i="b-n1">Pains · Viennoiseries · Horaires</span><i data-i="b-n2">Commander</i></div>
+            <div class="n-hero">
+              <div>
+                <small data-i="b-n3">BOULANGERIE ARTISANALE · DEPUIS 1987</small>
+                <h3 data-i="b-n4" data-html>Le pain du quartier, <em>chaud dès 6 h</em>.</h3>
+                <p data-i="b-n5">Levain naturel, farines locales, viennoiseries maison.</p>
+                <div class="n-ctas"><span class="n-btn" data-i="b-n6">Commander pour demain</span><span class="n-stars">★★★★★ <em data-i="b-n7">4,9 · 212 avis Google</em></span></div>
+              </div>
+              <div class="n-photo"><img src="/img/boulangerie-560.webp" srcset="/img/boulangerie-560.webp 560w, /img/boulangerie.webp 864w" sizes="(min-width:761px) 640px, 360px" width="864" height="800" loading="lazy" decoding="async" alt=""><div class="n-card"><b data-i="b-n8">Ouvert</b><span data-i="b-n9">jusqu'à 19 h 30</span></div></div>
+            </div>
+          </div>
+        </div>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après" data-i-attr="aria-label:ba-range">
+        <div class="ba-handle" aria-hidden="true"><span class="ba-knob"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        <span class="ba-tag l mono" data-i="ba-before">Avant</span><span class="ba-tag r mono" data-i="ba-after">Après</span>
       </div>
-      <input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après" data-i-attr="aria-label:ba-range">
-      <div class="ba-handle" aria-hidden="true"><span class="ba-knob"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-      <span class="ba-tag l" data-i="ba-before">Avant</span><span class="ba-tag r" data-i="ba-after">Après</span>
+      <p class="ba-note mono" data-i="ba-note">Exemple fictif · chaque maquette est créée pour votre entreprise.</p>
     </div>
-    <p class="ba-note" data-i="ba-note">Exemple fictif · chaque maquette est créée pour votre entreprise.</p>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="services" aria-labelledby="sv-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow" data-i="sv-k">Services</p>
-      <h2 id="sv-h" data-i="sv-h" data-html>Ce que l'on construit <em>pour vous.</em></h2>
-      <p><span class="s" data-i="sv-p1">Un site pensé pour une seule chose&nbsp;: transformer vos visiteurs en clients.</span> <span class="s" data-i="sv-p2">On s'occupe de tout, de la maquette à la mise en ligne.</span></p>
+  <!-- SERVICES -->
+  <section class="sec" id="services" aria-labelledby="sv-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="sv-k">Services</span></p>
+        <h2 class="title" id="sv-h"><span class="title__art" data-i="sv-ha">Ce que l'on construit</span> <span class="title__noun" data-i="sv-hn">Pour vous.</span></h2>
+        <p class="lede"><span class="s" data-i="sv-p1">Un site pensé pour une seule chose&nbsp;: transformer vos visiteurs en clients.</span> <span class="s" data-i="sv-p2">On s'occupe de tout, de la maquette à la mise en ligne.</span></p>
+      </header>
+      <ol class="svc">
+        <li><span class="svc__num mono">N°01</span><h3 class="svc__nom" data-i="sv1h">Site vitrine</h3><p class="svc__txt" data-i="sv1p">Pour les commerces, artisans, cabinets et indépendants&nbsp;: présenter votre activité, rassurer, et être trouvé sur Google.</p></li>
+        <li><span class="svc__num mono">N°02</span><h3 class="svc__nom" data-i="sv2h">Page unique</h3><p class="svc__txt" data-i="sv2p">Une seule page pour lancer un produit, une offre ou un événement, et transformer chaque visite en demande.</p></li>
+        <li><span class="svc__num mono">N°03</span><h3 class="svc__nom" data-i="sv3h">Refonte</h3><p class="svc__txt" data-i="sv3p">Votre site existe déjà mais il est lent, daté ou illisible sur téléphone&nbsp;? On le remet à neuf, avec vos contenus.</p></li>
+        <li><span class="svc__num mono">N°04</span><h3 class="svc__nom" data-i="sv4h">Entretien</h3><p class="svc__txt" data-i="sv4p">Hébergement, sécurité, sauvegardes et petites modifications. Un mail suffit, on s'occupe du reste.</p></li>
+      </ol>
     </div>
-    <ul class="svc">
-      <li>
-        <div class="svc-top"><span class="num">01</span><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="4"/><path d="M5 17h38M11 13h2M16 13h2"/><rect x="11" y="23" width="12" height="10" rx="1.5"/><path d="M28 24h9M28 29h6"/></svg></div>
-        <h3 data-i="sv1h">Site vitrine</h3>
-        <p data-i="sv1p">Pour les commerces, artisans, cabinets et indépendants&nbsp;: présenter votre activité, rassurer, et être trouvé sur Google.</p>
-      </li>
-      <li>
-        <div class="svc-top"><span class="num">02</span><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M18 14h12M18 20h8"/><rect x="18" y="28" width="12" height="6" rx="3"/></svg></div>
-        <h3 data-i="sv2h">Page unique</h3>
-        <p data-i="sv2p">Une seule page pour lancer un produit, une offre ou un événement, et transformer chaque visite en demande.</p>
-      </li>
-      <li>
-        <div class="svc-top"><span class="num">03</span><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M40 20a16 16 0 1 0 1 10"/><path d="M41 10v10H31"/></svg></div>
-        <h3 data-i="sv3h">Refonte</h3>
-        <p data-i="sv3p">Votre site existe déjà mais il est lent, daté ou illisible sur téléphone&nbsp;? On le remet à neuf, avec vos contenus.</p>
-      </li>
-      <li>
-        <div class="svc-top"><span class="num">04</span><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4l16 6v12c0 10-7 17-16 22C15 39 8 32 8 22V10z"/><path d="M17 24l5 5 10-10"/></svg></div>
-        <h3 data-i="sv4h">Entretien</h3>
-        <p data-i="sv4p">Hébergement, sécurité, sauvegardes et petites modifications. Un mail suffit, on s'occupe du reste.</p>
-      </li>
-    </ul>
-    <div class="price">
-      <div class="price-a">
-        <p class="price-big"><strong data-i="p-big">200&nbsp;€ le site, en moyenne.</strong></p>
+  </section>
+
+  <!-- TARIFS : la page devient terracotta -->
+  <section class="sec prix" id="prix" aria-labelledby="px-h">
+    <div class="wrap prix__grid">
+      <div class="prix__big">
+        <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="px-k">Tarifs</span></p>
+        <h2 class="prix__titre" id="px-h"><span class="prix__num" data-i="px-big">200&nbsp;€</span> <em class="prix__art" data-i="px-art">le site, en moyenne.</em></h2>
+      </div>
+      <div class="prix__side rise">
+        <span class="tampon" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="tampon-cercle" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs><g class="tampon__anneau"><text><textPath href="#tampon-cercle" data-i="tampon">Maquette offerte · Sous 48 h ·&nbsp;</textPath></text></g><use href="#i-maison" x="44" y="45" width="32" height="30"/></svg></span>
         <p><span class="s pl" data-i="p-big-t1">Entre 150 et 250&nbsp;€ selon le contenu&nbsp;:</span> <span class="s" data-i="p-big-t2">une page simple coûte moins cher, un site avec beaucoup de pages ou des informations connectées un peu plus.</span></p>
-      </div>
-      <div class="price-b">
         <p data-i="p-month" data-html><strong>10&nbsp;€ par mois</strong>, sans engagement&nbsp;: hébergement, nom de domaine et modifications.</p>
-        <a class="alink" href="/tarifs"><span data-i="p-link">Voir les tarifs en détail</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12.5M11 4.8l5.2 5.2-5.2 5.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn btn--plein" href="/tarifs" data-magnetic><span data-i="p-link">Voir les tarifs en détail</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec method" id="methode" aria-labelledby="m-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow" data-i="m-k">Méthode</p>
-      <h2 id="m-h" data-i="m-h" data-html>Simple, du début <em>à la fin.</em></h2>
-      <p data-i="m-p">Vous n'avez rien de technique à gérer. On s'occupe de tout, vous validez.</p>
+  <!-- MÉTHODE : la planche de l'atelier -->
+  <section class="sec papier atelier" id="methode" aria-labelledby="m-h" data-tone="clair">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="m-k">Méthode</span></p>
+        <h2 class="title" id="m-h"><span class="title__art" data-i="m-ha">Simple, du début</span> <span class="title__noun" data-i="m-hn">À la fin.</span></h2>
+        <p class="lede" data-i="m-p">Vous n'avez rien de technique à gérer. On s'occupe de tout, vous validez.</p>
+        <p class="atelier__hint mono"><svg aria-hidden="true"><use href="#i-deplacer"/></svg><span data-i="m-hint">Attrapez une étape et déplacez-la</span></p>
+      </header>
+      <ol class="board" id="board">
+        <li class="pin" tabindex="0" aria-describedby="pin-aide" style="--x:0%;--y:4%;--r:-3deg" data-cursor="deplacer"><span class="pin__n">01</span><h3 class="pin__t" data-i="s1h">Maquette offerte</h3><p data-i="s1p">En 48&nbsp;h, vous recevez la maquette de votre future page d'accueil. Gratuitement, sans engagement.</p></li>
+        <li class="pin" tabindex="0" aria-describedby="pin-aide" style="--x:26%;--y:26%;--r:2.5deg" data-cursor="deplacer"><span class="pin__n">02</span><h3 class="pin__t" data-i="s2h">Validation</h3><p data-i="s2p">On ajuste les textes, les couleurs et les photos avec vous. Deux séries de retouches incluses.</p></li>
+        <li class="pin" tabindex="0" aria-describedby="pin-aide" style="--x:51%;--y:2%;--r:-2deg" data-cursor="deplacer"><span class="pin__n">03</span><h3 class="pin__t" data-i="s3h">Mise en ligne</h3><p data-i="s3p">Votre site est en ligne sur votre nom de domaine, rapide et sécurisé.</p></li>
+        <li class="pin" tabindex="0" aria-describedby="pin-aide" style="--x:75%;--y:24%;--r:3.5deg" data-cursor="deplacer"><span class="pin__n">04</span><h3 class="pin__t" data-i="s4h">On reste là</h3><p data-i="s4p">Une modification, une nouvelle photo, une offre à ajouter&nbsp;? Un mail suffit.</p></li>
+      </ol>
+      <p class="sr" id="pin-aide" data-i="pin-aide">Étape déplaçable avec les flèches du clavier.</p>
     </div>
-    <ol class="steps" id="steps">
-      <li class="step"><span class="step-n" aria-hidden="true">01<span class="lit">01</span></span><span class="dot" aria-hidden="true"></span><h3 data-i="s1h">Maquette offerte</h3><p data-i="s1p">En 48&nbsp;h, vous recevez la maquette de votre future page d'accueil. Gratuitement, sans engagement.</p></li>
-      <li class="step"><span class="step-n" aria-hidden="true">02<span class="lit">02</span></span><span class="dot" aria-hidden="true"></span><h3 data-i="s2h">Validation</h3><p data-i="s2p">On ajuste les textes, les couleurs et les photos avec vous. Deux séries de retouches incluses.</p></li>
-      <li class="step"><span class="step-n" aria-hidden="true">03<span class="lit">03</span></span><span class="dot" aria-hidden="true"></span><h3 data-i="s3h">Mise en ligne</h3><p data-i="s3p">Votre site est en ligne sur votre nom de domaine, rapide et sécurisé.</p></li>
-      <li class="step"><span class="step-n" aria-hidden="true">04<span class="lit">04</span></span><span class="dot" aria-hidden="true"></span><h3 data-i="s4h">On reste là</h3><p data-i="s4p">Une modification, une nouvelle photo, une offre à ajouter&nbsp;? Un mail suffit.</p></li>
-    </ol>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="qui" aria-labelledby="ab-h">
-  <div class="wrap about-grid">
-    <div class="sec-head">
-      <p class="eyebrow" data-i="ab-k">Qui est derrière</p>
-      <h2 id="ab-h" data-i="ab-h" data-html>Un étudiant ingénieur, <em>pas une agence.</em></h2>
-    </div>
-    <div class="about-t">
-      <p class="first"><span class="s" data-i="ab-p1a">Maison Dev, c'est Léo, étudiant ingénieur en informatique à l'INSA Lyon.</span> <span class="s" data-i="ab-p1b">Je conçois et je code chaque site moi-même, de la maquette à la mise en ligne&nbsp;: vous parlez toujours à la même personne.</span></p>
-      <p data-i="ab-p2">Pas de locaux ni d'équipe commerciale à payer&nbsp;: c'est pour ça que mes prix sont bien plus bas que ceux d'une agence.</p>
-      <ul class="cmp" id="cmp">
-        <li><span data-i="ab-c1">Site vitrine en agence&nbsp;:</span> <b class="barre" data-i="ab-c1v">1&nbsp;500 à 5&nbsp;000&nbsp;€</b></li>
-        <li class="me"><span data-i="ab-c2">Chez Maison Dev&nbsp;:</span> <b data-i="ab-c2v">environ 200&nbsp;€</b></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="sec faq-sec" id="faq" aria-labelledby="q-h">
-  <div class="wrap faq-grid">
-    <div class="sec-head">
-      <p class="eyebrow" data-i="q-k">FAQ</p>
-      <h2 id="q-h" data-i="q-h" data-html>Questions <em>fréquentes.</em></h2>
-    </div>
-    <div class="faq" id="faq-list">
-      <div class="q"><h3><button type="button" id="qb1" aria-expanded="false" aria-controls="qa1"><span data-i="q1">Combien de temps faut-il&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa1" role="region" aria-labelledby="qb1"><div><p data-i="q1a">La maquette arrive en 48&nbsp;h. Le site complet est en ligne en 5 à 7 jours après votre validation.</p></div></div></div>
-      <div class="q"><h3><button type="button" id="qb2" aria-expanded="false" aria-controls="qa2"><span data-i="q2">Je n'ai ni textes ni photos, c'est un problème&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa2" role="region" aria-labelledby="qb2"><div><p data-i="q2a">Non. On rédige les textes avec vous à partir d'un court échange, et on utilise vos photos ou des photos libres de droits de qualité.</p></div></div></div>
-      <div class="q"><h3><button type="button" id="qb3" aria-expanded="false" aria-controls="qa3"><span data-i="q3">Est-ce que je pourrai modifier mon site moi-même&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa3" role="region" aria-labelledby="qb3"><div><p data-i="q3a">Oui si vous le souhaitez. Sinon, avec l'entretien à 10&nbsp;€ par mois, il vous suffit d'envoyer un mail et c'est fait.</p></div></div></div>
-      <div class="q"><h3><button type="button" id="qb4" aria-expanded="false" aria-controls="qa4"><span data-i="q4">Le nom de domaine et l'hébergement sont-ils compris&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa4" role="region" aria-labelledby="qb4"><div><p><span class="s" data-i="q4a1">Oui, la première année.</span> <span class="s" data-i="q4a2">Ensuite, l'entretien à 10&nbsp;€ par mois couvre l'hébergement, ou vous pouvez tout reprendre chez votre propre hébergeur.</span></p></div></div></div>
-      <div class="q"><h3><button type="button" id="qb5" aria-expanded="false" aria-controls="qa5"><span data-i="q5">Comment se passe le paiement&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa5" role="region" aria-labelledby="qb5"><div><p data-i="q5a">50&nbsp;% à la validation de la maquette, 50&nbsp;% à la mise en ligne. Vous ne payez rien pour recevoir la maquette.</p></div></div></div>
-      <div class="q"><h3><button type="button" id="qb6" aria-expanded="false" aria-controls="qa6"><span data-i="q6">Combien coûte un site, exactement&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa6" role="region" aria-labelledby="qb6"><div><p data-i="q6a">Environ 200&nbsp;€, entre 150 et 250&nbsp;€ selon le contenu. Vous connaissez le prix exact avant de dire oui.</p></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec contact" id="contact" aria-labelledby="c-h">
-  <div class="wrap">
-    <h2 id="c-h" data-i="c-h" data-html>Votre maquette, <em>offerte.</em></h2>
-    <p class="contact-p"><span class="s" data-i="c-p1">Trois lignes suffisent.</span> <span class="s" data-i="c-p2">Vous recevez une maquette de votre future page d'accueil sous 48&nbsp;h, gratuitement et sans engagement.</span></p>
-    <form class="leadf" id="leadform" action="https://formsubmit.co/contact@maison-dev.com" method="POST">
-      <div class="lf-fields" id="lf-fields">
-        <div class="lf-row">
-          <label><span data-i="lf-biz">Votre entreprise et votre ville</span><input type="text" id="lf-biz" name="entreprise" required autocomplete="organization" maxlength="120" placeholder="Boulangerie Martin, Lyon" data-i-attr="placeholder:lf-biz-ph"></label>
-          <label><span data-i="lf-site">Site actuel (facultatif)</span><input type="text" id="lf-site" name="site_actuel" autocomplete="url" maxlength="200" placeholder="boulangerie-martin.fr" data-i-attr="placeholder:lf-site-ph"></label>
-        </div>
-        <label><span data-i="lf-contact">Votre e-mail ou téléphone</span><input type="text" id="lf-contact" name="contact" required maxlength="120" placeholder="vous@exemple.fr" data-i-attr="placeholder:lf-contact-ph"></label>
-        <input type="hidden" name="offre" id="lf-offre" value="">
-        <div class="hp" aria-hidden="true"><label>Ne pas remplir<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
-        <button class="btn btn-clair" type="submit"><span data-i="c-cta">Recevoir ma maquette gratuite</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12.5M11 4.8l5.2 5.2-5.2 5.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <p class="lf-msg" id="lf-msg" role="status" aria-live="polite"></p>
+  <!-- QUI EST DERRIÈRE -->
+  <section class="sec sauge" id="qui" aria-labelledby="ab-h" data-tone="clair">
+    <div class="fantome" aria-hidden="true">Maison</div>
+    <div class="wrap qui">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="ab-k">Qui est derrière</span></p>
+        <h2 class="title title--long" id="ab-h"><span class="title__art" data-i="ab-ha">Un étudiant ingénieur,</span> <span class="title__noun" data-i="ab-hn">Pas une agence.</span></h2>
+      </header>
+      <div class="qui__txt rise">
+        <p class="qui__lead"><span class="s" data-i="ab-p1a">Maison Dev, c'est Léo, étudiant ingénieur en informatique à l'INSA Lyon.</span> <span class="s" data-i="ab-p1b">Je conçois et je code chaque site moi-même, de la maquette à la mise en ligne&nbsp;: vous parlez toujours à la même personne.</span></p>
+        <p data-i="ab-p2">Pas de locaux ni d'équipe commerciale à payer&nbsp;: c'est pour ça que mes prix sont bien plus bas que ceux d'une agence.</p>
+        <ul class="cmp" id="cmp">
+          <li><span class="mono" data-i="ab-c1">Site vitrine en agence&nbsp;:</span> <b class="barre" data-i="ab-c1v">1&nbsp;500 à 5&nbsp;000&nbsp;€</b></li>
+          <li class="me"><span class="mono" data-i="ab-c2">Chez Maison Dev&nbsp;:</span> <b data-i="ab-c2v">environ 200&nbsp;€</b></li>
+        </ul>
+        <p class="mani__sign mono"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="ab-s">Léo · INSA Lyon</span></p>
       </div>
-      <div class="lf-done" id="lf-done" tabindex="-1" hidden></div>
-    </form>
-    <p class="mail"><span data-i="lf-or">Vous préférez écrire&nbsp;?</span> <a id="mailbtn" href="mailto:contact@maison-dev.com?subject=Ma%20maquette%20gratuite">contact@maison-dev.com</a></p>
-  </div>
-</section>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq" aria-labelledby="q-h">
+    <div class="wrap faq-grid">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="mi" aria-hidden="true"><use href="#i-maison"/></svg><span data-i="q-k">FAQ</span></p>
+        <h2 class="title" id="q-h"><span class="title__art" data-i="q-ha">Questions</span> <span class="title__noun" data-i="q-hn">Fréquentes.</span></h2>
+      </header>
+      <div class="faq">
+        <div class="q"><h3><button type="button" id="qb1" aria-expanded="false" aria-controls="qa1"><span data-i="q1">Combien de temps faut-il&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa1" role="region" aria-labelledby="qb1"><div><p data-i="q1a">La maquette arrive en 48&nbsp;h. Le site complet est en ligne en 5 à 7 jours après votre validation.</p></div></div></div>
+        <div class="q"><h3><button type="button" id="qb2" aria-expanded="false" aria-controls="qa2"><span data-i="q2">Je n'ai ni textes ni photos, c'est un problème&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa2" role="region" aria-labelledby="qb2"><div><p data-i="q2a">Non. On rédige les textes avec vous à partir d'un court échange, et on utilise vos photos ou des photos libres de droits de qualité.</p></div></div></div>
+        <div class="q"><h3><button type="button" id="qb3" aria-expanded="false" aria-controls="qa3"><span data-i="q3">Est-ce que je pourrai modifier mon site moi-même&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa3" role="region" aria-labelledby="qb3"><div><p data-i="q3a">Oui si vous le souhaitez. Sinon, avec l'entretien à 10&nbsp;€ par mois, il vous suffit d'envoyer un mail et c'est fait.</p></div></div></div>
+        <div class="q"><h3><button type="button" id="qb4" aria-expanded="false" aria-controls="qa4"><span data-i="q4">Le nom de domaine et l'hébergement sont-ils compris&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa4" role="region" aria-labelledby="qb4"><div><p><span class="s" data-i="q4a1">Oui, la première année.</span> <span class="s" data-i="q4a2">Ensuite, l'entretien à 10&nbsp;€ par mois couvre l'hébergement, ou vous pouvez tout reprendre chez votre propre hébergeur.</span></p></div></div></div>
+        <div class="q"><h3><button type="button" id="qb5" aria-expanded="false" aria-controls="qa5"><span data-i="q5">Comment se passe le paiement&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa5" role="region" aria-labelledby="qb5"><div><p data-i="q5a">50&nbsp;% à la validation de la maquette, 50&nbsp;% à la mise en ligne. Vous ne payez rien pour recevoir la maquette.</p></div></div></div>
+        <div class="q"><h3><button type="button" id="qb6" aria-expanded="false" aria-controls="qa6"><span data-i="q6">Combien coûte un site, exactement&nbsp;?</span><span class="pm" aria-hidden="true"></span></button></h3><div class="a" id="qa6" role="region" aria-labelledby="qb6"><div><p data-i="q6a">Environ 200&nbsp;€, entre 150 et 250&nbsp;€ selon le contenu. Vous connaissez le prix exact avant de dire oui.</p></div></div></div>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<footer class="ft">
-  <div class="wrap ft-in">
-    <span>© 2026 Maison Dev</span><span class="sep b" aria-hidden="true">·</span>
-    <span><span data-i="sister">Maison sœur de</span> <a href="https://maison-motion.fr" target="_blank" rel="noopener">Maison Motion</a></span><span class="sep b" aria-hidden="true">·</span>
-    <span><a href="/mentions-legales" data-i="legal">Mentions légales</a> <span class="sep" aria-hidden="true">·</span> <a href="/confidentialite" data-i="privacy">Confidentialité</a> <span class="sep" aria-hidden="true">·</span> <a href="/cgu" data-i="terms">CGU</a></span>
+<!-- CONTACT + PIED DE PAGE -->
+<footer class="ft" id="contact" aria-labelledby="c-h">
+  <div class="wrap">
+    <div class="ft__cta">
+      <h2 class="ft__big" id="c-h"><span data-i="c-ha">Votre maquette,</span> <em data-i="c-hn">offerte.</em></h2>
+      <p class="lede rise"><span class="s" data-i="c-p1">Trois lignes suffisent.</span> <span class="s" data-i="c-p2">Vous recevez une maquette de votre future page d'accueil sous 48&nbsp;h, gratuitement et sans engagement.</span></p>
+      <form class="leadf" id="leadform" action="https://formsubmit.co/contact@maison-dev.com" method="POST">
+        <div class="lf-fields" id="lf-fields">
+          <div class="lf-row">
+            <label><span class="mono" data-i="lf-biz">Votre entreprise et votre ville</span><input type="text" id="lf-biz" name="entreprise" required autocomplete="organization" maxlength="120" placeholder="Boulangerie Martin, Lyon" data-i-attr="placeholder:lf-biz-ph"></label>
+            <label><span class="mono" data-i="lf-site">Site actuel (facultatif)</span><input type="text" id="lf-site" name="site_actuel" autocomplete="url" maxlength="200" placeholder="boulangerie-martin.fr" data-i-attr="placeholder:lf-site-ph"></label>
+          </div>
+          <label><span class="mono" data-i="lf-contact">Votre e-mail ou téléphone</span><input type="text" id="lf-contact" name="contact" required maxlength="120" placeholder="vous@exemple.fr" data-i-attr="placeholder:lf-contact-ph"></label>
+          <input type="hidden" name="offre" id="lf-offre" value="">
+          <div class="hp" aria-hidden="true"><label>Ne pas remplir<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+          <button class="btn btn--plein" type="submit" data-magnetic><span data-i="c-cta">Recevoir ma maquette gratuite</span><svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></button>
+          <p class="lf-msg" id="lf-msg" role="status" aria-live="polite"></p>
+        </div>
+        <div class="lf-done" id="lf-done" tabindex="-1" hidden></div>
+      </form>
+      <p class="mail"><span data-i="lf-or">Vous préférez écrire&nbsp;?</span> <a id="mailbtn" href="mailto:contact@maison-dev.com?subject=Ma%20maquette%20gratuite">contact@maison-dev.com</a> <button class="copier mono" type="button" data-copy="contact@maison-dev.com"><svg aria-hidden="true"><use href="#i-copier"/></svg><span class="copier__label" data-i="copy">Copier</span></button></p>
+    </div>
+    <div class="ft__cols">
+      <div>
+        <h3 class="mono" data-i="ft-pages">Pages</h3>
+        <ul><li><a href="#realisations" data-i="nav-real">Réalisations</a></li><li><a href="#services" data-i="nav-serv">Services</a></li><li><a href="/tarifs" data-i="nav-tarifs">Tarifs</a></li><li><a href="#faq" data-i="nav-faq">FAQ</a></li></ul>
+      </div>
+      <div>
+        <h3 class="mono" data-i="ft-sister">Maison sœur</h3>
+        <ul><li><a href="https://maison-motion.fr" target="_blank" rel="noopener">Maison Motion<svg class="arr" aria-hidden="true"><use href="#i-fleche"/></svg></a></li></ul>
+      </div>
+      <div>
+        <h3 class="mono" data-i="ft-legal">Informations</h3>
+        <ul><li><a href="/mentions-legales" data-i="legal">Mentions légales</a></li><li><a href="/confidentialite" data-i="privacy">Confidentialité</a></li><li><a href="/cgu" data-i="terms">CGU</a></li></ul>
+      </div>
+    </div>
+    <svg class="ft__logo" viewBox="25.6 -927.8 5313.7 949.8" aria-hidden="true"><use class="lg-fill" href="#md-lettres"/><use class="lg-out" href="#md-maison"/><use class="lg-in" href="#md-m"/></svg>
+    <div class="ft__legal mono">
+      <span>© 2026 Maison Dev · <span data-i="sister">Maison sœur de</span> <a href="https://maison-motion.fr" target="_blank" rel="noopener">Maison Motion</a></span>
+      <span><a href="/mentions-legales" data-i="legal">Mentions légales</a> · <a href="/confidentialite" data-i="privacy">Confidentialité</a> · <a href="/cgu" data-i="terms">CGU</a></span>
+    </div>
   </div>
 </footer>
+</div>
 </body>
 </html>
