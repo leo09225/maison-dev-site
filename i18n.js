@@ -2,42 +2,53 @@
    Le français est écrit dans les pages (attributs data-i) et reste la langue par défaut.
    L'anglais s'affiche avec le bouton EN ou l'adresse ?lang=en ; le choix est gardé dans le navigateur.
    data-i="clé"            remplace le texte (data-html : remplace le HTML)
-   data-i-attr="alt:clé"   remplace un attribut (alt, placeholder, aria-label…), plusieurs séparés par « ; » */
+   data-i-attr="alt:clé"   remplace un attribut (alt, placeholder, aria-label…), plusieurs séparés par « ; »
+   Tous les boutons [data-lang="fr|en"] changent la langue. */
 (function () {
   var EN = {
     /* commun */
-    skip: 'Skip to content', logo: 'Maison Dev, home', nav: 'Main navigation', lang: 'Language',
-    'nav-real': 'Work', 'nav-serv': 'Services', 'nav-tarifs': 'Pricing', 'nav-faq': 'FAQ', 'nav-cta': 'My free mockup',
+    skip: 'Skip to content', logo: 'Maison Dev, home', 'logo-top': 'Maison Dev, back to top', nav: 'Main navigation', lang: 'Language',
+    'nav-real': 'Work', 'nav-serv': 'Services', 'nav-tarifs': 'Pricing', 'nav-faq': 'FAQ', 'nav-cta': 'My free mockup', 'nav-cta-short': 'Free mockup',
+    'nav-meth': 'Process', 'nav-contact': 'Contact', menu: 'Menu', close: 'Close', 'menu-foot': 'Free mockup within 48 h',
+    voir: 'View', glisser: 'Drag', deplacer: 'Move', copy: 'Copy', copied: 'Copied', selected: 'Selected',
     sister: 'Sister studio of', legal: 'Legal notice', privacy: 'Privacy', terms: 'Terms',
+    'ft-pages': 'Pages', 'ft-sister': 'Sister studio', 'ft-legal': 'Information',
     'c-cta': 'Get my free mockup',
 
     /* haut de page */
     'h-k': 'Websites for craftspeople, restaurants and shops',
-    'h-h': 'Your website, <em>finally truly yours.</em>',
+    'h-h': '<span class="h1-a">Your website,</span> <em class="h1-b">finally truly yours.</em>',
+    'st-a': 'Your website,', 'st-b': 'finally truly yours.',
     'h-p1': 'A clear, fast website that looks great on phones, so your customers find you and call you.',
     'h-p2': 'About €200 per website, free mockup within 48 h.',
-    'h-cta': 'Get my free mockup', 'h-link': 'See our work',
+    'h-cta': 'Get my free mockup', 'h-link': 'See our work', 'h-cue': 'Scroll',
+    mq1: 'Business websites', mq2: 'Single pages', mq3: 'Redesigns', mq4: 'Care plan', mq5: 'Free mockup', mq6: 'Live in 7 days',
+
+    /* la maison */
+    'mani-k': 'The house',
+    mani: 'A <em>clear</em>, <em>fast</em> and <em>beautiful</em> website on phones, so your customers find you and call you.',
+    'mani-p': 'Maison Dev builds websites for craftspeople, restaurants, neighbourhood shops, associations and town halls.',
+    'mani-s': 'Handmade, one at a time',
     f1v: '<span class="n" data-to="48">48</span>&nbsp;h', f1: 'to receive your mockup',
     f2v: '<span class="n" data-to="7">7</span>&nbsp;days', f2: 'to go live',
     f3v: '€<span class="n" data-to="10">10</span>/month', f3: 'hosting and changes',
-    pause: 'Pause the slideshow of websites', play: 'Play the slideshow of websites',
-    alt1: "Homepage of Cédric Le Calvé's website, a writer: his name in large letters, his portrait and three of his novels on a cream background.",
-    alt2: "Homepage of the FLOWZ website, a clothing brand: the FLOWZ logo in large letters on black, with a photo of the collection inside the logo's flower.",
-    alt3: 'Homepage of the Maison Motion website, an animated video studio: the headline “Votre marque, en mouvement.” on cream, above a blue video.',
-    alt4: 'Homepage of the Atelier Delorme mockup, a joinery in Annecy: the headline “Du bois massif, pensé pour votre maison.” on a dark wood background.',
-    alt1t: "Cédric Le Calvé's website on a phone.", alt2t: 'The FLOWZ website on a phone.',
-    alt3t: 'The Maison Motion website on a phone.', alt4t: 'The Atelier Delorme mockup on a phone.',
 
     /* réalisations */
-    'r-k': 'Our work', 'r-h': 'They <em>trusted us.</em>',
+    'r-k': 'Our work', 'r-ha': 'They gave us their', 'r-hn': 'Trust.',
     'r-p': 'Websites made by hand, one at a time. Click to visit them.',
-    'r1-job': 'Writer', 'r2-job': 'Clothing brand', 'r3-job': 'Animated video studio', 'r4-job': 'Joinery · Annecy', 'r4-cap': 'Mockup',
-    'r-voir': 'View the site', 'r-voir-m': 'View the mockup', 'r-tag': 'Mockup',
+    'r-hint': 'Scroll to see all four sites',
+    'r-live': 'Live', 'r1-job': 'Writer', 'r2-job': 'Clothing brand', 'r3-job': 'Animated video studio', 'r4-job': 'Joinery · Annecy', 'r4-cap': 'Mockup',
+    'r-voir': 'View the site', 'r-voir-m': 'View the mockup', 'r-tag': 'Mockup', 'tampon-maq': 'Mockup · Mockup · Mockup · Mockup ·\u00a0',
     'r1-sr': ' of Cédric Le Calvé (new tab)', 'r2-sr': ' of FLOWZ', 'r3-sr': ' of Maison Motion (new tab)', 'r4-sr': ' of Atelier Delorme',
     'r4-note': 'Mockup made by Maison Dev to show its work.', dots: 'Choose a project',
+    'r-end-k': 'Your turn', 'r-end': 'What if the next one was yours?',
+    alt1: "Homepage of Cédric Le Calvé's website on a phone: his name in large letters and his portrait, on a cream background.",
+    alt2: "Homepage of the FLOWZ website on a phone: the FLOWZ logo on black, with a photo of the collection inside the logo's flower.",
+    alt3: 'Homepage of the Maison Motion website on a phone: the headline “Votre marque, en mouvement.” on cream.',
+    alt4: 'Homepage of the Atelier Delorme mockup on a phone: the headline “Du bois massif, pensé pour votre maison.” on a dark wood background.',
 
     /* avant / après */
-    'ba-h': 'Picture your website, <em>tomorrow.</em>',
+    'ba-k': 'Before / after', 'ba-ha': 'Picture your website,', 'ba-hn': 'Tomorrow.',
     'ba-p1': "Drag the slider: on the left, a bakery's website today. On the right, the same site rebuilt by Maison Dev.",
     'ba-p2': "That's what you get, for free, with your mockup.",
     'ba-range': 'Compare before and after', 'ba-before': 'Before', 'ba-after': 'After',
@@ -51,13 +62,16 @@
     'b-n6': 'Order for tomorrow', 'b-n7': '4.9 · 212 Google reviews', 'b-n8': 'Open', 'b-n9': 'until 7:30 pm',
 
     /* services */
-    'sv-k': 'Services', 'sv-h': 'What we build <em>for you.</em>',
+    'sv-k': 'Services', 'sv-ha': 'What we build', 'sv-hn': 'For you.',
     'sv-p1': 'A website designed for one thing: turning your visitors into customers.',
     'sv-p2': 'We handle everything, from mockup to launch.',
     sv1h: 'Business website', sv1p: 'For shops, trades, practices and freelancers: present your business, build trust and get found on Google.',
     sv2h: 'Single page', sv2p: 'One page to launch a product, an offer or an event, and turn every visit into a request.',
     sv3h: 'Redesign', sv3p: "Your site already exists but it's slow, dated or unreadable on phones? We rebuild it, with your content.",
     sv4h: 'Care plan', sv4p: 'Hosting, security, backups and small changes. One email is enough, we handle the rest.',
+
+    /* tarifs (accueil) */
+    'px-k': 'Pricing', 'px-big': '€200', 'px-art': 'per website, on average.', tampon: 'Free mockup · Ready in 48 h ·\u00a0',
     'p-big': '€200 per website, on average.',
     'p-big-t1': 'Between €150 and €250 depending on the content:',
     'p-big-t2': 'a simple page costs less, a site with many pages or connected information a little more.',
@@ -65,23 +79,24 @@
     'p-link': 'See detailed pricing',
 
     /* méthode */
-    'm-k': 'Process', 'm-h': 'Simple, from start <em>to finish.</em>',
+    'm-k': 'Process', 'm-ha': 'Simple, from start', 'm-hn': 'To finish.',
     'm-p': 'Nothing technical for you to handle. We do everything, you approve.',
+    'm-hint': 'Grab a step and move it', 'pin-aide': 'Step you can move with the arrow keys.',
     s1h: 'Free mockup', s1p: 'Within 48 h, you get a mockup of your future homepage. Free, no commitment.',
     s2h: 'Approval', s2p: 'We fine-tune the texts, colours and photos with you. Two rounds of changes included.',
     s3h: 'Launch', s3p: 'Your site goes live on your own domain name, fast and secure.',
     s4h: 'We stay around', s4p: 'A change, a new photo, an offer to add? One email is enough.',
 
     /* qui est derrière */
-    'ab-k': 'Who is behind it', 'ab-h': 'An engineering student, <em>not an agency.</em>',
+    'ab-k': 'Who is behind it', 'ab-ha': 'An engineering student,', 'ab-hn': 'Not an agency.',
     'ab-p1a': 'Maison Dev is Léo, a computer engineering student at INSA Lyon.',
     'ab-p1b': 'I design and code every website myself, from mockup to launch: you always talk to the same person.',
     'ab-p2': "No office or sales team to pay for: that's why my prices are far below an agency's.",
     'ab-c1': 'Business website at an agency:', 'ab-c1v': '€1,500 to €5,000',
-    'ab-c2': 'With Maison Dev:', 'ab-c2v': 'about €200',
+    'ab-c2': 'With Maison Dev:', 'ab-c2v': 'about €200', 'ab-s': 'Léo · INSA Lyon',
 
     /* FAQ */
-    'q-k': 'FAQ', 'q-h': 'Frequently asked <em>questions.</em>',
+    'q-k': 'FAQ', 'q-ha': 'Frequently asked', 'q-hn': 'Questions.',
     q1: 'How long does it take?', q1a: 'The mockup arrives within 48 h. The full site is live 5 to 7 days after you approve it.',
     q2: 'I have no texts or photos, is that a problem?', q2a: 'No. We write the texts with you after a short chat, and use your photos or quality royalty-free images.',
     q3: 'Can I edit my site myself?', q3a: "Yes, if you want to. Otherwise, with the €10/month care plan, just send an email and it's done.",
@@ -91,7 +106,7 @@
     q6: 'How much does a website cost, exactly?', q6a: 'About €200, between €150 and €250 depending on the content. You know the exact price before you say yes.',
 
     /* contact */
-    'c-h': 'Your mockup, <em>on us.</em>',
+    'c-ha': 'Your mockup,', 'c-hn': 'on us.', 'c-h': 'Your mockup, <em>on us.</em>',
     'c-p1': 'Three lines are enough.', 'c-p2': 'You get a mockup of your future homepage within 48 h, free and with no commitment.',
     'lf-biz': 'Your business and city', 'lf-biz-ph': 'Martin Bakery, Lyon',
     'lf-site': 'Current website (optional)', 'lf-site-ph': 'martin-bakery.com',
@@ -102,8 +117,8 @@
     'lf-fail': 'The form could not be sent, so your mail app opens with the message ready.',
     'mail-subject': 'My free mockup',
 
-    /* tarifs */
-    't-k': 'Pricing', 't-h': 'Clear prices, <em>no surprises.</em>',
+    /* page tarifs */
+    't-k': 'Pricing', 't-ha': 'Clear prices,', 't-hn': 'No surprises.',
     't-p1': 'You first get a free mockup of your homepage.',
     't-p2': 'You know the exact price before you say yes, and you pay nothing until you like the mockup.',
     't1-h': 'Your website', 't1-from': 'about', 't1-p': 'Between €150 and €250 depending on the content.',
@@ -118,19 +133,19 @@
     't-ch': 'Your mockup, <em>on us.</em>',
 
     /* 404 */
-    'nf-h': "This page <em>doesn't exist.</em>",
+    'nf-ha': 'This page', 'nf-hn': "Doesn't exist.",
     'nf-p': 'The link may be incomplete. Everything else is here: our websites, our prices, and your free mockup within 48 h.',
     'nf-home': 'Back to the homepage'
   };
 
-  /* textes qui ne sont pas dans la page (messages du formulaire, boutons) */
+  /* textes qui ne sont pas dans la page (messages du formulaire, boutons qui changent) */
   var FR_JS = {
-    'lf-sending': 'Envoi…', 'lf-ok': 'Merci\u00a0! Vous avez une réponse sous 24\u00a0h, et votre maquette sous 48\u00a0h.',
+    'lf-sending': 'Envoi…', 'lf-ok': 'Merci ! Vous avez une réponse sous 24 h, et votre maquette sous 48 h.',
     'lf-err': 'Indiquez votre entreprise et un e-mail ou un téléphone.',
     'lf-again': 'Vérifiez vos informations, puis cliquez à nouveau sur le bouton.',
-    'lf-fail': "Le formulaire n'a pas pu partir\u00a0: votre messagerie s'ouvre avec le message prêt à envoyer.",
-    pause: 'Mettre en pause le défilement des sites', play: 'Relancer le défilement des sites',
-    'mail-subject': 'Ma maquette gratuite'
+    'lf-fail': "Le formulaire n'a pas pu partir : votre messagerie s'ouvre avec le message prêt à envoyer.",
+    'mail-subject': 'Ma maquette gratuite', menu: 'Menu', close: 'Fermer', voir: 'Voir', glisser: 'Glisser', deplacer: 'Déplacer',
+    copy: 'Copier', copied: 'Copié', selected: 'Sélectionné', 'r4-cap': 'Maquette'
   };
 
   var doc = document, root = doc.documentElement, FR = {};
@@ -158,9 +173,7 @@
       if (el.hasAttribute('data-html')) { if (el.innerHTML !== v) el.innerHTML = v; } else if (el.textContent !== v) el.textContent = v;
     });
     each('[data-i-attr]', function (el) { attrPairs(el).forEach(function (p) { var v = D[p[1]]; if (v != null) el.setAttribute(p[0], v); }); });
-    var fr = doc.getElementById('b-fr'), en = doc.getElementById('b-en');
-    if (fr) fr.setAttribute('aria-pressed', l === 'fr');
-    if (en) en.setAttribute('aria-pressed', l === 'en');
+    each('[data-lang]', function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === l)); });
     var mb = doc.getElementById('mailbtn');
     if (mb) mb.href = 'mailto:contact@maison-dev.com?subject=' + encodeURIComponent(api.t('mail-subject'));
     doc.title = l === 'en' ? (root.getAttribute('data-title-en') || TITLE_FR) : TITLE_FR;
@@ -168,9 +181,7 @@
     doc.dispatchEvent(new CustomEvent('langchange', { detail: l }));
   }
 
-  var fr = doc.getElementById('b-fr'), en = doc.getElementById('b-en');
-  if (fr) fr.addEventListener('click', function () { setLang('fr'); });
-  if (en) en.addEventListener('click', function () { setLang('en'); });
+  each('[data-lang]', function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); }); });
 
   /* français par défaut : cette adresse est la page française (les moteurs de recherche l'indexent en français) */
   var L = 'fr';
