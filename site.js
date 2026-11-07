@@ -46,6 +46,22 @@
   if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(measureAll);
   onLang(function () { setTimeout(measureAll, 30); });
 
+  /* ---------- grands mots : jamais plus larges que leur colonne (petits téléphones, anglais) ---------- */
+  var fitEls = $$('.title__noun, .ft__big, .h1-a');
+  var inner = function (el) { var cs = getComputedStyle(el); return el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight); };
+  function fitWords() {
+    fitEls.forEach(function (el) { el.style.fontSize = ''; });
+    fitEls.forEach(function (el) {
+      var wrap = el.closest('.wrap'), box = inner(el.parentNode), need = Math.max(el.scrollWidth, el.offsetWidth);
+      if (wrap) box = Math.min(box, inner(wrap));
+      /* garde-fou : jamais plus large que l'écran moins les marges */
+      var g = parseFloat(getComputedStyle(wrap || doc.querySelector('.wrap') || doc.body).paddingLeft) || 16;
+      box = Math.min(box, doc.documentElement.clientWidth - 2 * g);
+      if (box > 0 && need > box + 1) el.style.fontSize = (parseFloat(getComputedStyle(el).fontSize) * box / need * 0.98).toFixed(2) + 'px';
+    });
+  }
+  measures.push(fitWords);
+
   /* ---------- menu plein écran (téléphone) ---------- */
   var hd = $('#hd'), menuBtn = $('.hd__menu'), menu = $('#menu');
   function setMenu(open, focusBack) {
