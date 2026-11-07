@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FLOWZ</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="FLOWZ : casquettes en velours, maille brodée de roses, maillots, bonnets et chapka. Wear FLOWZ with flow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&text=%D9%81%D9%84%D9%88%D8%B2&display=swap">
+<style>
+/* Layout: a greenhouse at night. Black ground, cream type, photos seen through windows.
+   The flower from the FLOWZ logo is the recurring aperture: hero window, cursor, stickers, bullets. */
+:root{
+  color-scheme: dark;
+  --ink: #0C0B09;          /* ground, from the existing shop */
+  --ink-2: #16140F;        /* raised surfaces */
+  --line: #2C2822;         /* hairlines on ink */
+  --cream: #ECE3D2;        /* logo cream: type and marks */
+  --cream-2: #A9A091;      /* secondary text on ink */
+  --rose: #C42A26;         /* embroidered-rose red, accents only */
+  --bleuet: #1A57A0;       /* marinière stripes */
+  --soleil: #F2C318;       /* marinière flower */
+  --paper: #E8DFCC;        /* atelier board */
+  --paper-2: #F7F2E7;      /* photo prints on the board */
+  --paper-ink: #1B1813;
+  --paper-ink-2: #5E5648;
+  --tape: rgba(255, 251, 240, .55);
+  --shadow: rgba(0, 0, 0, .5);
+
+  --f-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-serif: "Bodoni Moda", "Bodoni 72", Didot, "Times New Roman", serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --f-ar: "Lalezar", "Noto Kufi Arabic", "Geeza Pro", "Arial", sans-serif;
+
+  --gutter: clamp(16px, 4vw, 56px);
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --t-noun: clamp(2.9rem, 11.6vw, 11.5rem);
+  --t-2: clamp(1.75rem, 3.4vw, 3.25rem);
+  --t-3: clamp(1.6rem, 2.5vw, 2.35rem);
+  --t-body: 1.0625rem;
+  --t-label: .75rem;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ink);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+[hidden]{display:none!important}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--f-display);font-stretch:100%;font-size:var(--t-body);line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3,p,figure,ul{margin:0}
+ul{padding:0;list-style:none}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--soleil);outline-offset:3px}
+::selection{background:var(--rose);color:var(--cream)}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+.site{position:relative;z-index:0;overflow-x:clip}
+.wrap{width:100%;max-width:1640px;margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--f-mono);font-size:var(--t-label);font-weight:400;letter-spacing:.08em;text-transform:uppercase}
+.fl{display:inline-block;width:1em;height:1em;fill:currentColor;flex:none}
+.arr{width:12px;height:12px;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* lenis */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* grain + tint + cursor */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:80;pointer-events:none;opacity:.065;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain .9s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-4%,3%)}50%{transform:translate(3%,-5%)}75%{transform:translate(-2%,4%)}100%{transform:translate(0,0)}}
+.bgtint{position:fixed;inset:0;z-index:-1;background:var(--bleuet);opacity:0;pointer-events:none}
+.cursor{position:fixed;left:0;top:0;z-index:90;pointer-events:none;display:none}
+.has-cursor .cursor{display:block}
+.cursor__flower{position:absolute;left:-46px;top:-46px;width:92px;height:92px;display:grid;place-items:center;transform:scale(0);transition:transform .45s var(--ease)}
+.cursor__flower svg{position:absolute;inset:0;width:100%;height:100%;fill:var(--rose);animation:spin 9s linear infinite}
+.cursor__label{position:relative;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--cream)}
+.cursor.is-on .cursor__flower{transform:scale(1)}
+
+/* header */
+.hd{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gutter) 14px;pointer-events:none;transition:transform .7s var(--ease)}
+.hd > *{pointer-events:auto}
+.hd.is-hidden{transform:translateY(-120%)}
+.hd__logo{display:block;width:clamp(84px,8.6vw,118px);color:var(--cream);transition:opacity .5s var(--ease),color .4s var(--ease)}
+.hd__logo svg{display:block;width:100%;height:auto;fill:currentColor}
+.hd__nav{display:flex;gap:clamp(18px,2.6vw,40px)}
+.hd__nav a{position:relative;padding:8px 0;font-family:var(--f-mono);font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase;color:var(--cream);transition:color .4s var(--ease)}
+.hd.on-paper .hd__logo,.hd.on-paper .hd__nav a{color:var(--paper-ink)}
+.hd.on-paper .pill,.hd.on-paper .round{background:var(--paper-ink);color:var(--paper-2)}
+.hd.on-paper .hd__menu{background:var(--paper-2);color:var(--paper-ink);border-color:var(--paper-ink)}
+.hd__nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.hd__nav a:hover::after,.hd__nav a:focus-visible::after{transform:scaleX(1);transform-origin:left}
+.hd__right{display:flex;align-items:center;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:.55em;height:40px;padding:0 18px;border-radius:999px;background:var(--cream);color:var(--ink);
+  font-family:var(--f-mono);font-size:var(--t-label);font-weight:500;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.round{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--cream);color:var(--ink)}
+.round svg{width:18px;height:18px}
+.hd__menu{display:none;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--cream);color:var(--cream);background:var(--ink);
+  font-family:var(--f-mono);font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase}
+.menu{position:fixed;inset:0;z-index:55;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:10px;
+  padding:calc(env(safe-area-inset-top,0px) + 96px) var(--gutter) calc(env(safe-area-inset-bottom,0px) + 32px)}
+.menu a{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(2rem,9.6vw,4.6rem);line-height:1.04;letter-spacing:-.02em;white-space:nowrap}
+.menu a:hover,.menu a:focus-visible{color:var(--soleil)}
+.menu__foot{margin-top:28px;color:var(--cream-2)}
+body.menu-open{overflow:hidden}
+@media (max-width:759px){
+  .hd__nav{display:none}
+  .hd__menu{display:inline-flex;align-items:center}
+  .hd .pill{padding:0 14px}
+}
+@media (max-width:379px){ .hd .round{display:none} }
+
+/* shared type */
+.eyebrow{display:flex;align-items:center;gap:.7em;font-family:var(--f-mono);font-size:var(--t-label);letter-spacing:.14em;text-transform:uppercase;color:var(--cream-2)}
+.eyebrow .fl{color:var(--rose);width:13px;height:13px}
+.title{display:flex;flex-direction:column;align-items:flex-start;line-height:.84}
+.title__art{font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:calc(var(--t-noun) * .36);line-height:1;letter-spacing:-.01em;margin-left:.08em}
+.title__noun{font-weight:900;font-stretch:125%;font-size:var(--t-noun);text-transform:uppercase;letter-spacing:-.035em;line-height:.86;white-space:nowrap}
+.title__noun .ch{display:inline-block;will-change:transform}
+.title--elide{flex-direction:row;align-items:baseline;flex-wrap:nowrap}
+.title--elide .title__art{font-size:calc(var(--t-noun) * .7);margin:0 .02em 0 0;line-height:.86}
+.lede{font-size:clamp(1.05rem,1.35vw,1.3rem);line-height:1.5;color:var(--cream);max-width:40ch;text-wrap:pretty}
+.name{font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:var(--t-3);line-height:1;letter-spacing:-.01em}
+.price{font-family:var(--f-mono);font-size:.9375rem;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.muted{color:var(--cream-2)}
+.sec{padding-block:clamp(88px,12vw,190px)}
+.sec-head{display:grid;gap:clamp(18px,2.4vw,28px);margin-bottom:clamp(44px,6vw,96px)}
+
+/* buttons */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:.65em;height:52px;padding:0 26px;border-radius:999px;border:1px solid var(--cream);
+  font-family:var(--f-mono);font-size:var(--t-label);font-weight:500;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:color .5s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--cream);transform:translateY(102%);transition:transform .5s var(--ease)}
+.btn:hover,.btn:focus-visible{color:var(--ink)}
+.btn:hover::before,.btn:focus-visible::before{transform:none}
+.btn--solid{background:var(--cream);color:var(--ink)}
+.btn--solid::before{background:var(--rose)}
+.btn--solid:hover,.btn--solid:focus-visible{color:var(--cream)}
+.link{display:inline-flex;align-items:center;gap:.45em;font-family:var(--f-mono);font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase}
+.link .arr{transition:transform .45s var(--ease)}
+.link:hover .arr,.link:focus-visible .arr{transform:translate(2px,-2px)}
+
+/* stickers made from the logo flower */
+.sticker{position:absolute;z-index:3;width:84px;height:84px;display:grid;place-items:center;pointer-events:none}
+.sticker svg{position:absolute;inset:0;width:100%;height:100%;fill:var(--rose);animation:spin 12s linear infinite}
+.sticker span{position:relative;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--cream)}
+.sticker--sun svg{fill:var(--soleil)}
+.sticker--sun span{color:var(--ink)}
+
+/* sizes */
+.sizes{display:flex;flex-wrap:wrap;gap:8px}
+.sizes li{display:grid;place-items:center;min-width:46px;height:38px;padding:0 10px;border:1px solid var(--line);font-family:var(--f-mono);font-size:.75rem;letter-spacing:.04em}
+.sizes li.is-out{color:var(--cream-2);text-decoration:line-through;opacity:.55}
+.buy{display:grid;gap:18px;justify-items:start}
+.buy__row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:540px}
+.motion .hero{height:300vh;height:300svh}
+.hero__stage{position:relative;height:100vh;height:100svh;min-height:540px;overflow:hidden}
+.motion .hero__stage{position:sticky;top:0}
+.hero__svg{position:absolute;inset:0 var(--gutter);width:calc(100% - 2 * var(--gutter));height:100%;display:block;color:var(--cream)}
+.js .hero__svg{inset:0;width:100%}
+.hero__img{visibility:hidden}
+.hero__img.is-on{visibility:visible}
+.hero__photobg{fill:var(--ink)}
+.hero__shade stop{stop-color:var(--ink)}
+.lg-u{stroke:currentColor;stroke-linejoin:round;stroke-opacity:0}
+.hero__count{position:absolute;left:var(--gutter);bottom:max(26px,env(safe-area-inset-bottom,0px));display:none;flex-direction:column;gap:6px}
+.motion .hero__count{display:flex}
+.hero__count b{font-weight:900;font-stretch:125%;font-size:clamp(2.6rem,6vw,5rem);line-height:.9;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.hero__count .mono{color:var(--cream-2)}
+.hero__ui{position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:calc(env(safe-area-inset-top,0px) + 88px) var(--gutter) max(26px,env(safe-area-inset-bottom,0px))}
+.hero__bar{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+.hero__cap{display:flex;align-items:center;gap:.65em;color:var(--cream)}
+.hero__cap .fl{width:14px;height:14px;color:var(--rose)}
+.hero__capkind{color:var(--cream-2)}
+.hero__meta{color:var(--cream-2)}
+.hero__cue{position:absolute;left:50%;bottom:max(26px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:.6em;color:var(--cream);pointer-events:auto}
+.hero__cue .fl{width:14px;height:14px;color:var(--rose);animation:spin 6s linear infinite}
+.hero__statement{display:none}
+.motion .hero__statement{display:block;position:absolute;left:var(--gutter);right:var(--gutter);top:50%;transform:translateY(-50%);text-align:center;opacity:0;color:var(--cream)}
+.hero__statement span{display:block}
+.st-a{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(3rem,10.5vw,10.5rem);line-height:.86;letter-spacing:-.035em}
+.st-b{font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:clamp(2.2rem,6.6vw,6.6rem);line-height:1.05}
+@media (max-width:759px){ .hero__cue{display:none} .hero__bar{flex-direction:column;align-items:flex-start;gap:8px} }
+
+/* ---------- MARQUEE ---------- */
+.marquee{position:relative;overflow:hidden;padding-block:clamp(30px,5vw,64px)}
+.marquee__band{width:116%;margin-left:-8%;background:var(--cream);color:var(--ink);transform:rotate(-2.4deg);padding-block:.55em}
+.marquee__track{display:flex;width:max-content;animation:mq 34s linear infinite}
+.motion .marquee__track{animation:none;will-change:transform}
+.marquee__set{display:flex;align-items:center;gap:.45em;padding-right:.45em;white-space:nowrap;font-weight:900;font-stretch:125%;text-transform:uppercase;
+  font-size:clamp(1.55rem,4.2vw,3.6rem);line-height:1;letter-spacing:-.015em}
+.marquee__set .fl{width:.72em;height:.72em;color:var(--rose)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- MANIFESTO ---------- */
+.mani{display:grid;gap:clamp(36px,5vw,80px)}
+.mani__text{font-size:var(--t-2);line-height:1.1;font-weight:600;letter-spacing:-.02em;max-width:22em;text-wrap:balance}
+.mani__text em{font-family:var(--f-serif);font-style:italic;font-weight:500;letter-spacing:-.01em}
+.mani__side{display:grid;gap:22px;align-content:end;max-width:46ch}
+.mani__side p{color:var(--cream-2)}
+.mani__sign{display:flex;align-items:center;gap:.6em;color:var(--cream)}
+.mani__sign .fl{color:var(--rose);width:16px;height:16px}
+@media (min-width:980px){ .mani{grid-template-columns:minmax(0,8fr) minmax(0,4fr);align-items:end} }
+
+/* ---------- CAPS (horizontal gallery) ---------- */
+.caps{position:relative}
+.caps__pin{position:relative;padding-block:clamp(40px,6vw,80px) 24px}
+.caps__track{display:flex;gap:clamp(16px,2.2vw,36px);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;
+  padding:0 var(--gutter) 28px;scroll-padding-inline:var(--gutter)}
+.caps__track::-webkit-scrollbar{display:none}
+.caps__intro{flex:0 0 auto;width:auto;min-width:min(86vw,520px);display:flex;flex-direction:column;justify-content:flex-end;gap:22px;scroll-snap-align:start;padding-bottom:6px}
+.caps__intro .title__noun{font-size:clamp(2.6rem,11vw,10.5rem)}
+.caps__hint{color:var(--cream-2);display:flex;align-items:center;gap:.6em}
+.card{position:relative;flex:0 0 auto;width:min(76vw,360px);display:flex;flex-direction:column;gap:14px;scroll-snap-align:start}
+.card__media{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:var(--ink-2)}
+.card__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s var(--ease),transform 1.4s var(--ease)}
+.card__img--b{opacity:0;transform:scale(1.1)}
+.card:hover .card__img--a{transform:scale(1.06)}
+.card:hover .card__img--b,.card:focus-within .card__img--b{opacity:1;transform:scale(1)}
+.card .sticker{top:12px;right:12px}
+.card__num{display:flex;justify-content:space-between;color:var(--cream-2)}
+.card__mat{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.02em;color:var(--cream-2)}
+.card__row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
+.caps__end{flex:0 0 auto;width:min(76vw,380px);display:flex;flex-direction:column;justify-content:center;gap:22px;scroll-snap-align:start;padding:24px;border:1px solid var(--line)}
+.caps__end .name{font-size:var(--t-2)}
+.caps__progress{display:none}
+.caps-h .caps__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding-block:0}
+.caps-h .caps__track{overflow:visible;scroll-snap-type:none;width:max-content;align-items:flex-end;padding-bottom:0;will-change:transform}
+.caps-h .card{width:calc(min(60vh, 600px) * .8)}
+.caps-h .caps__intro .title__noun{font-size:min(10.5vw,21vh)}
+.caps-h .caps__progress{display:block;position:absolute;left:var(--gutter);right:var(--gutter);bottom:max(22px,env(safe-area-inset-bottom,0px));height:1px;background:var(--line)}
+.caps__progress span{display:block;height:100%;background:var(--cream);transform-origin:left;transform:scaleX(0)}
+
+/* ---------- JERSEYS ---------- */
+.jerseys{position:relative;overflow:hidden}
+.ghost{position:absolute;top:2%;left:50%;z-index:-1;transform:translateX(-50%);font-family:var(--f-ar);font-size:clamp(14rem,46vw,46rem);line-height:1;
+  color:transparent;-webkit-text-stroke:1.5px var(--line);white-space:nowrap;pointer-events:none;user-select:none}
+.jersey{display:grid;gap:clamp(30px,4vw,72px);align-items:center;margin-bottom:clamp(90px,11vw,170px)}
+.jersey:last-child{margin-bottom:0}
+.jersey__media{position:relative;padding-bottom:14%}
+.jersey__front{width:76%;aspect-ratio:4/5;overflow:hidden;background:var(--ink-2)}
+.jersey__back{position:absolute;right:0;bottom:0;width:45%;aspect-ratio:1;overflow:hidden;background:var(--ink-2);box-shadow:0 30px 70px var(--shadow)}
+.jersey--rev .jersey__front{margin-left:auto}
+.jersey--rev .jersey__back{right:auto;left:0}
+.jersey figcaption{position:absolute;left:12px;bottom:12px;padding:6px 10px;background:var(--ink);color:var(--cream)}
+.fit{width:100%;height:100%;object-fit:cover}
+.jersey__info{display:grid;gap:22px;justify-items:start}
+.jersey__info .name{font-size:var(--t-2)}
+.ar{font-family:var(--f-ar);font-size:1.15em;letter-spacing:0;text-transform:none}
+@media (min-width:900px){
+  .jersey{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+  .jersey--rev{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .jersey--rev .jersey__media{order:2}
+}
+
+/* ---------- MARINIERE ---------- */
+.mari{position:relative;background:var(--bleuet);--line:rgba(236,227,210,.32)}
+.motion .mari{background:transparent}
+.mari__grid{display:grid;gap:clamp(36px,5vw,80px);align-items:start}
+.mari__copy{display:grid;gap:26px;align-content:start}
+.mari__copy .lede{max-width:34ch}
+.mari__collage{position:relative;padding-bottom:22%}
+.mari__a{width:82%;aspect-ratio:1;overflow:hidden}
+.mari__b{position:absolute;right:0;top:18%;width:40%;aspect-ratio:4/5;overflow:hidden;box-shadow:0 30px 70px var(--shadow)}
+.mari__c{position:absolute;left:12%;bottom:0;width:36%;aspect-ratio:1;overflow:hidden;box-shadow:0 30px 70px var(--shadow)}
+.mari .sticker{left:-10px;top:-24px;width:104px;height:104px}
+.mari .sticker span{font-size:11px}
+.mari .sizes li.is-on{border-color:var(--soleil)}
+@media (min-width:980px){ .mari__grid{grid-template-columns:minmax(0,4fr) minmax(0,7fr)} .mari__copy{position:sticky;top:110px} }
+
+/* ---------- WINTER ---------- */
+.winter__grid{display:grid;gap:clamp(40px,5vw,80px)}
+.beast{display:grid;gap:clamp(28px,4vw,64px);align-items:center}
+.beast__stage{position:relative;aspect-ratio:1;max-width:680px;width:100%;margin-inline:auto}
+.beast__float{position:absolute;inset:0}
+.beast__product{width:100%;height:100%;object-fit:contain}
+.beast__stage .sticker{right:6%;top:8%;width:100px;height:100px}
+.beast__info{display:grid;gap:22px;justify-items:start}
+.beast__info .name{font-size:var(--t-2)}
+.beast__portrait{width:min(100%,320px);aspect-ratio:4/5;overflow:hidden}
+.minis{display:grid;gap:clamp(24px,3vw,40px)}
+.mini{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2vw,28px);align-items:end}
+.mini .card__media{aspect-ratio:4/5}
+.mini__info{display:grid;gap:14px;justify-items:start;padding-bottom:4px}
+@media (min-width:980px){
+  .beast{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+  .minis{grid-template-columns:1fr 1fr}
+}
+
+/* ---------- LOOKBOOK ---------- */
+.lb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.lb__item{position:relative;display:block;overflow:hidden;background:var(--ink-2);aspect-ratio:4/5}
+.lb__item img{width:100%;height:100%;object-fit:cover;transition:filter .6s var(--ease)}
+.lb__cap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:28px 12px 10px;
+  background:linear-gradient(to top, rgba(12,11,9,.82), rgba(12,11,9,0));color:var(--cream);font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.lb__wide{grid-column:1 / -1;aspect-ratio:16/9}
+@media (min-width:900px){
+  .lb{grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(14px,1.6vw,26px)}
+  .lb__cap{padding:44px 16px 14px}
+  .lb__cap .arr{transition:transform .45s var(--ease)}
+  .lb__item:hover .lb__cap .arr,.lb__item:focus-visible .lb__cap .arr{transform:translate(3px,-3px)}
+  .lb__1{grid-column:1 / 8}
+  .lb__2{grid-column:9 / 13;margin-top:26%}
+  .lb__3{grid-column:2 / 6;aspect-ratio:1;margin-top:-6%}
+  .lb__4{grid-column:7 / 12;margin-top:12%}
+  .lb__5{grid-column:1 / 5;margin-top:8%;aspect-ratio:3/4}
+  .lb__6{grid-column:6 / 13;margin-top:16%;aspect-ratio:16/9}
+  .lb__7{grid-column:2 / 7;aspect-ratio:1;margin-top:4%}
+  .lb__8{grid-column:8 / 12;margin-top:-4%}
+  .lb__9{grid-column:1 / 6;margin-top:6%}
+  .lb__10{grid-column:7 / 13;margin-top:14%;aspect-ratio:1}
+}
+
+/* ---------- ATELIER ---------- */
+.atelier{position:relative;background:var(--paper);color:var(--paper-ink)}
+.atelier .eyebrow,.atelier .muted{color:var(--paper-ink-2)}
+.atelier .lede{color:var(--paper-ink)}
+.atelier__head{display:grid;gap:22px}
+.atelier__hint{display:flex;align-items:center;gap:.6em;color:var(--paper-ink-2)}
+.atelier__hint svg{width:16px;height:16px}
+@media (max-width:759px){ .atelier__hint{display:none} }
+.board{position:relative;margin-top:clamp(36px,5vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pin{position:relative;margin:0;padding:10px 10px 0;background:var(--paper-2);box-shadow:0 18px 40px rgba(40,30,15,.22),0 2px 6px rgba(40,30,15,.12);
+  transform:translate(var(--dx,0px),var(--dy,0px)) rotate(var(--r,0deg));user-select:none;-webkit-user-select:none}
+.pin::before{content:"";position:absolute;top:-11px;left:50%;width:84px;height:24px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(40,30,15,.12)}
+.pin img{width:100%;height:auto;pointer-events:none;-webkit-user-drag:none}
+.pin figcaption{padding:10px 2px 12px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-ink-2)}
+@media (min-width:760px){
+  .board{display:block;height:clamp(600px,64vw,980px)}
+  .pin{position:absolute;left:var(--x);top:var(--y);width:var(--w);cursor:grab;touch-action:none}
+  .pin.is-drag{cursor:grabbing;box-shadow:0 34px 60px rgba(40,30,15,.28),0 4px 10px rgba(40,30,15,.14)}
+}
+
+/* ---------- SERVICES + FOOTER ---------- */
+.svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.svc li{display:flex;align-items:center;gap:.8em;padding:24px var(--gutter);border-left:1px solid var(--line);font-family:var(--f-mono);font-size:var(--t-label);letter-spacing:.08em;text-transform:uppercase}
+.svc li:nth-child(odd){border-left:0}
+.svc li:nth-child(n+3){border-top:1px solid var(--line)}
+.svc .fl{color:var(--rose);width:14px;height:14px}
+@media (min-width:900px){ .svc{grid-template-columns:repeat(4,minmax(0,1fr))} .svc li{border-left:1px solid var(--line)!important;border-top:0!important} .svc li:first-child{border-left:0!important} }
+.ft{position:relative;padding-top:clamp(90px,12vw,190px)}
+.ft__cta{display:grid;gap:clamp(28px,4vw,48px);justify-items:start}
+.ft__big{font-weight:900;font-stretch:125%;text-transform:uppercase;font-size:clamp(3rem,10.6vw,11rem);line-height:.86;letter-spacing:-.035em}
+.ft__big em{display:block;font-family:var(--f-serif);font-style:italic;font-weight:500;font-stretch:100%;text-transform:none;letter-spacing:-.01em;font-size:.62em;line-height:1.1}
+.ft__cols{display:grid;gap:36px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));margin-top:clamp(64px,8vw,120px)}
+.ft__cols h3{font-family:var(--f-mono);font-size:var(--t-label);font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-2);margin-bottom:16px}
+.ft__cols li{margin-bottom:10px}
+.ft__cols a{display:inline-flex;align-items:center;gap:.5em;font-size:1.05rem}
+.ft__cols a:hover,.ft__cols a:focus-visible{color:var(--soleil)}
+.mail{display:grid;gap:12px;justify-items:start}
+.mail__addr{font-size:1.05rem;user-select:all;word-break:break-all}
+.copy{display:inline-flex;align-items:center;gap:.5em;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.copy:hover,.copy:focus-visible{border-color:var(--cream)}
+.copy svg{width:14px;height:14px}
+.ft__logo{display:block;width:100%;height:auto;margin-top:clamp(64px,8vw,120px);color:var(--cream);fill:currentColor}
+.ft__logo use{stroke:currentColor;stroke-width:2.6;stroke-linejoin:round}
+.ft__legal{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;padding-block:22px max(22px,env(safe-area-inset-bottom,0px));margin-top:clamp(28px,4vw,48px);border-top:1px solid var(--line);color:var(--cream-2)}
+.ft__legal a:hover{color:var(--cream)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+</style>
+<style>
+/* Ajout Maison Dev : petit bandeau discret en haut de page (ne fait pas partie du site FLOWZ).
+   Il défile avec la page ; tant qu'il est visible, l'en-tête fixe de FLOWZ se place juste dessous. */
+.md-bandeau{position:relative;z-index:100;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2px 12px;min-height:38px;padding:4px 16px;background:var(--ink-2);border-bottom:1px solid var(--line);color:var(--cream-2);font:400 14px/1.4 var(--f-display);text-align:center}
+.md-bandeau a{display:inline-flex;align-items:center;gap:6px;min-height:34px;color:var(--cream);text-decoration:underline;text-underline-offset:3px}
+.md-bandeau a:hover{color:#fff}
+.md-bandeau svg{width:15px;height:15px;flex:none}
+.hd{top:var(--md-bandeau,0px)}
+@media (max-width:600px){.md-bandeau{font-size:16px;padding:6px 16px}.md-point{display:none}}
+</style>
+</head>
+<body>
+<div class="md-bandeau" role="note"><span>Site créé par Maison Dev pour FLOWZ</span><span class="md-point" aria-hidden="true">·</span><a href="/#realisations"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.5 10H4M9 4.8 3.8 10 9 15.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>Retour à Maison Dev</a></div>
+<script>(function(){var b=document.querySelector('.md-bandeau'),r=document.documentElement,w=false;function u(){w=false;r.style.setProperty('--md-bandeau',Math.max(0,b.offsetHeight-scrollY)+'px')}addEventListener('scroll',function(){if(!w){w=true;requestAnimationFrame(u)}},{passive:true});addEventListener('resize',u);u()})();</script>
+
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="lg-main" fill-rule="evenodd" pathLength="1000" d="M829.4 637.9C839.6 635.2 841.9 634.4 849 631.1C856.9 627.4 861.8 624.1 868.8 617.5C873.1 613.6 882 602.6 882 601.3C882 601 882.6 599.9 883.4 599.1C888.6 593.1 898.9 567 900.7 555.5C900.9 553.9 901.5 551.6 902 550.5C902.5 549.4 903.1 546.7 903.5 544.5C903.8 542.3 904.5 537.6 905.1 534C907.2 520.5 908.1 509.9 908.8 491.6C909.6 470.9 909.3 471.3 914.8 479.2C916.1 481 919.4 485.6 922.3 489.4C925.2 493.1 928.4 497.5 929.5 499C937.7 510.4 960 532.6 974.4 543.5C990 555.4 1013.9 566.9 1023.2 567C1024.7 567 1026.2 567.5 1026.5 568C1027.4 569.4 1050.8 569.3 1056.7 567.8C1068.9 564.9 1079 560.6 1087.1 555C1100.2 545.9 1102.1 544 1113.3 529.2C1122.9 516.4 1130.9 490.8 1129.7 476.4C1128.3 460.2 1124.9 448.9 1117.3 435.2C1113.3 428 1110 424 1097.5 411.5C1083 397 1072.4 388.7 1058 380.8C1042.7 372.4 1038 370 1034 368.4C1031.5 367.5 1028.7 366 1027.6 365.1C1025.9 363.6 1026 363.5 1030.1 362.8C1032.5 362.3 1038.5 361.6 1043.5 361C1056.2 359.6 1072.1 357 1079.5 355.1C1081.7 354.6 1085.3 353.7 1087.6 353.1C1116.7 345.7 1144.3 328 1156.4 308.8C1165.7 294.1 1169 282.2 1169.7 260.5C1170.4 239.7 1166.2 224.3 1155.9 210.4C1147.6 199.1 1131.4 190.3 1112.5 186.7C1105 185.3 1075.8 185.4 1066.5 186.8C1056.3 188.4 1049 190.3 1037 194.3C1025 198.3 1021.3 199.8 1007.4 206.6C990 215.1 989.4 215 995.9 205.3C998 202.1 1000.5 198.2 1001.4 196.5C1002.3 194.8 1005.1 190.1 1007.6 186C1012.9 177.1 1022.6 157.7 1025.9 149.4C1027.1 146.2 1028.6 142.6 1029.1 141.5C1029.5 140.4 1030.9 136.3 1032 132.5C1033.2 128.7 1034.6 124.4 1035.1 123C1038 114.9 1039.8 88.3 1038 80C1032.9 56.8 1022.8 43.9 1001.5 33.6C989 27.5 988 27.1 982.5 25.8C938.4 15.2 902.4 31 875.9 72.5C868.9 83.5 858 107.6 858 112.2C858 113.1 857.5 114.2 857 114.5C856.5 114.8 856 116.2 856 117.5C856 118.8 855.5 120.2 855 120.5C854.5 120.8 854 122.4 854 124C854 125.6 853.6 127.1 853.1 127.4C852.6 127.7 852 129.2 851.7 130.7C851.4 132.3 850.6 135.5 850 138C848.2 145.4 846.9 151.2 846.2 155.9C845.8 158.4 845 160.5 844.4 160.7C843.3 161.1 843.2 160.9 838 149C836.2 144.9 834.2 140.4 833.6 139C831.4 134.1 817.7 110.5 815.9 108.4C814.8 107.3 814 105.9 814 105.3C814 104.8 813.1 103.5 812 102.5C810.9 101.5 810 100.3 810 99.7C810 95.8 774.1 60 770.1 60C769.6 60 768.7 59.3 768 58.5C766.6 56.9 752.2 49.8 746.9 48.2C745 47.6 741.9 46.7 739.9 46.1C735.2 44.7 709.6 44.7 705.1 46.1C691.2 50.5 685.7 53 676.6 59C666.4 65.8 656.2 75.5 650.2 84.1C643.8 93.6 637.4 109.1 635.7 119.5C634 130.1 634.9 154.2 637.1 156.5C637.6 157 638 158.6 638 160.1C638 161.6 638.5 163.2 639 163.5C639.5 163.8 640 165.2 640 166.5C640 167.8 640.5 169.2 641 169.5C641.5 169.8 642 170.9 642 171.8C642 176.1 656.3 203.8 663.3 213C664.3 214.4 667.3 218.3 669.8 221.7C677.5 231.7 688.4 244.2 693.8 249C696.5 251.5 702.4 256.6 706.9 260.5C715.3 267.8 715.5 269.1 707.6 267.1C701.4 265.6 667.5 264.9 650.5 266C632.5 267.2 624.9 268.2 608.5 271.9C595.7 274.7 577.4 281.8 567.5 287.8C537.4 305.8 523.5 330.4 523.5 365C523.6 386 528.6 403.5 539 418.4C544.9 426.9 564.1 444 570.5 446.4C573.6 447.5 568 449.2 558.4 450C545.9 451 532.2 452.6 523.5 454C498.2 457.9 477.2 461.9 459.5 466C457.3 466.5 449.4 468.3 442 470.1C434.6 471.8 424.6 474.3 419.9 475.6C415.2 476.9 408.9 478.6 405.9 479.4C400 481 394.5 482.7 374 489C358.1 493.8 352.4 494.5 352.6 491.5C353 484.8 373.8 400 386 355.5C386.5 353.9 388.2 347.1 390 340.5C391.7 333.9 394 325.6 395 322C396.1 318.4 398.1 311 399.6 305.5C401 300 402.5 294.1 403 292.5C403.5 290.9 405 285.2 406.4 279.8C407.8 274.5 410.3 265.3 412.1 259.3C413.8 253.4 416 245.3 417 241.5C417.9 237.7 420.3 228.7 422.3 221.5C425.4 209.9 428.3 197.8 434.2 171C439.6 146.3 441.5 130.1 440 122C438.6 114.9 435.3 107.5 432.3 104.8C426.7 99.7 415.4 97.6 408.7 100.4C403.9 102.4 400.8 106.6 394 120.5C388.5 131.8 386 135.3 386 131.7C386 129.2 381 123.2 376.4 120.1C373.7 118.4 368.7 116.1 365.1 115.1C351.7 111.3 344.6 110.7 315.4 111.4C289.1 111.9 278 112.6 253 114.9C226.6 117.4 220.6 118 207 120.1C198.6 121.3 184.3 122.5 173 122.9C157.2 123.4 153 123.8 151 125.2C147 127.9 140.7 129.6 119 134C93.2 139.2 91.2 140.1 85.7 148.8C76.7 163 74.7 170.1 77.3 179.1C80.6 190.3 87.7 198 94.8 198C97 198 98.9 198.8 100.6 200.5C102.9 202.8 103.7 203 108.1 202.4C114.9 201.5 115 200.9 106 226C99.6 243.9 99.5 244.5 92.7 266.5C83.4 296.8 81.1 304.2 79.4 311C77.4 318.8 75.6 322.5 73.5 323.4C72.6 323.7 67.9 324.3 63.2 324.6C48 325.6 42.8 328.8 34.4 341.7C23.8 358.2 21.6 363.5 21.5 372.5C21.5 378.3 22.1 382.4 23.8 387.4C26.6 395.7 30 403.2 31.4 404.2C32 404.6 37.6 405 43.8 405C53.3 405 55.2 405.3 55.7 406.6C56.3 408.2 55.3 421.2 53 445C51.8 456.9 50.2 475.7 48.9 492C45.3 540.2 44.1 581.7 46 591.4C47.6 599.3 51.1 605.3 56.2 609C61.5 612.8 64.6 612.8 70.6 608.8C75.8 605.3 77 602.9 79.2 592.5C79.7 589.8 80.6 585.9 81 584C82.8 575.8 85.2 563.4 87.9 548.5C89.3 540.6 95.7 507 97.1 500C98.5 492.7 100.4 484.2 103 472.8C103.5 470.4 104.9 464.2 106.1 459C110.6 439.1 117.2 412.2 119.2 405.8C121.5 398.2 121.7 398.1 134.5 396C143.9 394.5 152.4 393.1 158.5 392C161.2 391.5 166.7 390.6 170.5 390C174.3 389.4 187.2 387.4 199 385.5C210.8 383.6 223.9 381.6 228 381C232.1 380.4 237.3 379.5 239.5 379C241.7 378.5 246.9 377.7 251 377C266.9 374.7 271.8 373.8 280 371.8C291.6 369 295.4 366.9 298.5 361.7C305.4 349.9 297.2 334.6 282.7 332.2C273.1 330.5 254.8 329.2 227.5 328C151.3 324.8 147.2 324.6 144.5 322.6C142.9 321.4 143 320.6 146 309.4C147.7 302.9 149.5 296.4 150 295C150.4 293.6 151.3 290.7 151.9 288.5C152.5 286.3 153.8 281.6 154.9 278C156.8 271.6 159.5 261.8 167.2 232.5C169.4 224.2 171.6 216.2 172 214.5C173.8 208.2 175.1 203.4 176.1 199.8C176.6 197.7 177.7 194.3 178.6 192.1C180.3 187.7 182.7 186.6 195.5 184C198.8 183.3 202.8 182.4 204.5 182C206.2 181.5 212.7 180.2 219 179.1C225.3 177.9 231.4 176.7 232.5 176.5C234.2 176 274.4 168.7 295.5 165C303.8 163.5 310.5 162.3 317 161.1C320 160.6 325.8 159.8 329.8 159.5C340.6 158.5 339.7 159.7 319.8 172.1C313.8 175.9 308.8 179 308.6 179C308.5 179 303.7 181.6 297.9 184.8C277 196.5 275.7 197.8 278.4 204.3C281.1 210.8 285.9 210.5 304.3 202.6C333.6 190 360.1 176.4 370.7 168.3C372.4 167 374.1 166.3 374.4 166.8C374.7 167.4 370.8 180.8 365.6 196.6C356.3 225.2 350.9 242.2 349 249C348.5 250.9 346.3 258.6 344.1 266C341.9 273.4 339.2 283.1 338 287.5C336.8 291.9 335.4 296.9 335 298.5C334.5 300.1 332.5 307.6 330.5 315C328.5 322.4 324.9 335.7 322.5 344.5C320 353.3 317.5 362.3 316.9 364.5C316.3 366.7 315.4 369.6 314.9 371C314.1 373.5 307.4 396.6 303.9 409C284.7 478.1 269.4 525.3 260.9 542C252.2 559.2 251.3 567.7 256.7 583.9C260.9 596.8 269.4 606 283.1 612.5C293.2 617.3 299.9 618.4 310.1 617C319.6 615.7 327.1 612.9 351 601.5C372 591.6 377.8 589 398 581C406.5 577.6 414.4 574.5 415.5 574C416.6 573.5 425.4 570.1 435 566.4C444.6 562.8 458.1 557.6 465 555C471.9 552.3 486.5 546.7 497.5 542.5C508.5 538.3 528.3 530.7 541.5 525.5C578.3 511.2 585.7 508.5 596.4 505.1C613.6 499.7 622.9 493.9 626.4 486.5C627.9 483.4 628 482.1 627 477.2C625.3 468.9 625.2 468.5 621.9 464.4C619.7 461.6 619.3 460.5 620.2 459.8C620.9 459.4 627.5 459 634.7 459C648.9 459 655.6 458.2 674.4 454.3C686 451.9 702.7 447 706.2 445C707.2 444.4 708.4 444 709 444C709.6 444 713.2 442.4 717.1 440.5C723.8 437.2 727 436.3 727 437.5C727 437.8 726.1 440 725 442.2C723.9 444.5 723 447.1 723 448C723 448.9 722.6 450 722.1 450.6C721.3 451.5 715.1 470.1 712.9 478.5C712.3 480.7 711.4 483.9 710.9 485.6C710.4 487.3 710 490 710 491.6C710 493.3 709.6 495 709.1 495.5C708.6 496.1 707.9 499 707.6 502C707.3 505 706.5 511.8 705.9 517C704.4 529.1 704.4 541.2 705.8 552C707.2 562.8 708.1 567.2 711.6 579C712.9 583.4 721.8 600.4 724.2 603C725.5 604.4 727.8 607.1 729.4 609C737.4 618.9 755.3 629.9 770 633.9C772.5 634.6 775.9 635.6 777.6 636.1C779.3 636.6 782 637 783.6 637.1C785.2 637.1 787.4 637.5 788.5 638C791.4 639.3 824.5 639.2 829.4 637.9ZM792.5 619.4C784.3 618.5 768.5 613.9 761.5 610.3C757 607.9 746.9 601.1 743.6 598.1C741 595.7 733.9 585.6 731.1 580.1C728.7 575.6 725 564.5 725 561.8C725 560.3 724.6 558.9 724.1 558.6C723.7 558.3 723 553.4 722.6 547.8C721.8 534.9 721.7 536.7 722.9 522.5C724 508.6 725.2 501.8 728.9 486.5C731.3 476.3 738.6 454.4 740.6 451.3C741.4 450.1 742 448.6 742 448C742 444.1 757.7 415.4 760.8 413.6C763.9 411.8 771.2 404.5 772.6 401.9C776.6 394 771.9 386 763.4 386C757.6 386 753 388.4 744.5 396.2C737.2 402.8 730.6 408 729.5 408C729.1 408 727.5 408.9 725.9 410.1C722.3 412.6 703.1 422.5 699.9 423.5C698.6 423.9 696.1 424.8 694.5 425.5C691.2 427 683.1 429.8 678.5 431.1C676.9 431.5 673.7 432.4 671.5 433C645.7 440.3 608.8 440.8 592.5 433.9C591.4 433.5 588.2 432.4 585.5 431.5C566.3 425.3 547.6 404.6 542.2 383.5C538.5 369.2 538.8 358.1 543.2 344.5C545.8 336.6 546.7 334.7 551.9 327C557.6 318.6 559.4 316.6 565.9 311.6C589.7 293.4 618.4 285.7 662.5 285.7C692.4 285.8 718 288.8 748.7 295.9C753.8 297 761.1 298 765 298C771.9 298 772.1 297.9 774 294.8C778 288.2 776.2 283.1 768.3 278.4C765.6 276.9 763.3 275.4 763 275.1C762.7 274.8 759.4 273 755.6 271.1C748.7 267.8 739.1 261.8 731.5 256C729.3 254.4 726.4 252.2 724.9 251.3C717 245.8 690.5 220.4 683.4 211.4C680.3 207.5 672.4 196.3 670.5 193.2C663.4 181.4 658.7 170.9 656.1 161C655.4 158.5 654.4 155.1 653.9 153.4C652.7 149.2 652.7 119.3 654 118.5C654.5 118.2 655 116.8 655 115.5C655 114.2 655.5 112.8 656 112.5C656.5 112.2 657 111 657 110C657 108.1 658.6 104.8 662.6 98.5C672.2 83.2 685.2 73 701.8 67.8C709.4 65.4 725 64.9 733.3 66.9C739 68.2 750.4 73.5 757.5 78.1C763.2 81.8 782 99.7 785.6 105C786.9 106.9 789.6 110.5 791.4 113C793.3 115.5 794.9 118 794.9 118.6C795 119.2 795.7 120.3 796.5 121C797.8 122.1 814.4 154.7 817.1 161.5C820 168.7 825.4 185.8 827.1 193C831 209.9 830.9 209.3 833 222C834.8 233.2 835.3 234.6 838.4 237.8C841.3 241 841.9 241.1 846.7 240.8C856.8 240 858 236.8 858.1 211C858.1 189.1 858.8 182.6 863.1 159.2C863.6 156.1 864.4 151.8 864.7 149.7C865 147.7 865.6 145.7 866.1 145.4C866.6 145.1 867 143.9 867 142.8C867 140.8 868 136.9 870 131.5C870.4 130.4 872.1 125.2 873.9 119.8C879.5 102.8 887.3 87.7 898.6 72C902.1 67.1 911.2 58 912.6 58C913.2 58 914.5 57.1 915.5 56C922.1 48.8 942.2 42.4 955.5 43.3C969.2 44.3 984.6 48.7 993.2 54.3C1003.2 60.7 1011.6 72.1 1013.5 82C1014.8 88.7 1015.2 102.2 1014.1 103.3C1013.5 103.9 1013 106.5 1013 109.1C1013 111.7 1012.5 114.2 1012 114.5C1011.5 114.8 1011 116 1011 117.1C1011 125.9 993 165.4 980.8 183.2C979.8 184.7 979 186.1 979 186.4C979 186.8 973 196 964.3 209C959.1 216.6 939.8 241.9 937.5 244C934.7 246.6 929.5 253.6 927.3 257.9C925 262.2 925.7 268.4 928.8 271.8C935 278.4 939.8 277.1 952 265.5C956.7 261.1 962.3 256.1 964.5 254.4C969.7 250.6 974.5 247.4 975.6 246.9C976.1 246.7 980.5 243.8 985.5 240.6C998.1 232.3 1015.6 223.3 1033.5 216C1035.4 215.2 1044.7 212.1 1051.5 210C1071.4 204 1103.1 203.7 1116 209.6C1136.5 219 1146 234.2 1146 257.8C1146 263.4 1145.4 270.3 1144.6 273.2C1142.7 280.2 1140 288.3 1139 289.5C1138.6 290.1 1137 292.8 1135.5 295.5C1128.7 308 1111.2 321.7 1092.9 328.8C1078.3 334.5 1064.6 337.7 1044.5 340.1C1030.4 341.8 964.9 342.4 956.8 340.9C949.2 339.5 945.2 340.5 942.5 344.6C940.6 347.5 940.6 354.9 942.4 357.3C943.7 359 957.9 365 960.6 365C961.2 365 965.3 366.1 969.6 367.5C974 368.8 979.1 370.5 981 371C982.9 371.6 985.4 372.5 986.5 373C987.6 373.5 991.4 374.8 995 376C998.6 377.2 1003.3 379 1005.5 380C1007.7 380.9 1010.6 382.1 1011.9 382.5C1015.1 383.5 1039 395.1 1046 399C1075.4 415.6 1096.1 438.4 1102.9 461.5C1104.9 468.1 1103.7 492.5 1101.1 499.5C1089 531.9 1061.7 551.4 1033.1 548C1009.6 545.1 986.2 532.1 963 509C957.2 503.2 950.2 495.8 947.5 492.5C944.7 489.2 942.3 486.3 942 486C941.5 485.6 934 475.6 927.3 466.5C926.1 464.9 924.6 462.5 924.1 461.3C923.6 460.2 922.7 458.9 922.2 458.6C921.6 458.3 919.5 454.7 917.4 450.8C915.4 446.8 912.7 441.9 911.5 440C910.3 438.1 908.6 433.9 907.6 430.7C905.3 423.3 903.1 421.8 895.4 422.2C890.2 422.5 889.4 422.8 886.9 426L884 429.6L883.6 474C883.1 526.2 882.3 535.9 875.9 557.9C874.2 563.6 872.5 569 872 569.9C871.6 570.8 870.2 573.8 868.9 576.5C864.3 586.3 860.6 591.6 852.6 599.8C845.8 606.8 843 608.9 835.5 612.5C830.5 614.8 824.4 617.3 821.8 617.9C816.5 619.1 798.7 620 792.5 619.4Z"/>
+    <path id="lg-wz" pathLength="1000" d="M1441.3 620.1C1451.8 616.7 1459.4 609.8 1469.4 594.6C1476.9 583.3 1483.8 570.1 1518.8 500C1548.1 441.5 1559.6 418.1 1576.3 383C1586.2 362.3 1606 322.4 1616.5 302C1621.2 292.9 1625 284.8 1625.1 284C1625.2 282.9 1625.3 282.9 1625.7 284.2C1625.9 285.1 1625.7 286.7 1625.2 287.7C1624.6 288.7 1622.9 294 1621.4 299.5C1619 308.5 1618.7 311.2 1618.7 325.5C1618.6 339.9 1618.9 342.5 1621.4 351.5C1630.9 385.7 1643.8 399.2 1658.3 390C1665.3 385.6 1665.9 383.4 1662.6 375.9C1656.5 362.5 1652.9 346.2 1652.8 332.5C1652.7 322.6 1653 320.9 1655.3 315.8C1658.8 308.3 1663.4 302.3 1673.9 291.7C1706 258.8 1756 230.2 1811.8 212.9C1832.8 206.4 1855.9 201.2 1858 202.5C1860.1 203.8 1848.3 220.5 1828.6 243.9C1824.7 248.5 1820.2 253.9 1818.5 255.9C1807.2 269.7 1767.7 313.4 1757 324C1742.9 338.1 1720.8 358.1 1692.6 382.3C1683.7 390 1675.4 397.2 1674 398.4C1671.9 400.2 1649.9 418.3 1639 427.1C1614.2 447.3 1591.4 463.8 1569.6 477.4C1550.1 489.6 1541.7 502.3 1540.3 521.6C1538.9 540.7 1547.2 557.2 1562.3 565.2C1568.3 568.4 1582.5 568.2 1597.1 564.7C1611.2 561.3 1657.2 548.1 1686.5 539.1C1689.8 538.1 1694.5 536.7 1697 536C1699.5 535.3 1702.6 534.4 1704 533.9C1720.3 528.3 1807.1 504.9 1826.5 500.8C1829.2 500.3 1833.1 499.4 1835 499C1845.6 496.6 1861.5 493.6 1882.7 490C1910.5 485.3 1917.2 483.4 1926 477.5C1945 464.8 1952.3 450.2 1952.4 424.5C1952.4 403.2 1948.2 390.9 1937.3 381C1925.5 370.2 1913 369.5 1887 378.3C1880.7 380.5 1856.2 387.4 1846 390C1841.3 391.2 1833 393.2 1827.5 394.6C1822 395.9 1813.5 398.1 1808.5 399.5C1798.7 402.1 1764.4 410.4 1754 412.6C1746.7 414.2 1743 414.4 1743 413.2C1743 411.8 1753.2 400.5 1768.3 385C1833.6 318.3 1876.6 267.1 1900.8 227.7C1919 198 1920.2 172.1 1904.3 156.2C1896.5 148.4 1890.1 147.9 1857 152.1C1846.2 153.5 1822.8 158.9 1804.6 164.1C1774.8 172.7 1758.4 178.8 1734.5 190.5C1712.2 201.3 1699.2 209 1683 220.9C1678.3 224.3 1660.3 239.7 1656.5 243.5C1649 251.1 1634 269.1 1634 270.7C1634 271.1 1633.2 272.4 1632.3 273.5C1626.7 280.6 1635.9 261.4 1675 184.5C1701.9 131.7 1705.8 122.5 1711.5 100.2C1714.6 88 1714.6 80.8 1711.5 70.1C1708.1 58.6 1703.3 50.4 1695.6 43.3C1688 36.1 1681.2 32.6 1671 30.4C1649.8 25.9 1635.2 34.7 1619.3 61.5C1615.2 68.3 1610.5 77.9 1592.5 116C1587.7 126.2 1577.8 146.9 1570.5 162C1563.2 177.1 1552.9 198.5 1547.7 209.5C1542.5 220.5 1536.2 233.8 1533.7 239C1531.2 244.2 1525.5 256.4 1521 266C1507.6 294.4 1504.7 300.6 1495.5 319.5C1482.2 346.9 1470.8 371.4 1456.5 403.5C1448.5 421.3 1435.2 447.6 1433.3 449.2C1432.6 449.8 1431.6 450 1431.2 449.5C1429.8 448.1 1431.3 386.3 1434 337.3C1435.5 310.1 1435.3 274.8 1433.5 264.4C1430.7 248.4 1424.4 238.8 1412.6 232.7C1407.2 229.9 1405.6 229.5 1398 229.5C1390 229.5 1389.2 229.7 1384.8 232.7C1378.3 237.3 1370.9 245.9 1363.7 257.3C1356.2 269.1 1338.3 296.8 1319.3 326C1311.6 337.8 1303.4 350.6 1301.1 354.5C1290.2 372.2 1284.7 381.5 1277 395C1261.1 422.8 1255 432.8 1253.4 433.4C1252.3 433.8 1252 433.5 1252.4 432.2C1252.7 431.3 1253.4 426.9 1254 422.5C1256.3 405.4 1259.6 386 1262 374.5C1262.5 372.3 1263.4 367.6 1264 364C1265.7 354.7 1275.9 307.6 1277.7 301C1279.3 295 1280.6 290.1 1281.6 285.5C1283 279.2 1287.4 262.8 1292.9 243C1301.4 213.2 1301.4 213.1 1301.4 206C1301.5 193.6 1292.8 183.8 1278.2 180C1261.2 175.6 1246.3 192.4 1230.8 233C1228.6 238.8 1226.5 244.4 1226 245.5C1223.9 250.2 1213 287.4 1210 300C1209.5 301.9 1208 308.2 1206.6 314C1200.9 337.7 1195.9 362 1192.9 380.5C1192.4 383.8 1191.5 389.2 1190.9 392.5C1179.1 462.9 1176.3 542 1184.5 573.8C1187.5 585.6 1200.7 600.9 1211.3 604.8C1219 607.7 1229 607.7 1236.7 604.9C1248.6 600.4 1254.1 591.7 1269.5 553.5C1273.7 543 1277.8 533.1 1278.5 531.5C1303.5 475.8 1316.8 448.4 1335.5 414.5C1345.9 395.7 1365.7 364 1367.1 364C1368.1 364 1367.5 389.4 1365.9 410.4C1364.7 428 1364.7 498 1366 511C1370 550.3 1377.6 585.1 1384.8 596.4C1396.6 615.1 1423 626.2 1441.3 620.1Z"/>
+    <path id="lg-centre" fill-rule="evenodd" pathLength="1000" d="M864.4 404.9C878.6 401.3 882.6 399.6 892.5 393.2C902.1 387 912.8 374 916.6 363.9C917.5 361.5 918.6 358.6 919 357.5C921.2 352.3 921.9 336.9 920.3 328.5C917 311.3 906.4 296.3 892 288.1C881.7 282.3 875.3 280.5 862 279.5C841.7 278 817.9 286.5 803.6 300.5C792.8 311 788.4 320.8 787.4 336.5C785.5 364.7 806.1 394.8 832.7 402.6C835.9 403.5 839.6 404.6 841 405.1C844.7 406.2 859.7 406.2 864.4 404.9ZM849 385C848.2 384.5 846.7 384 845.8 384C844.2 384 838.3 381.5 832.9 378.5C826.9 375.1 814 357.1 814 352C814 350.9 813.5 349.8 813 349.5C812.4 349.2 812 344.7 812 339.6C812 332.2 812.4 329.5 814.1 325.9C817.5 319 820.6 314.9 824.2 312.8C831.3 308.4 839.8 304.3 842.6 303.7C844.2 303.4 847.3 302.6 849.5 301.9C854.4 300.4 870.1 300.2 875.2 301.7C881.3 303.5 888.2 307.2 892.3 310.9C898.6 316.6 904.2 330.1 904.1 339.5C904.1 343.7 901.4 354.9 899.5 358.5C896 365.3 886.7 376 884.4 376C883.8 376 882.7 376.7 882 377.5C877.5 383 854 388.3 849 385Z"/>
+    <path id="lg-win" d="M792.5 619.4C784.3 618.5 768.5 613.9 761.5 610.3C757 607.9 746.9 601.1 743.6 598.1C741 595.7 733.9 585.6 731.1 580.1C728.7 575.6 725 564.5 725 561.8C725 560.3 724.6 558.9 724.1 558.6C723.7 558.3 723 553.4 722.6 547.8C721.8 534.9 721.7 536.7 722.9 522.5C724 508.6 725.2 501.8 728.9 486.5C731.3 476.3 738.6 454.4 740.6 451.3C741.4 450.1 742 448.6 742 448C742 444.1 757.7 415.4 760.8 413.6C763.9 411.8 771.2 404.5 772.6 401.9C776.6 394 771.9 386 763.4 386C757.6 386 753 388.4 744.5 396.2C737.2 402.8 730.6 408 729.5 408C729.1 408 727.5 408.9 725.9 410.1C722.3 412.6 703.1 422.5 699.9 423.5C698.6 423.9 696.1 424.8 694.5 425.5C691.2 427 683.1 429.8 678.5 431.1C676.9 431.5 673.7 432.4 671.5 433C645.7 440.3 608.8 440.8 592.5 433.9C591.4 433.5 588.2 432.4 585.5 431.5C566.3 425.3 547.6 404.6 542.2 383.5C538.5 369.2 538.8 358.1 543.2 344.5C545.8 336.6 546.7 334.7 551.9 327C557.6 318.6 559.4 316.6 565.9 311.6C589.7 293.4 618.4 285.7 662.5 285.7C692.4 285.8 718 288.8 748.7 295.9C753.8 297 761.1 298 765 298C771.9 298 772.1 297.9 774 294.8C778 288.2 776.2 283.1 768.3 278.4C765.6 276.9 763.3 275.4 763 275.1C762.7 274.8 759.4 273 755.6 271.1C748.7 267.8 739.1 261.8 731.5 256C729.3 254.4 726.4 252.2 724.9 251.3C717 245.8 690.5 220.4 683.4 211.4C680.3 207.5 672.4 196.3 670.5 193.2C663.4 181.4 658.7 170.9 656.1 161C655.4 158.5 654.4 155.1 653.9 153.4C652.7 149.2 652.7 119.3 654 118.5C654.5 118.2 655 116.8 655 115.5C655 114.2 655.5 112.8 656 112.5C656.5 112.2 657 111 657 110C657 108.1 658.6 104.8 662.6 98.5C672.2 83.2 685.2 73 701.8 67.8C709.4 65.4 725 64.9 733.3 66.9C739 68.2 750.4 73.5 757.5 78.1C763.2 81.8 782 99.7 785.6 105C786.9 106.9 789.6 110.5 791.4 113C793.3 115.5 794.9 118 794.9 118.6C795 119.2 795.7 120.3 796.5 121C797.8 122.1 814.4 154.7 817.1 161.5C820 168.7 825.4 185.8 827.1 193C831 209.9 830.9 209.3 833 222C834.8 233.2 835.3 234.6 838.4 237.8C841.3 241 841.9 241.1 846.7 240.8C856.8 240 858 236.8 858.1 211C858.1 189.1 858.8 182.6 863.1 159.2C863.6 156.1 864.4 151.8 864.7 149.7C865 147.7 865.6 145.7 866.1 145.4C866.6 145.1 867 143.9 867 142.8C867 140.8 868 136.9 870 131.5C870.4 130.4 872.1 125.2 873.9 119.8C879.5 102.8 887.3 87.7 898.6 72C902.1 67.1 911.2 58 912.6 58C913.2 58 914.5 57.1 915.5 56C922.1 48.8 942.2 42.4 955.5 43.3C969.2 44.3 984.6 48.7 993.2 54.3C1003.2 60.7 1011.6 72.1 1013.5 82C1014.8 88.7 1015.2 102.2 1014.1 103.3C1013.5 103.9 1013 106.5 1013 109.1C1013 111.7 1012.5 114.2 1012 114.5C1011.5 114.8 1011 116 1011 117.1C1011 125.9 993 165.4 980.8 183.2C979.8 184.7 979 186.1 979 186.4C979 186.8 973 196 964.3 209C959.1 216.6 939.8 241.9 937.5 244C934.7 246.6 929.5 253.6 927.3 257.9C925 262.2 925.7 268.4 928.8 271.8C935 278.4 939.8 277.1 952 265.5C956.7 261.1 962.3 256.1 964.5 254.4C969.7 250.6 974.5 247.4 975.6 246.9C976.1 246.7 980.5 243.8 985.5 240.6C998.1 232.3 1015.6 223.3 1033.5 216C1035.4 215.2 1044.7 212.1 1051.5 210C1071.4 204 1103.1 203.7 1116 209.6C1136.5 219 1146 234.2 1146 257.8C1146 263.4 1145.4 270.3 1144.6 273.2C1142.7 280.2 1140 288.3 1139 289.5C1138.6 290.1 1137 292.8 1135.5 295.5C1128.7 308 1111.2 321.7 1092.9 328.8C1078.3 334.5 1064.6 337.7 1044.5 340.1C1030.4 341.8 964.9 342.4 956.8 340.9C949.2 339.5 945.2 340.5 942.5 344.6C940.6 347.5 940.6 354.9 942.4 357.3C943.7 359 957.9 365 960.6 365C961.2 365 965.3 366.1 969.6 367.5C974 368.8 979.1 370.5 981 371C982.9 371.6 985.4 372.5 986.5 373C987.6 373.5 991.4 374.8 995 376C998.6 377.2 1003.3 379 1005.5 380C1007.7 380.9 1010.6 382.1 1011.9 382.5C1015.1 383.5 1039 395.1 1046 399C1075.4 415.6 1096.1 438.4 1102.9 461.5C1104.9 468.1 1103.7 492.5 1101.1 499.5C1089 531.9 1061.7 551.4 1033.1 548C1009.6 545.1 986.2 532.1 963 509C957.2 503.2 950.2 495.8 947.5 492.5C944.7 489.2 942.3 486.3 942 486C941.5 485.6 934 475.6 927.3 466.5C926.1 464.9 924.6 462.5 924.1 461.3C923.6 460.2 922.7 458.9 922.2 458.6C921.6 458.3 919.5 454.7 917.4 450.8C915.4 446.8 912.7 441.9 911.5 440C910.3 438.1 908.6 433.9 907.6 430.7C905.3 423.3 903.1 421.8 895.4 422.2C890.2 422.5 889.4 422.8 886.9 426L884 429.6L883.6 474C883.1 526.2 882.3 535.9 875.9 557.9C874.2 563.6 872.5 569 872 569.9C871.6 570.8 870.2 573.8 868.9 576.5C864.3 586.3 860.6 591.6 852.6 599.8C845.8 606.8 843 608.9 835.5 612.5C830.5 614.8 824.4 617.3 821.8 617.9C816.5 619.1 798.7 620 792.5 619.4Z"/>
+    <symbol id="fz-flower" viewBox="0 0 100 100"><path fill-rule="evenodd" d="M41.7 97.5C40.3 97.4 37.7 96.6 36.6 96.0C35.8 95.6 34.2 94.5 33.6 94.0C33.2 93.6 32.0 91.9 31.6 91.0C31.2 90.3 30.6 88.4 30.6 88.0C30.6 87.8 30.5 87.5 30.4 87.5C30.3 87.4 30.2 86.6 30.2 85.7C30.0 83.6 30.0 83.9 30.2 81.5C30.4 79.2 30.6 78.1 31.2 75.6C31.6 73.9 32.8 70.3 33.1 69.8C33.3 69.6 33.4 69.3 33.4 69.2C33.4 68.6 36.0 63.9 36.5 63.6C37.0 63.3 38.2 62.1 38.4 61.6C39.1 60.3 38.3 59.0 36.9 59.0C35.9 59.0 35.2 59.4 33.8 60.7C32.6 61.8 31.5 62.6 31.3 62.6C31.2 62.6 31.0 62.8 30.7 63.0C30.1 63.4 27.0 65.0 26.4 65.2C26.2 65.3 25.8 65.4 25.5 65.5C25.0 65.8 23.7 66.2 22.9 66.4C22.6 66.5 22.1 66.7 21.7 66.8C17.5 68.0 11.4 68.0 8.7 66.9C8.5 66.8 8.0 66.7 7.6 66.5C4.4 65.5 1.3 62.1 0.4 58.6C-0.2 56.2 -0.1 54.4 0.6 52.2C1.0 50.9 1.2 50.5 2.0 49.3C3.0 47.9 3.3 47.6 4.3 46.7C8.2 43.7 13.0 42.5 20.3 42.5C25.2 42.5 29.4 43.0 34.5 44.1C35.3 44.3 36.5 44.5 37.2 44.5C38.3 44.5 38.3 44.5 38.6 44.0C39.3 42.9 39.0 42.0 37.7 41.3C37.3 41.0 36.9 40.8 36.8 40.7C36.8 40.7 36.2 40.4 35.6 40.1C34.5 39.5 32.9 38.5 31.6 37.6C31.3 37.3 30.8 36.9 30.5 36.8C29.2 35.9 24.9 31.7 23.7 30.2C23.2 29.6 21.9 27.7 21.6 27.2C20.4 25.3 19.6 23.5 19.2 21.9C19.1 21.5 18.9 20.9 18.8 20.6C18.6 19.9 18.6 15.0 18.9 14.9C18.9 14.8 19.0 14.6 19.0 14.4C19.0 14.2 19.1 13.9 19.2 13.9C19.3 13.8 19.3 13.6 19.3 13.5C19.3 13.2 19.6 12.6 20.3 11.6C21.9 9.1 24.0 7.4 26.7 6.5C28.0 6.1 30.6 6.0 31.9 6.4C32.9 6.6 34.8 7.5 35.9 8.2C36.9 8.8 40.0 11.8 40.6 12.7C40.8 13.0 41.2 13.6 41.5 14.0C41.8 14.4 42.1 14.8 42.1 14.9C42.1 15.0 42.2 15.2 42.4 15.3C42.6 15.5 45.3 20.9 45.8 22.0C46.2 23.2 47.1 26.0 47.4 27.2C48.0 30.0 48.0 29.9 48.4 32.0C48.7 33.8 48.8 34.0 49.3 34.6C49.7 35.1 49.8 35.1 50.6 35.1C52.3 34.9 52.5 34.4 52.5 30.1C52.5 26.5 52.6 25.5 53.3 21.6C53.4 21.1 53.6 20.4 53.6 20.0C53.7 19.7 53.8 19.4 53.8 19.3C53.9 19.3 54.0 19.1 54.0 18.9C54.0 18.6 54.1 17.9 54.5 17.0C54.5 16.8 54.8 16.0 55.1 15.1C56.0 12.3 57.3 9.8 59.2 7.2C59.8 6.4 61.3 4.9 61.5 4.9C61.6 4.9 61.8 4.8 62.0 4.6C63.1 3.4 66.4 2.3 68.6 2.5C70.8 2.6 73.4 3.4 74.8 4.3C76.4 5.4 77.8 7.2 78.1 8.9C78.4 10.0 78.4 12.2 78.2 12.4C78.1 12.5 78.1 12.9 78.1 13.3C78.1 13.8 78.0 14.2 77.9 14.2C77.8 14.3 77.7 14.5 77.7 14.7C77.7 16.1 74.8 22.6 72.8 25.6C72.6 25.8 72.5 26.0 72.5 26.1C72.5 26.1 71.5 27.7 70.0 29.8C69.2 31.1 66.0 35.2 65.6 35.6C65.1 36.0 64.3 37.2 63.9 37.9C63.5 38.6 63.7 39.6 64.2 40.2C65.2 41.3 66.0 41.0 68.0 39.1C68.8 38.4 69.7 37.6 70.1 37.3C70.9 36.7 71.7 36.1 71.9 36.1C72.0 36.0 72.7 35.6 73.5 35.0C75.6 33.7 78.5 32.2 81.4 31.0C81.8 30.8 83.3 30.3 84.4 30.0C87.7 29.0 92.9 28.9 95.1 29.9C98.4 31.5 100.0 34.0 100.0 37.9C100.0 38.8 99.9 39.9 99.8 40.4C99.5 41.6 99.0 42.9 98.8 43.1C98.8 43.2 98.5 43.6 98.3 44.1C97.1 46.1 94.3 48.4 91.2 49.6C88.8 50.5 86.6 51.0 83.3 51.4C80.9 51.7 70.1 51.8 68.8 51.6C67.5 51.3 66.9 51.5 66.4 52.2C66.1 52.7 66.1 53.9 66.4 54.3C66.6 54.6 69.0 55.5 69.4 55.5C69.5 55.5 70.2 55.7 70.9 56.0C71.6 56.2 72.5 56.4 72.8 56.5C73.1 56.6 73.5 56.8 73.7 56.9C73.9 56.9 74.5 57.2 75.1 57.4C75.7 57.6 76.5 57.8 76.8 58.0C77.2 58.2 77.7 58.4 77.9 58.4C78.4 58.6 82.4 60.5 83.5 61.1C88.4 63.9 91.8 67.6 92.9 71.5C93.2 72.5 93.0 76.6 92.6 77.7C90.6 83.1 86.1 86.3 81.4 85.7C77.5 85.2 73.6 83.1 69.8 79.3C68.9 78.3 67.7 77.1 67.3 76.6C66.8 76.0 66.4 75.5 66.4 75.5C66.3 75.4 65.0 73.8 63.9 72.3C63.7 72.0 63.5 71.6 63.4 71.4C63.3 71.2 63.2 71.0 63.1 71.0C63.0 70.9 62.6 70.3 62.3 69.7C62.0 69.0 61.5 68.2 61.3 67.9C61.1 67.6 60.8 66.9 60.7 66.4C60.3 65.2 59.9 64.9 58.7 65.0C57.8 65.0 57.7 65.1 57.3 65.6L56.8 66.2L56.7 73.5C56.6 82.1 56.5 83.7 55.5 87.4C55.2 88.3 54.9 89.2 54.8 89.3C54.7 89.5 54.5 90.0 54.3 90.4C53.5 92.0 52.9 92.9 51.6 94.3C50.5 95.4 50.0 95.8 48.8 96.4C48.0 96.7 47.0 97.2 46.5 97.3C45.7 97.5 42.7 97.6 41.7 97.5ZM43.3 51.8a8.5 8.5 0 1 0 17.0 0a8.5 8.5 0 1 0 -17.0 0Z"/></symbol>
+    <symbol id="fz-flower-solid" viewBox="0 0 100 100"><path d="M41.7 97.5C40.3 97.4 37.7 96.6 36.6 96.0C35.8 95.6 34.2 94.5 33.6 94.0C33.2 93.6 32.0 91.9 31.6 91.0C31.2 90.3 30.6 88.4 30.6 88.0C30.6 87.8 30.5 87.5 30.4 87.5C30.3 87.4 30.2 86.6 30.2 85.7C30.0 83.6 30.0 83.9 30.2 81.5C30.4 79.2 30.6 78.1 31.2 75.6C31.6 73.9 32.8 70.3 33.1 69.8C33.3 69.6 33.4 69.3 33.4 69.2C33.4 68.6 36.0 63.9 36.5 63.6C37.0 63.3 38.2 62.1 38.4 61.6C39.1 60.3 38.3 59.0 36.9 59.0C35.9 59.0 35.2 59.4 33.8 60.7C32.6 61.8 31.5 62.6 31.3 62.6C31.2 62.6 31.0 62.8 30.7 63.0C30.1 63.4 27.0 65.0 26.4 65.2C26.2 65.3 25.8 65.4 25.5 65.5C25.0 65.8 23.7 66.2 22.9 66.4C22.6 66.5 22.1 66.7 21.7 66.8C17.5 68.0 11.4 68.0 8.7 66.9C8.5 66.8 8.0 66.7 7.6 66.5C4.4 65.5 1.3 62.1 0.4 58.6C-0.2 56.2 -0.1 54.4 0.6 52.2C1.0 50.9 1.2 50.5 2.0 49.3C3.0 47.9 3.3 47.6 4.3 46.7C8.2 43.7 13.0 42.5 20.3 42.5C25.2 42.5 29.4 43.0 34.5 44.1C35.3 44.3 36.5 44.5 37.2 44.5C38.3 44.5 38.3 44.5 38.6 44.0C39.3 42.9 39.0 42.0 37.7 41.3C37.3 41.0 36.9 40.8 36.8 40.7C36.8 40.7 36.2 40.4 35.6 40.1C34.5 39.5 32.9 38.5 31.6 37.6C31.3 37.3 30.8 36.9 30.5 36.8C29.2 35.9 24.9 31.7 23.7 30.2C23.2 29.6 21.9 27.7 21.6 27.2C20.4 25.3 19.6 23.5 19.2 21.9C19.1 21.5 18.9 20.9 18.8 20.6C18.6 19.9 18.6 15.0 18.9 14.9C18.9 14.8 19.0 14.6 19.0 14.4C19.0 14.2 19.1 13.9 19.2 13.9C19.3 13.8 19.3 13.6 19.3 13.5C19.3 13.2 19.6 12.6 20.3 11.6C21.9 9.1 24.0 7.4 26.7 6.5C28.0 6.1 30.6 6.0 31.9 6.4C32.9 6.6 34.8 7.5 35.9 8.2C36.9 8.8 40.0 11.8 40.6 12.7C40.8 13.0 41.2 13.6 41.5 14.0C41.8 14.4 42.1 14.8 42.1 14.9C42.1 15.0 42.2 15.2 42.4 15.3C42.6 15.5 45.3 20.9 45.8 22.0C46.2 23.2 47.1 26.0 47.4 27.2C48.0 30.0 48.0 29.9 48.4 32.0C48.7 33.8 48.8 34.0 49.3 34.6C49.7 35.1 49.8 35.1 50.6 35.1C52.3 34.9 52.5 34.4 52.5 30.1C52.5 26.5 52.6 25.5 53.3 21.6C53.4 21.1 53.6 20.4 53.6 20.0C53.7 19.7 53.8 19.4 53.8 19.3C53.9 19.3 54.0 19.1 54.0 18.9C54.0 18.6 54.1 17.9 54.5 17.0C54.5 16.8 54.8 16.0 55.1 15.1C56.0 12.3 57.3 9.8 59.2 7.2C59.8 6.4 61.3 4.9 61.5 4.9C61.6 4.9 61.8 4.8 62.0 4.6C63.1 3.4 66.4 2.3 68.6 2.5C70.8 2.6 73.4 3.4 74.8 4.3C76.4 5.4 77.8 7.2 78.1 8.9C78.4 10.0 78.4 12.2 78.2 12.4C78.1 12.5 78.1 12.9 78.1 13.3C78.1 13.8 78.0 14.2 77.9 14.2C77.8 14.3 77.7 14.5 77.7 14.7C77.7 16.1 74.8 22.6 72.8 25.6C72.6 25.8 72.5 26.0 72.5 26.1C72.5 26.1 71.5 27.7 70.0 29.8C69.2 31.1 66.0 35.2 65.6 35.6C65.1 36.0 64.3 37.2 63.9 37.9C63.5 38.6 63.7 39.6 64.2 40.2C65.2 41.3 66.0 41.0 68.0 39.1C68.8 38.4 69.7 37.6 70.1 37.3C70.9 36.7 71.7 36.1 71.9 36.1C72.0 36.0 72.7 35.6 73.5 35.0C75.6 33.7 78.5 32.2 81.4 31.0C81.8 30.8 83.3 30.3 84.4 30.0C87.7 29.0 92.9 28.9 95.1 29.9C98.4 31.5 100.0 34.0 100.0 37.9C100.0 38.8 99.9 39.9 99.8 40.4C99.5 41.6 99.0 42.9 98.8 43.1C98.8 43.2 98.5 43.6 98.3 44.1C97.1 46.1 94.3 48.4 91.2 49.6C88.8 50.5 86.6 51.0 83.3 51.4C80.9 51.7 70.1 51.8 68.8 51.6C67.5 51.3 66.9 51.5 66.4 52.2C66.1 52.7 66.1 53.9 66.4 54.3C66.6 54.6 69.0 55.5 69.4 55.5C69.5 55.5 70.2 55.7 70.9 56.0C71.6 56.2 72.5 56.4 72.8 56.5C73.1 56.6 73.5 56.8 73.7 56.9C73.9 56.9 74.5 57.2 75.1 57.4C75.7 57.6 76.5 57.8 76.8 58.0C77.2 58.2 77.7 58.4 77.9 58.4C78.4 58.6 82.4 60.5 83.5 61.1C88.4 63.9 91.8 67.6 92.9 71.5C93.2 72.5 93.0 76.6 92.6 77.7C90.6 83.1 86.1 86.3 81.4 85.7C77.5 85.2 73.6 83.1 69.8 79.3C68.9 78.3 67.7 77.1 67.3 76.6C66.8 76.0 66.4 75.5 66.4 75.5C66.3 75.4 65.0 73.8 63.9 72.3C63.7 72.0 63.5 71.6 63.4 71.4C63.3 71.2 63.2 71.0 63.1 71.0C63.0 70.9 62.6 70.3 62.3 69.7C62.0 69.0 61.5 68.2 61.3 67.9C61.1 67.6 60.8 66.9 60.7 66.4C60.3 65.2 59.9 64.9 58.7 65.0C57.8 65.0 57.7 65.1 57.3 65.6L56.8 66.2L56.7 73.5C56.6 82.1 56.5 83.7 55.5 87.4C55.2 88.3 54.9 89.2 54.8 89.3C54.7 89.5 54.5 90.0 54.3 90.4C53.5 92.0 52.9 92.9 51.6 94.3C50.5 95.4 50.0 95.8 48.8 96.4C48.0 96.7 47.0 97.2 46.5 97.3C45.7 97.5 42.7 97.6 41.7 97.5Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.2 8.2h13.6l-1.1 11.6H6.3L5.2 8.2Zm3.8 0V6.6a3 3 0 0 1 6 0v1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 16 16"><path d="M5.5 5.5h7v7h-7zM3.5 10.5v-7h7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-move" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M12 3 9.5 5.5M12 3l2.5 2.5M12 21l-2.5-2.5M12 21l2.5-2.5M3 12l2.5-2.5M3 12l2.5 2.5M21 12l-2.5-2.5M21 12l-2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><div class="cursor__flower"><svg><use href="#fz-flower-solid"/></svg><span class="cursor__label">Voir</span></div></div>
+
+<header class="hd" id="hd">
+  <a class="hd__logo" href="#top" aria-label="FLOWZ, retour en haut"><svg viewBox="0 0 1974 661" aria-hidden="true"><use href="#lg-main"/><use href="#lg-wz"/><use href="#lg-centre"/></svg></a>
+  <nav class="hd__nav" aria-label="Sections">
+    <a href="#collection">Collection</a>
+    <a href="#lookbook">Lookbook</a>
+    <a href="#atelier">Atelier</a>
+  </nav>
+  <div class="hd__right">
+    <a class="pill" href="https://flowz-shop.com/collections/all" target="_blank" rel="noopener" data-magnetic>Boutique<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="round" href="https://flowz-shop.com/cart" target="_blank" rel="noopener" aria-label="Panier sur la boutique"><svg aria-hidden="true"><use href="#i-bag"/></svg></a>
+    <button class="hd__menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-label="Menu" hidden>
+  <a href="#collection">Casquettes</a>
+  <a href="#maillots">Maillots</a>
+  <a href="#mariniere">Marinière</a>
+  <a href="#hiver">Hiver</a>
+  <a href="#lookbook">Lookbook</a>
+  <a href="#atelier">Atelier</a>
+  <p class="menu__foot mono">Livraison offerte dès 50 €</p>
+</nav>
+
+<div class="site">
+<div class="bgtint" aria-hidden="true"></div>
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-h1">
+    <h1 class="sr-only" id="hero-h1">FLOWZ, streetwear : casquettes, bonnets, chapka et maillots</h1>
+    <div class="hero__stage">
+      <svg class="hero__svg" viewBox="0 0 1974 661" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <defs>
+          <clipPath id="fz-win" clipPathUnits="userSpaceOnUse"><use class="hero__win" href="#lg-win"/></clipPath>
+          <linearGradient id="hero-shade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-opacity=".15"/><stop offset=".55" stop-opacity=".35"/><stop offset="1" stop-opacity=".9"/>
+          </linearGradient>
+        </defs>
+        <g class="hero__photos" clip-path="url(#fz-win)">
+          <rect class="hero__photobg" x="540" y="43" width="606" height="577"/>
+          <image class="hero__img is-on" href="img/bloom-clair-de-lune.webp" x="540" y="43" width="606" height="577" preserveAspectRatio="xMidYMid slice" data-ratio="1" data-fx=".5" data-fy=".36" data-name="Clair de Lune" data-kind="casquette"/>
+          <image class="hero__img" href="img/bloom-jungle-flora.webp" x="540" y="43" width="606" height="577" preserveAspectRatio="xMidYMid slice" data-ratio="1" data-fx=".56" data-fy=".46" data-name="Jungle Flora" data-kind="casquette"/>
+          <image class="hero__img" href="img/bloom-mariniere.webp" x="540" y="43" width="606" height="577" preserveAspectRatio="xMidYMid slice" data-ratio="1" data-fx=".5" data-fy=".55" data-name="Marinière" data-kind="nouveau"/>
+          <image class="hero__img" href="img/bloom-flocon.webp" x="540" y="43" width="606" height="577" preserveAspectRatio="xMidYMid slice" data-ratio="1" data-fx=".55" data-fy=".32" data-name="Flocon" data-kind="bonnet"/>
+          <image class="hero__img" href="img/bloom-belle-de-nuit.webp" x="540" y="43" width="606" height="577" preserveAspectRatio="xMidYMid slice" data-ratio="1" data-fx=".55" data-fy=".38" data-name="Belle de nuit" data-kind="maillot"/>
+          <image class="hero__img" href="img/bloom-coeur-de-marie.webp" x="540" y="43" width="606" height="577" preserveAspectRatio="xMidYMid slice" data-ratio="1" data-fx=".52" data-fy=".46" data-name="Cœur de Marie" data-kind="casquette"/>
+          <rect class="hero__shade" x="540" y="43" width="606" height="577" fill="url(#hero-shade)" opacity="0"/>
+        </g>
+        <g class="hero__logo" fill="currentColor">
+          <use class="lg-u lg-u--main" href="#lg-main"/>
+          <use class="lg-u lg-u--wz" href="#lg-wz"/>
+          <use class="lg-u lg-u--centre" href="#lg-centre"/>
+        </g>
+      </svg>
+
+      <div class="hero__count" aria-hidden="true"><span class="mono">Chargement des photos</span><b>000</b></div>
+
+      <div class="hero__ui">
+        <p class="hero__statement" aria-hidden="true"><span class="st-a">Wear FLOWZ</span><span class="st-b">with flow.</span></p>
+        <div class="hero__bar">
+          <p class="hero__cap mono"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg><span class="hero__capname">Clair de Lune</span><span class="hero__capkind">casquette</span></p>
+          <p class="hero__meta mono hero__fade">Livraison offerte dès 50 €</p>
+        </div>
+        <a class="hero__cue mono hero__fade" href="#marque"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Scrolle</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__band">
+      <div class="marquee__track">
+        <div class="marquee__set"><span>Casquettes</span><svg class="fl"><use href="#fz-flower"/></svg><span>Bonnets</span><svg class="fl"><use href="#fz-flower"/></svg><span>Chapka</span><svg class="fl"><use href="#fz-flower"/></svg><span>Maillots</span><svg class="fl"><use href="#fz-flower"/></svg><span>Marinière</span><svg class="fl"><use href="#fz-flower"/></svg><span>Livraison offerte dès 50 €</span><svg class="fl"><use href="#fz-flower"/></svg></div>
+        <div class="marquee__set"><span>Casquettes</span><svg class="fl"><use href="#fz-flower"/></svg><span>Bonnets</span><svg class="fl"><use href="#fz-flower"/></svg><span>Chapka</span><svg class="fl"><use href="#fz-flower"/></svg><span>Maillots</span><svg class="fl"><use href="#fz-flower"/></svg><span>Marinière</span><svg class="fl"><use href="#fz-flower"/></svg><span>Livraison offerte dès 50 €</span><svg class="fl"><use href="#fz-flower"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section class="sec" id="marque" aria-labelledby="marque-h">
+    <div class="wrap mani">
+      <div>
+        <p class="eyebrow" id="marque-h"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>La marque</p>
+        <p class="mani__text" style="margin-top:28px"><em>Qualité</em> ou <em>originalité</em>&nbsp;? Chez FLOWZ, on a choisi de ne pas choisir. Du velours, de la maille brodée de roses, des maillots, des bonnets&nbsp;: des pièces pensées pour te faire briller.</p>
+      </div>
+      <div class="mani__side">
+        <p>FLOWZ, c'est une bande de passionnés de streetwear. Chaque pièce a un nom, souvent celui d'une fleur&nbsp;: Nigelle de Damas, Cœur de Marie, Cattleya, Belle de nuit. Elles se portent partout, de la laverie à la serre.</p>
+        <p class="mani__sign mono"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Wear FLOWZ with flow</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPS -->
+  <section class="caps" id="collection" aria-labelledby="caps-h">
+    <div class="caps__pin">
+      <div class="caps__track">
+        <div class="caps__intro">
+          <p class="eyebrow"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>La collection</p>
+          <h2 class="title" id="caps-h"><span class="title__art">les</span><span class="title__noun">Casquettes</span></h2>
+          <p class="lede">Velours, maille aérée et roses brodées. Sept modèles, 39,99&nbsp;€ chacun.</p>
+          <p class="caps__hint mono">Défile pour voir les sept modèles<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></p>
+        </div>
+
+        <article class="card" data-cursor="Voir">
+          <a class="card__media" href="https://flowz-shop.com/products/jungle-flora" target="_blank" rel="noopener" aria-label="Jungle Flora, voir la casquette sur la boutique">
+            <img class="card__img card__img--a" src="img/cap-jungle-flora.webp" width="1000" height="1000" alt="Homme barbu portant la casquette Jungle Flora léopard, devant une grille rouillée" loading="lazy" decoding="async">
+            <img class="card__img card__img--b" src="img/cap-jungle-flora-2.webp" width="1000" height="1000" alt="" loading="lazy" decoding="async">
+          </a>
+          <p class="card__num mono"><span>N°01</span><span>Casquette</span></p>
+          <h3 class="name">Jungle Flora</h3>
+          <p class="card__mat">Léopard · velours et maille aérée</p>
+          <div class="card__row"><span class="price">39,99 €</span><a class="link" href="https://flowz-shop.com/products/jungle-flora" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </article>
+
+        <article class="card" data-cursor="Voir">
+          <a class="card__media" href="https://flowz-shop.com/products/nigelle-de-damas-copie" target="_blank" rel="noopener" aria-label="Clair de Lune, voir la casquette sur la boutique">
+            <img class="card__img card__img--a" src="img/bloom-clair-de-lune.webp" width="940" height="940" alt="Femme blonde portant la casquette Clair de Lune crème parmi des lauriers roses" loading="lazy" decoding="async">
+            <img class="card__img card__img--b" src="img/cap-clair-de-lune-2.webp" width="900" height="900" alt="" loading="lazy" decoding="async">
+          </a>
+          <p class="card__num mono"><span>N°02</span><span>Casquette</span></p>
+          <h3 class="name">Clair de Lune</h3>
+          <p class="card__mat">Velours crème · broderie noire</p>
+          <div class="card__row"><span class="price">39,99 €</span><a class="link" href="https://flowz-shop.com/products/nigelle-de-damas-copie" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </article>
+
+        <article class="card" data-cursor="Voir">
+          <a class="card__media" href="https://flowz-shop.com/products/nigelle-de-damas-copie-copie" target="_blank" rel="noopener" aria-label="Tempête du Soir, voir la casquette sur la boutique">
+            <img class="card__img card__img--a" src="img/cap-tempete-du-soir.webp" width="817" height="817" alt="Femme portant la casquette Tempête du Soir en velours noir, logo brodé crème" loading="lazy" decoding="async">
+            <img class="card__img card__img--b" src="img/cap-tempete-du-soir-2.webp" width="900" height="900" alt="" loading="lazy" decoding="async">
+          </a>
+          <p class="card__num mono"><span>N°03</span><span>Casquette</span></p>
+          <h3 class="name">Tempête du Soir</h3>
+          <p class="card__mat">Velours noir · broderie crème</p>
+          <div class="card__row"><span class="price">39,99 €</span><a class="link" href="https://flowz-shop.com/products/nigelle-de-damas-copie-copie" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </article>
+
+        <article class="card" data-cursor="Voir">
+          <a class="card__media" href="https://flowz-shop.com/products/casquette-rose" target="_blank" rel="noopener" aria-label="Cœur de Marie, voir la casquette sur la boutique">
+            <img class="card__img card__img--a" src="img/bloom-coeur-de-marie.webp" width="1400" height="1400" alt="Homme souriant portant la casquette Cœur de Marie rose devant un hublot de laverie" loading="lazy" decoding="async">
+            <img class="card__img card__img--b" src="img/cap-coeur-de-marie-2.webp" width="900" height="900" alt="" loading="lazy" decoding="async">
+          </a>
+          <p class="card__num mono"><span>N°04</span><span>Casquette</span></p>
+          <h3 class="name">Cœur de Marie</h3>
+          <p class="card__mat">Velours rose · roses brodées</p>
+          <div class="card__row"><span class="price">39,99 €</span><a class="link" href="https://flowz-shop.com/products/casquette-rose" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </article>
+
+        <article class="card is-out" data-cursor="Épuisée">
+          <a class="card__media" href="https://flowz-shop.com/products/casquette-bleue" target="_blank" rel="noopener" aria-label="Nigelle de Damas, épuisée, voir la casquette sur la boutique">
+            <img class="card__img card__img--a" src="img/cap-nigelle-de-damas.webp" width="1000" height="1000" alt="Homme portant la casquette Nigelle de Damas bleu ciel, de nuit au bord de l'eau" loading="lazy" decoding="async">
+            <img class="card__img card__img--b" src="img/cap-nigelle-de-damas-2.webp" width="900" height="900" alt="" loading="lazy" decoding="async">
+            <span class="sticker" aria-hidden="true"><svg><use href="#fz-flower-solid"/></svg><span>Épuisée</span></span>
+          </a>
+          <p class="card__num mono"><span>N°05</span><span>Casquette</span></p>
+          <h3 class="name">Nigelle de Damas</h3>
+          <p class="card__mat">Velours bleu ciel · roses brodées</p>
+          <div class="card__row"><span class="price">39,99 € · épuisée</span><a class="link" href="https://flowz-shop.com/products/casquette-bleue" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </article>
+
+        <article class="card" data-cursor="Voir">
+          <a class="card__media" href="https://flowz-shop.com/products/tempete-du-soir-copie" target="_blank" rel="noopener" aria-label="Ombre du Bleuet, voir la casquette sur la boutique">
+            <img class="card__img card__img--a" src="img/cap-ombre-du-bleuet.webp" width="1000" height="1000" alt="Homme portant la casquette Ombre du Bleuet en jean brut" loading="lazy" decoding="async">
+            <img class="card__img card__img--b" src="img/cap-ombre-du-bleuet-2.webp" width="900" height="900" alt="" loading="lazy" decoding="async">
+          </a>
+          <p class="card__num mono"><span>N°06</span><span>Casquette</span></p>
+          <h3 class="name">Ombre du Bleuet</h3>
+          <p class="card__mat">Jean brut · bouquet brodé</p>
+          <div class="card__row"><span class="price">39,99 €</span><a class="link" href="https://flowz-shop.com/products/tempete-du-soir-copie" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </article>
+
+        <article class="card" data-cursor="Voir">
+          <a class="card__media" href="https://flowz-shop.com/products/olive-bloom" target="_blank" rel="noopener" aria-label="Olive Bloom, voir la casquette sur la boutique">
+            <img class="card__img card__img--a" src="img/cap-olive-bloom.webp" width="1000" height="1000" alt="Femme portant la casquette Olive Bloom camouflage, assise sur un banc en fer forgé" loading="lazy" decoding="async">
+            <img class="card__img card__img--b" src="img/cap-olive-bloom-2.webp" width="1000" height="1000" alt="" loading="lazy" decoding="async">
+          </a>
+          <p class="card__num mono"><span>N°07</span><span>Casquette</span></p>
+          <h3 class="name">Olive Bloom</h3>
+          <p class="card__mat">Camouflage · velours et maille aérée</p>
+          <div class="card__row"><span class="price">39,99 €</span><a class="link" href="https://flowz-shop.com/products/olive-bloom" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </article>
+
+        <div class="caps__end">
+          <p class="eyebrow"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Boutique</p>
+          <p class="name">Toute la collection est en ligne.</p>
+          <a class="btn" href="https://flowz-shop.com/collections/all" target="_blank" rel="noopener" data-magnetic>Voir la boutique<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="caps__progress" aria-hidden="true"><span></span></div>
+    </div>
+  </section>
+
+  <!-- JERSEYS -->
+  <section class="sec jerseys" id="maillots" aria-labelledby="maillots-h">
+    <div class="ghost" aria-hidden="true" lang="ar" dir="rtl">فلوز</div>
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Maillots · 69,99 €</p>
+        <h2 class="title" id="maillots-h"><span class="title__art">les</span><span class="title__noun">Maillots</span></h2>
+        <p class="lede">Maille aérée, et dans le dos, FLOWZ écrit en lettres arabes&nbsp;: <span class="ar" lang="ar">فلوز</span>.</p>
+      </header>
+
+      <article class="jersey">
+        <div class="jersey__media">
+          <figure class="jersey__front" data-reveal-img><img class="fit" data-pimg src="img/jersey-cattleya.webp" width="1186" height="1200" alt="Homme portant le maillot vert Cattleya devant des immeubles, ciel bleu" loading="lazy" decoding="async"></figure>
+          <figure class="jersey__back" data-speed="1.14"><img class="fit" src="img/jersey-cattleya-dos.webp" width="1100" height="1100" alt="Dos du maillot Cattleya avec l'inscription فلوز" loading="lazy" decoding="async"><figcaption class="mono">Le dos</figcaption></figure>
+        </div>
+        <div class="jersey__info">
+          <p class="mono muted">Maillot vert</p>
+          <h3 class="name">Cattleya</h3>
+          <p class="price">69,99 €</p>
+          <div class="buy">
+            <p class="mono muted">Tailles</p>
+            <ul class="sizes" aria-label="Tailles">
+              <li>XS</li><li>S</li><li>M</li><li>L</li><li>XL</li><li class="is-out" aria-label="2XL, épuisée">2XL</li>
+            </ul>
+            <a class="btn btn--solid" href="https://flowz-shop.com/products/do-brazil" target="_blank" rel="noopener" data-magnetic>Choisir ma taille<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="jersey jersey--rev">
+        <div class="jersey__media">
+          <figure class="jersey__front" data-reveal-img><img class="fit" data-pimg src="img/bloom-belle-de-nuit.webp" width="1400" height="1400" alt="Homme portant le maillot rose et blanc Belle de nuit sur un toit en ville" loading="lazy" decoding="async"></figure>
+          <figure class="jersey__back" data-speed="1.14"><img class="fit" src="img/jersey-belle-de-nuit-dos.webp" width="1100" height="1100" alt="Dos du maillot Belle de nuit avec l'inscription فلوز et une grande fleur" loading="lazy" decoding="async"><figcaption class="mono">Le dos</figcaption></figure>
+        </div>
+        <div class="jersey__info">
+          <p class="mono muted">Maillot rose et blanc</p>
+          <h3 class="name">Belle de nuit</h3>
+          <p class="price">69,99 €</p>
+          <div class="buy">
+            <p class="mono muted">Tailles</p>
+            <ul class="sizes" aria-label="Tailles">
+              <li>XS</li><li>S</li><li>M</li><li>L</li><li>XL</li><li>2XL</li>
+            </ul>
+            <a class="btn btn--solid" href="https://flowz-shop.com/products/cattleya-copie" target="_blank" rel="noopener" data-magnetic>Choisir ma taille<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- MARINIERE -->
+  <section class="sec mari" id="mariniere" aria-labelledby="mari-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="fl" aria-hidden="true" style="color:var(--soleil)"><use href="#fz-flower"/></svg>Nouveau</p>
+        <h2 class="title" id="mari-h"><span class="title__art">la</span><span class="title__noun">Marinière</span></h2>
+      </header>
+      <div class="mari__grid">
+        <div class="mari__copy">
+          <p class="lede">Des rayures, des couleurs ensoleillées, une coupe ample et une grande fleur dans le dos. Le classique, version FLOWZ.</p>
+          <div class="buy">
+            <p class="price">44,99 €</p>
+            <p class="mono">Tailles</p>
+            <ul class="sizes" aria-label="Tailles"><li>XS</li><li>S</li><li>M</li><li>L</li><li>XL</li><li>2XL</li></ul>
+            <a class="btn btn--solid" href="https://flowz-shop.com/products/mariniere" target="_blank" rel="noopener" data-magnetic>Choisir ma taille<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="mari__collage">
+          <span class="sticker sticker--sun" aria-hidden="true"><svg><use href="#fz-flower-solid"/></svg><span>Nouveau</span></span>
+          <figure class="mari__a" data-reveal-img><img class="fit" data-pimg src="img/bloom-mariniere.webp" width="1400" height="1400" alt="Deux femmes de dos en marinière, une grande fleur jaune et bleue dans le dos" loading="lazy" decoding="async"></figure>
+          <figure class="mari__b" data-speed="1.18"><img class="fit" src="img/mariniere-duo.webp" width="1300" height="1300" alt="Deux femmes en marinière devant une fontaine" loading="lazy" decoding="async"></figure>
+          <figure class="mari__c" data-speed="1.08"><img class="fit" src="img/mariniere-portrait.webp" width="1100" height="1100" alt="Femme portant la marinière dans un jardin" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WINTER -->
+  <section class="sec" id="hiver" aria-labelledby="hiver-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Bonnets et chapka</p>
+        <h2 class="title title--elide" id="hiver-h"><span class="title__art">l’</span><span class="title__noun">Hiver</span></h2>
+      </header>
+      <div class="winter__grid">
+        <article class="beast">
+          <a class="beast__stage" href="https://flowz-shop.com/products/shapka" target="_blank" rel="noopener" aria-label="Winter Beast, voir la chapka sur la boutique" data-cursor="Voir">
+            <span class="beast__float"><img class="beast__product" src="img/winter-beast-produit.webp" width="1100" height="1100" alt="Chapka Winter Beast, léopard et velours noir, sur une tête de mannequin" loading="lazy" decoding="async"></span>
+            <span class="sticker" aria-hidden="true"><svg><use href="#fz-flower-solid"/></svg><span>Nouveau</span></span>
+          </a>
+          <div class="beast__info">
+            <p class="mono muted">Chapka</p>
+            <h3 class="name">Winter Beast</h3>
+            <p class="lede">Imprimé léopard, velours doux et léger, rabats sur les oreilles.</p>
+            <div class="buy__row"><p class="price">39,99 €</p><a class="btn btn--solid" href="https://flowz-shop.com/products/shapka" target="_blank" rel="noopener" data-magnetic>Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+            <figure class="beast__portrait" data-reveal-img><img class="fit" src="img/winter-beast.webp" width="1099" height="1100" alt="Femme portant la chapka Winter Beast" loading="lazy" decoding="async"></figure>
+          </div>
+        </article>
+
+        <div class="minis">
+          <article class="mini card" data-cursor="Voir">
+            <a class="card__media" href="https://flowz-shop.com/products/ombre-du-bleuet-copie-1" target="_blank" rel="noopener" aria-label="Flocon, voir le bonnet sur la boutique">
+              <img class="card__img card__img--a" src="img/bloom-flocon.webp" width="1400" height="1400" alt="Femme aux tresses rousses portant le bonnet blanc Flocon" loading="lazy" decoding="async">
+              <img class="card__img card__img--b" src="img/flocon-2.webp" width="1100" height="1098" alt="" loading="lazy" decoding="async">
+            </a>
+            <div class="mini__info">
+              <p class="mono muted">Bonnet blanc</p>
+              <h3 class="name">Flocon</h3>
+              <p class="card__mat">Fibres duveteuses, motifs fleuris</p>
+              <p class="price">29,99 €</p>
+              <a class="link" href="https://flowz-shop.com/products/ombre-du-bleuet-copie-1" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+          <article class="mini card" data-cursor="Voir">
+            <a class="card__media" href="https://flowz-shop.com/products/black-beanie" target="_blank" rel="noopener" aria-label="Umbra, voir le bonnet sur la boutique">
+              <img class="card__img card__img--a" src="img/umbra.webp" width="1100" height="1100" alt="Homme en veste en jean portant le bonnet noir Umbra devant une porte en bois" loading="lazy" decoding="async">
+              <img class="card__img card__img--b" src="img/umbra-2.webp" width="1000" height="1000" alt="" loading="lazy" decoding="async">
+            </a>
+            <div class="mini__info">
+              <p class="mono muted">Bonnet noir</p>
+              <h3 class="name">Umbra</h3>
+              <p class="card__mat">Matière lisse et légère, style sport</p>
+              <p class="price">24,99 €</p>
+              <a class="link" href="https://flowz-shop.com/products/black-beanie" target="_blank" rel="noopener">Voir la pièce<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK -->
+  <section class="sec" id="lookbook" aria-labelledby="lookbook-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Serres, laveries, béton et jardins</p>
+        <h2 class="title" id="lookbook-h"><span class="title__art">le</span><span class="title__noun">Lookbook</span></h2>
+      </header>
+      <div class="lb">
+        <a class="lb__item lb__1" href="https://flowz-shop.com/products/jungle-flora" target="_blank" rel="noopener" data-speed="0.94" data-cursor="Voir"><img data-pimg src="img/lb-serre.webp" width="1200" height="1200" alt="Homme en casquette Jungle Flora sous la verrière d'une serre" loading="lazy" decoding="async"><span class="lb__cap"><span>Jungle Flora</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__2" href="https://flowz-shop.com/products/jungle-flora" target="_blank" rel="noopener" data-speed="1.12" data-cursor="Voir"><img data-pimg src="img/lb-escalier.webp" width="1000" height="1000" alt="Femme en casquette Jungle Flora assise dans un escalier tagué" loading="lazy" decoding="async"><span class="lb__cap"><span>Jungle Flora</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__3" href="https://flowz-shop.com/products/olive-bloom" target="_blank" rel="noopener" data-speed="1.06" data-cursor="Voir"><img data-pimg src="img/lb-feuillage.webp" width="1000" height="1000" alt="Homme en casquette Olive Bloom vu à travers le feuillage" loading="lazy" decoding="async"><span class="lb__cap"><span>Olive Bloom</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__4" href="https://flowz-shop.com/products/tempete-du-soir-copie" target="_blank" rel="noopener" data-speed="0.95" data-cursor="Voir"><img data-pimg src="img/lb-ruelle.webp" width="1000" height="1000" alt="Deux hommes dans une ruelle, l'un porte la casquette Ombre du Bleuet" loading="lazy" decoding="async"><span class="lb__cap"><span>Ombre du Bleuet</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__5" href="https://flowz-shop.com/products/nigelle-de-damas-copie-copie" target="_blank" rel="noopener" data-speed="1.1" data-cursor="Voir"><img data-pimg src="img/lb-nuit.webp" width="1000" height="1000" alt="Portrait de nuit, casquette Tempête du Soir" loading="lazy" decoding="async"><span class="lb__cap"><span>Tempête du Soir</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__6 lb__wide" href="https://flowz-shop.com/collections/all" target="_blank" rel="noopener" data-speed="0.97" data-cursor="Voir"><img data-pimg src="img/lb-sable.webp" width="1290" height="715" alt="Casquettes rose et bleue posées sur le sable avec des roses rouges" loading="lazy" decoding="async"><span class="lb__cap"><span>Cœur de Marie et Nigelle de Damas</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__7" href="https://flowz-shop.com/products/casquette-rose" target="_blank" rel="noopener" data-speed="1.08" data-cursor="Voir"><img data-pimg src="img/lb-moonboots.webp" width="1000" height="1000" alt="Casquette Cœur de Marie posée avec des bottes de neige roses" loading="lazy" decoding="async"><span class="lb__cap"><span>Cœur de Marie</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__8" href="https://flowz-shop.com/products/do-brazil" target="_blank" rel="noopener" data-speed="0.94" data-cursor="Voir"><img data-pimg src="img/jersey-cattleya-3.webp" width="1100" height="1100" alt="Femme en maillot Cattleya assise en ville" loading="lazy" decoding="async"><span class="lb__cap"><span>Cattleya</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__9" href="https://flowz-shop.com/products/olive-bloom" target="_blank" rel="noopener" data-speed="1.1" data-cursor="Voir"><img data-pimg src="img/lb-graffiti.webp" width="1000" height="1000" alt="Homme en casquette Olive Bloom devant un mur graffé" loading="lazy" decoding="async"><span class="lb__cap"><span>Olive Bloom</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+        <a class="lb__item lb__10" href="https://flowz-shop.com/products/cattleya-copie" target="_blank" rel="noopener" data-speed="0.96" data-cursor="Voir"><img data-pimg src="img/jersey-belle-de-nuit-3.webp" width="1100" height="1100" alt="Homme assis en maillot Belle de nuit" loading="lazy" decoding="async"><span class="lb__cap"><span>Belle de nuit</span><svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATELIER -->
+  <section class="sec atelier" id="atelier" aria-labelledby="atelier-h">
+    <div class="wrap">
+      <div class="atelier__head">
+        <p class="eyebrow"><svg class="fl" aria-hidden="true" style="color:var(--rose)"><use href="#fz-flower"/></svg>Du croquis à la broderie</p>
+        <h2 class="title title--elide" id="atelier-h"><span class="title__art">l’</span><span class="title__noun">Atelier</span></h2>
+        <p class="lede">Les coulisses de FLOWZ&nbsp;: croquis annotés, patron de la marinière, broderies et finitions en gros plan.</p>
+        <p class="atelier__hint mono"><svg aria-hidden="true"><use href="#i-move"/></svg>Attrape une photo et déplace-la</p>
+      </div>
+      <div class="board">
+        <figure class="pin" tabindex="0" style="--x:1%;--y:3%;--w:40%;--r:-3deg" aria-label="Croquis annoté, photo déplaçable avec les flèches"><img src="img/atelier-croquis.webp" width="1600" height="1003" alt="Croquis d'une casquette rose avec des notes sur les matières et les broderies" loading="lazy" decoding="async"><figcaption>Croquis annoté</figcaption></figure>
+        <figure class="pin" tabindex="0" style="--x:46%;--y:0%;--w:23%;--r:4deg" aria-label="Patron de la marinière, photo déplaçable avec les flèches"><img src="img/atelier-patron.webp" width="1100" height="1100" alt="Dessin technique de la marinière avec le tableau des mesures" loading="lazy" decoding="async"><figcaption>Patron de la marinière</figcaption></figure>
+        <figure class="pin" tabindex="0" style="--x:73%;--y:7%;--w:26%;--r:-2deg" aria-label="Logo brodé, photo déplaçable avec les flèches"><img src="img/atelier-broderie.webp" width="2000" height="1125" alt="Logo FLOWZ brodé en crème sur du velours noir" loading="lazy" decoding="async"><figcaption>Logo brodé</figcaption></figure>
+        <figure class="pin" tabindex="0" style="--x:6%;--y:53%;--w:22%;--r:5deg" aria-label="Roses brodées sur maille, photo déplaçable avec les flèches"><img src="img/cap-nigelle-de-damas-2.webp" width="900" height="900" alt="Bouquet de roses rouges brodé sur une maille bleue" loading="lazy" decoding="async"><figcaption>Roses brodées sur maille</figcaption></figure>
+        <figure class="pin" tabindex="0" style="--x:37%;--y:47%;--w:22%;--r:-6deg" aria-label="Logo sur velours rose, photo déplaçable avec les flèches"><img src="img/atelier-logo-rose.webp" width="900" height="900" alt="Logo FLOWZ brodé sur un velours rose duveteux" loading="lazy" decoding="async"><figcaption>Logo sur velours rose</figcaption></figure>
+        <figure class="pin" tabindex="0" style="--x:68%;--y:52%;--w:22%;--r:3deg" aria-label="Boucle FLOWZ, photo déplaçable avec les flèches"><img src="img/atelier-boucle.webp" width="900" height="900" alt="Boucle métal frappée du logo FLOWZ sur une sangle en jean" loading="lazy" decoding="async"><figcaption>Boucle FLOWZ</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <ul class="svc" aria-label="Services">
+    <li><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Livraison offerte dès 50 €</li>
+    <li><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Retour offert</li>
+    <li><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>SAV 7j/7</li>
+    <li><svg class="fl" aria-hidden="true"><use href="#fz-flower"/></svg>Livraison dans toute l'Europe</li>
+  </ul>
+</main>
+
+<footer class="ft" id="contact">
+  <div class="wrap">
+    <div class="ft__cta">
+      <p class="ft__big">Wear FLOWZ <em>with flow.</em></p>
+      <a class="btn btn--solid" href="https://flowz-shop.com/collections/all" target="_blank" rel="noopener" data-magnetic>Entrer dans la boutique<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="ft__cols">
+      <div>
+        <h3>Suivre</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/flowzz.z" target="_blank" rel="noopener">Instagram @flowzz.z<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://www.tiktok.com/@flowzz.z" target="_blank" rel="noopener">TikTok @flowzz.z<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://t.snapchat.com/RbBgnMRA" target="_blank" rel="noopener">Snapchat<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Aide</h3>
+        <ul>
+          <li><a href="https://flowz-shop.com/apps/17TRACK" target="_blank" rel="noopener">Suivre mon colis<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://flowz-shop.com/policies/refund-policy" target="_blank" rel="noopener">Retours et remboursements<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://flowz-shop.com/pages/contact" target="_blank" rel="noopener">Nous contacter<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Écrire</h3>
+        <div class="mail">
+          <span class="mail__addr" id="mail-addr">flowzis31820@gmail.com</span>
+          <button class="copy" type="button" data-copy="flowzis31820@gmail.com" aria-controls="mail-addr"><svg aria-hidden="true"><use href="#i-copy"/></svg><span class="copy__label">Copier</span></button>
+        </div>
+      </div>
+    </div>
+    <svg class="ft__logo" viewBox="0 0 1974 661" aria-hidden="true" focusable="false"><use href="#lg-main"/><use href="#lg-wz"/><use href="#lg-centre"/></svg>
+    <div class="ft__legal mono">
+      <span>© 2026 FLOWZ · Proposition de refonte, boutique officielle : flowz-shop.com</span>
+      <span>Paiement sécurisé : CB, Visa, Mastercard, PayPal, Apple Pay, Klarna</span>
+      <a href="https://flowz-shop.com/policies/legal-notice" target="_blank" rel="noopener">Mentions légales</a>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const clamp01 = v => (v < 0 ? 0 : v > 1 ? 1 : v);
+  const root = document.documentElement;
+  root.classList.add('js');
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  const motion = hasGsap && !reduce;
+  let lenis = null;
+
+  /* ---------- menu ---------- */
+  const hd = $('#hd'), menuBtn = $('.hd__menu'), menu = $('#menu');
+  function setMenu(open) {
+    menu.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.textContent = open ? 'Fermer' : 'Menu';
+    document.body.classList.toggle('menu-open', open);
+    if (open) hd.classList.remove('is-hidden');
+    if (lenis) { if (open) lenis.stop(); else lenis.start(); }
+  }
+  menuBtn.addEventListener('click', () => setMenu(menu.hidden));
+  $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+
+  /* ---------- copy e-mail ---------- */
+  $$('[data-copy]').forEach(btn => {
+    const label = $('.copy__label', btn);
+    btn.addEventListener('click', () => {
+      const text = btn.getAttribute('data-copy');
+      const show = msg => { label.textContent = msg; window.setTimeout(() => { label.textContent = 'Copier'; }, 1800); };
+      const fallback = () => {
+        const el = document.getElementById(btn.getAttribute('aria-controls'));
+        if (el) { const r = document.createRange(); r.selectNodeContents(el); const s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+        show('Sélectionné');
+      };
+      try { navigator.clipboard.writeText(text).then(() => show('Copié'), fallback); } catch (e) { fallback(); }
+    });
+  });
+
+  /* ---------- atelier board: drag the prints ---------- */
+  (function board() {
+    const boardEl = $('.board'); if (!boardEl) return;
+    const wide = window.matchMedia('(min-width: 760px)');
+    let z = 10;
+    $$('.pin', boardEl).forEach(pin => {
+      let drag = false, pid = null, sx = 0, sy = 0, ox = 0, oy = 0;
+      const read = () => [parseFloat(pin.style.getPropertyValue('--dx')) || 0, parseFloat(pin.style.getPropertyValue('--dy')) || 0];
+      const place = (dx, dy) => {
+        const bw = boardEl.clientWidth, bh = boardEl.clientHeight, pw = pin.offsetWidth, ph = pin.offsetHeight;
+        dx = Math.max(-pin.offsetLeft - pw * 0.25, Math.min(bw - pin.offsetLeft - pw * 0.75, dx));
+        dy = Math.max(-pin.offsetTop - ph * 0.25, Math.min(bh - pin.offsetTop - ph * 0.6, dy));
+        pin.style.setProperty('--dx', dx.toFixed(1) + 'px');
+        pin.style.setProperty('--dy', dy.toFixed(1) + 'px');
+      };
+      pin.addEventListener('pointerdown', e => {
+        if (!wide.matches || e.button !== 0) return;
+        drag = true; pid = e.pointerId; [ox, oy] = read(); sx = e.clientX; sy = e.clientY;
+        pin.style.zIndex = ++z; pin.classList.add('is-drag');
+        try { pin.setPointerCapture(pid); } catch (_) {}
+        e.preventDefault();
+      });
+      pin.addEventListener('pointermove', e => { if (drag && e.pointerId === pid) place(ox + e.clientX - sx, oy + e.clientY - sy); });
+      const end = () => { if (!drag) return; drag = false; pin.classList.remove('is-drag'); try { pin.releasePointerCapture(pid); } catch (_) {} };
+      pin.addEventListener('pointerup', end);
+      pin.addEventListener('pointercancel', end);
+      pin.addEventListener('keydown', e => {
+        if (!wide.matches) return;
+        const step = e.shiftKey ? 48 : 14; let [dx, dy] = read();
+        if (e.key === 'ArrowLeft') dx -= step; else if (e.key === 'ArrowRight') dx += step;
+        else if (e.key === 'ArrowUp') dy -= step; else if (e.key === 'ArrowDown') dy += step; else return;
+        e.preventDefault(); pin.style.zIndex = ++z; place(dx, dy);
+      });
+    });
+  })();
+
+  /* ---------- header turns dark over the cream atelier ---------- */
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      entries.forEach(en => hd.classList.toggle('on-paper', en.isIntersecting));
+    }, { rootMargin: '-30px 0px -93% 0px' }).observe($('.atelier'));
+  }
+
+  /* ---------- hero photo cycle ---------- */
+  const heroImgs = $$('.hero__img');
+  const capName = $('.hero__capname'), capKind = $('.hero__capkind');
+  let heroIdx = 0, heroProg = 0, heroVisible = true, cycleTimer = 0;
+  function showHero(i) {
+    heroImgs[heroIdx].classList.remove('is-on');
+    heroIdx = i;
+    heroImgs[i].classList.add('is-on');
+    capName.textContent = heroImgs[i].dataset.name;
+    capKind.textContent = heroImgs[i].dataset.kind;
+  }
+  function cycle() {
+    if (heroVisible && !document.hidden) showHero((heroIdx + 1) % heroImgs.length);
+    cycleTimer = window.setTimeout(cycle, heroProg > 0.45 ? 1800 : 1200);
+  }
+  function startCycle() { if (reduce || cycleTimer) return; cycleTimer = window.setTimeout(cycle, 1200); }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => { heroVisible = entries[0].isIntersecting; }).observe($('.hero'));
+  }
+
+  if (!motion) { startCycle(); return; }
+
+  /* =================== motion =================== */
+  root.classList.add('motion');
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (typeof window.Lenis === 'function') {
+    lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(time => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (!id || id.length < 2) return;
+    const target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    if (lenis) lenis.scrollTo(target, { duration: 1.6 }); else target.scrollIntoView({ behavior: 'smooth' });
+  }));
+
+  /* ---------- hero: zoom through the logo flower ---------- */
+  const hero = $('.hero'), stage = $('.hero__stage'), hsvg = $('.hero__svg'), hlogo = $('.hero__logo'), hwin = $('.hero__win');
+  const hbg = $('.hero__photobg'), hshade = $('.hero__shade'), hcentre = $('.lg-u--centre');
+  const hfade = $$('.hero__fade'), hstate = $('.hero__statement'), hdLogo = $('.hd__logo');
+  const uses = $$('.lg-u');
+  const LW = 1974, LH = 661, FCX = 854, FCY = 342.5, RMIN = 87.4;
+  const zEase = gsap.parseEase('power1.inOut');
+  let W = 0, H = 0, A = 1, FX = 0, FY = 0, SMAX = 10;
+
+  function heroLayout() {
+    W = stage.clientWidth; H = stage.clientHeight;
+    if (!W || !H) return;
+    hsvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    hsvg.setAttribute('preserveAspectRatio', 'none');
+    const maxW = Math.min(W * (W < 760 ? 0.94 : 0.88), 1640);
+    A = Math.min(maxW / LW, (H * 0.5) / LH);
+    const ox = (W - LW * A) / 2, oy = (H - LH * A) / 2 - H * 0.03;
+    FX = ox + FCX * A; FY = oy + FCY * A;
+    SMAX = (Math.hypot(W / 2, H / 2) / (RMIN * A)) * 1.18;
+    [hbg, hshade].forEach(r => { r.setAttribute('x', 0); r.setAttribute('y', 0); r.setAttribute('width', W); r.setAttribute('height', H); });
+    heroImgs.forEach(img => {
+      const ratio = parseFloat(img.dataset.ratio) || 1, fx = parseFloat(img.dataset.fx) || 0.5, fy = parseFloat(img.dataset.fy) || 0.5;
+      let w = W, h = W / ratio;
+      if (h < H) { h = H; w = H * ratio; }
+      const x = Math.min(0, Math.max(W - w, W / 2 - fx * w));
+      const y = Math.min(0, Math.max(H - h, H / 2 - fy * h));
+      img.setAttribute('x', x.toFixed(1)); img.setAttribute('y', y.toFixed(1));
+      img.setAttribute('width', w.toFixed(1)); img.setAttribute('height', h.toFixed(1));
+      img.setAttribute('preserveAspectRatio', 'none');
+    });
+    uses.forEach(u => { u.style.strokeWidth = (1.5 / A).toFixed(2); });
+    heroRender(heroProg);
+  }
+
+  function heroRender(p) {
+    heroProg = p;
+    const z = zEase(clamp01(p / 0.8));
+    const s = Math.exp(Math.log(SMAX) * z);
+    const cx = FX + (W / 2 - FX) * z, cy = FY + (H / 2 - FY) * z;
+    const k = A * s;
+    const m = `matrix(${k.toFixed(5)},0,0,${k.toFixed(5)},${(cx - FCX * k).toFixed(2)},${(cy - FCY * k).toFixed(2)})`;
+    hlogo.setAttribute('transform', m);
+    hwin.setAttribute('transform', m);
+    hcentre.style.opacity = (1 - clamp01((s - 1) / 1.4)).toFixed(3);
+    const f = (1 - clamp01(p / 0.07)).toFixed(3);
+    hfade.forEach(el => { el.style.opacity = f; });
+    const st = clamp01((p - 0.74) / 0.14);
+    hstate.style.opacity = st.toFixed(3);
+    hstate.style.transform = `translateY(calc(-50% + ${((1 - st) * 40).toFixed(1)}px))`;
+    hshade.setAttribute('opacity', (clamp01((p - 0.55) / 0.35)).toFixed(3));
+    hdLogo.style.opacity = p > 0.97 ? '1' : '0';
+  }
+
+  heroLayout();
+  ScrollTrigger.create({ trigger: hero, start: 'top top', end: 'bottom bottom', onUpdate: self => heroRender(self.progress) });
+  ScrollTrigger.addEventListener('refresh', heroLayout);
+
+  /* ---------- intro: the logo draws itself while the photos load ---------- */
+  (function intro() {
+    const photos = $('.hero__photos'), ui = $('.hero__ui'), count = $('.hero__count'), countNum = $('.hero__count b');
+    gsap.set(uses, { fillOpacity: 0, strokeOpacity: 1, strokeDasharray: 1000, strokeDashoffset: 1000 });
+    gsap.set(photos, { opacity: 0 });
+    gsap.set(ui, { autoAlpha: 0 });
+    hd.classList.add('is-hidden');
+    if (lenis) lenis.stop();
+    const srcs = heroImgs.map(i => i.getAttribute('href'));
+    let loaded = 0;
+    const loads = Promise.all(srcs.map(src => new Promise(res => {
+      const im = new Image();
+      im.onload = im.onerror = () => { loaded += 1; res(); };
+      im.src = src;
+    })));
+    const clock = { t: 0 };
+    const drawn = new Promise(res => {
+      gsap.timeline({ onComplete: res })
+        .to(uses, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', stagger: 0.12 }, 0)
+        .to(clock, { t: 100, duration: 1.4, ease: 'power1.inOut' }, 0);
+    });
+    const tickCount = () => { countNum.textContent = String(Math.round(Math.min(clock.t, (loaded / srcs.length) * 100))).padStart(3, '0'); };
+    gsap.ticker.add(tickCount);
+    const ready = Promise.all([drawn, Promise.race([loads, new Promise(r => window.setTimeout(r, 4500))])]);
+    ready.then(() => {
+      loaded = srcs.length;
+      tickCount();
+      gsap.timeline({
+        onComplete: () => { gsap.ticker.remove(tickCount); if (lenis) lenis.start(); startCycle(); ScrollTrigger.refresh(); }
+      })
+        .to(uses, { fillOpacity: 1, duration: 0.7, ease: 'power2.out' }, 0.05)
+        .to(uses, { strokeOpacity: 0, duration: 0.5 }, 0.35)
+        .to(count, { autoAlpha: 0, y: 14, duration: 0.45, ease: 'power2.in' }, 0.1)
+        .to(photos, { opacity: 1, duration: 0.8, ease: 'power2.out' }, 0.25)
+        .call(() => hd.classList.remove('is-hidden'), null, 0.45)
+        .to(ui, { autoAlpha: 1, duration: 0.7 }, 0.6);
+    });
+  })();
+
+  /* ---------- header hides on the way down ---------- */
+  let lastY = 0;
+  ScrollTrigger.create({
+    start: 0, end: 'max',
+    onUpdate: self => {
+      const y = self.scroll();
+      const down = y > lastY + 2, up = y < lastY - 2;
+      if (menu.hidden) { if (down && y > 160) hd.classList.add('is-hidden'); else if (up) hd.classList.remove('is-hidden'); }
+      lastY = y;
+    }
+  });
+
+  /* ---------- marquee driven by scroll speed ---------- */
+  (function marquee() {
+    const track = $('.marquee__track'), set = $('.marquee__set');
+    if (!track || !set) return;
+    let x = 0, dir = -1, boost = 0, setW = set.offsetWidth;
+    ScrollTrigger.addEventListener('refresh', () => { setW = set.offsetWidth; });
+    ScrollTrigger.create({ start: 0, end: 'max', onUpdate: self => { dir = self.direction === 1 ? -1 : 1; boost = Math.min(Math.abs(self.getVelocity()) / 900, 7); } });
+    gsap.ticker.add((time, dt) => {
+      boost *= 0.93;
+      x += dir * (0.05 + boost * 0.11) * dt;
+      if (setW > 0) { while (x <= -setW) x += setW; while (x > 0) x -= setW; }
+      track.style.transform = `translate3d(${x.toFixed(2)}px,0,0)`;
+    });
+  })();
+
+  /* ---------- titles: letters rise in ---------- */
+  $$('.title__noun').forEach(el => {
+    const text = el.textContent;
+    el.textContent = '';
+    const sr = document.createElement('span');
+    sr.className = 'sr-only'; sr.textContent = text;
+    el.appendChild(sr);
+    const chars = Array.from(text).map(ch => {
+      const s = document.createElement('span');
+      s.className = 'ch'; s.setAttribute('aria-hidden', 'true');
+      s.textContent = ch === ' ' ? ' ' : ch;
+      el.appendChild(s);
+      return s;
+    });
+    gsap.from(chars, {
+      yPercent: 55, rotate: 6, opacity: 0.2, duration: 1.1, ease: 'expo.out', stagger: 0.035,
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+    });
+  });
+
+  /* ---------- manifesto: words light up as you read ---------- */
+  (function manifesto() {
+    const el = $('.mani__text'); if (!el) return;
+    const walk = node => {
+      Array.from(node.childNodes).forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            const s = document.createElement('span'); s.className = 'w'; s.textContent = part; frag.appendChild(s);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    };
+    walk(el);
+    const words = $$('.w', el);
+    gsap.fromTo(words, { opacity: 0.16 }, {
+      opacity: 1, ease: 'none', stagger: 0.1,
+      scrollTrigger: { trigger: el, start: 'top 82%', end: 'bottom 48%', scrub: true }
+    });
+  })();
+
+  /* ---------- caps: horizontal gallery on large screens ---------- */
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 900px)', () => {
+    const caps = $('.caps'), track = $('.caps__track'), bar = $('.caps__progress span');
+    const cards = $$('.card, .caps__end', track);
+    root.classList.add('caps-h');
+    let dist = 0;
+    const size = () => {
+      dist = Math.max(0, track.scrollWidth - window.innerWidth);
+      caps.style.height = `${window.innerHeight + dist}px`;
+    };
+    size();
+    ScrollTrigger.addEventListener('refreshInit', size);
+    const skew = gsap.quickTo(cards, 'skewX', { duration: 0.7, ease: 'power3' });
+    const onEnd = () => skew(0);
+    ScrollTrigger.addEventListener('scrollEnd', onEnd);
+    ScrollTrigger.create({
+      trigger: caps, start: 'top top', end: 'bottom bottom',
+      onUpdate: self => {
+        gsap.set(track, { x: -self.progress * dist });
+        bar.style.transform = `scaleX(${self.progress.toFixed(4)})`;
+        skew(gsap.utils.clamp(-5, 5, self.getVelocity() / -450));
+      }
+    });
+    return () => {
+      ScrollTrigger.removeEventListener('refreshInit', size);
+      ScrollTrigger.removeEventListener('scrollEnd', onEnd);
+      root.classList.remove('caps-h');
+      caps.style.height = '';
+      gsap.set(track, { clearProps: 'transform' });
+      gsap.set(cards, { clearProps: 'transform' });
+    };
+  });
+
+  /* ---------- parallax ---------- */
+  $$('[data-speed]').forEach(el => {
+    const amt = ((parseFloat(el.dataset.speed) || 1) - 1) * 260;
+    gsap.fromTo(el, { y: -amt }, { y: amt, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  $$('[data-pimg]').forEach(img => {
+    gsap.set(img, { scale: 1.16 });
+    gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  $$('[data-reveal-img]').forEach(fig => {
+    gsap.fromTo(fig, { clipPath: 'inset(12% 9% 12% 9%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: fig, start: 'top 96%', end: 'top 40%', scrub: true } });
+  });
+  gsap.to('.ghost', { xPercent: -62, ease: 'none', scrollTrigger: { trigger: '.jerseys', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  /* ---------- gentle rise for text blocks ---------- */
+  $$('.lede, .jersey__info, .beast__info, .mini__info, .mani__side, .ft__cols > div').forEach(el => {
+    gsap.from(el, { y: 36, opacity: 0.25, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+  });
+
+  /* ---------- marinière: the page turns blue ---------- */
+  const tint = $('.bgtint');
+  gsap.timeline({ scrollTrigger: { trigger: '.mari', start: 'top 72%', end: 'bottom 28%', scrub: true } })
+    .fromTo(tint, { opacity: 0 }, { opacity: 1, duration: 0.16, ease: 'none' })
+    .to(tint, { opacity: 1, duration: 0.68 })
+    .to(tint, { opacity: 0, duration: 0.16, ease: 'none' });
+
+  /* ---------- winter beast: float + tilt ---------- */
+  gsap.to('.beast__float', { y: -16, duration: 2.6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  const beast = $('.beast__stage');
+  if (beast && finePointer) {
+    const prod = $('.beast__product', beast);
+    gsap.set(beast, { perspective: 900 });
+    const rx = gsap.quickTo(prod, 'rotationX', { duration: 0.9, ease: 'power3' });
+    const ry = gsap.quickTo(prod, 'rotationY', { duration: 0.9, ease: 'power3' });
+    beast.addEventListener('pointermove', e => {
+      const r = beast.getBoundingClientRect();
+      ry(((e.clientX - r.left) / r.width - 0.5) * 26);
+      rx(-((e.clientY - r.top) / r.height - 0.5) * 18);
+    });
+    beast.addEventListener('pointerleave', () => { rx(0); ry(0); });
+  }
+
+  /* ---------- footer logo draws itself ---------- */
+  const fuses = $$('.ft__logo use');
+  gsap.set(fuses, { strokeDasharray: 1000, strokeDashoffset: 1000, fillOpacity: 0 });
+  gsap.timeline({ scrollTrigger: { trigger: '.ft__logo', start: 'top 98%', end: 'bottom bottom', scrub: true } })
+    .to(fuses, { strokeDashoffset: 0, ease: 'none', stagger: 0.08, duration: 1 })
+    .to(fuses, { fillOpacity: 1, ease: 'none', duration: 0.5 }, '>-0.25');
+
+  /* ---------- cursor + magnetic buttons ---------- */
+  if (finePointer) {
+    const cur = $('.cursor'), label = $('.cursor__label');
+    root.classList.add('has-cursor');
+    const xTo = gsap.quickTo(cur, 'x', { duration: 0.45, ease: 'power3' });
+    const yTo = gsap.quickTo(cur, 'y', { duration: 0.45, ease: 'power3' });
+    window.addEventListener('pointermove', e => { xTo(e.clientX); yTo(e.clientY); }, { passive: true });
+    document.addEventListener('pointerover', e => {
+      const t = e.target.closest('[data-cursor]');
+      if (t) { label.textContent = t.dataset.cursor; cur.classList.add('is-on'); }
+    });
+    document.addEventListener('pointerout', e => {
+      const t = e.target.closest('[data-cursor]');
+      if (t && !(e.relatedTarget && t.contains(e.relatedTarget))) cur.classList.remove('is-on');
+    });
+    $$('[data-magnetic]').forEach(el => {
+      const mx = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'elastic.out(1, 0.45)' });
+      const my = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'elastic.out(1, 0.45)' });
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        mx((e.clientX - r.left - r.width / 2) * 0.28);
+        my((e.clientY - r.top - r.height / 2) * 0.38);
+      });
+      el.addEventListener('pointerleave', () => { mx(0); my(0); });
+    });
+  }
+
+  /* ---------- keep measurements fresh ---------- */
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+
+</body>
+</html>
