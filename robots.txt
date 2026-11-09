@@ -2,5 +2,6 @@ User-agent: *
 Disallow: /version-precedente/
 Disallow: /exemples/
 Disallow: /v1/
+Disallow: /maquettes/
 
 Sitemap: https://maison-dev.com/sitemap.xml

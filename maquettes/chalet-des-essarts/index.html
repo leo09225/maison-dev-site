@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash)</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Le Chalet des Essarts · Bar, restaurant, crêperie à Val-Cenis</title>
+<meta name="description" content="Le Chalet des Essarts, bar-restaurant-crêperie au cachet savoyard à Lanslevillard (Val-Cenis), sur la route du col du Mont-Cenis. Terrasse ensoleillée, transats, accessible à ski.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#14263A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2314263A'/%3E%3Cpath d='M10 36 32 16l22 20' fill='none' stroke='%23F2B544' stroke-width='5' stroke-linejoin='round'/%3E%3Crect x='20' y='34' width='24' height='16' fill='%23F4F1EA'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../_commun/maquette.css">
+<style>
+:root{--bg:#F3F1EC;--paper:#FFFDF9;--ink:#15212C;--soft:#56606A;--line:rgba(21,33,44,.13);--accent:#F2B544;--accent-ink:#1A1206;--accent-text:#A86A06;--dark:#14263A;--dark-ink:#F4F1EA;--f-display:Archivo,"Arial Narrow",sans-serif;--f-body:Inter}
+.brand{font:800 17px/1 Archivo;font-stretch:115%;text-transform:uppercase;letter-spacing:.02em}
+.brand small{display:block;font:500 11px/1.2 Inter;letter-spacing:.14em;color:var(--soft);margin-top:3px}
+.h2{font-weight:800;font-stretch:112%;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(32px,6vw,58px);line-height:.98}
+.h2 em{font-style:normal;color:var(--accent-text)}
+.card h3,.box h3{font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:22px;letter-spacing:0}
+.ph b{font-weight:800;font-stretch:110%;text-transform:uppercase;font-size:18px}
+/* Hero plein écran */
+.hero.full{min-height:min(92vh,860px);display:flex;align-items:flex-end;color:#fff;padding:120px 0 56px;margin-top:-70px;overflow:hidden;isolation:isolate}
+.hero.full .bg{position:absolute;inset:0;z-index:-2}
+.hero.full .bg svg,.hero.full .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero.full .bg img{animation:zoom 18s ease-out both}
+@keyframes zoom{from{transform:scale(1.12)}}
+.hero.full:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,20,32,.55) 0%,rgba(10,20,32,.05) 35%,rgba(10,20,32,.25) 55%,rgba(10,20,32,.88) 100%)}
+.hero.full .kick{color:var(--accent);text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.hero.full h1{font:900 clamp(46px,12vw,128px)/.9 Archivo;font-stretch:118%;text-transform:uppercase;letter-spacing:-.02em;margin:14px 0 18px}
+.hero.full h1 em{font-style:normal;color:var(--accent)}
+.hero.full .lead{color:rgba(255,255,255,.86);max-width:620px}
+.hero.full .btn.ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+.hero.full .pill{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.25);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero.full .pill i{background:var(--accent)}
+.credit{position:absolute;right:12px;top:82px;font-size:11px;color:rgba(255,255,255,.7)}
+.nav.onhero:not(.solid){color:#fff}
+.nav.onhero:not(.solid) .brand small{color:rgba(255,255,255,.7)}
+.nav.onhero:not(.solid) .links{color:rgba(255,255,255,.8)}
+/* Compte à rebours */
+.count{background:var(--accent);color:var(--accent-ink)}
+.count .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:22px;padding-bottom:22px}
+.count p{font:800 18px/1.2 Archivo;font-stretch:110%;text-transform:uppercase}
+.count .cd{display:flex;gap:8px}
+.count .cd div{background:var(--accent-ink);color:var(--accent);border-radius:12px;padding:10px 12px;min-width:66px;text-align:center}
+.count .cd b{display:block;font:900 30px/1 Archivo;font-variant-numeric:tabular-nums}
+.count .cd span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.chips2{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chips2 span{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:8px 14px;font-size:14px}
+.chips2 span:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.snowtop{position:relative}
+.anim{display:grid;gap:14px}
+.ev{position:relative;border-radius:26px;padding:30px;overflow:hidden;background:var(--dark);color:var(--dark-ink)}
+.ev .day{font:900 64px/.9 Archivo;font-stretch:120%;text-transform:uppercase;color:var(--accent)}
+.ev h3{font:800 24px/1.1 Archivo;font-stretch:110%;text-transform:uppercase;margin:16px 0 10px}
+.ev p{opacity:.8}
+.ev .hr{display:inline-block;margin-top:16px;border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:6px 12px;font-size:14px}
+.ev svg.deco{position:absolute;right:-20px;top:-20px;width:150px;opacity:.15}
+.ev.light{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.ev.light .day{color:var(--dark)}
+.ev.light .hr{border-color:var(--line)}
+.gal2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gal2 figure{aspect-ratio:1;border-radius:18px}
+.gal2 figure.big{grid-column:1/-1;aspect-ratio:16/10}
+.gal2 .ph{aspect-ratio:1;min-height:0;border-radius:18px}
+.small{font-size:13px;color:var(--soft);margin-top:14px}
+.final{background:var(--dark);color:var(--dark-ink);text-align:center;border-radius:36px;padding:70px 22px;position:relative;overflow:hidden}
+.final .ctas{justify-content:center}
+.final svg{position:absolute;left:0;right:0;bottom:-2px;width:100%;opacity:.12}
+@media (min-width:720px){.anim{grid-template-columns:1fr 1fr}.gal2{grid-template-columns:repeat(4,1fr)}.gal2 figure.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}}
+@media (min-width:980px){.hero.full{padding-bottom:84px}}
+</style>
+</head>
+<body>
+
+<div class="md-bar"><div class="wrap"><span><b>Maquette gratuite</b> préparée pour Le Chalet des Essarts par Maison Dev</span><a href="https://maison-dev.com/">Maison Dev</a></div></div>
+
+<nav class="nav onhero"><div class="wrap">
+  <a href="#" class="brand"><svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#14263A"/><path d="M5 19 17 8l12 11" fill="none" stroke="#F2B544" stroke-width="2.6" stroke-linejoin="round"/><rect x="10.5" y="18" width="13" height="9" fill="#F4F1EA"/><rect x="15" y="21" width="4" height="6" fill="#14263A"/></svg><span>Chalet des Essarts<small>Val-Cenis · Lanslevillard</small></span></a>
+  <div class="links"><a href="#chalet">Le chalet</a><a href="#animations">Animations</a><a href="#photos">Photos</a><a href="#infos">Infos pratiques</a></div>
+  <a class="btn sm acc" href="tel:+33613826626"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+</div></nav>
+
+<header class="hero full">
+  <div class="bg" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E86A8"/><stop offset="1" stop-color="#C9D8E2"/></linearGradient></defs><rect width="1600" height="900" fill="url(#sky)"/><path d="M0 560 260 300l120 110 210-260 250 300 140-120 300 260 160-140 160 160v290H0z" fill="#E9EEF2"/><path d="M590 150l-60 70 40-10-20 50 70-70zM1160 410l-50 60 40-20" fill="#B7C6D2"/><path d="M0 700 300 560l260 120 300-150 320 170 240-110 180 90v220H0z" fill="#F7F9FA"/><path d="M0 820h1600v80H0z" fill="#fff"/></svg>
+    <img src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/32980786-diaporama.jpg" alt="" onerror="this.remove()">
+  </div>
+  <div class="wrap">
+    <span class="pill rv" data-status data-avant="Ouverture de la saison le 12 décembre · J-{j}"><i></i><span>Tous les jours de 9h à 17h</span></span>
+    <p class="kick rv" style="margin-top:22px">Bar · Restaurant · Crêperie</p>
+    <h1 class="hl">Le Chalet <em>des Essarts</em></h1>
+    <p class="lead rv">Notre établissement, au cachet typiquement savoyard et à l’ambiance familiale, saura vous séduire grâce à son emplacement idéal (route menant au col du Mont-Cenis) et à sa cuisine simple et de qualité.</p>
+    <div class="ctas rv">
+      <a class="btn acc" href="tel:+33613826626"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>06 13 82 66 26</a>
+      <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=Le+Chalet+des+Essarts+RD1006+Lanslevillard+73480+Val-Cenis" target="_blank" rel="noopener">Itinéraire</a>
+    </div>
+  </div>
+</header>
+
+<div class="count" id="ouverture"><div class="wrap">
+  <p>Saison d’hiver · du 12 décembre 2026<br>au 16 avril 2027</p>
+  <div class="cd" aria-label="Compte à rebours avant l’ouverture"><div><b id="cdj">--</b><span>jours</span></div><div><b id="cdh">--</b><span>heures</span></div><div><b id="cdm">--</b><span>min</span></div></div>
+</div></div>
+
+<section id="chalet">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="kick">Le chalet</p>
+      <h2 class="h2">La pause <em>au pied des pistes</em></h2>
+      <p style="color:var(--soft);margin-top:18px;max-width:520px">Faites votre pause resto ou bar, en famille ou entre amis, et profitez de la terrasse ensoleillée, des transats et du chalet cosy.</p>
+      <div class="chips2"><span>Terrasse ensoleillée</span><span>Transats</span><span>Accessible à ski</span><span>Vue sur la Dent Parrachée</span><span>Aire de jeux</span><span>Chaise bébé</span><span>Accessible en poussette</span><span>Animaux acceptés</span><span>Parking à proximité</span></div>
+    </div>
+    <figure class="ph-img rv" style="aspect-ratio:4/3"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/32980216-diaporama.jpg" alt="La salle à manger avec vue sur la Dent Parrachée"><figcaption>La salle à manger avec vue sur la Dent Parrachée</figcaption></figure>
+  </div>
+</section>
+
+<section id="carte" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><p class="kick">À la carte</p><h2 class="h2">Crêpes, cuisine <em>savoyarde</em> et snack</h2></div><p>Votre carte et vos prix s’affichent ici, faciles à lire sur le téléphone, avant même d’arriver au chalet.</p></div>
+    <div class="grid c3">
+      <article class="card rv"><h3>Crêpes</h3><ul><li><span class="todo">vos crêpes sucrées</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">vos crêpes salées</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">la spécialité du chalet</span><span class="p"><span class="todo">prix</span></span></li></ul></article>
+      <article class="card rv"><h3>Cuisine traditionnelle</h3><ul><li><span class="todo">vos plats</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">le plat du jour</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">vos desserts</span><span class="p"><span class="todo">prix</span></span></li></ul></article>
+      <article class="card rv"><h3>Snack et bar</h3><ul><li><span class="todo">à emporter</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">boissons chaudes</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">au bar</span><span class="p"><span class="todo">prix</span></span></li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="animations" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><p class="kick">Animations</p><h2 class="h2">Chaque semaine <em>au chalet</em></h2></div><p>Programme de la saison 2025-2026, à confirmer pour cet hiver.</p></div>
+    <div class="anim">
+      <article class="ev rv">
+        <svg class="deco" viewBox="0 0 100 100" fill="none" stroke="#F2B544" stroke-width="4"><path d="M50 5v90M11 27l78 46M11 73l78-46"/><path d="M40 12l10 10 10-10M40 88l10-10 10 10"/></svg>
+        <div class="day">Mardi</div>
+        <h3>Le magicien</h3>
+        <p>Un magicien est présent pour le plaisir des petits et des grands.</p>
+        <span class="hr">De 13h à 17h</span>
+      </article>
+      <article class="ev light rv">
+        <div class="day">Jeudi</div>
+        <h3>Raquettes et repas montagnard</h3>
+        <p>Une petite balade en raquettes, un diaporama sur le métier de guide de haute montagne, puis un repas montagnard.</p>
+        <span class="hr">Sur réservation</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="opt rv">
+      <span class="rib">Option</span>
+      <div class="in2">
+        <div>
+          <p class="kick" style="color:var(--accent)">Réservation en ligne</p>
+          <h2 class="h2">Réservez <em style="color:var(--accent)">le jeudi montagnard</em></h2>
+          <p>Vos clients choisissent leur jeudi et le nombre de personnes depuis leur téléphone. Vous recevez la demande par SMS ou par mail, sans répondre au téléphone pendant le service.</p>
+          <p class="note">Exemple de fonction en plus, pour vous montrer ce qu’un site peut faire.</p>
+        </div>
+        <form data-demo>
+          <label>Quel jeudi ?<div class="chips"><button class="on">17 déc.</button><button>24 déc.</button><button>31 déc.</button><button>7 janv.</button></div></label>
+          <label>Combien de personnes ?<div class="chips"><button>1</button><button class="on">2</button><button>3</button><button>4</button><button>5</button><button>6+</button></div></label>
+          <label>Votre nom<input type="text" placeholder="Nom"></label>
+          <label>Votre téléphone<input type="tel" placeholder="06 00 00 00 00"></label>
+          <button class="btn" type="submit">Demander ma place</button>
+          <p class="ok">Demande envoyée (démonstration). Le chalet vous confirme par SMS.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="photos" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><p class="kick">Photos</p><h2 class="h2">Le chalet <em>en images</em></h2></div></div>
+    <div class="gal2 rv">
+      <figure class="ph-img big"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/32980192-diaporama.jpg" alt="La terrasse aménagée, coin salon"><figcaption>La terrasse aménagée, coin salon</figcaption></figure>
+      <figure class="ph-img"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/32980791-diaporama.jpg" alt="La salle et sa belle charpente"><figcaption>La salle et sa charpente</figcaption></figure>
+      <figure class="ph-img"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/32980795-diaporama.jpg" alt="La salle et le bar"><figcaption>La salle et le bar</figcaption></figure>
+      <figure class="ph-img"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/32980798-diaporama.jpg" alt="L’enseigne du Chalet des Essarts"><figcaption>L’enseigne</figcaption></figure>
+      <figure class="ph-img"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/32980193-diaporama.jpg" alt="La terrasse pour les repas en extérieur"><figcaption>Repas en terrasse</figcaption></figure>
+      <figure class="ph-img"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/32980194-diaporama.jpg" alt="L’extérieur avec vue sur la Dent Parrachée"><figcaption>Vue sur la Dent Parrachée</figcaption></figure>
+      <figure class="ph-img"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/35411720-diaporama.jpg" alt="L’entrée et la terrasse"><figcaption>L’entrée et la terrasse</figcaption></figure>
+      <figure class="ph-img"><img loading="lazy" src="https://geotrek.auvergnerhonealpes-tourisme.com/media/paperclip/tourism_touristiccontent/8239/35411727-diaporama.jpg" alt="Vue de l’entrée et de la terrasse"><figcaption>L’entrée, côté terrasse</figcaption></figure>
+    </div>
+    <p class="small">Photos M. Gagnière et S. Cadoux, publiées sur la fiche de Haute Maurienne Vanoise Tourisme. Vos propres photos (crêpes, plats, saison) pourront s’ajouter ici.</p>
+  </div>
+</section>
+
+<section id="infos" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><p class="kick">Infos pratiques</p><h2 class="h2">Venir <em>au chalet</em></h2></div></div>
+    <div class="grid c3">
+      <div class="box rv">
+        <h3>Horaires</h3>
+        <p>Tous les jours de 9h à 17h</p>
+        <p class="muted">Saison d’hiver du 12 décembre 2026 au 16 avril 2027.</p>
+        <h3 style="margin-top:26px">Paiement</h3>
+        <p class="muted">Carte bancaire, chèques, Chèques-Vacances, espèces, titres-restaurant.</p>
+        <h3 style="margin-top:26px">On parle</h3>
+        <p class="muted">Français, anglais, italien.</p>
+      </div>
+      <div class="box rv">
+        <h3>Accès</h3>
+        <p>Les Essarts, RD 1006<br>Lanslevillard, 73480 Val-Cenis</p>
+        <p class="muted">Sur la route du col du Mont-Cenis. Accessible à ski, parking à proximité.</p>
+        <p style="margin-top:16px"><a class="btn sm" href="https://www.google.com/maps/dir/?api=1&destination=Le+Chalet+des+Essarts+RD1006+Lanslevillard+73480+Val-Cenis" target="_blank" rel="noopener">Itinéraire</a></p>
+        <h3 style="margin-top:26px">Contact</h3>
+        <p><a href="tel:+33613826626">06 13 82 66 26</a><br><a href="tel:+33689186863">06 89 18 68 63</a><br><a href="mailto:chaletdesessarts@gmail.com" style="font-size:15px">chaletdesessarts@gmail.com</a></p>
+      </div>
+      <div class="map rv"><iframe title="Plan d’accès" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Les+Essarts,+RD+1006,+Lanslevillard,+73480+Val-Cenis&z=13&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="final rv">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 200 180 60l120 80 160-120 200 150 140-90 200 120 200-110v210z" fill="#F4F1EA"/></svg>
+      <p class="kick" style="color:var(--accent)">Le Chalet des Essarts</p>
+      <h2 class="h2">On vous garde <em style="color:var(--accent)">une place au soleil</em></h2>
+      <div class="ctas"><a class="btn acc" href="tel:+33613826626">06 13 82 66 26</a><a class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="mailto:chaletdesessarts@gmail.com">Écrire un mail</a></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>© <span data-year>2026</span> Le Chalet des Essarts · Bar, restaurant, crêperie · Val-Cenis</span>
+  <span>Maquette préparée par <a href="https://maison-dev.com/">Maison Dev</a> · page non référencée</span>
+</div></footer>
+
+<div class="callbar">
+  <a href="tel:+33613826626"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Le+Chalet+des+Essarts+RD1006+Lanslevillard+73480+Val-Cenis" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Itinéraire</a>
+</div>
+
+<script>
+var H=[["09:00","17:00"]];window.HORAIRES={0:H,1:H,2:H,3:H,4:H,5:H,6:H};window.SAISON={debut:"2026-12-12",fin:"2027-04-16"};
+(function(){var t=new Date("2026-12-12T09:00:00+01:00").getTime(),j=document.getElementById('cdj'),h=document.getElementById('cdh'),m=document.getElementById('cdm');
+function tick(){var s=Math.max(0,t-Date.now())/1000;j.textContent=Math.floor(s/86400);h.textContent=String(Math.floor(s%86400/3600)).padStart(2,'0');m.textContent=String(Math.floor(s%3600/60)).padStart(2,'0');
+if(s<=0){document.querySelector('.count .cd').style.display='none'}}tick();setInterval(tick,30000)})();
+</script>
+<script src="../_commun/maquette.js"></script>
+</body>
+</html>

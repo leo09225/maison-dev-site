@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash)</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Auberge Chez Virginie · Restaurant et chambres d’hôtes à Saugues</title>
+<meta name="description" content="Auberge Chez Virginie à Saugues (Haute-Loire) : cuisine familiale traditionnelle, menu du jour à 15 €, chambres d’hôtes au centre du bourg, ouvert toute l’année.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1D3F6E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231D3F6E'/%3E%3Cpath d='M32 50 14 26a20 14 0 0 1 36 0z' fill='%23F2C230'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../_commun/maquette.css">
+<style>
+:root{--bg:#F3EEE6;--paper:#FCFAF6;--ink:#1C2229;--soft:#5C6168;--line:rgba(28,34,41,.13);--accent:#F2C230;--accent-ink:#1C2229;--accent-text:#1D3F6E;--dark:#1D3F6E;--dark-ink:#F7F3EA;--f-display:"Instrument Serif",Georgia,serif;--f-body:Inter}
+.hero .wrap{display:grid;gap:36px;align-items:center}
+.hero h1 em{color:var(--dark)}
+.shell{position:relative;max-width:440px;width:100%;margin:0 auto;aspect-ratio:1}
+.shell svg{position:absolute;inset:0;width:100%;height:100%}
+.shell .rays path{stroke-dasharray:300;stroke-dashoffset:300;animation:draw 1.6s cubic-bezier(.5,.1,.3,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.tag{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:10px 14px;font-size:13px;box-shadow:0 18px 30px -22px rgba(29,63,110,.55);animation:float 6s ease-in-out infinite}
+.tag b{display:block;font:400 26px/1 var(--f-display)}
+.tag.t1{left:0;bottom:10%}.tag.t2{right:0;top:6%;animation-delay:-3s}
+@keyframes float{50%{transform:translateY(-10px)}}
+.menu{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:30px;position:relative;overflow:hidden}
+.menu .price{font:400 72px/1 var(--f-display);color:var(--dark)}
+.menu .price small{font-size:28px}
+.menu h3{font:400 32px/1.1 var(--f-display);margin:6px 0 4px}
+.menu .when{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);font-weight:600}
+.menu ol{list-style:none;margin-top:20px;display:grid;gap:0;counter-reset:c}
+.menu li{padding:10px 0;border-top:1px dashed var(--line);display:flex;gap:12px;align-items:baseline}
+.menu ul li:before{content:none}
+.menu li:before{counter-increment:c;content:counter(c);font:400 20px var(--f-display);color:var(--soft);width:18px}
+.menu.dark{background:var(--dark);color:var(--dark-ink);border:0}
+.menu.dark .price{color:var(--accent)}
+.menu.dark .when{color:rgba(247,243,234,.7)}
+.menu.dark li{border-color:rgba(247,243,234,.2)}
+.menu.dark li:before{color:var(--accent)}
+.rooms{width:100%;border-collapse:collapse;font-size:17px}
+.rooms td{padding:12px 0;border-bottom:1px dashed var(--line)}
+.rooms td:last-child{text-align:right;font:400 26px/1 var(--f-display)}
+.gr65{background:var(--accent);border-radius:30px;padding:34px 24px;display:grid;gap:22px;align-items:center}
+.gr65 .h2 em{color:var(--dark)}
+.gr65 .mark{display:flex;gap:10px;align-items:center;font:600 13px Inter;letter-spacing:.12em;text-transform:uppercase}
+.gr65 .mark i{display:inline-block;width:46px;height:10px;background:linear-gradient(#fff 0 50%,#D63A2F 50%);border-radius:2px}
+@media (min-width:720px){.gr65{grid-template-columns:1.2fr .8fr;padding:54px}}
+@media (min-width:980px){.hero .wrap{grid-template-columns:1.1fr .9fr}.hero{padding:54px 0 90px}}
+</style>
+</head>
+<body>
+
+<div class="md-bar"><div class="wrap"><span><b>Maquette gratuite</b> préparée pour l’Auberge Chez Virginie par Maison Dev</span><a href="https://maison-dev.com/">Maison Dev</a></div></div>
+
+<nav class="nav"><div class="wrap">
+  <a href="#" class="brand"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="#1D3F6E"/><path d="M17 27 7.5 13.5a10.5 7.5 0 0 1 19 0z" fill="#F2C230"/><path d="M17 27 11 13M17 27v-15M17 27l6-14" stroke="#1D3F6E" stroke-width="1.2"/></svg>Chez Virginie</a>
+  <div class="links"><a href="#restaurant">Le restaurant</a><a href="#chambres">Les chambres</a><a href="#infos">Infos pratiques</a></div>
+  <a class="btn sm" href="tel:+33627558966"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill open rv"><i></i><span>Ouvert toute l’année, tous les jours</span></span>
+      <h1 class="hl">Auberge <em>Chez Virginie</em></h1>
+      <p class="lead rv">Cuisine familiale traditionnelle et chambres d’hôtes au cœur du bourg de Saugues, en Haute-Loire. Menu du jour, petit-déjeuner dès 7 heures.</p>
+      <div class="ctas rv">
+        <a class="btn" href="tel:+33627558966"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>06 27 55 89 66</a>
+        <a class="btn ghost" href="#chambres">Les chambres</a>
+      </div>
+    </div>
+    <div class="shell rv" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="180" fill="#1D3F6E"/>
+        <path d="M200 330 92 168a120 84 0 0 1 216 0z" fill="#F2C230"/>
+        <g class="rays" fill="none" stroke="#1D3F6E" stroke-width="5" stroke-linecap="round">
+          <path d="M200 330 104 160"/><path d="M200 330 134 128"/><path d="M200 330 170 112"/><path d="M200 330V108"/><path d="M200 330 230 112"/><path d="M200 330 266 128"/><path d="M200 330 296 160"/>
+        </g>
+        <path d="M170 336h60l-10 18h-40z" fill="#F2C230"/>
+      </svg>
+      <div class="tag t1"><b>15 €</b>le menu du jour</div>
+      <div class="tag t2"><b>4 chambres</b>au centre du bourg</div>
+    </div>
+  </div>
+</header>
+
+<section id="restaurant" style="padding-top:20px">
+  <div class="wrap">
+    <div class="head rv"><div><p class="kick">Le restaurant</p><h2 class="h2">Une cuisine <em>familiale et traditionnelle</em></h2></div><p>Menu du jour en semaine, service à la carte le week-end. Le menu de la semaine pourra s’afficher ici chaque lundi.</p></div>
+    <div class="grid c3">
+      <article class="menu dark rv">
+        <p class="when">En semaine</p>
+        <h3>Menu du jour</h3>
+        <p class="price">15<small> €</small></p>
+        <ol><li>Entrée</li><li>Plat</li><li>Fromage</li><li>Dessert</li><li>Café</li></ol>
+      </article>
+      <article class="menu rv">
+        <p class="when">Le week-end</p>
+        <h3>À la carte</h3>
+        <p class="price">20<small> €</small></p>
+        <ol><li>Entrée</li><li>Plat</li><li>Fromage</li><li>Dessert</li></ol>
+      </article>
+      <article class="menu rv">
+        <p class="when">Cette semaine</p>
+        <h3>Au menu</h3>
+        <ul style="list-style:none;margin-top:16px;display:grid;gap:10px">
+          <li><span class="todo">entrée du jour</span></li>
+          <li><span class="todo">plat du jour</span></li>
+          <li><span class="todo">dessert du jour</span></li>
+        </ul>
+        <p style="margin-top:22px;color:var(--soft);font-size:15px">Petit-déjeuner servi dès 7 heures.<br>Café 1,20 €.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="chambres" style="padding-top:0">
+  <div class="wrap split">
+    <div class="gal rv">
+      <div class="ph wide"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Vos photos ici</b><small>une chambre</small></div></div>
+      <div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>La salle</b><small>du restaurant</small></div></div>
+      <div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Un plat</b><small>du menu du jour</small></div></div>
+    </div>
+    <div class="rv">
+      <p class="kick">Les chambres d’hôtes</p>
+      <h2 class="h2">Dormir <em>au centre du bourg</em></h2>
+      <p style="color:var(--soft);margin:16px 0 22px">4 chambres et 10 couchages, au 2 rue des Carmélites, à deux pas de l’auberge. Petit-déjeuner servi dès 7 heures.</p>
+      <table class="rooms">
+        <tr><td>1 personne</td><td>35 €</td></tr>
+        <tr><td>2 personnes</td><td>55 €</td></tr>
+        <tr><td>3 personnes</td><td>75 €</td></tr>
+        <tr><td>Personne en plus</td><td>20 €</td></tr>
+        <tr><td>Animal</td><td>5 €</td></tr>
+        <tr><td>Enfant de moins de 2 ans</td><td>offert</td></tr>
+      </table>
+      <p style="color:var(--soft);font-size:14px;margin-top:12px">Prix par nuit. Taxe de séjour en plus.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="gr65 rv">
+      <div>
+        <p class="mark"><i></i>GR 65 · Via Podiensis</p>
+        <h2 class="h2" style="margin-top:14px">Une étape <em>sur le chemin de Saint-Jacques</em></h2>
+      </div>
+      <p>Saugues est une étape du chemin du Puy-en-Velay vers Compostelle. Pèlerins et randonneurs trouvent ici un lit, un petit-déjeuner dès 7 heures et une cuisine maison, toute l’année.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:84px">
+  <div class="wrap">
+    <div class="opt rv">
+      <span class="rib">Option</span>
+      <div class="in2">
+        <div>
+          <p class="kick" style="color:var(--accent)">Réservation en ligne</p>
+          <h2 class="h2">Réserver une chambre <em style="color:var(--accent)">depuis le téléphone</em></h2>
+          <p>Les pèlerins réservent leur étape la veille, souvent le soir. Avec ce formulaire, vous recevez la demande par SMS ou par mail et vous confirmez quand vous avez un moment.</p>
+          <p class="note">Exemple de fonction en plus, pour vous montrer ce qu’un site peut faire.</p>
+        </div>
+        <form data-demo>
+          <label>Date d’arrivée<input type="date"></label>
+          <label>Nombre de personnes<div class="chips"><button class="on">1</button><button>2</button><button>3</button><button>4+</button></div></label>
+          <label>Repas<div class="chips" data-multi><button class="on">Petit-déjeuner</button><button>Demi-pension</button></div></label>
+          <label>Votre téléphone<input type="tel" placeholder="06 00 00 00 00"></label>
+          <button class="btn acc" type="submit">Demander la chambre</button>
+          <p class="ok">Demande envoyée (démonstration). Virginie vous confirme par SMS.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="infos" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><p class="kick">Infos pratiques</p><h2 class="h2">Nous <em>trouver</em></h2></div></div>
+    <div class="grid c3">
+      <div class="box rv">
+        <h3>Le restaurant</h3>
+        <p>3 rue Médard<br>43170 Saugues</p>
+        <h3 style="margin-top:24px">Les chambres</h3>
+        <p>2 rue des Carmélites<br>43170 Saugues</p>
+        <p class="muted" style="margin-top:12px">Ouvert toute l’année, tous les jours. Animaux acceptés.</p>
+      </div>
+      <div class="box rv">
+        <h3>Contact</h3>
+        <p><a href="tel:+33627558966" style="font-size:20px">06 27 55 89 66</a></p>
+        <p><a href="mailto:virginie.cornubet@gmail.com" style="font-size:15px">virginie.cornubet@gmail.com</a></p>
+        <h3 style="margin-top:24px">Paiement</h3>
+        <p class="muted">Chambres : chèque, Chèques-Vacances, espèces, virement.</p>
+        <p style="margin-top:16px"><a class="btn sm" href="https://www.google.com/maps/dir/?api=1&destination=3+rue+M%C3%A9dard+43170+Saugues" target="_blank" rel="noopener">Itinéraire</a></p>
+      </div>
+      <div class="map rv"><iframe title="Plan d’accès" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=3+rue+M%C3%A9dard,+43170+Saugues&z=16&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>© <span data-year>2026</span> Auberge Chez Virginie · Restaurant et chambres d’hôtes · Saugues</span>
+  <span>Maquette préparée par <a href="https://maison-dev.com/">Maison Dev</a> · page non référencée</span>
+</div></footer>
+
+<div class="callbar">
+  <a href="tel:+33627558966"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=3+rue+M%C3%A9dard+43170+Saugues" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Itinéraire</a>
+</div>
+
+<script src="../_commun/maquette.js"></script>
+</body>
+</html>
