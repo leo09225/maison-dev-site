@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- ═══ À ADAPTER POUR UN VRAI CLIENT (1/3) : titre, description, indexation ═══
+     Le script remplace le titre et la description par ceux de contenu.json,
+     mais ces lignes servent quand JavaScript ne charge pas et pour les aperçus de partage. -->
+<title>L’Auberge des Tilleuls, auberge et restaurant en Drôme provençale</title>
+<meta name="description" content="Une ancienne ferme en pierre entre vignes et collines : 12 chambres, un restaurant du marché, une piscine dans le jardin. Demandez vos dates en ligne.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="L’Auberge des Tilleuls, auberge et restaurant en Drôme provençale">
+<meta property="og:description" content="Une ancienne ferme en pierre entre vignes et collines : 12 chambres, un restaurant du marché, une piscine dans le jardin.">
+<!-- À retirer seulement quand Léo a validé la mise en ligne : -->
+<meta name="robots" content="noindex">
+
+<!-- ═══ À ADAPTER POUR UN VRAI CLIENT (2/3) : les 6 couleurs ═══ -->
+<style>
+:root {
+  --fond: #F4EFE6;          /* fond de page (pierre claire) */
+  --surface: #FBF8F2;       /* surfaces et cartes */
+  --texte: #2B2A22;         /* texte (brun olive foncé) */
+  --texte-2: #6E6A5C;       /* texte secondaire */
+  --accent: #5E6B3A;        /* boutons et liens (vert olive) */
+  --accent-chaud: #B8863B;  /* détails et survol (ocre) */
+}
+</style>
+
+<meta name="theme-color" content="#F4EFE6">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<!-- ───────────── 1. Barre du haut ───────────── -->
+<header class="entete" id="entete">
+  <a class="logo" href="#accueil">
+    <svg class="logo__feuille" aria-hidden="true" focusable="false"><use href="#i-feuille"/></svg>
+    <span data-c="etablissement.nom">L’Auberge des Tilleuls</span>
+  </a>
+  <nav class="entete__nav" aria-label="Menu principal">
+    <ul id="menu-liste"></ul>
+  </nav>
+  <div class="entete__actions">
+    <a class="entete__tel" href="tel:+33465710126" data-c-tel>04 65 71 01 26</a>
+    <a class="bouton bouton--plein entete__reserver" href="#secours" data-demande="sejour" data-c="boutons.reserver">Réserver</a>
+    <button class="entete__menu" type="button" id="ouvrir-menu" aria-haspopup="dialog" aria-controls="menu-plein">
+      <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+      <span data-c="boutons.menu">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ───────────── 2. Accueil plein écran ─────────────
+       ═══ À ADAPTER POUR UN VRAI CLIENT (3/3, facultatif) : ce bloc et le bloc « secours » plus bas
+       sont le contenu affiché sans JavaScript. Le script les remplace par contenu.json. -->
+  <section class="accueil" id="accueil" aria-labelledby="accueil-titre">
+    <div class="accueil__sentinelle" id="sentinelle" aria-hidden="true"></div>
+    <picture class="accueil__photo">
+      <source id="accueil-source" media="(max-width: 700px)" srcset="assets/photos/accueil-mobile.webp">
+      <img id="accueil-image" src="assets/photos/accueil-800.webp"
+           srcset="assets/photos/accueil-800.webp 800w, assets/photos/accueil.webp 1600w" sizes="100vw"
+           width="1600" height="1067" fetchpriority="high" decoding="async"
+           alt="La ferme en pierre de l’auberge, sa piscine et son jardin, sous un ciel d’été">
+    </picture>
+
+    <div class="accueil__contenu">
+      <div class="accueil__texte">
+        <p class="accueil__lieu" data-c="accueil.lieu">Drôme provençale</p>
+        <h1 class="accueil__titre" id="accueil-titre" data-c="accueil.titre">L’Auberge des Tilleuls</h1>
+        <p class="accueil__phrase" data-c="accueil.phrase">Une ancienne ferme en pierre, entre vignes et collines. Ici, on entend surtout les cigales.</p>
+      </div>
+
+      <form class="panneau" id="panneau" novalidate aria-labelledby="panneau-titre">
+        <h2 class="vh" id="panneau-titre" data-c="reservation.panneau.titre">Vos dates</h2>
+        <div class="panneau__champ">
+          <label for="p-arrivee" data-c="reservation.panneau.arrivee">Arrivée</label>
+          <input type="date" id="p-arrivee" name="arrivee" required>
+        </div>
+        <div class="panneau__champ">
+          <label for="p-depart" data-c="reservation.panneau.depart">Départ</label>
+          <input type="date" id="p-depart" name="depart" required>
+        </div>
+        <div class="panneau__champ">
+          <label for="p-adultes" data-c="reservation.panneau.adultes">Adultes</label>
+          <div class="compteur">
+            <button type="button" data-pas="-1" data-pour="p-adultes" aria-label="Retirer un adulte"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-moins"/></svg></button>
+            <input type="number" id="p-adultes" name="adultes" value="2" min="1" max="8" inputmode="numeric">
+            <button type="button" data-pas="1" data-pour="p-adultes" aria-label="Ajouter un adulte"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button>
+          </div>
+        </div>
+        <div class="panneau__champ">
+          <label for="p-enfants" data-c="reservation.panneau.enfants">Enfants</label>
+          <div class="compteur">
+            <button type="button" data-pas="-1" data-pour="p-enfants" aria-label="Retirer un enfant"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-moins"/></svg></button>
+            <input type="number" id="p-enfants" name="enfants" value="0" min="0" max="6" inputmode="numeric">
+            <button type="button" data-pas="1" data-pour="p-enfants" aria-label="Ajouter un enfant"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></button>
+          </div>
+        </div>
+        <button class="bouton bouton--plein panneau__bouton" type="submit" data-c="reservation.panneau.bouton">Voir les disponibilités</button>
+        <p class="panneau__erreur" id="panneau-erreur" role="alert"></p>
+      </form>
+
+      <!-- Sans JavaScript, le panneau est remplacé par ces deux liens directs. -->
+      <p class="accueil__secours">
+        <a class="bouton bouton--plein" href="tel:+33465710126">Appeler le 04 65 71 01 26</a>
+        <a class="bouton bouton--clair" href="mailto:bonjour@auberge-des-tilleuls.example">Écrire à l’auberge</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ───────────── 3 à 10. Sections dessinées par assets/site.js à partir de contenu.json ───────────── -->
+  <div id="sections"></div>
+
+  <!-- ───────────── Contenu de secours (sans JavaScript, ou si contenu.json ne charge pas) ───────────── -->
+  <section class="secours" id="secours" aria-labelledby="secours-titre">
+    <div class="conteneur secours__grille">
+      <div>
+        <h2 class="titre" id="secours-titre">L’auberge en quelques lignes</h2>
+        <p>Une ancienne ferme en pierre de douze chambres, avec restaurant, piscine et jardin, entre vignes et collines de la Drôme provençale.</p>
+        <p>Pour réserver une chambre ou une table, appelez-nous ou écrivez-nous : nous répondons dans la journée.</p>
+        <p>
+          <a class="bouton bouton--plein" href="tel:+33465710126">04 65 71 01 26</a>
+          <a class="bouton bouton--contour" href="mailto:bonjour@auberge-des-tilleuls.example">bonjour@auberge-des-tilleuls.example</a>
+        </p>
+      </div>
+      <div>
+        <h3 class="sous-titre">Les chambres</h3>
+        <ul class="secours__liste">
+          <li>Chambre Tilleul, 18 m², à partir de 98 € la nuit</li>
+          <li>Chambre Lavande, 24 m², à partir de 124 € la nuit</li>
+          <li>Chambre des Vignes, 30 m², à partir de 149 € la nuit</li>
+          <li>Chambre du Grenier, 26 m², à partir de 138 € la nuit</li>
+          <li>Suite du Pigeonnier, 38 m², à partir de 189 € la nuit</li>
+        </ul>
+        <h3 class="sous-titre">Nous trouver</h3>
+        <p>1450 chemin des Tilleuls, 26110 Nyons.<br>Réception ouverte tous les jours de 8 h à 20 h.<br>Restaurant du mercredi au dimanche, midi et soir.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ───────────── 11. Pied de page (complété par le script) ───────────── -->
+<footer class="pied" id="pied">
+  <div class="conteneur">
+    <p class="pied__secours">L’Auberge des Tilleuls, 1450 chemin des Tilleuls, 26110 Nyons. <a href="https://maison-dev.com/">Site modèle réalisé par Maison Dev</a>.</p>
+  </div>
+</footer>
+
+<!-- ───────────── Barre fixe du bas (téléphone) ───────────── -->
+<div class="barre-bas" id="barre-bas">
+  <a class="bouton bouton--contour" href="tel:+33465710126" data-c-tel="lien">
+    <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-telephone"/></svg>
+    <span data-c="boutons.appeler">Appeler</span>
+  </a>
+  <a class="bouton bouton--plein" href="#secours" data-demande="sejour" data-c="boutons.reserver">Réserver</a>
+</div>
+
+<!-- ───────────── Menu plein écran (téléphone) ───────────── -->
+<dialog class="menu-plein" id="menu-plein" aria-label="Menu">
+  <div class="menu-plein__haut">
+    <span class="logo">
+      <svg class="logo__feuille" aria-hidden="true" focusable="false"><use href="#i-feuille"/></svg>
+      <span data-c="etablissement.nom">L’Auberge des Tilleuls</span>
+    </span>
+    <button class="menu-plein__fermer" type="button" data-fermer>
+      <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-croix"/></svg>
+      <span data-c="boutons.fermer">Fermer</span>
+    </button>
+  </div>
+  <nav aria-label="Menu principal"><ul class="menu-plein__liste" id="menu-plein-liste"></ul></nav>
+  <div class="menu-plein__bas">
+    <a class="menu-plein__tel" href="tel:+33465710126" data-c-tel>04 65 71 01 26</a>
+    <a class="bouton bouton--clair" href="#secours" data-demande="sejour" data-c="boutons.reserver">Réserver</a>
+  </div>
+</dialog>
+
+<!-- ───────────── Fenêtre de demande (séjour, table, événement) ───────────── -->
+<dialog class="fenetre" id="demande" aria-labelledby="demande-titre">
+  <form class="fenetre__corps" id="demande-form" novalidate>
+    <div class="fenetre__haut">
+      <h2 class="fenetre__titre" id="demande-titre">Votre demande</h2>
+      <button class="fenetre__fermer" type="button" data-fermer aria-label="Fermer">
+        <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-croix"/></svg>
+      </button>
+    </div>
+    <p class="fenetre__explication" id="demande-explication"></p>
+    <p class="fenetre__offre" id="demande-offre" hidden></p>
+
+    <fieldset class="champs" data-mode="sejour">
+      <legend class="vh">Votre séjour</legend>
+      <div class="champ"><label for="d-arrivee" data-c="reservation.demande.champs.arrivee">Arrivée</label><input type="date" id="d-arrivee" name="arrivee"><p class="champ__erreur" id="d-arrivee-err"></p></div>
+      <div class="champ"><label for="d-depart" data-c="reservation.demande.champs.depart">Départ</label><input type="date" id="d-depart" name="depart"><p class="champ__erreur" id="d-depart-err"></p></div>
+      <div class="champ"><label for="d-adultes" data-c="reservation.demande.champs.adultes">Adultes</label><input type="number" id="d-adultes" name="adultes" min="1" max="8" value="2" inputmode="numeric"><p class="champ__erreur" id="d-adultes-err"></p></div>
+      <div class="champ"><label for="d-enfants" data-c="reservation.demande.champs.enfants">Enfants</label><input type="number" id="d-enfants" name="enfants" min="0" max="6" value="0" inputmode="numeric"><p class="champ__erreur" id="d-enfants-err"></p></div>
+      <div class="champ champ--large"><label for="d-chambre" data-c="reservation.demande.champs.chambre">Chambre souhaitée</label><select id="d-chambre" name="chambre"></select></div>
+    </fieldset>
+
+    <fieldset class="champs" data-mode="table" hidden>
+      <legend class="vh">Votre table</legend>
+      <div class="champ"><label for="d-date-table" data-c="reservation.demande.champs.date">Date</label><input type="date" id="d-date-table" name="dateTable"><p class="champ__erreur" id="d-date-table-err"></p></div>
+      <div class="champ"><label for="d-service" data-c="reservation.demande.champs.service">Service</label><select id="d-service" name="service"></select></div>
+      <div class="champ champ--large"><label for="d-couverts" data-c="reservation.demande.champs.couverts">Nombre de couverts</label><input type="number" id="d-couverts" name="couverts" min="1" max="40" value="2" inputmode="numeric"><p class="champ__erreur" id="d-couverts-err"></p></div>
+    </fieldset>
+
+    <fieldset class="champs" data-mode="evenement" hidden>
+      <legend class="vh">Votre événement</legend>
+      <div class="champ"><label for="d-type" data-c="reservation.demande.champs.typeEvenement">Type d’événement</label><select id="d-type" name="typeEvenement"></select></div>
+      <div class="champ"><label for="d-personnes" data-c="reservation.demande.champs.personnes">Nombre de personnes</label><input type="number" id="d-personnes" name="personnes" min="2" max="200" value="15" inputmode="numeric"><p class="champ__erreur" id="d-personnes-err"></p></div>
+      <div class="champ champ--large"><label for="d-date-evenement" data-c="reservation.demande.champs.date">Date</label><input type="date" id="d-date-evenement" name="dateEvenement"><p class="champ__erreur" id="d-date-evenement-err"></p></div>
+    </fieldset>
+
+    <fieldset class="champs">
+      <legend class="vh">Vos coordonnées</legend>
+      <div class="champ champ--large"><label for="d-nom" data-c="reservation.demande.champs.nom">Nom et prénom</label><input type="text" id="d-nom" name="nom" autocomplete="name"><p class="champ__erreur" id="d-nom-err"></p></div>
+      <div class="champ"><label for="d-email" data-c="reservation.demande.champs.email">E-mail</label><input type="email" id="d-email" name="email" autocomplete="email" inputmode="email"><p class="champ__erreur" id="d-email-err"></p></div>
+      <div class="champ"><label for="d-telephone" data-c="reservation.demande.champs.telephone">Téléphone</label><input type="tel" id="d-telephone" name="telephone" autocomplete="tel" inputmode="tel"><p class="champ__erreur" id="d-telephone-err"></p></div>
+      <div class="champ champ--large"><label for="d-message" data-c="reservation.demande.champs.message">Un mot pour nous (facultatif)</label><textarea id="d-message" name="message" rows="3"></textarea></div>
+    </fieldset>
+
+    <div class="piege" aria-hidden="true"><label for="d-piege">Ne pas remplir</label><input type="text" id="d-piege" name="_honey" tabindex="-1" autocomplete="off"></div>
+
+    <p class="fenetre__modele" id="demande-modele" hidden></p>
+    <p class="fenetre__erreur" id="demande-erreur" role="alert"></p>
+    <button class="bouton bouton--plein fenetre__envoyer" type="submit" id="demande-envoyer" data-c="reservation.demande.envoyer">Envoyer la demande</button>
+  </form>
+
+  <div class="fenetre__corps fenetre__merci" id="demande-merci" hidden>
+    <div class="fenetre__haut">
+      <h2 class="fenetre__titre" id="merci-titre" tabindex="-1" data-c="reservation.demande.confirmationTitre">Demande envoyée</h2>
+      <button class="fenetre__fermer" type="button" data-fermer aria-label="Fermer">
+        <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-croix"/></svg>
+      </button>
+    </div>
+    <p data-c="reservation.demande.confirmation">Merci. Nous vous répondons sous 24 heures à l’adresse indiquée.</p>
+    <dl class="recap" id="merci-recap"></dl>
+    <p class="fenetre__modele" id="merci-modele" hidden></p>
+    <div class="fenetre__actions">
+      <button class="bouton bouton--plein" type="button" data-fermer data-c="boutons.fermer">Fermer</button>
+      <button class="bouton bouton--contour" type="button" id="merci-nouvelle" data-c="reservation.demande.nouvelle">Faire une autre demande</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ───────────── Visionneuse de la galerie ───────────── -->
+<dialog class="visionneuse" id="visionneuse" aria-label="Photo agrandie">
+  <button class="visionneuse__fermer" type="button" data-fermer aria-label="Fermer">
+    <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-croix"/></svg>
+  </button>
+  <button class="visionneuse__fleche visionneuse__fleche--prec" type="button" id="vis-prec" aria-label="Photo précédente">
+    <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-fleche-g"/></svg>
+  </button>
+  <figure class="visionneuse__figure" id="vis-figure">
+    <img id="vis-image" alt="">
+    <figcaption><span id="vis-legende"></span><span id="vis-compteur"></span></figcaption>
+  </figure>
+  <button class="visionneuse__fleche visionneuse__fleche--suiv" type="button" id="vis-suiv" aria-label="Photo suivante">
+    <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-fleche-d"/></svg>
+  </button>
+</dialog>
+
+<!-- ───────────── Mentions légales ───────────── -->
+<dialog class="fenetre" id="mentions" aria-labelledby="mentions-titre">
+  <div class="fenetre__corps">
+    <div class="fenetre__haut">
+      <h2 class="fenetre__titre" id="mentions-titre">Mentions légales</h2>
+      <button class="fenetre__fermer" type="button" data-fermer aria-label="Fermer">
+        <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-croix"/></svg>
+      </button>
+    </div>
+    <div id="mentions-texte"></div>
+  </div>
+</dialog>
+
+<!-- ───────────── Pictogrammes (dessinés pour le modèle) ───────────── -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-feuille" viewBox="0 0 24 24"><path d="M12 21.500C6.500 18.500 3 14.800 3 10.700 3 7.800 5.100 6 7.500 6c1.800 0 3.400 1 4.500 2.700C13.100 7 14.700 6 16.500 6 18.900 6 21 7.800 21 10.700c0 4.100-3.500 7.800-9 10.800Z"/><path d="M12 8.700V2.500M12 8.700v8.600"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.500 9.500a14.500 14.500 0 0 1 19 0M5.800 13a9.600 9.600 0 0 1 12.400 0M9 16.400a4.800 4.800 0 0 1 6 0"/><circle cx="12" cy="19.300" r=".8" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-clim" viewBox="0 0 24 24"><path d="M12 2.500v19M3.800 7.200l16.400 9.600M20.200 7.200 3.800 16.800M9.500 4l2.500 2.500L14.500 4M9.500 20l2.500-2.500 2.500 2.500"/></symbol>
+    <symbol id="i-douche" viewBox="0 0 24 24"><path d="M5 21.500V7.500a4 4 0 0 1 8 0v1.200M8.500 12.200h9a4.500 4.500 0 0 0-9 0ZM10.500 15.200v1.500M13 15.200v3.300M15.500 15.200v1.500"/></symbol>
+    <symbol id="i-bain" viewBox="0 0 24 24"><path d="M3 12.500h18v1.500a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5v-1.500ZM6 12.500V6a2.500 2.500 0 0 1 5 0M7 19l-1 2.300M17 19l1 2.300"/></symbol>
+    <symbol id="i-vue" viewBox="0 0 24 24"><circle cx="17" cy="6.500" r="2.500"/><path d="m2.500 19.500 6-8 4.500 5 3-3.500 5.500 6.500Z"/></symbol>
+    <symbol id="i-cheminee" viewBox="0 0 24 24"><path d="M12 3c.6 3.600 5.500 5.400 5.500 10.500a5.500 5.500 0 0 1-11 0c0-2 .9-3.400 2-4.500.2 1.600 1 2.500 2 2.800C10.200 9.300 10.400 6 12 3Z"/></symbol>
+    <symbol id="i-terrasse" viewBox="0 0 24 24"><path d="M12 4v17M3 12a9 9 0 0 1 18 0ZM8 21h8"/></symbol>
+    <symbol id="i-cafe" viewBox="0 0 24 24"><path d="M4 9.500h13v4.500a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9.500ZM17 11h1.500a2.500 2.500 0 0 1 0 5H17M8 3.500v3M12 3.500v3"/></symbol>
+    <symbol id="i-surface" viewBox="0 0 24 24"><path d="M4 9.500V4h5.500M20 14.500V20h-5.500M4 4l6.500 6.500M20 20l-6.500-6.500"/></symbol>
+    <symbol id="i-personnes" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.500"/><path d="M5 20.500a7 7 0 0 1 14 0"/></symbol>
+    <symbol id="i-fleche-d" viewBox="0 0 24 24"><path d="M4.500 12h15M13.500 6l6 6-6 6"/></symbol>
+    <symbol id="i-fleche-g" viewBox="0 0 24 24"><path d="M19.500 12h-15M10.500 6l-6 6 6 6"/></symbol>
+    <symbol id="i-croix" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8.500h16M4 15.500h16"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></symbol>
+    <symbol id="i-moins" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
+    <symbol id="i-telephone" viewBox="0 0 24 24"><path d="M6.500 3.500h3l1.500 4-2 1.500a11 11 0 0 0 6 6l1.500-2 4 1.500v3a2 2 0 0 1-2 2A15.500 15.500 0 0 1 4.500 5.500a2 2 0 0 1 2-2Z"/></symbol>
+  </defs>
+</svg>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>
