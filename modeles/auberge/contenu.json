@@ -1,0 +1,362 @@
+{
+  "_lisezmoi": "Tout le contenu du site est dans ce fichier : textes, prix, horaires, chambres, avis, liens et chemins des photos. La page index.html le lit et s'affiche à partir de lui. Pour un vrai client : modifier ce fichier, remplacer les photos de assets/photos/ et changer les 6 couleurs en haut de index.html. Détails dans NOTES.md.",
+
+  "modele": {
+    "actif": true,
+    "mention": "Site modèle : L'Auberge des Tilleuls est un établissement fictif. Noms, prix et adresse sont inventés.",
+    "signature": "Site modèle réalisé par Maison Dev",
+    "signatureLien": "https://maison-dev.com/"
+  },
+
+  "etablissement": {
+    "nom": "L'Auberge des Tilleuls",
+    "telephone": "04 65 71 01 26",
+    "telephoneLien": "+33465710126",
+    "email": "bonjour@auberge-des-tilleuls.example",
+    "adresse": {
+      "rue": "1450 chemin des Tilleuls",
+      "codePostal": "26110",
+      "ville": "Nyons",
+      "region": "Drôme provençale"
+    },
+    "reseaux": [
+      { "nom": "Instagram", "lien": "https://www.instagram.com/" },
+      { "nom": "Facebook", "lien": "https://www.facebook.com/" }
+    ]
+  },
+
+  "referencement": {
+    "titre": "L'Auberge des Tilleuls, auberge et restaurant en Drôme provençale",
+    "description": "Une ancienne ferme en pierre entre vignes et collines : 12 chambres, un restaurant du marché, une piscine dans le jardin. Demandez vos dates en ligne."
+  },
+
+  "menu": [
+    { "texte": "Dormir", "lien": "#chambres" },
+    { "texte": "Manger", "lien": "#restaurant" },
+    { "texte": "Se détendre", "lien": "#se-detendre" },
+    { "texte": "Se réunir", "lien": "#se-reunir" },
+    { "texte": "Offres", "lien": "#offres" },
+    { "texte": "Contact", "lien": "#contact" }
+  ],
+
+  "boutons": {
+    "reserver": "Réserver",
+    "appeler": "Appeler",
+    "menu": "Menu",
+    "fermer": "Fermer"
+  },
+
+  "accueil": {
+    "lieu": "Drôme provençale",
+    "titre": "L'Auberge des Tilleuls",
+    "phrase": "Une ancienne ferme en pierre, entre vignes et collines. Ici, on entend surtout les cigales.",
+    "photo": {
+      "src": "assets/photos/accueil.webp",
+      "petite": "assets/photos/accueil-800.webp",
+      "mobile": "assets/photos/accueil-mobile.webp",
+      "alt": "La ferme en pierre de l'auberge, sa piscine et son jardin, sous un ciel d'été"
+    }
+  },
+
+  "reservation": {
+    "formsubmit": "contact@maison-dev.com",
+    "sujet": "Demande depuis le site de L'Auberge des Tilleuls",
+    "panneau": {
+      "titre": "Vos dates",
+      "arrivee": "Arrivée",
+      "depart": "Départ",
+      "adultes": "Adultes",
+      "enfants": "Enfants",
+      "bouton": "Voir les disponibilités"
+    },
+    "demande": {
+      "titres": {
+        "sejour": "Votre demande de séjour",
+        "table": "Réserver une table",
+        "evenement": "Votre événement à l'auberge"
+      },
+      "explications": {
+        "sejour": "Nous vérifions les disponibilités et vous répondons par e-mail sous 24 heures. Rien n'est payé en ligne.",
+        "table": "Nous confirmons votre table par e-mail ou par téléphone dans la journée.",
+        "evenement": "Dites-nous l'essentiel, nous vous rappelons pour préparer un devis."
+      },
+      "champs": {
+        "arrivee": "Arrivée",
+        "depart": "Départ",
+        "adultes": "Adultes",
+        "enfants": "Enfants",
+        "chambre": "Chambre souhaitée",
+        "chambreIndifferente": "Sans préférence",
+        "date": "Date",
+        "service": "Service",
+        "services": ["Déjeuner", "Dîner"],
+        "couverts": "Nombre de couverts",
+        "typeEvenement": "Type d'événement",
+        "typesEvenement": ["Séminaire", "Mariage", "Fête de famille", "Autre"],
+        "personnes": "Nombre de personnes",
+        "nom": "Nom et prénom",
+        "email": "E-mail",
+        "telephone": "Téléphone",
+        "message": "Un mot pour nous (facultatif)",
+        "offre": "Offre choisie"
+      },
+      "envoyer": "Envoyer la demande",
+      "envoi": "Envoi en cours…",
+      "confirmationTitre": "Demande envoyée",
+      "confirmation": "Merci. Nous vous répondons sous 24 heures à l'adresse indiquée.",
+      "nouvelle": "Faire une autre demande",
+      "mentionModele": "Site modèle : cette demande arrive chez Maison Dev, pas dans une vraie auberge.",
+      "erreurs": {
+        "obligatoire": "Ce champ est nécessaire.",
+        "email": "Cette adresse e-mail semble incomplète.",
+        "telephone": "Ce numéro semble incomplet.",
+        "datePassee": "Choisissez une date à partir d'aujourd'hui.",
+        "departAvantArrivee": "Le départ doit être après l'arrivée.",
+        "envoi": "L'envoi n'a pas abouti. Réessayez, ou écrivez-nous directement :"
+      }
+    }
+  },
+
+  "univers": {
+    "titre": "Quatre façons de passer la porte",
+    "intro": "Pour une nuit, un déjeuner, un après-midi au bord de l'eau ou une journée de travail.",
+    "panneaux": [
+      {
+        "id": "dormir",
+        "titre": "Dormir",
+        "phrase": "Douze chambres aux murs épais, fraîches l'été, ouvertes sur le jardin ou les vignes.",
+        "bouton": "Voir les chambres",
+        "lien": "#chambres",
+        "photo": { "src": "assets/photos/univers-dormir.webp", "petite": "assets/photos/univers-dormir-800.webp", "position": "82% 50%", "alt": "Chambre claire sous les poutres, grand lit et fauteuil près des fenêtres" }
+      },
+      {
+        "id": "manger",
+        "titre": "Manger",
+        "phrase": "Une cuisine du marché, servie sous la tonnelle dès que le temps le permet.",
+        "bouton": "Découvrir le restaurant",
+        "lien": "#restaurant",
+        "photo": { "src": "assets/photos/univers-manger.webp", "petite": "assets/photos/univers-manger-800.webp", "alt": "Longue table dressée sous une tonnelle, face aux collines" }
+      },
+      {
+        "id": "se-detendre",
+        "titre": "Se détendre",
+        "phrase": "La piscine chauffée de mai à septembre, des transats à l'ombre et rien de prévu.",
+        "bouton": "Voir le jardin",
+        "lien": "#galerie",
+        "photo": { "src": "assets/photos/univers-detendre.webp", "petite": "assets/photos/univers-detendre-800.webp", "alt": "Piscine entourée de cyprès et de pins, la maison en pierre au fond" }
+      },
+      {
+        "id": "se-reunir",
+        "titre": "Se réunir",
+        "phrase": "Une salle de 60 m² sous la charpente et le jardin pour vos séminaires et vos mariages.",
+        "bouton": "Parler de votre projet",
+        "demande": "evenement",
+        "photo": { "src": "assets/photos/univers-reunir.webp", "petite": "assets/photos/univers-reunir-800.webp", "alt": "Table de fête en bois dressée dans le jardin, fleurs et citrons" }
+      }
+    ]
+  },
+
+  "chambres": {
+    "titre": "Les chambres",
+    "intro": "Toutes différentes, toutes au calme. Petit-déjeuner servi de 8 h à 10 h 30.",
+    "prixAvant": "à partir de",
+    "prixApres": "la nuit",
+    "bouton": "Demander cette chambre",
+    "precedent": "Chambres précédentes",
+    "suivant": "Chambres suivantes",
+    "equipements": {
+      "wifi": "Wi-Fi",
+      "clim": "Climatisation",
+      "douche": "Douche à l'italienne",
+      "bain": "Baignoire",
+      "vue": "Vue sur le jardin ou les vignes",
+      "cheminee": "Cheminée",
+      "terrasse": "Terrasse privée",
+      "cafe": "Plateau café et thé"
+    },
+    "liste": [
+      {
+        "nom": "Chambre Tilleul",
+        "description": "Côté jardin, lit de 160, volets de bois.",
+        "surface": 18,
+        "personnes": "2 personnes",
+        "equipements": ["wifi", "clim", "douche", "vue"],
+        "prix": 98,
+        "photo": { "src": "assets/photos/chambre-tilleul.webp", "petite": "assets/photos/chambre-tilleul-800.webp", "alt": "Chambre Tilleul : lit en laiton, parquet, rideaux blancs" }
+      },
+      {
+        "nom": "Chambre Lavande",
+        "description": "Lit de 180, baignoire et vue sur les vignes.",
+        "surface": 24,
+        "personnes": "2 personnes",
+        "equipements": ["wifi", "clim", "bain", "vue", "cafe"],
+        "prix": 124,
+        "photo": { "src": "assets/photos/chambre-lavande.webp", "petite": "assets/photos/chambre-lavande-800.webp", "alt": "Chambre Lavande : grand lit aux draps blancs entre deux lampes" }
+      },
+      {
+        "nom": "Chambre des Vignes",
+        "description": "Deux grands lits pour venir en famille.",
+        "surface": 30,
+        "personnes": "jusqu'à 4 personnes",
+        "equipements": ["wifi", "clim", "douche", "vue", "cafe"],
+        "prix": 149,
+        "photo": { "src": "assets/photos/chambre-vignes.webp", "petite": "assets/photos/chambre-vignes-800.webp", "alt": "Chambre des Vignes : deux lits en fer forgé devant les fenêtres" }
+      },
+      {
+        "nom": "Chambre du Grenier",
+        "description": "Sous la charpente, avec sa cheminée.",
+        "surface": 26,
+        "personnes": "2 personnes",
+        "equipements": ["wifi", "clim", "douche", "cheminee", "cafe"],
+        "prix": 138,
+        "photo": { "src": "assets/photos/chambre-grenier.webp", "petite": "assets/photos/chambre-grenier-800.webp", "alt": "Chambre du Grenier : poutres apparentes, cheminée en pierre, armoire ancienne" }
+      },
+      {
+        "nom": "Suite du Pigeonnier",
+        "description": "Un salon, une cheminée et une terrasse à soi.",
+        "surface": 38,
+        "personnes": "2 à 3 personnes",
+        "equipements": ["wifi", "clim", "bain", "cheminee", "terrasse", "cafe"],
+        "prix": 189,
+        "photo": { "src": "assets/photos/suite-pigeonnier.webp", "petite": "assets/photos/suite-pigeonnier-800.webp", "alt": "Suite du Pigeonnier : grande pièce claire, lit, salon et cheminée" }
+      }
+    ]
+  },
+
+  "restaurant": {
+    "titre": "Le restaurant",
+    "texte": "Le chef cuisine ce que le marché de Nyons et le potager donnent chaque semaine. La carte est courte et change souvent. Aux beaux jours, on dîne dehors.",
+    "carteTitre": "Un extrait de la carte",
+    "carte": [
+      { "plat": "Tapenade aux olives de Nyons, pain grillé", "prix": 9 },
+      { "plat": "Caillette de la Drôme, salade d'herbes", "prix": 14 },
+      { "plat": "Agneau rôti au thym, légumes du jardin", "prix": 26 },
+      { "plat": "Truite du Vercors, beurre aux amandes", "prix": 24 },
+      { "plat": "Ravioles du Dauphiné gratinées aux noix", "prix": 19 },
+      { "plat": "Tarte fine aux abricots de la vallée", "prix": 9 }
+    ],
+    "menu": { "nom": "Menu du marché : entrée, plat, dessert", "prix": 34 },
+    "horairesTitre": "Horaires",
+    "horaires": [
+      { "jours": "Du mercredi au dimanche", "heures": "12 h à 13 h 30, puis 19 h 15 à 21 h" },
+      { "jours": "Lundi et mardi", "heures": "fermé" }
+    ],
+    "bouton": "Réserver une table",
+    "photo": { "src": "assets/photos/restaurant-table.webp", "petite": "assets/photos/restaurant-table-800.webp", "alt": "Assiettes et verres de vin rouge sur une nappe blanche" },
+    "photo2": { "src": "assets/photos/restaurant-assiette.webp", "petite": "assets/photos/restaurant-assiette-800.webp", "alt": "Légumes rôtis du jardin dans une assiette creuse" }
+  },
+
+  "avis": {
+    "titre": "Ils sont passés par ici",
+    "mention": "Avis d'exemple",
+    "explication": "Ces avis sont des exemples écrits pour le modèle. Ils seront remplacés par les vrais avis du client.",
+    "precedent": "Avis précédent",
+    "suivant": "Avis suivant",
+    "liste": [
+      { "texte": "Le calme absolu. On s'endort avec les grillons et on se réveille avec l'odeur du pain grillé.", "auteur": "Claire et Thomas", "detail": "Lyon, séjour en juin" },
+      { "texte": "Une table généreuse, des produits d'ici, et un accueil qui donne envie de revenir chaque année.", "auteur": "Hélène M.", "detail": "Grenoble, dîner en septembre" },
+      { "texte": "Les enfants n'ont pas quitté la piscine. Nous, nous n'avons pas quitté la terrasse.", "auteur": "Famille Roussel", "detail": "Annecy, une semaine en août" },
+      { "texte": "Deux jours de séminaire pour notre équipe : la salle, le jardin, les repas, tout était prêt.", "auteur": "Julien P.", "detail": "Valence, séminaire en mars" }
+    ]
+  },
+
+  "offres": {
+    "titre": "Offres du moment",
+    "intro": "Trois formules pensées pour simplifier votre venue.",
+    "liste": [
+      {
+        "titre": "L'escapade en amoureux",
+        "texte": "Deux nuits en chambre Lavande, un dîner au restaurant le premier soir, le petit-déjeuner servi en chambre.",
+        "prix": "345 € pour deux",
+        "bouton": "Demander cette offre",
+        "demande": "sejour",
+        "photo": { "src": "assets/photos/offre-escapade.webp", "petite": "assets/photos/offre-escapade-800.webp", "alt": "Table dressée aux bougies pour un dîner" }
+      },
+      {
+        "titre": "Le séminaire au vert",
+        "texte": "La salle sous la charpente, le déjeuner du marché et les pauses dans le jardin, pour 8 à 30 personnes.",
+        "prix": "89 € par personne et par jour",
+        "bouton": "Demander un devis",
+        "demande": "evenement",
+        "photo": { "src": "assets/photos/offre-seminaire.webp", "petite": "assets/photos/offre-seminaire-800.webp", "alt": "Des mains et des carnets autour d'une table de travail" }
+      },
+      {
+        "titre": "Le long séjour",
+        "texte": "À partir de cinq nuits, 15 % de remise sur la chambre et des vélos prêtés pour explorer les collines.",
+        "prix": "15 % de remise dès 5 nuits",
+        "bouton": "Demander cette offre",
+        "demande": "sejour",
+        "photo": { "src": "assets/photos/offre-sejour.webp", "petite": "assets/photos/offre-sejour-800.webp", "alt": "Quatre chaises longues au bord de l'eau, face aux collines" }
+      }
+    ]
+  },
+
+  "galerie": {
+    "titre": "Autour de la maison",
+    "intro": "Touchez une photo pour l'agrandir.",
+    "precedent": "Photo précédente",
+    "suivant": "Photo suivante",
+    "photos": [
+      { "src": "assets/photos/galerie-vallee.webp", "petite": "assets/photos/galerie-vallee-800.webp", "alt": "La vallée, ses vignes et ses collines boisées", "legende": "La vallée vue du chemin" },
+      { "src": "assets/photos/galerie-mas.webp", "petite": "assets/photos/galerie-mas-800.webp", "alt": "Façade ocre aux volets bleus, pots de terre cuite", "legende": "La façade côté jardin" },
+      { "src": "assets/photos/galerie-volets.webp", "petite": "assets/photos/galerie-volets-800.webp", "alt": "Fenêtre aux volets verts, géraniums en pots", "legende": "Les volets de la salle à manger" },
+      { "src": "assets/photos/galerie-petit-dejeuner.webp", "petite": "assets/photos/galerie-petit-dejeuner-800.webp", "alt": "Croissants dorés et tasse de café", "legende": "Le petit-déjeuner" },
+      { "src": "assets/photos/galerie-lavande.webp", "petite": "assets/photos/galerie-lavande-800.webp", "alt": "Champ de lavande, un arbre seul et la montagne au fond", "legende": "Les lavandes, fin juin" },
+      { "src": "assets/photos/galerie-couchant.webp", "petite": "assets/photos/galerie-couchant-800.webp", "alt": "Coucher de soleil sur les collines et les vignes", "legende": "Le soir, depuis la terrasse" },
+      { "src": "assets/photos/galerie-tonnelle.webp", "petite": "assets/photos/galerie-tonnelle-800.webp", "alt": "Longue table en bois sous une tonnelle de verdure", "legende": "La tonnelle" },
+      { "src": "assets/photos/galerie-terrasse.webp", "petite": "assets/photos/galerie-terrasse-800.webp", "alt": "Mur de pierre, volets bleus, table et chaises de jardin", "legende": "Le coin du matin" },
+      { "src": "assets/photos/galerie-lumiere.webp", "petite": "assets/photos/galerie-lumiere-800.webp", "alt": "Cyprès et toits dans la lumière dorée", "legende": "La lumière de sept heures" },
+      { "src": "assets/photos/galerie-jardin.webp", "petite": "assets/photos/galerie-jardin-800.webp", "alt": "Cyprès, olivier et pins dans le jardin", "legende": "Le jardin" }
+    ]
+  },
+
+  "faq": {
+    "titre": "Questions fréquentes",
+    "intro": "Une autre question ? Appelez-nous, la réception répond tous les jours.",
+    "questions": [
+      { "q": "À quelle heure peut-on arriver et partir ?", "r": "Les chambres sont prêtes à partir de 16 h et se libèrent avant 11 h. Vous arrivez plus tôt ou partez plus tard ? Prévenez-nous, nous gardons vos bagages." },
+      { "q": "Les animaux sont-ils acceptés ?", "r": "Oui, les chiens sont les bienvenus dans les chambres du rez-de-chaussée, avec un supplément de 10 € par nuit. Merci de nous le dire à la réservation." },
+      { "q": "Y a-t-il un parking ?", "r": "Oui, un parking gratuit et ombragé devant l'auberge, avec deux bornes de recharge pour voitures électriques." },
+      { "q": "Le petit-déjeuner est-il compris ?", "r": "Il est proposé à 14 € par personne (7 € pour les enfants) et servi de 8 h à 10 h 30 : pain du village, confitures maison, fromages et fruits de la vallée." },
+      { "q": "Peut-on annuler sa réservation ?", "r": "L'annulation est gratuite jusqu'à 7 jours avant l'arrivée. Passé ce délai, la première nuit est due." },
+      { "q": "Comment venir à l'auberge ?", "r": "En voiture, à 10 minutes de Nyons et 1 h 15 de la gare d'Avignon TGV. Sur demande, nous organisons un taxi depuis la gare." }
+    ]
+  },
+
+  "contact": {
+    "titre": "Contact et accès",
+    "adresseTitre": "Adresse",
+    "telephoneTitre": "Téléphone",
+    "emailTitre": "E-mail",
+    "receptionTitre": "Réception",
+    "reception": [
+      { "jours": "Tous les jours", "heures": "8 h à 20 h" },
+      { "jours": "Arrivées", "heures": "16 h à 20 h" },
+      { "jours": "Départs", "heures": "avant 11 h" }
+    ],
+    "acces": "À 10 minutes de Nyons, 1 h 15 d'Avignon TGV et 2 h 15 de Lyon.",
+    "carte": {
+      "recherche": "Nyons, Drôme, France",
+      "titre": "Carte : situation de l'auberge près de Nyons",
+      "itineraire": "Ouvrir l'itinéraire"
+    }
+  },
+
+  "piedDePage": {
+    "phrase": "Une auberge de douze chambres en Drôme provençale.",
+    "liensTitre": "Le site",
+    "reseauxTitre": "Nous suivre",
+    "mentionsLien": "Mentions légales",
+    "mentions": {
+      "titre": "Mentions légales",
+      "paragraphes": [
+        "Éditeur du site : L'Auberge des Tilleuls (établissement fictif), 1450 chemin des Tilleuls, 26110 Nyons.",
+        "Conception et réalisation : Maison Dev, maison-dev.com.",
+        "Hébergement : GitHub Pages, GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.",
+        "Formulaires : les demandes sont transmises par e-mail au moyen du service FormSubmit. Elles ne servent qu'à vous répondre.",
+        "Photographies : Unsplash. La liste des auteurs se trouve dans le fichier NOTES.md du modèle."
+      ]
+    },
+    "droits": "Tous droits réservés."
+  }
+}
