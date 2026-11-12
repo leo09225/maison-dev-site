@@ -130,6 +130,7 @@
     't2-i3': 'One email is enough, we handle the rest',
     't3-h': 'Payment', 't3-p': '50% when you approve the mockup, 50% at launch. You pay nothing to receive the mockup.',
     't-vs': 'For comparison: an agency often charges <s>€1,500 to €5,000</s> for a business website. Here it is <b>about €200</b>, with a free mockup.',
+    't-tva': 'Net prices in euros. VAT not applicable (French tax code, art. 293 B).',
     't-ch': 'Your mockup, <em>on us.</em>',
 
     /* 404 */
