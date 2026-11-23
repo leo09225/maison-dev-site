@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash)</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Béa Couture · Couturière à Aurillac</title>
+<meta name="description" content="Béa Couture, Béatrice Leybros, couturière à Aurillac (Cantal).">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#23262B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%2323262B'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='34' fill='%23E9C46A' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../_commun/maquette.css">
+<style>
+/* Inspiration Awwwards (sans copie) : Meiko Tailor, The Tailor, Neocultural Couture.
+   Repris : grande typo éditoriale, sections numérotées comme un patron, mètre ruban en fil conducteur.
+   Couleurs : basalte du Cantal, papier crème, jaune du mètre ruban, fil rouge. */
+:root{--bg:#F6F1E7;--paper:#FFFCF5;--ink:#23262B;--soft:#5F5A52;--line:rgba(35,38,43,.14);--accent:#E9C46A;--accent-ink:#23262B;--accent-text:#B2342B;--dark:#23262B;--dark-ink:#F6F1E7;--f-display:Fraunces,Georgia,serif;--f-body:Inter}
+.brand{font:500 italic 24px/1 Fraunces}
+.hero h1{font-weight:500;font-style:italic;letter-spacing:-.025em}
+.hero h1 em{color:var(--accent-text)}
+.h2,.card h3,.box h3,.ph b{font-style:italic;font-weight:500}
+.h2 em{color:var(--accent-text)}
+.hero .pill{margin-bottom:14px}
+.num{font:500 13px/1 Inter;letter-spacing:.18em;color:var(--accent-text);display:block;margin-bottom:10px}
+.hero .wrap{display:grid;gap:36px;align-items:center}
+.dress{position:relative;max-width:420px;width:100%;margin:0 auto;aspect-ratio:1}
+.dress svg{position:absolute;inset:0;width:100%;height:100%}
+.dress .th{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 3s .3s cubic-bezier(.5,.1,.3,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.dress .needle{transform-origin:300px 90px;animation:sw 5s ease-in-out infinite}
+@keyframes sw{50%{transform:rotate(-8deg)}}
+.tag{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:10px 14px;font-size:13px;box-shadow:0 18px 30px -22px rgba(35,38,43,.6);animation:float 6s ease-in-out infinite}
+.tag b{display:block;font:500 italic 24px/1 Fraunces}
+.tag.t1{left:0;bottom:10%}
+@keyframes float{50%{transform:translateY(-10px)}}
+.tape{height:30px;background:var(--accent);background-image:repeating-linear-gradient(90deg,var(--ink) 0 1.5px,transparent 1.5px 12px),repeating-linear-gradient(90deg,var(--ink) 0 1.5px,transparent 1.5px 60px);background-size:auto 9px,auto 16px;background-repeat:repeat-x;background-position:0 0,0 0;overflow:hidden;white-space:nowrap;font:600 11px/30px Inter;letter-spacing:.2em;color:var(--ink)}
+.tape span{display:inline-block;padding-left:100%;animation:tick 38s linear infinite}
+@keyframes tick{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.tape span,.dress .needle,.tag{animation:none}.tape span{padding-left:16px}}
+@media (min-width:980px){.hero .wrap{grid-template-columns:1.1fr .9fr}.hero{padding:54px 0 90px}}
+</style>
+</head>
+<body>
+
+<div class="md-bar"><div class="wrap"><span><b>Maquette gratuite</b> préparée pour Béa Couture par Maison Dev</span><a href="https://maison-dev.com/">Maison Dev</a></div></div>
+
+<nav class="nav"><div class="wrap">
+  <a href="#" class="brand"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="#23262B"/><text x="17" y="24" font-family="Georgia" font-style="italic" font-size="19" fill="#E9C46A" text-anchor="middle">B</text></svg>Béa Couture</a>
+  <div class="links"><a href="#prestations">Prestations</a><a href="#atelier">L’atelier</a><a href="#avis">Avis</a><a href="#contact">Contact</a></div>
+  <a class="btn sm" href="tel:+33650277292"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill rv" data-status><i></i><span>Du lundi au vendredi · 9h-18h</span></span>
+      <p class="kick rv">Couturière · Aurillac · Cantal</p>
+      <h1 class="hl">Béa Couture, <em>la couturière</em> de l’avenue des Pupilles</h1>
+      <p class="lead rv">Béatrice Leybros vous reçoit à son atelier d’Aurillac, du lundi au vendredi. Un vêtement à reprendre, à réparer ou à créer : appelez, on en parle.</p>
+      <div class="ctas rv">
+        <a class="btn" href="tel:+33650277292"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>06 50 27 72 92</a>
+        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=29+avenue+des+Pupilles+de+la+Nation+15000+Aurillac" target="_blank" rel="noopener">Itinéraire</a>
+      </div>
+    </div>
+    <div class="dress rv" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle cx="200" cy="210" r="160" fill="#E9C46A" opacity=".35"/>
+        <!-- mannequin de couturière -->
+        <rect x="196" y="300" width="8" height="62" fill="#23262B"/>
+        <path d="M150 370h100" stroke="#23262B" stroke-width="8" stroke-linecap="round"/>
+        <path d="M200 70c-16 0-22 10-22 22v6c-30 6-46 24-46 52 0 26 14 40 20 58-8 20-18 50-18 84 0 6 4 10 10 10h112c6 0 10-4 10-10 0-34-10-64-18-84 6-18 20-32 20-58 0-28-16-46-46-52v-6c0-12-6-22-22-22z" fill="#23262B"/>
+        <path d="M178 98c8 8 36 8 44 0" stroke="#F6F1E7" stroke-width="2" fill="none" opacity=".5"/>
+        <!-- mètre ruban autour de la taille -->
+        <path d="M146 206c30 14 78 14 108 0l6 14c-34 16-86 16-120 0z" fill="#E9C46A"/>
+        <g stroke="#23262B" stroke-width="1.4"><path d="M156 212v6M166 215v4M176 217v6M186 218v4M196 219v6M206 219v4M216 218v6M226 217v4M236 215v6M246 212v4"/></g>
+        <!-- aiguille et fil rouge -->
+        <g class="needle"><path d="M300 90l-60 150" stroke="#23262B" stroke-width="4" stroke-linecap="round"/><ellipse cx="297" cy="98" rx="2.5" ry="6" fill="#F6F1E7" transform="rotate(22 297 98)"/></g>
+        <path class="th" d="M297 98c40 20 60 70 30 110s-110 40-140 90-10 80 40 70" fill="none" stroke="#B2342B" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="tag t1"><b>4 sur 5</b>sur Google</div>
+    </div>
+  </div>
+</header>
+
+<div class="tape" aria-hidden="true"><span>RETOUCHES · RÉPARATIONS · CRÉATIONS · AURILLAC · BÉA COUTURE · RETOUCHES · RÉPARATIONS · CRÉATIONS · AURILLAC · BÉA COUTURE</span></div>
+
+<section id="prestations">
+  <div class="wrap">
+    <div class="head rv"><div><span class="num">01 — PRESTATIONS</span><h2 class="h2">Ce que je fais <em>pour vous</em></h2></div><p>Vos prestations et vos prix s’afficheront ici, clairement, pour que vos clientes sachent tout de suite combien coûte un ourlet ou une fermeture.</p></div>
+    <div class="grid c3">
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></div><h3>Retouches</h3><ul><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li></ul></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20"/><path d="M9 5h6M9 9h6M9 13h6M9 17h6"/></svg></div><h3>Réparations</h3><ul><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li></ul></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20 18.5 5.5"/><circle cx="19.5" cy="4.5" r="1.5"/><path d="M4 20c3-1 4-4 7-4s3 3 6 2"/></svg></div><h3>Créations</h3><ul><li><span class="todo">votre prestation</span><span class="p"><span class="todo">sur devis</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">sur devis</span></span></li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="atelier" style="padding-top:0">
+  <div class="wrap split">
+    <div class="gal rv">
+      <div class="ph wide"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Vos photos ici</b><small>votre atelier, votre machine</small></div></div>
+      <div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Avant / après</b><small>une retouche</small></div></div>
+      <div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Une création</b><small>dont vous êtes fière</small></div></div>
+    </div>
+    <div class="rv">
+      <span class="num">02 — L’ATELIER</span>
+      <h2 class="h2">Le savoir-faire <em>d’une couturière</em>, à Aurillac</h2>
+      <p style="color:var(--soft);margin-top:16px">Ici, quelques lignes sur vous : votre parcours, ce que vous aimez coudre, ce qui fait que vos clientes reviennent. <span class="todo">votre texte</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="avis" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><span class="num">03 — AVIS</span><h2 class="h2">4 sur 5 <em>sur Google</em></h2></div><p>Note moyenne sur 4 avis Google.</p></div>
+    <figure class="rev rv" style="max-width:760px"><div class="st">★★★★★</div><q>Je conseille vivement madame Laybros elle fait un super travail et ses tarifs sont raisonnables</q><small>Avis Google · février 2026</small></figure>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="opt rv">
+      <span class="rib">Option</span>
+      <div class="in2">
+        <div>
+          <p class="kick" style="color:var(--accent)">Devis par photo</p>
+          <h2 class="h2">Un prix <em style="color:var(--accent)">avant de passer</em></h2>
+          <p>Vos clientes envoient une photo du vêtement et décrivent la retouche. Vous recevez la demande par SMS et vous répondez avec un prix quand vous posez l’aiguille.</p>
+          <p class="note">Exemple de fonction en plus, pour vous montrer ce qu’un site peut faire. La page simple n’en a pas besoin.</p>
+        </div>
+        <form data-demo>
+          <label>C’est pour<div class="chips"><button class="on">Une retouche</button><button>Une réparation</button><button>Une création</button></div></label>
+          <label>Votre message<textarea rows="2" placeholder="Ex. raccourcir un pantalon de 3 cm"></textarea></label>
+          <label>Une photo<input type="file" accept="image/*"></label>
+          <label>Votre téléphone<input type="tel" placeholder="06 00 00 00 00"></label>
+          <button class="btn acc" type="submit">Envoyer</button>
+          <p class="ok">Demande envoyée (démonstration). Béa Couture vous répond avec un prix.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><span class="num">04 — CONTACT</span><h2 class="h2">Passer <em>à l’atelier</em></h2></div></div>
+    <div class="grid c3">
+      <div class="box rv">
+        <h3>Horaires</h3>
+        <table class="hours">
+          <tr data-day="1"><td>Lundi</td><td>9h-18h</td></tr>
+          <tr data-day="2"><td>Mardi</td><td>9h-18h</td></tr>
+          <tr data-day="3"><td>Mercredi</td><td>9h-18h</td></tr>
+          <tr data-day="4"><td>Jeudi</td><td>9h-18h</td></tr>
+          <tr data-day="5"><td>Vendredi</td><td>9h-18h</td></tr>
+          <tr data-day="6"><td>Samedi</td><td>Fermé</td></tr>
+          <tr data-day="0"><td>Dimanche</td><td>Fermé</td></tr>
+        </table>
+      </div>
+      <div class="box rv">
+        <h3>Adresse</h3>
+        <p>29 avenue des Pupilles de la Nation<br>15000 Aurillac</p>
+        <p style="margin-top:18px"><a class="btn sm" href="https://www.google.com/maps/dir/?api=1&destination=29+avenue+des+Pupilles+de+la+Nation+15000+Aurillac" target="_blank" rel="noopener">Itinéraire</a></p>
+        <h3 style="margin-top:28px">Téléphone</h3>
+        <p><a href="tel:+33650277292" style="font-size:20px">06 50 27 72 92</a></p>
+        <p style="margin-top:14px"><a class="btn sm" href="sms:+33650277292">Envoyer un SMS</a></p>
+      </div>
+      <div class="map rv"><iframe title="Plan d’accès" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=29+avenue+des+Pupilles+de+la+Nation,+15000+Aurillac&z=15&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>© <span data-year>2026</span> Béa Couture · Béatrice Leybros · Aurillac</span>
+  <span>Maquette préparée par <a href="https://maison-dev.com/">Maison Dev</a> · page non référencée</span>
+</div></footer>
+
+<div class="callbar">
+  <a href="tel:+33650277292"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+  <a href="sms:+33650277292"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4z"/></svg>SMS</a>
+</div>
+
+<script>var J=[["09:00","18:00"]];window.HORAIRES={1:J,2:J,3:J,4:J,5:J};</script>
+<script src="../_commun/maquette.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d37413d1bcee4d998ef6651043396a2b"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
