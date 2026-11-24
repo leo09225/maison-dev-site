@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>if(location.protocol==='http:'&&location.hostname==='maison-dev.com')location.replace('https://maison-dev.com'+location.pathname+location.search+location.hash)</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Couture Amélia · Couturière à Béziers</title>
+<meta name="description" content="Couture Amélia, couturière au 5 rue du 22 Septembre à Béziers (Hérault).">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#2E2420">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23B4532F'/%3E%3Ctext x='32' y='45' font-family='Georgia' font-style='italic' font-size='36' fill='%23F7EEDF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../_commun/maquette.css">
+<style>
+/* Inspiration Awwwards (sans copie) : Galia Lahav House of Couture, Edit Suits Co, Neocultural Couture.
+   Repris : grand titre serif aéré façon maison de couture, offre présentée en grille nette,
+   ligne de coupe en pointillés (patron) qui relie les sections.
+   Couleurs : Béziers et le Midi, tuile et terre cuite, ocre du soleil, papier lin, encre brune. */
+:root{--bg:#F7EEDF;--paper:#FFF9F0;--ink:#2E2420;--soft:#6B5D53;--line:rgba(46,36,32,.14);--accent:#D9A441;--accent-ink:#2E2420;--accent-text:#B4532F;--dark:#2E2420;--dark-ink:#F7EEDF;--f-display:"Instrument Serif",Georgia,serif;--f-body:Inter}
+.brand{font:400 26px/1 "Instrument Serif"}
+.hero h1{font-weight:400;letter-spacing:-.02em;line-height:.98}
+.hero h1 em,.h2 em{color:var(--accent-text)}
+.h2{font-weight:400}
+.card h3,.box h3{font-family:"Instrument Serif";font-weight:400;font-size:26px}
+.num{font:500 12px/1 Inter;letter-spacing:.22em;color:var(--accent-text);display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.num:after{content:"";flex:1;max-width:120px;border-top:1.5px dashed currentColor;opacity:.6}
+.hero .wrap{display:grid;gap:30px;align-items:center}
+.hero .pill{margin-bottom:14px}
+.spool{position:relative;max-width:430px;width:100%;margin:0 auto;aspect-ratio:1}
+.spool svg{position:absolute;inset:0;width:100%;height:100%}
+.spool .th{stroke-dasharray:1100;stroke-dashoffset:1100;animation:draw 3.2s .3s cubic-bezier(.5,.1,.3,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.spool .sc{transform-origin:318px 300px;animation:snip 4s ease-in-out infinite}
+@keyframes snip{0%,70%,100%{transform:rotate(0)}80%{transform:rotate(-7deg)}90%{transform:rotate(0)}}
+.tag{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:10px 14px;font-size:13px;box-shadow:0 18px 30px -22px rgba(46,36,32,.6);animation:float 6s ease-in-out infinite}
+.tag b{display:block;font:400 28px/1 "Instrument Serif"}
+.tag.t1{left:0;bottom:8%}
+@keyframes float{50%{transform:translateY(-10px)}}
+/* ligne de coupe */
+.cut{position:relative;height:34px;margin:0 auto;max-width:1180px;overflow:hidden}
+.cut:before{content:"";position:absolute;left:16px;right:16px;top:50%;border-top:2px dashed rgba(46,36,32,.35)}
+.cut svg{position:absolute;top:5px;width:24px;height:24px;color:var(--accent-text);animation:cutx 14s linear infinite}
+@keyframes cutx{from{left:-30px}to{left:100%}}
+.sun{display:inline-block;width:.62em;height:.62em;border-radius:50%;background:var(--accent);vertical-align:.08em;margin-left:.1em}
+@media (prefers-reduced-motion:reduce){.cut svg,.spool .sc,.tag{animation:none}.cut svg{left:16px}}
+@media (min-width:980px){.hero .wrap{grid-template-columns:1.1fr .9fr}.hero{padding:54px 0 80px}}
+</style>
+</head>
+<body>
+
+<div class="md-bar"><div class="wrap"><span><b>Maquette gratuite</b> préparée pour Couture Amélia par Maison Dev</span><a href="https://maison-dev.com/">Maison Dev</a></div></div>
+
+<nav class="nav"><div class="wrap">
+  <a href="#" class="brand"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="#B4532F"/><text x="17" y="24.5" font-family="Georgia" font-style="italic" font-size="20" fill="#F7EEDF" text-anchor="middle">A</text></svg>Couture Amélia</a>
+  <div class="links"><a href="#prestations">Prestations</a><a href="#atelier">L’atelier</a><a href="#avis">Avis</a><a href="#contact">Contact</a></div>
+  <a class="btn sm" href="tel:+33641494303"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill rv" data-status><i></i><span>Du lundi au vendredi · 8h-12h, 14h-18h</span></span>
+      <p class="kick rv">Couturière · Béziers · Hérault</p>
+      <h1 class="hl">Couture Amélia, <em>l’atelier</em> de la rue du 22 Septembre<span class="sun" aria-hidden="true"></span></h1>
+      <p class="lead rv">En plein Béziers, Couture Amélia vous reçoit du lundi au vendredi. Un vêtement à reprendre, à réparer ou à créer : passez à l’atelier ou appelez, on en parle.</p>
+      <div class="ctas rv">
+        <a class="btn" href="tel:+33641494303"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>06 41 49 43 03</a>
+        <a class="btn ghost" href="https://www.google.com/maps/dir/?api=1&destination=5+rue+du+22+Septembre+34500+B%C3%A9ziers" target="_blank" rel="noopener">Itinéraire</a>
+      </div>
+    </div>
+    <div class="spool rv" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="168" fill="#D9A441" opacity=".28"/>
+        <!-- bobine de fil -->
+        <rect x="128" y="96" width="144" height="22" rx="6" fill="#2E2420"/>
+        <rect x="128" y="282" width="144" height="22" rx="6" fill="#2E2420"/>
+        <rect x="146" y="118" width="108" height="164" fill="#B4532F"/>
+        <g stroke="#8E3E22" stroke-width="2" opacity=".7"><path d="M146 134h108M146 150h108M146 166h108M146 182h108M146 198h108M146 214h108M146 230h108M146 246h108M146 262h108"/></g>
+        <!-- fil qui se déroule -->
+        <path class="th" d="M254 140c50 0 86 30 76 70s-70 34-92 72-6 70 30 74 70-20 64-50" fill="none" stroke="#B4532F" stroke-width="3" stroke-linecap="round"/>
+        <!-- ciseaux -->
+        <g class="sc">
+          <circle cx="300" cy="320" r="12" fill="none" stroke="#2E2420" stroke-width="5"/>
+          <circle cx="338" cy="318" r="12" fill="none" stroke="#2E2420" stroke-width="5"/>
+          <path d="M306 309l40-62M332 307l-34-60" stroke="#2E2420" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <!-- ligne de coupe -->
+        <path d="M40 360h230" stroke="#2E2420" stroke-width="2" stroke-dasharray="7 7" opacity=".45"/>
+      </svg>
+      <div class="tag t1"><b>5 sur 5</b>sur Google</div>
+    </div>
+  </div>
+</header>
+
+<div class="cut" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></div>
+
+<section id="prestations">
+  <div class="wrap">
+    <div class="head rv"><div><span class="num">01 · PRESTATIONS</span><h2 class="h2">Ce que je fais <em>pour vous</em></h2></div><p>Vos prestations et vos prix s’afficheront ici, clairement, pour que vos clientes sachent tout de suite combien coûte un ourlet ou une fermeture.</p></div>
+    <div class="grid c3">
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg></div><h3>Retouches</h3><ul><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li></ul></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20"/><path d="M9 5h6M9 9h6M9 13h6M9 17h6"/></svg></div><h3>Réparations</h3><ul><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li><li><span class="todo">votre prestation</span><span class="p"><span class="todo">prix</span></span></li></ul></article>
+      <article class="card rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20 18.5 5.5"/><circle cx="19.5" cy="4.5" r="1.5"/><path d="M4 20c3-1 4-4 7-4s3 3 6 2"/></svg></div><h3>Créations et boutique</h3><ul><li><span class="todo">votre création</span><span class="p"><span class="todo">sur devis</span></span></li><li>Savons<span class="p"><span class="todo">prix</span></span></li><li><span class="todo">autre article</span><span class="p"><span class="todo">prix</span></span></li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="atelier" style="padding-top:0">
+  <div class="wrap split">
+    <div class="gal rv">
+      <div class="ph wide"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Vos photos ici</b><small>la vitrine, l’atelier</small></div></div>
+      <div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Avant / après</b><small>une retouche</small></div></div>
+      <div class="ph"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Une création</b><small>dont vous êtes fière</small></div></div>
+    </div>
+    <div class="rv">
+      <span class="num">02 · L’ATELIER</span>
+      <h2 class="h2">Le fil et l’aiguille, <em>au cœur de Béziers</em></h2>
+      <p style="color:var(--soft);margin-top:16px">Ici, quelques lignes sur vous : votre parcours, ce que vous aimez coudre, ce qui fait que vos clientes reviennent. <span class="todo">votre texte</span></p>
+      <p style="color:var(--soft);margin-top:12px">Les photos que vous avez déjà publiées sur votre fiche Google peuvent prendre place ici.</p>
+    </div>
+  </div>
+</section>
+
+<section id="avis" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><span class="num">03 · AVIS</span><h2 class="h2">5 sur 5 <em>sur Google</em></h2></div><p>Les avis de vos clientes s’afficheront ici, mot pour mot.</p></div>
+    <figure class="rev rv" style="max-width:760px"><div class="st">★★★★★</div><q>Les savons son super pas de problème de peau</q><small>Avis Google · octobre 2025</small></figure>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="opt rv">
+      <span class="rib">Option</span>
+      <div class="in2">
+        <div>
+          <p class="kick" style="color:var(--accent)">Rendez-vous d’essayage</p>
+          <h2 class="h2">Votre créneau, <em style="color:var(--accent)">sans attendre au téléphone</em></h2>
+          <p>Vos clientes choisissent un créneau pour un essayage ou une prise de mesures, ajoutent une photo du vêtement, et vous recevez la demande par SMS.</p>
+          <p class="note">Exemple de fonction en plus, pour vous montrer ce qu’un site peut faire. La page simple n’en a pas besoin.</p>
+        </div>
+        <form data-demo>
+          <label>C’est pour<div class="chips"><button class="on">Un essayage</button><button>Une retouche</button><button>Une création</button></div></label>
+          <label>Le jour qui vous arrange<div class="chips"><button class="on">Lundi</button><button>Mardi</button><button>Mercredi</button><button>Jeudi</button><button>Vendredi</button></div></label>
+          <label>Une photo du vêtement<input type="file" accept="image/*"></label>
+          <label>Votre téléphone<input type="tel" placeholder="06 00 00 00 00"></label>
+          <button class="btn acc" type="submit">Demander le rendez-vous</button>
+          <p class="ok">Demande envoyée (démonstration). Couture Amélia vous confirme le créneau.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><span class="num">04 · CONTACT</span><h2 class="h2">Passer <em>à l’atelier</em></h2></div></div>
+    <div class="grid c3">
+      <div class="box rv">
+        <h3>Horaires</h3>
+        <table class="hours">
+          <tr data-day="1"><td>Lundi</td><td>8h-12h, 14h-18h</td></tr>
+          <tr data-day="2"><td>Mardi</td><td>8h-12h, 14h-18h</td></tr>
+          <tr data-day="3"><td>Mercredi</td><td>8h-12h, 14h-18h</td></tr>
+          <tr data-day="4"><td>Jeudi</td><td>8h-12h, 14h-18h</td></tr>
+          <tr data-day="5"><td>Vendredi</td><td>8h-12h, 14h-18h</td></tr>
+          <tr data-day="6"><td>Samedi</td><td>Fermé</td></tr>
+          <tr data-day="0"><td>Dimanche</td><td>Fermé</td></tr>
+        </table>
+      </div>
+      <div class="box rv">
+        <h3>Adresse</h3>
+        <p>5 rue du 22 Septembre<br>34500 Béziers</p>
+        <p style="margin-top:18px"><a class="btn sm" href="https://www.google.com/maps/dir/?api=1&destination=5+rue+du+22+Septembre+34500+B%C3%A9ziers" target="_blank" rel="noopener">Itinéraire</a></p>
+        <h3 style="margin-top:28px">Téléphone</h3>
+        <p><a href="tel:+33641494303" style="font-size:20px">06 41 49 43 03</a></p>
+        <p style="margin-top:14px"><a class="btn sm" href="sms:+33641494303">Envoyer un SMS</a></p>
+      </div>
+      <div class="map rv"><iframe title="Plan d’accès" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=5+rue+du+22+Septembre,+34500+B%C3%A9ziers&z=16&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <span>© <span data-year>2026</span> Couture Amélia · Béziers</span>
+  <span>Maquette préparée par <a href="https://maison-dev.com/">Maison Dev</a> · page non référencée</span>
+</div></footer>
+
+<div class="callbar">
+  <a href="tel:+33641494303"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+  <a href="sms:+33641494303"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 4z"/></svg>SMS</a>
+</div>
+
+<script>var J=[["08:00","12:00"],["14:00","18:00"]];window.HORAIRES={1:J,2:J,3:J,4:J,5:J};</script>
+<script src="../_commun/maquette.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d37413d1bcee4d998ef6651043396a2b"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
